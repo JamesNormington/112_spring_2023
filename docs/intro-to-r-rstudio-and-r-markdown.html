@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 1 Intro to R, RStudio, and R Markdown | STAT/COMP 112: Introduction to Data Science</title>
+  <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 1 Intro to R, RStudio, and R Markdown | STAT/COMP 112: Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="github-repo" content="bcheggeseth/112_fall_2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 1 Intro to R, RStudio, and R Markdown | STAT/COMP 112: Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="learning-goals.html"/>
+<link rel="next" href="intro-to-data-visualization.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">STAT/COMP 112: Introduction to Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="course-schedule.html"><a href="course-schedule.html"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html"><i class="fa fa-check"></i>Learning Goals</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#general-skills"><i class="fa fa-check"></i>General Skills</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#project-presentations-communication"><i class="fa fa-check"></i>Project Presentations &amp; Communication</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html"><i class="fa fa-check"></i><b>1</b> Intro to R, RStudio, and R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio"><i class="fa fa-check"></i>Getting Started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="part"><span><b>II Visualization</b></span></li>
+<li class="chapter" data-level="2" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html"><i class="fa fa-check"></i><b>2</b> Intro to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#benefits-of-visualizations"><i class="fa fa-check"></i>Benefits of Visualizations</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#glyphs"><i class="fa fa-check"></i>Glyphs</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#data-glyph"><i class="fa fa-check"></i>Data Glyph</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#components-of-graphics"><i class="fa fa-check"></i>Components of Graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#eye-training-for-the-layered-grammar-of-graphics"><i class="fa fa-check"></i>Eye Training for the Layered Grammar of Graphics</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#glyph-ready-data"><i class="fa fa-check"></i>Glyph-Ready Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#layers-building-up-complex-plots"><i class="fa fa-check"></i>Layers – Building up Complex Plots</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#good-vs.-bad-graphics"><i class="fa fa-check"></i>Good vs. Bad Graphics</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#data-visualization-workflow-ggplot"><i class="fa fa-check"></i>Data Visualization Workflow + <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#getting-started"><i class="fa fa-check"></i>Getting Started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#categorical-univariate-visualization"><i class="fa fa-check"></i>Categorical univariate visualization</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#quantitative-univariate-visualization"><i class="fa fa-check"></i>Quantitative univariate visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#density-plots"><i class="fa fa-check"></i>Density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#additional-exercises"><i class="fa fa-check"></i>Additional exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT/COMP 112: Introduction to Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-r-rstudio-and-r-markdown" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Topic 1</span> Intro to R, RStudio, and R Markdown<a href="intro-to-r-rstudio-and-r-markdown.html#intro-to-r-rstudio-and-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-1" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Download and install the necessary tools (R, RStudio)</li>
+<li>Develop comfort in navigating the tools in RStudio</li>
+<li>Develop comfort in writing and knitting a R Markdown file</li>
+<li>Identify the characteristics of tidy data</li>
+<li>Use R code: as a calculator and to explore tidy data</li>
+</ul>
+</div>
+<div id="getting-started-in-rstudio" class="section level2 unnumbered hasAnchor">
+<h2>Getting Started in RStudio<a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As you might guess from the name, “Data Science” requires <em>data</em>. Working with modern (large, messy) data sets requires statistical software. We’ll exclusively use <strong>RStudio</strong>. Why?</p>
+<ul>
+<li>it’s free<br />
+</li>
+<li>it’s open source (the code is free &amp; anybody can contribute to it)</li>
+<li>it has a huge online community (which is helpful for when you get stuck)<br />
+</li>
+<li>it’s one of the industry standards<br />
+</li>
+<li>it can be used to create <em>reproducible</em> and lovely documents (In fact, the course materials that you’re currently reading were constructed entirely within RStudio!)</li>
+</ul>
+<div id="download-r-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>Download R &amp; RStudio<a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To get started, take the following two steps <em>in the given order</em>. Even if you already have R/RStudio, make sure to update to the most recent versions.</p>
+<ol style="list-style-type: decimal">
+<li>Download and install the R statistical software at <a href="https://mirror.las.iastate.edu/CRAN/" class="uri">https://mirror.las.iastate.edu/CRAN/</a><br />
+</li>
+<li>Download and install the FREE version of RStudio at <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a></li>
+</ol>
+<p>What’s the difference between R and RStudio? Mainly, RStudio requires R – thus it does everything R does <em>and more</em>. We will be using RStudio exclusively.</p>
+</div>
+<div id="a-quick-tour-of-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>A quick tour of RStudio<a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Open RStudio! You should see four panes, each serving a different purpose:</p>
+<div class="figure"><span style="display:block;" id="fig:fig-main"></span>
+<img src="images/RStudioImage.jpg" alt="RStudio Interface" width="512" />
+<p class="caption">
+Figure 1.1: RStudio Interface
+</p>
+</div>
+<p>This short <a href="http://www.youtube.com/embed/JfIo2Ua_oqQ/">video tour of RStudio</a> summarizes some basic features of the <em>console</em>.</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-2" class="exercise"><strong>Exercise 1.1  (Warm Up) </strong></span>Use RStudio as a simple calculator to do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Perform a simple calculation: calculate <code>90/3</code>.</li>
+<li>RStudio has built-in <em>functions</em> to which we supply the necessary <em>arguments</em>: <code>function(arguments)</code>. Use the built-in function <code>sqrt</code> to calculate the square root of 25.</li>
+<li>Use the built-in function <code>rep</code> to repeat the number “5” eight times.</li>
+<li>Use the <code>seq</code> function to create the vector <code>(0, 3, 6, 9, 12)</code>. (The video doesnt cover this!)</li>
+<li>Create a new vector by concatenating three repetitions of the vector from the previous part.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:assignment" class="exercise"><strong>Exercise 1.2  (Assignment) </strong></span>We often want to store our output for later use (why?). The basic idea in RStudio:</p>
+<pre><code>`name &lt;- output`</code></pre>
+<p>Copy and paste the following code into the console, line by line. NOTE: RStudio ignores any content after the <code>#</code>. Thus we use this to ‘comment’ and organize our code.</p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#type square_3</span></span>
+<span id="cb2-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-2" aria-hidden="true" tabindex="-1"></a>square_3</span>
+<span id="cb2-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate 3 squared</span></span>
+<span id="cb2-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span>    </span>
+<span id="cb2-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#store this as &quot;square_3&quot;</span></span>
+<span id="cb2-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-8" aria-hidden="true" tabindex="-1"></a>square_3 <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span>    </span>
+<span id="cb2-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#type square_3 again!</span></span>
+<span id="cb2-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-11" aria-hidden="true" tabindex="-1"></a>square_3</span>
+<span id="cb2-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#do some math with square_3</span></span>
+<span id="cb2-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb2-14" aria-hidden="true" tabindex="-1"></a>square_3 <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="tidy-data" class="section level3 unnumbered hasAnchor">
+<h3>Tidy Data<a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Not only does “Data Science” require statistical software, it requires <em>DATA</em>! Consider the Google definition:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="images/datum.png" alt="A datum." width="458" />
+<p class="caption">
+Figure 1.2: A datum.
+</p>
+</div>
+<p>With this definition in mind, which of the following are examples of data?</p>
+<ul>
+<li>tables</li>
+</ul>
+<pre><code>##   family father mother sex height
+## 1      1   78.5   67.0   M   73.2
+## 2      1   78.5   67.0   F   69.2
+## 3      1   78.5   67.0   F   69.0
+## 4      1   78.5   67.0   F   69.0
+## 5      2   75.5   66.5   M   73.5
+## 6      2   75.5   66.5   M   72.5
+##   nkids
+## 1     4
+## 2     4
+## 3     4
+## 4     4
+## 5     4
+## 6     4</code></pre>
+<ul>
+<li><p><a href="https://www.google.com/search?hl=en&amp;biw=1439&amp;bih=656&amp;tbm=isch&amp;sa=1&amp;q=messy+college+dorm+rooms&amp;oq=messy+college+dorm+rooms&amp;gs_l=psy-ab.3...20720.21922.0.22183.6.6.0.0.0.0.143.552.4j2.6.0....0...1.1.64.psy-ab..1.1.142...0i13k1.uaj5gYQ4t50">photo</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=wMm7VdH05jY">video</a></p></li>
+<li><p><a href="https://twitter.com/data4blacklives?lang=en">text / tweets</a></p></li>
+</ul>
+<p>We’ll mostly work with data that look like this:</p>
+<pre><code>##   family father mother sex height
+## 1      1   78.5   67.0   M   73.2
+## 2      1   78.5   67.0   F   69.2
+## 3      1   78.5   67.0   F   69.0
+## 4      1   78.5   67.0   F   69.0
+## 5      2   75.5   66.5   M   73.5
+## 6      2   75.5   66.5   M   72.5
+##   nkids
+## 1     4
+## 2     4
+## 3     4
+## 4     4
+## 5     4
+## 6     4</code></pre>
+<p>This isn’t as restrictive as it seems. How can we convert the above signals, photos, videos, and text to a data table format?</p>
+<p><strong>Example:</strong> After a scandal among FIFA officials, fivethirtyeight.com posted an analysis of FIFA viewership, <a href="https://fivethirtyeight.com/features/how-to-break-fifa/">“How to Break FIFA”</a>. Here’s a snapshot of the data used in this article:</p>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="16%" />
+<col width="20%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="left">confederation</th>
+<th align="right">population_share</th>
+<th align="right">tv_audience_share</th>
+<th align="right">gdp_weighted_share</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">United States</td>
+<td align="left">CONCACAF</td>
+<td align="right">4.5</td>
+<td align="right">4.3</td>
+<td align="right">11.3</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="left">AFC</td>
+<td align="right">1.9</td>
+<td align="right">4.9</td>
+<td align="right">9.1</td>
+</tr>
+<tr class="odd">
+<td align="left">China</td>
+<td align="left">AFC</td>
+<td align="right">19.5</td>
+<td align="right">14.8</td>
+<td align="right">7.3</td>
+</tr>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="left">UEFA</td>
+<td align="right">1.2</td>
+<td align="right">2.9</td>
+<td align="right">6.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Brazil</td>
+<td align="left">CONMEBOL</td>
+<td align="right">2.8</td>
+<td align="right">7.1</td>
+<td align="right">5.4</td>
+</tr>
+<tr class="even">
+<td align="left">United Kingdom</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.1</td>
+<td align="right">4.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Italy</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.1</td>
+<td align="right">4.0</td>
+</tr>
+<tr class="even">
+<td align="left">France</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.0</td>
+<td align="right">4.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Russia</td>
+<td align="left">UEFA</td>
+<td align="right">2.1</td>
+<td align="right">3.1</td>
+<td align="right">3.5</td>
+</tr>
+<tr class="even">
+<td align="left">Spain</td>
+<td align="left">UEFA</td>
+<td align="right">0.7</td>
+<td align="right">1.8</td>
+<td align="right">3.1</td>
+</tr>
+</tbody>
+</table>
+<p>The data table above is in <em>tidy</em> format. <em>Tidy</em> data tables have three key features:</p>
+<ol style="list-style-type: decimal">
+<li>Each row represents a <strong>unit of observation</strong>.<br />
+</li>
+<li>Each column represents a <strong>variable</strong> (ie. an attribute of the cases that can vary from case to case). Each variable is one of two types:<br />
+</li>
+</ol>
+<ul>
+<li><strong>quantitative</strong> = numerical<br />
+</li>
+<li><strong>categorical</strong> = discrete possibilities/categories<br />
+</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Each entry contains a single data value; no analysis, summaries, footnotes, comments, etc., and only one value per cell</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-8" class="exercise"><strong>Exercise 1.3  (Units of Observation and Variables) </strong></span>Consider the following in a group:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>What are the units of observation in the FIFA data?<br />
+</li>
+<li>What are the variables? Which are quantitative? Which are categorical?<br />
+</li>
+<li>Are these <em>tidy</em> data?</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-9" class="exercise"><strong>Exercise 1.4  (Tidy vs. Untidy) </strong></span>Check out the following data. Explain to each other why they are untidy and how we can tidy them.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Data 1: FIFA</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">country</th>
+<th align="right">confederation</th>
+<th align="right">population share</th>
+<th align="right">tv_share</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">United States</td>
+<td align="right">CONCACAF</td>
+<td align="right">i don’t know*</td>
+<td align="right">4.3%</td>
+<td>*look up later</td>
+</tr>
+<tr class="even">
+<td align="right">Japan</td>
+<td align="right">AFC</td>
+<td align="right">1.9</td>
+<td align="right">4.9%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="right">China</td>
+<td align="right">AFC</td>
+<td align="right">19.5</td>
+<td align="right">14.8%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">total=24%</td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Data 2: Gapminder life expectancies by country</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">country</th>
+<th align="right">1952</th>
+<th align="right">1957</th>
+<th align="right">1962</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Asia</td>
+<td align="right">Afghanistan</td>
+<td align="right">28.8</td>
+<td align="right">30.3</td>
+<td align="right">32.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">Bahrain</td>
+<td align="right">50.9</td>
+<td align="right">53.8</td>
+<td align="right">56.9</td>
+</tr>
+<tr class="odd">
+<td>Africa</td>
+<td align="right">Algeria</td>
+<td align="right">43.0</td>
+<td align="right">45.7</td>
+<td align="right">48.3</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+</div>
+</div>
+<div id="data-basics-in-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>Data Basics in RStudio<a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For now, we’ll focus on <em>tidy</em> data. In a couple of weeks, you’ll learn how to turn untidy data into tidy data.</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-10" class="exercise"><strong>Exercise 1.5  (Importing Package Data) </strong></span>The first step to working with data in RStudio is getting it in there! How we do this depends on its format (eg: Excel spreadsheet, csv file, txt file) and storage locations (eg: online, within Wiki, desktop). Luckily for us, the <code>fifa_audience</code> data are stored in the <code>fivethirtyeight</code> RStudio package. Copy and paste the following code into the Console and press Enter.</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fivethirtyeight package</span></span>
+<span id="cb5-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
+<span id="cb5-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fifa data</span></span>
+<span id="cb5-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fifa_audience&quot;</span>)</span>
+<span id="cb5-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
+<span id="cb5-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb5-8" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-12" class="exercise"><strong>Exercise 1.6  (Examining Data Structures) </strong></span>Before we can analyze our data, we must understand its structure. Try out the following functions (copy and paste into the Console). For each, make a note that describes its action.</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does View do?)</span></span>
+<span id="cb6-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fifa)  </span>
+<span id="cb6-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does head do?)</span></span>
+<span id="cb6-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
+<span id="cb6-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does dim do?)</span></span>
+<span id="cb6-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
+<span id="cb6-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does names do?)</span></span>
+<span id="cb6-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)         </span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-14" class="exercise"><strong>Exercise 1.7  (Codebooks) </strong></span>Data are also only useful if we know what they measure! The <code>fifa</code> data table is <em>tidy</em> – it doesn’t have any helpful notes.<br />
+Rather, information about the data is stored in a separate <em>codebook</em>. Codebooks can be stored in many ways (eg: Google docs, word docs, etc). Here the authors have made their codebook available in RStudio (under the original <code>fifa_audience</code> name). Check it out (run the following code in the console):</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-1" aria-hidden="true" tabindex="-1"></a>?fifa_audience</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>What does <code>population_share</code> measure?</li>
+<li>What are the units of <code>population_share</code>?</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-16" class="exercise"><strong>Exercise 1.8  (Examining a Single Variable) </strong></span>Consider the following:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>We might want to access and focus on a single variable. To this end, we can use the <code>$</code> notation:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>tv_audience_share</span>
+<span id="cb8-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-2" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>confederation</span></code></pre></div></li>
+<li><p>It’s important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>tv_audience_share)</span>
+<span id="cb9-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>confederation)</span></code></pre></div></li>
+<li><p>If a variable is categorical (either in <code>character</code> or <code>factor</code> format), we can determine its <code>levels</code> / category labels:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fifa<span class="sc">$</span>confederation)</span>
+<span id="cb10-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(fifa<span class="sc">$</span>confederation))</span></code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="r-markdown-and-reproducible-research" class="section level2 unnumbered hasAnchor">
+<h2>R Markdown and Reproducible Research<a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>Reproducible research</strong> is the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them. - <a href="https://www.coursera.org/learn/reproducible-research">Reproducible Research, Coursera</a></p>
+</blockquote>
+<p>Useful Resources:</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://rmarkdown.rstudio.com/authoring_quick_tour.html">R Markdown Quick Tour</a><br />
+</li>
+<li><a href="https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf">R Markdown Cheatsheet</a> or in RStudio: Go to Help &gt; Cheat Sheets &gt; R Markdown Cheat Sheet</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown Reference Guide</a> or in RStudio: Go to Help &gt; Cheat Sheets &gt; R Markdown Reference Guide</li>
+</ol>
+<p>Research often makes claims that are difficult to verify. A recent <a href="http://science.sciencemag.org/content/349/6251/aac4716">study of published psychology articles</a> found that less than half of published claims could be reproduced. One of the most common reasons claims cannot be reproduced is confusion about data analysis. It may be unclear exactly how data was prepared and analyzed, or there may be a mistake in the analysis.</p>
+<p>In this course we will use an innovative format called R Markdown that dramatically increases the transparency of data analysis. R Markdown interleaves data, R code, graphs, tables, and text, packaging them into an easily publishable format.</p>
+<p>To use R Markdown, you will write an R Markdown formatted file in RStudio and then ask RStudio to <strong>knit</strong> it into an HTML document (or occasionally a PDF or MS Word document).</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-20" class="exercise"><strong>Exercise 1.9  (Deduce the R Markdown Format) </strong></span>Look at this <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.Rmd">Sample RMarkdown</a> and the <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.html">HTML webpage</a> it creates. Consider the following and discuss:</p>
+<ol style="list-style-type: lower-alpha">
+<li>How are bullets, italics, and section headers represented in the R Markdown file?</li>
+<li>How does R code appear in the R Markdown file?</li>
+<li>In the HTML webpage, do you see the R code, the output of the R code, or both?</li>
+</ol>
+</div>
+<p>Now take a look at the <a href="https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf">R Markdown Cheatsheet</a>. Look up the R Markdown features from the previous question on the cheatsheet. There’s a great deal more information there.</p>
+</div>
+<div id="practice" class="section level2 unnumbered hasAnchor">
+<h2>Practice<a href="intro-to-r-rstudio-and-r-markdown.html#practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Complete the following. If you get stuck along the way, refer to the R Markdown Cheatsheet linked above, search the web for answers, and/or ask for help!</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-21" class="exercise"><strong>Exercise 1.10  (Your First R Markdown File) </strong></span>Create a new R Markdown about your favorite food.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a new file in RStudio (File -&gt; New File -&gt; R Markdown) called <code>First_Markdown</code>.<br />
+</li>
+<li>Make sure you can compile (Knit) the Markdown into a webpage (html file).<br />
+</li>
+<li>Add a new line between <code>title</code> and <code>output</code> that reads: <code>author: Your Name</code>.</li>
+<li>Create a brief essay about your favorite food. Make sure to include:<br />
+</li>
+</ol>
+<ul>
+<li>A picture from the web<br />
+</li>
+<li>A bullet list<br />
+</li>
+<li>A numbered list<br />
+</li>
+</ul>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Compile the document into an html file.</li>
+</ol>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-22" class="exercise"><strong>Exercise 1.11  (New Data!) </strong></span>There’s a data set named <code>comic_characters</code> in the <code>fivethirtyeightdata</code> package. Check out the codebook (hint: use ?) to understand what these data measure. Then add a second section to your R Markdown file,
+and then use code chunks and R commands to perform/answer the following tasks/questions:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Load the data.<br />
+</li>
+<li>What are the units of observation? How many observations are there?<br />
+</li>
+<li>In a new code chunk, print out the first 12 rows of the data set.</li>
+<li>Get a list of all variable names.<br />
+</li>
+<li>What’s the class of the <code>date</code> variable?<br />
+</li>
+<li>List all of the unique entries in the <code>gsm</code> variable (no need to include NA).</li>
+<li>Compile the document into an html file.</li>
+</ol>
+</div>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="learning-goals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-to-data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

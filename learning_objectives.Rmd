@@ -1,0 +1,193 @@
+# Learning Goals {.unnumbered}
+
+The goal of this course is for you to gain confidence in carrying out the entire data science pipeline, 
+
+from research question formulation, 
+to data collection/scraping,
+to wrangling, 
+to modeling, 
+to visualization, 
+to presentation and communication
+
+
+Specific course topics and general skills are listed below.
+
+## General Skills {.unnumbered}
+
+**Data Communication**
+
+-   In written and oral formats:
+
+    -   Inform and justify data cleaning and analysis process and the resulting conclusions with clear, organized, logical, and compelling details that adapt to the background, values, and motivations of the audience and context in which communication occurs.
+
+**Collaborative Learning**
+
+-   Understand and demonstrate characteristics of effective collaboration (team roles, interpersonal communication, self-reflection, awareness of social dynamics, advocating for yourself and others).
+-   Develop a common purpose and agreement on goals.
+-   Be able to contribute questions or concerns in a respectful way.
+-   Share and contribute to the group's learning in an equitable manner.
+-   Develop a familiarity and comfort in using collaboration tools such as Git and Github. 
+
+## Course Topics {.unnumbered}
+
+Specific learning objectives for our course topics are listed below. Use these to guide your synthesis of course material for specific topics. Note that the topics are covered in the order of the **data science pipeline**, not the order in which we will cover them in class.
+
+### Foundation {.unnumbered}
+
+**Intro to R, RStudio, and R Markdown**
+
+- Download and install the necessary tools (R, RStudio)
+- Develop comfort in navigating the tools in RStudio
+- Develop comfort in writing and knitting a R Markdown file
+- Identify the characteristics of tidy data
+- Use R code: as a calculator and to explore tidy data
+
+<br>
+
+### Data Acquisition {.unnumbered}
+
+**Data Import and Basic Cleaning**
+
+-   stuff
+
+<br>
+
+**Data Scraping (rvest)**
+
+-   stuff  
+
+<br>
+
+**APIs**
+
+-   stuff
+
+<br>
+
+**SQL**
+
+-   stuff
+
+### Data Wrangling {.unnumbered}
+
+**Six main verbs**
+
+-   stuff   
+
+<br>
+
+
+**spread/gather**
+
+-   stuff
+
+<br>
+
+**join**
+
+-   stuff 
+
+<br>
+
+**factors**
+
+-   stuff 
+
+<br>
+
+
+**mini-project**
+
+-   stuff  
+
+<br>
+
+### Data Visualization {.unnumbered}
+
+*The learning goals may be adjusted before we start the material of this section.*
+
+
+**Introduction to Data Visualization**
+
+- Understand the Grammar of Graphics
+- Use ggplot2 to create basic layers of graphics
+- Understand the different basic univariate visualizations for categorical and quantiative variables
+
+<br>
+
+
+**Effective Visualization**
+
+-   stuff 
+
+<br>
+
+**Bivariate**
+
+-   stuff 
+<br>
+
+**Multivariate**
+
+-   stuff 
+
+<br>
+
+**Spatial**
+
+-   stuff
+
+<br>
+
+**Network and Interactive**
+
+-   stuff
+
+<br>
+
+**Shiny**
+
+-   stuff
+
+<br>
+
+**Tables**
+
+-   stuff 
+
+<br>
+
+
+
+### Data Modeling {.unnumbered}
+
+*The learning goals may be adjusted before we start the material of this section.*
+
+**EDA**
+
+-   stuff
+
+<br>
+
+**Text Analysis**
+
+-   stuff
+
+<br>
+
+
+### Project Presentations & Communication {.unnumbered}
+
+*The learning goals may be adjusted before we start the material of this section.*
+
+**Oral Communication**
+
+-   stuff
+
+<br>
+
+**Written Communication**
+
+-   stuff 
+
+<br>
