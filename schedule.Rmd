@@ -2,11 +2,10 @@
 
 The schedule below is a tentative outline of our plans for the semester.
 
-**Before each class period, please watch/read the indicated videos/readings and check on your understanding by actively reviewing the associated [Learning Goals](learning-goals.html).** 
-
+**Before each class period, please watch/read the indicated videos/readings and check on your understanding by actively reviewing the associated [Learning Goals](learning-goals.html).**
 
 <br>
 
-```{r echo=FALSE}
+```{r include=FALSE}
 htmltools::includeHTML("schedule_table.html")
 ```

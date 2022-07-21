@@ -10,6 +10,7 @@ output:
 documentclass: book
 link-citations: yes
 github-repo: bcheggeseth/112_fall_2022/
+cover-image: "images/logo.png"
 description: "This is the class website for Introduction to Data Science at Macalester College for Fall 2022."
 ---
 
