@@ -6,6 +6,6 @@ The schedule below is a tentative outline of our plans for the semester.
 
 <br>
 
-```{r include=FALSE}
+```{r echo=FALSE}
 htmltools::includeHTML("schedule_table.html")
 ```
