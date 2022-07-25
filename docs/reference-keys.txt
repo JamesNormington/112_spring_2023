@@ -11,8 +11,4 @@ exr:unnamed-chunk-18
 exr:unnamed-chunk-22
 exr:unnamed-chunk-23
 exr:unnamed-chunk-24
-exr:unnamed-chunk-33
-exr:unnamed-chunk-50
-exr:unnamed-chunk-60
 intro-to-r-rstudio-and-r-markdown
-spatial-visualization
