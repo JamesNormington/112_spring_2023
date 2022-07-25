@@ -50,6 +50,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -163,31 +173,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="part"><span><b>II Visualization</b></span></li>
-<li class="chapter" data-level="2" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html"><i class="fa fa-check"></i><b>2</b> Intro to Data Visualization</a>
+<li class="chapter" data-level="2" data-path="spatial-visualization.html"><a href="spatial-visualization.html"><i class="fa fa-check"></i><b>2</b> Spatial Visualization</a>
 <ul>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#benefits-of-visualizations"><i class="fa fa-check"></i>Benefits of Visualizations</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#glyphs"><i class="fa fa-check"></i>Glyphs</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#data-glyph"><i class="fa fa-check"></i>Data Glyph</a>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#motivation"><i class="fa fa-check"></i>Motivation</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#plotting-points-on-a-map"><i class="fa fa-check"></i>Plotting Points on a Map</a>
 <ul>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#components-of-graphics"><i class="fa fa-check"></i>Components of Graphics</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#starbucks-example"><i class="fa fa-check"></i>Starbucks Example</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#exercise-more-with-starbucks"><i class="fa fa-check"></i>Exercise: More with Starbucks</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#eye-training-for-the-layered-grammar-of-graphics"><i class="fa fa-check"></i>Eye Training for the Layered Grammar of Graphics</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#glyph-ready-data"><i class="fa fa-check"></i>Glyph-Ready Data</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#layers-building-up-complex-plots"><i class="fa fa-check"></i>Layers – Building up Complex Plots</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#good-vs.-bad-graphics"><i class="fa fa-check"></i>Good vs. Bad Graphics</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#data-visualization-workflow-ggplot"><i class="fa fa-check"></i>Data Visualization Workflow + <code>ggplot</code></a>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#contour-maps"><i class="fa fa-check"></i>Contour Maps</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choropleths"><i class="fa fa-check"></i>Choropleths</a>
 <ul>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#getting-started"><i class="fa fa-check"></i>Getting Started</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choose-a-map"><i class="fa fa-check"></i>Choose a Map</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#connect-map-idregion-variable-to-data-being-plotted"><i class="fa fa-check"></i>Connect Map ID/Region Variable to Data Being Plotted</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#use-ggplot2-features"><i class="fa fa-check"></i>Use <code>ggplot2</code> Features</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#expand_limits"><i class="fa fa-check"></i><code>expand_limits()</code></a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#theme_map"><i class="fa fa-check"></i><code>theme_map()</code></a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#add-ggplot2-layers"><i class="fa fa-check"></i>Add <code>ggplot2</code> Layers</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#alternative-methods"><i class="fa fa-check"></i>Alternative Methods</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#exercise-even-more-with-starbucks"><i class="fa fa-check"></i>Exercise: Even More with Starbucks</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#categorical-univariate-visualization"><i class="fa fa-check"></i>Categorical univariate visualization</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#quantitative-univariate-visualization"><i class="fa fa-check"></i>Quantitative univariate visualization</a>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#dynamnic-maps-with-leaflet"><i class="fa fa-check"></i>Dynamnic Maps with <code>leaflet</code></a>
 <ul>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#density-plots"><i class="fa fa-check"></i>Density plots</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#steps-to-create-a-map"><i class="fa fa-check"></i>Steps to Create a Map</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#creating-a-map-with-markerspoints"><i class="fa fa-check"></i>Creating a Map with Markers/Points</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choropleth-layers-with-addpolygons"><i class="fa fa-check"></i>Choropleth Layers with <code>addPolygons()</code></a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#exercise-favorite-places"><i class="fa fa-check"></i>Exercise: Favorite Places</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="intro-to-data-visualization.html"><a href="intro-to-data-visualization.html#additional-exercises"><i class="fa fa-check"></i>Additional exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -251,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <tr>
     <td class="tg-0pky">9/2</td>
     <td class="tg-0pky">
-        <a href="">Community Building Scavenger Hunt</a>
+        Friday Fun: <a href="">Community Building Scavenger Hunt</a>
     </td>
     <td class="tg-0pky">
     </td>
@@ -301,22 +317,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <tr>
     <td class="tg-0pky">9/9</td>
     <td class="tg-0pky">
-        <a href="https://bcheggeseth.github.io/112_fall_2022/" target="_blank">3 Effective Viz and Bivariate Viz</a><br><br>
-        <a href="https://bcheggeseth.github.io/112_fall_2022/intro-to-r-rstudio-and-r-markdown.html">Slides for Today</a><br><br>
-        <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20498">Assignment 3</a> Due Thursday, September 15 at 11:59pm
+        Friday Fun: <a href="">Tidy Tuesday</a>
+    </td>
     <td class="tg-0pky">
-        <b>Readings:</b><br>
-        <a href="https://clauswilke.com/dataviz/telling-a-story.html">Telling a story (Chp 29)</a>, by Wilke <br> 
-        <a href="https://clauswilke.com/dataviz/visualizing-amounts.html">Visualizing amounts (Chp 6)</a>, by Wilke
-        <b>Video:</b><br>
-        <a href="https://www.youtube.com/watch?v=1SYzVMH62yw&amp;list=PLyEH7o09I467e8zck95awweg_bGuLzqjz&amp;index=7">ggplot demo</a>, Lisa Lendway<br>
-        <a href="https://www.youtube.com/watch?v=j7F-IdJAOJs&amp;list=PLyEH7o09I467e8zck95awweg_bGuLzqjz&amp;index=8">Common ggplot mistakes</a>, Lisa Lendway
-        
     </td>
   </tr>
+
+
   <tr>
     <td class="hw" colspan="6">
-      <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20497">Assignment 2</a> (due 9/11) and <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20498">Assignment 3</a> (due 9/15).</b>
+      <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20497">Assignment 2</a> (due 9/11).</b>
     </td>
   </tr>
   </tbody>
@@ -341,8 +351,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <tr>
     <td class="tg-0pky">9/12</td>
     <td class="tg-0pky">
-            <a href="https://bcheggeseth.github.io/112_fall_2022/" target="_blank">3 Effective Viz and Bivariate Viz</a><br><br>
-            <a href="">Assignment 4</a> Due Thursday, September 15 at 11:59pm
+        <a href="https://bcheggeseth.github.io/112_fall_2022/" target="_blank">3 Effective Viz and Bivariate Viz</a><br><br>
+        <a href="https://bcheggeseth.github.io/112_fall_2022/intro-to-r-rstudio-and-r-markdown.html">Slides for Today</a><br><br>
+        <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20498">Assignment 3</a> Due Sunday, September 18 at 11:59pm
+    <td class="tg-0pky">
+        <b>Readings:</b><br>
+        <a href="https://clauswilke.com/dataviz/telling-a-story.html">Telling a story (Chp 29)</a>, by Wilke <br> 
+        <a href="https://clauswilke.com/dataviz/visualizing-amounts.html">Visualizing amounts (Chp 6)</a>, by Wilke
+        <b>Video:</b><br>
+        <a href="https://www.youtube.com/watch?v=1SYzVMH62yw&amp;list=PLyEH7o09I467e8zck95awweg_bGuLzqjz&amp;index=7">ggplot demo</a>, Lisa Lendway<br>
+        <a href="https://www.youtube.com/watch?v=j7F-IdJAOJs&amp;list=PLyEH7o09I467e8zck95awweg_bGuLzqjz&amp;index=8">Common ggplot mistakes</a>, Lisa Lendway
+        
+    </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">9/14</td>
+    <td class="tg-0pky">
+            <a href="https://bcheggeseth.github.io/112_fall_2022/" target="_blank">4 Multivariate Viz</a><br><br>
+            <a href="">Assignment 4</a> Due Tuesday, September 20 at 11:59pm
         <td class="tg-0pky">
             <b>Readings:</b><br>
             <a href="https://clauswilke.com/dataviz/telling-a-story.html">Telling a story (Chp 29)</a>, by Wilke <br> 
@@ -352,33 +378,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <a href="https://www.youtube.com/watch?v=j7F-IdJAOJs&amp;list=PLyEH7o09I467e8zck95awweg_bGuLzqjz&amp;index=8">Common ggplot mistakes</a>, Lisa Lendway
         
         </td>
-        <td class="tg-0pky">
-          <a href="" target="_blank">Slides</a><br>
-          <a href="" target="_blank">Board Notes</a><br>
-        </td>
   </tr>
-  <tr>
-    <td class="tg-0pky">2/3</td>
-    <td class="tg-0pky">
-        <a href="https://bcheggeseth.github.io/452_spring_2022/model-components-and-detrending.html" target="_blank">5 Model Components and Detrending</a>
-    <td class="tg-0pky">
-        <b>Video:</b> <a href='https://drive.google.com/drive/folders/1H9FG7lZA4XLxmgKI2XUOnN5_l9xK-Fh-?usp=sharing' target = '_blank'>05-Model Components</a><br>
-        <b>Reading:</b> Chapter 4, section 4.1 in <a href='https://bcheggeseth.github.io/CorrelatedData/' target="_blank">Correlated Data Notes</a>
+ <tr>
+   <td class="tg-0pky">9/9</td>
+   <td class="tg-0pky">
+    Friday Fun: <a href="">Idea Lab</a> (Section 1 & 2), <a href="">Library Session</a> (Section F1)
+</td>
+   <td class="tg-0pky">
+   </td>
+ </tr>
  
-    </td>
-    <td class="tg-0pky">
-      <a href="https://docs.google.com/presentation/d/196qn-TODSrYnTkXWY0LfWrhfu_tsRblWsoDOlkn9w8Y/edit?usp=sharing" target="_blank">Slides</a><br>
-      <a href="https://drive.google.com/drive/folders/1ibl05H_2aenAZghvYxfe6E26CncM3scW?usp=sharing" target="_blank">Board Notes</a><br>
-    </td>
-  </tr>
   <tr>
     <td class="hw" colspan="6">
-            <b>Finish <a href="checkpoint-1.html">Checkpoint 1</a>, Part 1 due 2/1 in class and Part 2 due 2/3 in class</b><br>
-            <b>Start <a href="checkpoint-2.html">Checkpoint 2</a>, due 2/10 in class</b>
+            <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=20498">Assignment 3</a> (due 9/18) and <a href="https://moodle.macalester.edu/mod/assign/view.php?id=21363">Assignment 4</a> (due 9/20)</b>
     </td>
   </tr>
 </tbody>
 </table>
+
 
 <!-------------------------------- Week 4 -------------------------------->
 <!--      
@@ -1038,20 +1055,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

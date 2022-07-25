@@ -18,6 +18,8 @@ library(mosaic)
 - Use ggplot2 to create basic layers of graphics
 - Understand the different basic univariate visualizations for categorical and quantiative variables
 
+You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd).
+
 ## Benefits of Visualizations {-}
 
 - Visualizations help us understand what we're working with: What are the scales of our variables?  Are there any outliers, i.e. unusual cases?  What are the patterns among our variables?    
@@ -32,7 +34,7 @@ Heiro**glyph** | Mayan **glyph**
 ---------------|----------------:
 ![Heiroglyph](images/hand.jpg) | ![Mayan glyph](images/mayan-glyph.png) 
 
-## Data Glyph {-}
+### Data Glyph {-}
 
 A data glyph is also a mark, e.g. 
 
@@ -87,7 +89,7 @@ to translate aesthetics back into data values.
     + examples:  x- and y-axes, various sorts of legends
 
 
-## Eye Training for the Layered Grammar of Graphics {-}
+### Eye Training for the Layered Grammar of Graphics {-}
 
 ```{exercise, name="Basic questions to ask of a data graphic"}
 For your assigned graphic, discuss the following seven questions with your partner(s):
@@ -113,7 +115,7 @@ a. [Admissions gap](http://www.nytimes.com/interactive/2013/05/07/education/coll
 
 ```
 
-## Glyph-Ready Data {-}
+### Glyph-Ready Data {-}
 
 Note the mapping of data to aesthetics for Figure \@ref(fig:fig-bp):
 
@@ -137,7 +139,10 @@ knitr::kable(
 
 
 
-## Layers -- Building up Complex Plots  {-}
+
+## Data Visualization Workflow + `ggplot` {-}
+
+### Layers -- Building up Complex Plots  {-}
 
 Using the `ggplot2` package, we can create graphics by building up layers, each of which may have its own data, glyphs, aesthetic mapping, etc. As an example, let's peel back the layers used to create Figure \@ref(fig:fig-bp).
 
@@ -180,12 +185,7 @@ ggplot(data = Tmp) +
 
 For more information on all of the different types of layers we can add to graphics, see the [`ggplot2` reference page](https://ggplot2.tidyverse.org/reference/) and the [data visualization with `ggplot2` cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
-
-## Good vs. Bad Graphics {-}
-
-Important note: So far we have just discussed the layered grammar of graphics in order to understand how graphics are created in `R`. We have not touched at all on what makes for effective graphics, or how graphics are perceived by humans. 
-
-## Data Visualization Workflow + `ggplot` {-}
+### Getting Started {-}
 
 There's no end to the number and type of visualizations you *could* make.  Thus the process can feel overwhelming.  [FlowingData](http://flowingdata.com/2017/01/24/one-dataset-visualized-25-ways/) makes good recommendations for data viz workflow:    
 
@@ -205,7 +205,7 @@ The best way to learn about `ggplot` is to just play around. Focus on the *patte
 
 
 
-### Getting Started {-}
+### An Example {-}
 
 
 The "Bechdel test", named after cartoonist Alison Bechdel, tests whether movies meet the following criteria:
@@ -242,6 +242,25 @@ Before diving into any visualizations of these data, we first must understand it
   c. Check out the codebook for `bechdel` (`?bechdel`).  What's the difference between `domgross_2013` and `domgross`?    
 ```
 
+<details>
+  <summary>Solution</summary>
+```{r,collapse=TRUE}
+#units of observation are movies; there are 1794 movies in this sample
+dim(bechdel)
+
+#clean_test has values of "nowomen", "notalk", "men", "dubious", "ok"
+#View(bchedel) and look at values or summarize like below
+table(bechdel$clean_test)
+
+#binary has values of PASS or FAIL
+table(bechdel$binary)
+
+# domgross_2013 is the domestic gross in US dollars but it is inflation adjusted with respect to 2013
+#?bechdel
+```
+</details>
+\
+
 ```{exercise}
 We'll consider *univariate* visualizations of the `clean_test` and `budget_2013` variables. Discuss the following:
   
@@ -251,7 +270,16 @@ We'll consider *univariate* visualizations of the `clean_test` and `budget_2013`
 ```
 
 
-## Categorical univariate visualization {-}
+<details>
+  <summary>Solution</summary>
+
+a. capture the frequency of each way a movie can fail or pass the Bechdel test
+b. capture the typical budget as well as how much variation there is across movies and if there are any outliers
+
+</details>
+\
+
+### Categorical univariate visualization {-}
 
 We begin by stating a clear research question:
 
@@ -268,6 +296,15 @@ table(bechdel$clean_test)
 Examine the table of `clean_test` data, and try to interpret it. What insights does it provide about the original research question?
 ```
 
+<details>
+  <summary>Solution</summary>
+
+Among the categories, the "ok" category was most frequent, meaning that 803 of the 1794 movies in the sample passed the Bechdel Test. However, among those 991 movies that did not pass the test, most of them (514 of them) did not pass because the women did not talk. 
+
+</details>
+\
+
+
 Because `clean_test` is a categorical variable, a **bar chart** provides an appropriate visualization of this table.  In examining the bar chart, keep your eyes on the following.
 
 - **variability**: Are cases evenly spread out among the categories or are some categories more common than others?    
@@ -275,7 +312,6 @@ Because `clean_test` is a categorical variable, a **bar chart** provides an appr
 
 ```{exercise}
 Try out the code below that builds up from a simple to a customized bar chart. At each step determine how each piece of code contributes to the plot.    
-
 ```
     
 ```{r eval=FALSE}
@@ -301,6 +337,33 @@ ggplot(bechdel, aes(x = clean_test)) +
 geom_bar(fill = "purple") +
 labs(x = "Outcome of Bechdel Test", y = "Number of movies")
 ```
+<details>
+  <summary>Solution</summary>
+```{r collapse = TRUE}
+# plot 1: set up a plotting frame (a blank canvas)
+ggplot(bechdel, aes(x = clean_test))
+
+# plot 2: Added bars that reflect the count or frequency of the movies within each category
+ggplot(bechdel, aes(x = clean_test)) +
+geom_bar()
+
+# plot 3: Added/changed the text labels for the x and y axes
+ggplot(bechdel, aes(x = clean_test)) +
+geom_bar() +
+labs(x = "Outcome of Bechdel Test", y = "Number of movies")
+
+# plot 4: Changed the outline color of the bars to purple
+ggplot(bechdel, aes(x = clean_test)) +
+geom_bar(color = "purple") +
+labs(x = "Outcome of Bechdel Test", y = "Number of movies")
+
+# plot 5: Changed the fill  color of the bars to purple
+ggplot(bechdel, aes(x = clean_test)) +
+geom_bar(fill = "purple") +
+labs(x = "Outcome of Bechdel Test", y = "Number of movies")
+```
+</details>
+\
 
 
 
@@ -309,12 +372,33 @@ Summarize the visualization: what did you learn about the distribution of the `c
 
 ```
 
+<details>
+  <summary>Solution</summary>
+
+Among the categories, the "ok" category was most frequent. However, among those movies that did not pass the test, most of them did not pass because the women in the movie did not talk. 
+
+</details>
+\
+
 ```{exercise}
 Let's return to our research question: What percent of movies in the sample pass the Bechdel test? Among those that fail the test, in which way do they fail? 
 
 ```
 
-## Quantitative univariate visualization {-}
+<details>
+  <summary>Solution</summary>
+```{r collapse=TRUE}
+table(bechdel$binary)
+803/(991 + 803)
+
+
+table(bechdel$clean_test)[1:4]/991
+```
+</details>
+\
+
+
+### Quantitative univariate visualization {-}
 
 To motivate quantitative visualizations, consider a second research question 
 
@@ -331,7 +415,7 @@ In their examination, keep your eyes on the following.
 - **outliers**: Are there any *outliers*, ie. values that are unusually large/small relative to the bulk of other values?    
 - **contextual implications**: Interpret these features in the context of your research.  How would you describe your findings to a broad audience?
 
-### Histograms {-}
+#### Histograms {-}
 
 Histograms are constructed by (1) dividing up the observed range of the variable into 'bins' of equal width; and (2) counting up the number of cases that fall into each bin.  
 
@@ -374,6 +458,45 @@ ggplot(bechdel, aes(x = budget_2013)) +
   labs(x = "Budget ($)", y = "Number of movies")
 ```
 
+
+<details>
+  <summary>Solution</summary>
+```{r eval=FALSE, collapse = TRUE}
+# plot 1: set up a plotting frame
+ggplot(bechdel, aes(x = budget_2013))
+
+# plot 2: Added bars the represent the count of movies within budget intervals
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram()
+
+# plot 3: Updated the text on the x and y axis labels
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram() +
+  labs(x = "Budget ($)", y = "Number of movies")
+
+# plot 4: The outline of the bars is now white
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram(color = "white") +
+  labs(x = "Budget ($)", y = "Number of movies")
+
+# plot 5: The fill of the bars is now white
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram(fill = "white") +
+  labs(x = "Budget ($)", y = "Number of movies")
+
+# plot 6: The width of the interval or bin is decreased to $500,000
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram(color = "white", binwidth = 500000) +
+  labs(x = "Budget ($)", y = "Number of movies")
+
+# plot 7: The width of the interval or bin is increased to $200,000,000
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_histogram(color = "white", binwidth = 200000000) +
+  labs(x = "Budget ($)", y = "Number of movies")
+```
+</details>
+\
+
 ```{exercise}
 Summarize the visualizations.    
   
@@ -383,7 +506,20 @@ Summarize the visualizations.
 
 ```
 
-### Density plots {-}
+<details>
+  <summary>Solution</summary>
+
+a. If the intervals (bars, bins) are too wide, then we lose information about the variation in the budget. Take it to the extreme with just 1 bar with the bar ranging from the minimum to the maximum. If the intervals are too small, then we have the frequency of the bars go up and down quite a bit. We might say that the shape of the bars isn't very smooth.  
+
+b. Most of the movies have small budgets; the majority less of budgets are less than $100,000,000 (in 2013 dollars) but there are some movies with upwards of $300,000,000 (in 2013 dollars).
+
+c. Adding the white outline to the bars adds contrast and helps the viewer see where each bar starts and ends.
+
+
+</details>
+\
+
+#### Density plots {-}
 
 
 **Density plots** are essentially smooth versions of the histogram.  Instead of sorting cases into discrete bins, the "density" of cases is calculated across the entire range of values.  The greater the number of cases, the greater the density!  The density is then scaled so that the area under the density curve **always equals 1** and the area under any fraction of the curve represents the fraction of cases that lie in that range.  
@@ -417,9 +553,39 @@ ggplot(bechdel, aes(x = budget_2013)) +
   labs(x = "Budget ($)")
 ```
 
+<details>
+  <summary>Solution</summary>
+```{r, eval=FALSE, collapse = TRUE}
+# plot 1: set up the plotting frame
+ggplot(bechdel, aes(x = budget_2013))
+
+# plot 2: add a smooth curve (shape of the histogram)
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_density()
+
+# plot 3: updated the x axis label
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_density() +
+  labs(x = "Budget ($)")
+
+# plot 4: changed the color of the curve to red
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_density(color = "red") +
+  labs(x = "Budget ($)")
+
+# plot 5: filled the area under the curve to be red
+ggplot(bechdel, aes(x = budget_2013)) +
+  geom_density(fill = "red") +
+  labs(x = "Budget ($)")
+```  
+</details>
+\  
+
 ```{exercise}
 The histogram and density plot both allow us to visualize the distribution of a quantitative variable.  What are the pros/cons of each?  Discuss.
 ```
+
+
 
 ## Additional exercises {-}
 

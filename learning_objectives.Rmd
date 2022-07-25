@@ -110,7 +110,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 **Introduction to Data Visualization**
 
 - Understand the Grammar of Graphics
-- Use ggplot2 to create basic layers of graphics
+- Use `ggplot2` functions to create basic layers of graphics
 - Understand the different basic univariate visualizations for categorical and quantiative variables
 
 <br>
@@ -118,24 +118,31 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Effective Visualization**
 
--   stuff 
+- Understand and apply the guiding principles of effective visualizations
+
 
 <br>
 
 **Bivariate**
 
--   stuff 
+- Identify appropriate types of bivariate visualizations, depending on the type of variables (categorical, quantitative)
+- Create basic bivariate visualizations based on real data with `ggplot2` functions
+
 <br>
 
 **Multivariate**
 
--   stuff 
+- Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot with `ggplot2` functions
+- Develop comfort with creating and interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
 
 <br>
 
 **Spatial**
 
--   stuff
+- Plot data points on top of a map using the `ggmap()` function along with `ggplot2` functions      
+- Create choropleth maps using `geom_map()`      
+- Add points and other `ggplot2` features to a map created from `geom_map()`   
+- Understand the basics of creating a map using `leaflet`, including adding points and choropleths to a base map 
 
 <br>
 
