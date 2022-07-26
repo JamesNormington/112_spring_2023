@@ -47,7 +47,7 @@ A match between a case in the *left* data table and a case in the *right* data t
 
 As an example, we'll examine the following two tables on grades and courses. The `Grades` file has one case for each class of each student, and includes variables describing the ID of the student (`sid`), the ID of the session (section/class), and the grade received. The `Courses` table has variables for the ID of the session (section/class), the department (coded), the level, the semester, the enrollment, and the ID of the instructor (`iid`). We show a few random rows of each table below.
 
-```{r,cache=TRUE,echo=FALSE}
+```{r}
 Grades <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
@@ -62,7 +62,7 @@ knitr::kable(
 )
 ```
 
-```{r, cache=TRUE,echo=FALSE}
+```{r, cache=TRUE}
 Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
 ```
 
@@ -88,27 +88,9 @@ What variables are the primary keys for `Grades`?
 What variables are the primary keys for `Courses`?  
 ```
 
-<details>
-<summary>Solution</summary>
-`sid` (student ID) and `sessionID` (class ID) are the primary keys for `Grades` as they unique identify each case.
+Try yourself and then check online for solution.
 
-```{r}
-# can check to make sure that there are no combinations of sid and session ID that have more than 1 row
-Grades %>%
-  count(sid, sessionID) %>%
-  filter(n > 1)
-```
-
-`sessionID` (class ID) and `dept` are the primary keys for `Courses` as they unique identify each case. You may have thought that `sessionID` alone was sufficient; however, if a course is cross-listed, then it may have multiple departments listed.
-
-```{r}
-# check to make sure that there are no combinations 
-# of session ID and dept that have more than 1 row
-Courses %>%
-  count(sessionID, dept) %>%
-  filter(n > 1)
-```
-</details>
+> ANSWER: 
 
 
 ```{example}
@@ -116,22 +98,9 @@ What variables are the foreign keys in `Grades` for `Courses`?
 What variables are the foreign keys in `Courses` for `Grades`?  
 ```
 
-<details>
-<summary>Solution</summary>
-`sessionID` (class ID) is part of a foreign key in `Grades` for `Courses`. If we `group_by` and `summarize` first to deal with cross-listed courses, then `sessionID` is the foreign key in `Grades` for `Courses`.
+Try yourself and then check online for solution.
 
-```{r}
-# can check to make sure that once we combine enrollment between cross-listed courses, each session ID only has 1 row
-Courses %>%
-  group_by(sessionID, level, sem, iid) %>%
-  summarize(total_enroll = sum(enroll)) %>%
-  count(sessionID) %>%
-  filter(n > 1)
-```
-
-`sessionID` in `Courses` is part of a foreign key that uniquely identify rows in `Grades`.
-
-</details>
+> ANSWER: 
 
 
 ### Matching {-}
@@ -166,72 +135,10 @@ Determine the average class size from the viewpoint of a student and the viewpoi
 
 ```
 
-<details>
-<summary>Solution</summary>
+Try yourself and then check online for solution.
 
-**Provost Perspective:**
+> ANSWER: 
 
-The Provost counts each section as one class and takes the average of all classes. We have to be a little careful and cannot simply do `mean(Courses$enroll)`, because some `sessionID` appear twice on the course list. Why is that?^[They are courses that are cross-listed in multiple departments!] We can still do this from the data we have in the `Courses` table, but we should aggregate by `sessionID` first:
-
-
-```{r}
-CourseSizes <- Courses %>%
-  group_by(sessionID) %>%
-  summarise(total_enroll = sum(enroll))
-
-mean(CourseSizes$total_enroll)
-```
-
-**Student Perspective:**
-
-To get the average class size from the student perspective, we can join the enrollment of the section onto each instance of a student section. Here, the left table is `Grades`, the right table is `CourseSizes`, we are going to match based on `sessionID`, and we want to add the variable `total_enroll` from `CoursesSizes`.
-
-We'll use a `left_join` since we aren't interested in any sections from the `CourseSizes` table that do not show up in the `Grades` table; their enrollments should be 0, and they are not actually seen by any students. Note, e.g., if there were 100 extra sections of zero enrollments on the `Courses` table, this would change the average from the Provost's perspective, but not at all from the students' perspective.
-
-If the `by = ` is omitted from a join, then `R` will perform a *natural join*, which matches the two tables by all variables they have in common. 
-In this case, the only variable in common is the `sessionID`, so we would get the same results by omitting the second argument. In general, this is not reliable unless we check ahead of time which variables the tables have in common. If two variables to match have different names in the two tables, we can write `by = c("name1" = "name2")`.
-
-```{r}
-EnrollmentsWithClassSize <- Grades %>%
-  left_join(CourseSizes,
-    by = c("sessionID" = "sessionID")
-  ) %>%
-  select(sid, sessionID, total_enroll)
-```
-
-
-```{r, echo=FALSE}
-set.seed(101)
-knitr::kable(
-  sample_n(EnrollmentsWithClassSize, size = 4),
-  align = "ccc", caption = "Student enrollments with the section size."
-)
-```
-
-```{r}
-AveClassEachStudent <- EnrollmentsWithClassSize %>%
-  group_by(sid) %>%
-  summarise(ave_enroll = mean(total_enroll, na.rm = TRUE))
-```
-
-
-```{r, echo=FALSE}
-set.seed(101)
-knitr::kable(
-  sample_n(AveClassEachStudent, size = 4),
-  align = "ccc", caption = "Average class size seen by each individual student."
-)
-```
-
-The `na.rm = TRUE` here says that if the class size is not available for a given class, we do not count that class towards the student's average class size. What is another way to capture the same objective? We could have used an `inner_join` instead of a `left_join` when we joined the tables to eliminate any entries from the left table that did not have a match in the right table.
-
-Now we can take the average of the `AveClassEachStudent` table, counting each student once, to find the average class size from the student perspective:
-```{r}
-mean(AveClassEachStudent$ave_enroll)
-```
-
-We see that the average size from the student perspective (24.4) is greater than the average size from the Provost's perspective (21.5). It is a fun probability exercise to prove that this fact is always true!!
-</details>
 
 ### Filtering joins {-}
 
@@ -247,19 +154,9 @@ Find a subset of the `Grades` data that only contains data on the four largest s
 
 ```
 
-<details>
-<summary>Solution</summary>
+Try yourself and then check online for solution.
 
-```{r}
-LargeSections <- Courses %>%
-  group_by(sessionID) %>%
-  summarise(total_enroll = sum(enroll)) %>%
-  top_n(total_enroll, n = 4)
-GradesFromLargeSections <- Grades %>%
-  semi_join(LargeSections)
-```
-
-</details>
+> ANSWER: 
 
 
 ```{example,name="semi_join"}
@@ -267,42 +164,9 @@ Use `semi_join()` to create a table with a subset of the rows of `Grades` corres
 
 ```
 
-<details>
-<summary>Solution</summary>
+Try yourself and then check online for solution.
 
-There are multiple ways to do this. We could do a left join to the `Grades` table to add on the `dept` variable, and then filter by department, then select all variables except the additional `dept` variable we just added. Here is a more direct way with `semi_join` that does not involve adding and subtracting the extra variable:
-
-
-```{r}
-JCourses <- Courses %>%
-  filter(dept == "J")
-JGrades <- Grades %>%
-  semi_join(JCourses)
-```
-
-Let's double check this worked. Here are the first few entries of our new table:
-```{r jtab, echo=FALSE}
-set.seed(101)
-knitr::kable(
-  JGrades[1:4, ],
-  align = "ccc", caption = "Student enrollments in Department J."
-)
-```
-
-The first entry is for `session1791`. Which department is that course in?
-What department should it be?
-```{r}
-(Courses %>% filter(sessionID == "session1791"))
-```
-
-Great, it worked! But that only checked the first one. What if we want to double check all of the courses included in Table \@ref(tab:jtab)? We can add on the department and do a group by to count the number from each department in our table.
-
-```{r}
-JGrades %>%
-  left_join(Courses) %>%
-  count(dept) 
-```
-</details>
+> ANSWER: 
 
 
 ### More join practice {-}
