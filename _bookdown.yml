@@ -5,4 +5,4 @@ language:
   ui:
     chapter_name: "Topic "
 
-#,"02-Intro_Data_Viz.Rmd","03-Effective_Bivariate_Viz.Rmd","04-Multivariate_Viz.Rmd","05-Spatial_Viz.Rmd"
+#,"02-Intro_Data_Viz.Rmd","03-Effective_Bivariate_Viz.Rmd","04-Multivariate_Viz.Rmd","05-Spatial_Viz.Rmd","06-Six_Main_Verbs.Rmd","07-Reshaping_Data.Rmd","08-Join.Rmd"

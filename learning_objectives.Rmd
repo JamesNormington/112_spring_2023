@@ -48,57 +48,59 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Data Import and Basic Cleaning**
 
--   stuff
+-   TBA
 
 <br>
 
 **Data Scraping (rvest)**
 
--   stuff  
+-   TBA  
 
 <br>
 
 **APIs**
 
--   stuff
+-   TBA
 
 <br>
 
 **SQL**
 
--   stuff
+-   TBA
 
 ### Data Wrangling {.unnumbered}
 
-**Six main verbs**
+**Six Main Wrangling Verbs**
 
--   stuff   
-
-<br>
-
-
-**spread/gather**
-
--   stuff
+- Understand and be able to use the following verbs appropriate: `select`, `mutate`, `filter`, `arrange`, `summarize`, `group_by`
+- Develop working knowledge of working with dates and `lubridate` functions 
 
 <br>
 
-**join**
 
--   stuff 
+**Reshaping Data**
+
+- Understand the difference between wide and long data format and distinguish the case (unit of observation) for a given data set
+- Develop comfort in using `pivot_wider` and `pivot_longer` in the `tidyr` package
+
+<br>
+
+**Joining Data**
+
+-   TBA 
 
 <br>
 
 **factors**
 
--   stuff 
+-   TBA 
 
 <br>
 
 
 **mini-project**
 
--   stuff  
+-   TBA  
 
 <br>
 
@@ -148,19 +150,19 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Network and Interactive**
 
--   stuff
+-   TBA
 
 <br>
 
 **Shiny**
 
--   stuff
+-   TBA
 
 <br>
 
 **Tables**
 
--   stuff 
+-   TBA 
 
 <br>
 
@@ -172,13 +174,13 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **EDA**
 
--   stuff
+-   TBA
 
 <br>
 
 **Text Analysis**
 
--   stuff
+-   TBA
 
 <br>
 
@@ -189,12 +191,12 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Oral Communication**
 
--   stuff
+-   TBA
 
 <br>
 
 **Written Communication**
 
--   stuff 
+-   TBA 
 
 <br>

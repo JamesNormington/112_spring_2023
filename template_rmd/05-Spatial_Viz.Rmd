@@ -17,7 +17,7 @@ library(tidyverse)
 library(ggplot2)
 library(gplots)
 ```
-UPDATE this
+
 # Spatial Visualizations
 
 ## Learning Goals {-}

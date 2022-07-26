@@ -255,12 +255,10 @@ Solution
 <span id="cb1-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0  3  6  9 12</span></span>
 <span id="cb1-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">times =</span>  <span class="dv">3</span>)</span>
-<span id="cb1-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  3  6  9 12  0  3  6  9 12  0  3</span></span>
-<span id="cb1-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [13]  6  9 12</span></span>
-<span id="cb1-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>) <span class="co">#notice the difference between times and each</span></span>
-<span id="cb1-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  0  0  3  3  3  6  6  6  9  9  9</span></span>
-<span id="cb1-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 12 12 12</span></span></code></pre></div>
+<span id="cb1-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  3  6  9 12  0  3  6  9 12  0  3  6  9 12</span></span>
+<span id="cb1-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>) <span class="co">#notice the difference between times and each</span></span>
+<span id="cb1-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  0  0  3  3  3  6  6  6  9  9  9 12 12 12</span></span></code></pre></div>
 </details>
 <p><br />
 </p>
@@ -575,14 +573,14 @@ Solution
 <span id="cb10-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
 <span id="cb10-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
 <span id="cb10-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb10-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country confederation population_share</span></span>
-<span id="cb10-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;                    &lt;dbl&gt;</span></span>
-<span id="cb10-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United… CONCACAF                   4.5</span></span>
-<span id="cb10-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan   AFC                        1.9</span></span>
-<span id="cb10-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China   AFC                       19.5</span></span>
-<span id="cb10-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany UEFA                       1.2</span></span>
-<span id="cb10-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil  CONMEBOL                   2.8</span></span>
-<span id="cb10-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United… UEFA                       0.9</span></span>
+<span id="cb10-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share</span></span>
+<span id="cb10-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;</span></span>
+<span id="cb10-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5</span></span>
+<span id="cb10-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9</span></span>
+<span id="cb10-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5</span></span>
+<span id="cb10-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2</span></span>
+<span id="cb10-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8</span></span>
+<span id="cb10-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9</span></span>
 <span id="cb10-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2 more variables:</span></span>
 <span id="cb10-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   tv_audience_share &lt;dbl&gt;,</span></span>
 <span id="cb10-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   gdp_weighted_share &lt;dbl&gt;</span></span>
@@ -593,11 +591,9 @@ Solution
 <span id="cb10-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
 <span id="cb10-24"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
-<span id="cb10-25"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;           </span></span>
-<span id="cb10-26"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;confederation&quot;     </span></span>
-<span id="cb10-27"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;population_share&quot;  </span></span>
-<span id="cb10-28"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;tv_audience_share&quot; </span></span>
-<span id="cb10-29"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
+<span id="cb10-25"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;     </span></span>
+<span id="cb10-26"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;population_share&quot;   &quot;tv_audience_share&quot; </span></span>
+<span id="cb10-27"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>

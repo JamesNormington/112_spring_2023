@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 2 Joining Two Data Frames | COMP/STAT 112: Introduction to Data Science</title>
+  <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="generator" content="bookdown 0.27.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 2 Joining Two Data Frames | COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/logo.png" />
+  <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="github-repo" content="bcheggeseth/112_fall_2022/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 2 Joining Two Data Frames | COMP/STAT 112: Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="twitter:image" content="/images/logo.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-r-rstudio-and-r-markdown.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">COMP/STAT 112: Introduction to Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="course-schedule.html"><a href="course-schedule.html"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html"><i class="fa fa-check"></i>Learning Goals</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#general-skills"><i class="fa fa-check"></i>General Skills</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#project-presentations-communication"><i class="fa fa-check"></i>Project Presentations &amp; Communication</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html"><i class="fa fa-check"></i><b>1</b> Intro to R, RStudio, and R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio"><i class="fa fa-check"></i>Getting Started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html"><i class="fa fa-check"></i><b>2</b> Joining Two Data Frames</a>
+<ul>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#joins"><i class="fa fa-check"></i>Joins</a>
+<ul>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#establishing-a-match-between-cases"><i class="fa fa-check"></i>Establishing a match between cases</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#matching"><i class="fa fa-check"></i>Matching</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-joins"><i class="fa fa-check"></i>Mutating joins</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-joins"><i class="fa fa-check"></i>Filtering joins</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#more-join-practice"><i class="fa fa-check"></i>More join practice</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#bicycle-use-patterns"><i class="fa fa-check"></i>Bicycle-Use Patterns</a>
+<ul>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#warm-up-temporal-patterns"><i class="fa fa-check"></i>Warm-up: Temporal patterns</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns"><i class="fa fa-check"></i>Mutating join practice: Spatial patterns</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns"><i class="fa fa-check"></i>Filtering join practice: Spatiotemporal patterns</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">COMP/STAT 112: Introduction to Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="joining-two-data-frames" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Topic 2</span> Joining Two Data Frames<a href="joining-two-data-frames.html#joining-two-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-2" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="joining-two-data-frames.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Understand the concept of keys and variables that uniquely identify rows or cases</li>
+<li>Understand the different types of joins, different ways of combining two data frames together</li>
+<li>Develop comfort in using mutating joins: <code>left_join</code>, <code>inner_join</code> and <code>full_join</code> in the <code>dplyr</code> package</li>
+<li>Develop comfort in using filtering joins: <code>semi_join</code>, <code>anti_join</code> in the <code>dplyr</code> package</li>
+</ul>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/08-Join.Rmd">here</a>.</p>
+</div>
+<div id="joins" class="section level2 unnumbered hasAnchor">
+<h2>Joins<a href="joining-two-data-frames.html#joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <em>join</em> is a verb that means to combine two data tables.</p>
+<ul>
+<li>These tables are often called the <em>left</em> and the <em>right</em> tables.</li>
+</ul>
+<p>There are several kinds of join.</p>
+<ul>
+<li>All involve establishing a correspondance — a match — between each case in the left table and zero or more cases in the right table.</li>
+<li>The various joins differ in how they handle multiple matches or missing matches.</li>
+</ul>
+<div id="establishing-a-match-between-cases" class="section level3 unnumbered hasAnchor">
+<h3>Establishing a match between cases<a href="joining-two-data-frames.html#establishing-a-match-between-cases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A match between a case in the <em>left</em> data table and a case in the <em>right</em> data table is made based on the values in <strong>keys</strong>, variables that uniquely define observations in a data table.</p>
+<p>As an example, we’ll examine the following two tables on grades and courses. The <code>Grades</code> <a href="data/grades.csv">file</a> has one case for each class of each student, and includes variables describing the ID of the student (<code>sid</code>), the ID of the session (section/class), and the grade received. The <code>Courses</code> <a href="data/courses.csv">file</a> has variables for the ID of the session (section/class), the department (coded), the level, the semester, the enrollment, and the ID of the instructor (<code>iid</code>). We show a few random rows of each table below.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-26">Table 2.1: </span>Student grades.</caption>
+<thead>
+<tr class="header">
+<th align="center">sid</th>
+<th align="center">sessionID</th>
+<th align="center">grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">S31842</td>
+<td align="center">session2207</td>
+<td align="center">B+</td>
+</tr>
+<tr class="even">
+<td align="center">S32436</td>
+<td align="center">session3172</td>
+<td align="center">S</td>
+</tr>
+<tr class="odd">
+<td align="center">S31671</td>
+<td align="center">session3435</td>
+<td align="center">A-</td>
+</tr>
+<tr class="even">
+<td align="center">S31929</td>
+<td align="center">session3512</td>
+<td align="center">NC</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-28">Table 2.2: </span>Information about each course section.</caption>
+<thead>
+<tr class="header">
+<th align="center">sessionID</th>
+<th align="center">dept</th>
+<th align="center">level</th>
+<th align="center">sem</th>
+<th align="center">enroll</th>
+<th align="center">iid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">session2780</td>
+<td align="center">O</td>
+<td align="center">300</td>
+<td align="center">SP2003</td>
+<td align="center">21</td>
+<td align="center">inst298</td>
+</tr>
+<tr class="even">
+<td align="center">session3520</td>
+<td align="center">k</td>
+<td align="center">300</td>
+<td align="center">FA2004</td>
+<td align="center">16</td>
+<td align="center">inst463</td>
+</tr>
+<tr class="odd">
+<td align="center">session1965</td>
+<td align="center">d</td>
+<td align="center">100</td>
+<td align="center">FA2001</td>
+<td align="center">25</td>
+<td align="center">inst414</td>
+</tr>
+<tr class="even">
+<td align="center">session3257</td>
+<td align="center">o</td>
+<td align="center">200</td>
+<td align="center">SP2004</td>
+<td align="center">16</td>
+<td align="center">inst312</td>
+</tr>
+</tbody>
+</table>
+<div id="keys" class="section level4 unnumbered hasAnchor">
+<h4>Keys<a href="joining-two-data-frames.html#keys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There are two types of keys:</p>
+<ol style="list-style-type: decimal">
+<li><p>A <strong>primary key</strong> uniquely identifies an observation in its own table.</p></li>
+<li><p>A <strong>foreign key</strong> uniquely identifies an observation in another table.</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unnamed-chunk-29" class="example"><strong>Example 2.1  </strong></span>What variables are the primary keys for <code>Grades</code>?
+What variables are the primary keys for <code>Courses</code>?</p>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<p><code>sid</code> (student ID) and <code>sessionID</code> (class ID) are the primary keys for <code>Grades</code> as they unique identify each case.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="joining-two-data-frames.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can check to make sure that there are no combinations of sid and session ID that have more than 1 row</span></span>
+<span id="cb17-2"><a href="joining-two-data-frames.html#cb17-2" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="joining-two-data-frames.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sid, sessionID) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="joining-two-data-frames.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 3
+## # … with 3 variables: sid &lt;chr&gt;,
+## #   sessionID &lt;chr&gt;, n &lt;int&gt;</code></pre>
+<p><code>sessionID</code> (class ID) and <code>dept</code> are the primary keys for <code>Courses</code> as they unique identify each case. You may have thought that <code>sessionID</code> alone was sufficient; however, if a course is cross-listed, then it may have multiple departments listed.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="joining-two-data-frames.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check to make sure that there are no combinations </span></span>
+<span id="cb19-2"><a href="joining-two-data-frames.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of session ID and dept that have more than 1 row</span></span>
+<span id="cb19-3"><a href="joining-two-data-frames.html#cb19-3" aria-hidden="true" tabindex="-1"></a>Courses <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="joining-two-data-frames.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sessionID, dept) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="joining-two-data-frames.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 3
+## # … with 3 variables: sessionID &lt;chr&gt;,
+## #   dept &lt;chr&gt;, n &lt;int&gt;</code></pre>
+</details>
+<div class="example">
+<p><span id="exm:unnamed-chunk-32" class="example"><strong>Example 2.2  </strong></span>What variables are the foreign keys in <code>Grades</code> for <code>Courses</code>?
+What variables are the foreign keys in <code>Courses</code> for <code>Grades</code>?</p>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<p><code>sessionID</code> (class ID) is part of a foreign key in <code>Grades</code> for <code>Courses</code>. If we <code>group_by</code> and <code>summarize</code> first to deal with cross-listed courses, then <code>sessionID</code> is the foreign key in <code>Grades</code> for <code>Courses</code>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="joining-two-data-frames.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can check to make sure that once we combine enrollment between cross-listed courses, each session ID only has 1 row</span></span>
+<span id="cb21-2"><a href="joining-two-data-frames.html#cb21-2" aria-hidden="true" tabindex="-1"></a>Courses <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="joining-two-data-frames.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sessionID, level, sem, iid) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="joining-two-data-frames.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_enroll =</span> <span class="fu">sum</span>(enroll)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="joining-two-data-frames.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sessionID) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="joining-two-data-frames.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 4
+## # Groups:   sessionID, level, sem [0]
+## # … with 4 variables: sessionID &lt;chr&gt;,
+## #   level &lt;dbl&gt;, sem &lt;chr&gt;, n &lt;int&gt;</code></pre>
+<p><code>sessionID</code> in <code>Courses</code> is part of a foreign key that uniquely identify rows in <code>Grades</code>.</p>
+</details>
+</div>
+</div>
+<div id="matching" class="section level3 unnumbered hasAnchor">
+<h3>Matching<a href="joining-two-data-frames.html#matching" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to establish a match between two data tables,</p>
+<ul>
+<li><strong>You</strong> specify which variables (or keys) to use.</li>
+<li>Each variable is specify as a pair, where one variable from the left table corresponds to one variable from the right table.</li>
+<li>Cases must have <em>exactly equal</em> values in the left variable and right variable for a match to be made.</li>
+</ul>
+</div>
+<div id="mutating-joins" class="section level3 unnumbered hasAnchor">
+<h3>Mutating joins<a href="joining-two-data-frames.html#mutating-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first class of joins are mutating joins, which add new variables (columns) to the left data table from matching observations in the right table.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>The main difference in the three mutating join options in this class is how they answer the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>What happens when a case in the right table has no matches in the left table?</li>
+<li>What happens when a case in the left table has no matches in the right table?</li>
+</ol>
+<p>Three mutating join functions:</p>
+<ul>
+<li><strong><code>left_join()</code></strong>: the output has <em>all cases from the left</em>, regardless if there is a match in the right, but discards any cases in the right that do not have a match in the left.</li>
+<li><strong><code>inner_join()</code></strong>: the output has <em>only the cases from the left with a match in the right</em>.</li>
+<li><strong><code>full_join()</code></strong>: the output has <em>all cases from the left and the right</em>. This is less common than the first two join operators.</li>
+</ul>
+<p>When there are multiple matches in the right table for a particular case in the left table, all three of these mutating join operators produce a separate case in the new table for each of the matches from the right.</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-34" class="example"><strong>Example 2.3  (Average class size: varying viewpoints) </strong></span>Determine the average class size from the viewpoint of a student and the viewpoint of the Provost / Admissions Office.</p>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<p><strong>Provost Perspective:</strong></p>
+<p>The Provost counts each section as one class and takes the average of all classes. We have to be a little careful and cannot simply do <code>mean(Courses$enroll)</code>, because some <code>sessionID</code> appear twice on the course list. Why is that?<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> We can still do this from the data we have in the <code>Courses</code> table, but we should aggregate by <code>sessionID</code> first:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="joining-two-data-frames.html#cb23-1" aria-hidden="true" tabindex="-1"></a>CourseSizes <span class="ot">&lt;-</span> Courses <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="joining-two-data-frames.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sessionID) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="joining-two-data-frames.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_enroll =</span> <span class="fu">sum</span>(enroll))</span>
+<span id="cb23-4"><a href="joining-two-data-frames.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="joining-two-data-frames.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(CourseSizes<span class="sc">$</span>total_enroll)</span></code></pre></div>
+<pre><code>## [1] 21.45251</code></pre>
+<p><strong>Student Perspective:</strong></p>
+<p>To get the average class size from the student perspective, we can join the enrollment of the section onto each instance of a student section. Here, the left table is <code>Grades</code>, the right table is <code>CourseSizes</code>, we are going to match based on <code>sessionID</code>, and we want to add the variable <code>total_enroll</code> from <code>CoursesSizes</code>.</p>
+<p>We’ll use a <code>left_join</code> since we aren’t interested in any sections from the <code>CourseSizes</code> table that do not show up in the <code>Grades</code> table; their enrollments should be 0, and they are not actually seen by any students. Note, e.g., if there were 100 extra sections of zero enrollments on the <code>Courses</code> table, this would change the average from the Provost’s perspective, but not at all from the students’ perspective.</p>
+<p>If the <code>by =</code> is omitted from a join, then <code>R</code> will perform a <em>natural join</em>, which matches the two tables by all variables they have in common.
+In this case, the only variable in common is the <code>sessionID</code>, so we would get the same results by omitting the second argument. In general, this is not reliable unless we check ahead of time which variables the tables have in common. If two variables to match have different names in the two tables, we can write <code>by = c("name1" = "name2")</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="joining-two-data-frames.html#cb25-1" aria-hidden="true" tabindex="-1"></a>EnrollmentsWithClassSize <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="joining-two-data-frames.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(CourseSizes,</span>
+<span id="cb25-3"><a href="joining-two-data-frames.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;sessionID&quot;</span> <span class="ot">=</span> <span class="st">&quot;sessionID&quot;</span>)</span>
+<span id="cb25-4"><a href="joining-two-data-frames.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="joining-two-data-frames.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sid, sessionID, total_enroll)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-37">Table 2.3: </span>Student enrollments with the section size.</caption>
+<thead>
+<tr class="header">
+<th align="center">sid</th>
+<th align="center">sessionID</th>
+<th align="center">total_enroll</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">S31842</td>
+<td align="center">session2207</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td align="center">S32436</td>
+<td align="center">session3172</td>
+<td align="center">51</td>
+</tr>
+<tr class="odd">
+<td align="center">S31671</td>
+<td align="center">session3435</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="center">S31929</td>
+<td align="center">session3512</td>
+<td align="center">13</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="joining-two-data-frames.html#cb26-1" aria-hidden="true" tabindex="-1"></a>AveClassEachStudent <span class="ot">&lt;-</span> EnrollmentsWithClassSize <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="joining-two-data-frames.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sid) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="joining-two-data-frames.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ave_enroll =</span> <span class="fu">mean</span>(total_enroll, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-39">Table 2.4: </span>Average class size seen by each individual student.</caption>
+<thead>
+<tr class="header">
+<th align="center">sid</th>
+<th align="center">ave_enroll</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">S32169</td>
+<td align="center">34.25000</td>
+</tr>
+<tr class="even">
+<td align="center">S32121</td>
+<td align="center">23.33333</td>
+</tr>
+<tr class="odd">
+<td align="center">S32472</td>
+<td align="center">24.53846</td>
+</tr>
+<tr class="even">
+<td align="center">S31467</td>
+<td align="center">23.82353</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>na.rm = TRUE</code> here says that if the class size is not available for a given class, we do not count that class towards the student’s average class size. What is another way to capture the same objective? We could have used an <code>inner_join</code> instead of a <code>left_join</code> when we joined the tables to eliminate any entries from the left table that did not have a match in the right table.</p>
+<p>Now we can take the average of the <code>AveClassEachStudent</code> table, counting each student once, to find the average class size from the student perspective:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="joining-two-data-frames.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(AveClassEachStudent<span class="sc">$</span>ave_enroll)</span></code></pre></div>
+<pre><code>## [1] 24.41885</code></pre>
+We see that the average size from the student perspective (24.4) is greater than the average size from the Provost’s perspective (21.5). It is a fun probability exercise to prove that this fact is always true!!
+</details>
+</div>
+<div id="filtering-joins" class="section level3 unnumbered hasAnchor">
+<h3>Filtering joins<a href="joining-two-data-frames.html#filtering-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The second class of joins are filtering joins, which select specific cases from the left table based on whether they match an observation in the right table.</p>
+<ul>
+<li><strong><code>semi_join()</code></strong>: discards any cases in the left table that <em>do not have a match</em> in the right table. If there are multiple matches of right cases to a left case, it keeps just one copy of the left case.</li>
+<li><strong><code>anti_join()</code></strong>: discards any cases in the left table that <em>have a match</em> in the right table.</li>
+</ul>
+<p>A particularly common employment of these joins is to use a filtered summary as a comparison to select a subset of the original cases, as follows.</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-41" class="example"><strong>Example 2.4  (semi_join to compare to a filtered summary) </strong></span>Find a subset of the <code>Grades</code> data that only contains data on the four largest sections in the <code>Courses</code> data set.</p>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="joining-two-data-frames.html#cb29-1" aria-hidden="true" tabindex="-1"></a>LargeSections <span class="ot">&lt;-</span> Courses <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="joining-two-data-frames.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sessionID) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="joining-two-data-frames.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_enroll =</span> <span class="fu">sum</span>(enroll)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="joining-two-data-frames.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(total_enroll, <span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb29-5"><a href="joining-two-data-frames.html#cb29-5" aria-hidden="true" tabindex="-1"></a>GradesFromLargeSections <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="joining-two-data-frames.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(LargeSections)</span></code></pre></div>
+</details>
+<div class="example">
+<p><span id="exm:unnamed-chunk-43" class="example"><strong>Example 2.5  (semi_join) </strong></span>Use <code>semi_join()</code> to create a table with a subset of the rows of <code>Grades</code> corresponding to all classes taken in department <code>J</code>.</p>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<p>There are multiple ways to do this. We could do a left join to the <code>Grades</code> table to add on the <code>dept</code> variable, and then filter by department, then select all variables except the additional <code>dept</code> variable we just added. Here is a more direct way with <code>semi_join</code> that does not involve adding and subtracting the extra variable:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="joining-two-data-frames.html#cb30-1" aria-hidden="true" tabindex="-1"></a>JCourses <span class="ot">&lt;-</span> Courses <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="joining-two-data-frames.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dept <span class="sc">==</span> <span class="st">&quot;J&quot;</span>)</span>
+<span id="cb30-3"><a href="joining-two-data-frames.html#cb30-3" aria-hidden="true" tabindex="-1"></a>JGrades <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="joining-two-data-frames.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(JCourses)</span></code></pre></div>
+<p>Let’s double check this worked. Here are the first few entries of our new table:</p>
+<table>
+<caption><span id="tab:jtab">Table 2.5: </span>Student enrollments in Department J.</caption>
+<thead>
+<tr class="header">
+<th align="center">sid</th>
+<th align="center">sessionID</th>
+<th align="center">grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">S31185</td>
+<td align="center">session1791</td>
+<td align="center">A-</td>
+</tr>
+<tr class="even">
+<td align="center">S31185</td>
+<td align="center">session1792</td>
+<td align="center">B+</td>
+</tr>
+<tr class="odd">
+<td align="center">S31185</td>
+<td align="center">session1794</td>
+<td align="center">B-</td>
+</tr>
+<tr class="even">
+<td align="center">S31185</td>
+<td align="center">session1795</td>
+<td align="center">C+</td>
+</tr>
+</tbody>
+</table>
+<p>The first entry is for <code>session1791</code>. Which department is that course in?
+What department should it be?</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="joining-two-data-frames.html#cb31-1" aria-hidden="true" tabindex="-1"></a>(Courses <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sessionID <span class="sc">==</span> <span class="st">&quot;session1791&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 6
+##   sessionID   dept  level sem    enroll iid    
+##   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
+## 1 session1791 J       100 FA1993     22 inst223</code></pre>
+<p>Great, it worked! But that only checked the first one. What if we want to double check all of the courses included in Table <a href="joining-two-data-frames.html#tab:jtab">2.5</a>? We can add on the department and do a group by to count the number from each department in our table.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="joining-two-data-frames.html#cb33-1" aria-hidden="true" tabindex="-1"></a>JGrades <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="joining-two-data-frames.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(Courses) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="joining-two-data-frames.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dept) </span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##   dept      n
+##   &lt;chr&gt; &lt;int&gt;
+## 1 J       148</code></pre>
+</details>
+</div>
+<div id="more-join-practice" class="section level3 unnumbered hasAnchor">
+<h3>More join practice<a href="joining-two-data-frames.html#more-join-practice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-47" class="exercise"><strong>Exercise 2.1  </strong></span>Use your wrangling skills to answer the following questions.</p>
+</div>
+<p><em>Hint 1: start by thinking about what tables you might need to join (if any) and identifying the corresponding variables to match.</em>
+<em>Hint 2: you’ll need an extra table to convert grades to grade point averages. I’ve given you the code below.</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>How many student enrollments in each department?</li>
+<li>What’s the grade-point average (GPA) for each student? The average student GPA? <em>Hint: There are some “S” and “AU” grades that we want to exclude from GPA calculations. What is the correct variant of join to accomplish this?</em></li>
+<li>What fraction of grades are below B+?</li>
+<li>What’s the grade-point average for each instructor?</li>
+<li>We cannot actually compute the correct grade-point average for each department from the information we have. The reason why is due to cross-listed courses. Students for those courses could be enrolled under either department, and we do not know which department to asign the grade to. There are a number of possible workarounds to get an estimate. One would be to assign all grades in a section to the department of the instructor, which we’d have to infer from the data. Instead, start by creating a table with all cross-listed courses. Then use an <code>anti_join</code> to eliminate all cross-listed courses. Finally, use an <code>inner_join</code> to compute the grade-point average for each department.</li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="joining-two-data-frames.html#cb35-1" aria-hidden="true" tabindex="-1"></a>(GPAConversion <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="st">&quot;A+&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A-&quot;</span>, <span class="st">&quot;B+&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B-&quot;</span>, <span class="st">&quot;C+&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C-&quot;</span>, <span class="st">&quot;D+&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;D-&quot;</span>, <span class="st">&quot;NC&quot;</span>), <span class="at">gp =</span> <span class="fu">c</span>(<span class="fl">4.3</span>, <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.3</span>, <span class="dv">3</span>, <span class="fl">2.7</span>, <span class="fl">2.3</span>, <span class="dv">2</span>, <span class="fl">1.7</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">0.7</span>, <span class="dv">0</span>)))</span></code></pre></div>
+<pre><code>## # A tibble: 13 × 2
+##    grade    gp
+##    &lt;chr&gt; &lt;dbl&gt;
+##  1 A+      4.3
+##  2 A       4  
+##  3 A-      3.7
+##  4 B+      3.3
+##  5 B       3  
+##  6 B-      2.7
+##  7 C+      2.3
+##  8 C       2  
+##  9 C-      1.7
+## 10 D+      1.3
+## 11 D       1  
+## 12 D-      0.7
+## 13 NC      0</code></pre>
+</div>
+</div>
+<div id="bicycle-use-patterns" class="section level2 unnumbered hasAnchor">
+<h2>Bicycle-Use Patterns<a href="joining-two-data-frames.html#bicycle-use-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this activity, you’ll examine some factors that may influence the use of bicycles in a bike-renting program. The data come from Washington, DC and cover the last quarter of 2014.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-49"></span>
+<img src="images/bike_station.jpeg" alt="A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops." width="400px" />
+<p class="caption">
+Figure 2.1: A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<img src="images/bike_van.jpeg" alt="One of the vans used to redistribute bicycles to different stations." width="400px" />
+<p class="caption">
+Figure 2.2: One of the vans used to redistribute bicycles to different stations.
+</p>
+</div>
+<p>Two data tables are available:</p>
+<ul>
+<li><code>Trips</code> contains records of individual rentals <a href="data/2014-Q4-Trips-History-Data-Small.rds">here</a></li>
+<li><code>Stations</code> gives the locations of the bike rental stations <a href="data/DC-Stations.csv">here</a></li>
+</ul>
+<p>Here is the code to read in the data:<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="joining-two-data-frames.html#cb37-1" aria-hidden="true" tabindex="-1"></a>data_site <span class="ot">&lt;-</span></span>
+<span id="cb37-2"><a href="joining-two-data-frames.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/2014-Q4-Trips-History-Data-Small.rds&quot;</span></span>
+<span id="cb37-3"><a href="joining-two-data-frames.html#cb37-3" aria-hidden="true" tabindex="-1"></a>Trips <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(data_site)))</span>
+<span id="cb37-4"><a href="joining-two-data-frames.html#cb37-4" aria-hidden="true" tabindex="-1"></a>Stations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/DC-Stations.csv&quot;</span>)</span></code></pre></div>
+<p>The <code>Trips</code> data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing <code>-Small</code> from the name of the <code>data_site</code>. The full data is available <a href="data/2014-Q4-Trips-History-Data.rds">here</a>.</p>
+<div id="warm-up-temporal-patterns" class="section level3 unnumbered hasAnchor">
+<h3>Warm-up: Temporal patterns<a href="joining-two-data-frames.html#warm-up-temporal-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It’s natural to expect that bikes are rented more at some times of day, some days of the week, some months of the year than others. The variable <code>sdate</code> gives the time (including the date) that the rental started.</p>
+<div class="exercise">
+<p><span id="exr:exr-temp" class="exercise"><strong>Exercise 2.2  (Warm-up: temporal patterns) </strong></span>Make the following plots and interpret them:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>A density plot of the events versus <code>sdate</code>. Use <code>ggplot()</code> and <code>geom_density()</code>.</li>
+<li>A density plot of the events versus time of day. You can use <code>mutate</code> with <code>lubridate::hour()</code>, and <code>lubridate::minute()</code> to extract the hour of the day and minute within the hour from <code>sdate</code>. Hint: A minute is 1/60 of an hour, so create a field where 3:30 is 3.5 and 3:45 is 3.75.</li>
+<li>A histogram of the events versus day of the week.</li>
+<li>Facet your graph from (b) by day of the week. Is there a pattern?</li>
+</ol>
+<p>The variable <code>client</code> describes whether the renter is a regular user (level <code>Registered</code>) or has not joined the bike-rental organization (<code>Causal</code>). Do you think these two different categories of users show different rental behavior? How might it interact with the patterns you found in Exercise <a href="joining-two-data-frames.html#exr:exr-temp">2.2</a>?</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-53" class="exercise"><strong>Exercise 2.3  (Customer segmentation) </strong></span>Repeat the graphic from Exercise <a href="joining-two-data-frames.html#exr:exr-temp">2.2</a> (d) with the following changes:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Set the <code>fill</code> aesthetic for <code>geom_density()</code> to the <code>client</code> variable. You may also want to set the <code>alpha</code> for transparency and <code>color=NA</code> to suppress the outline of the density function.</li>
+<li>Now add the argument <code>position = position_stack()</code> to <code>geom_density()</code>. In your opinion, is this better or worse in terms of telling a story? What are the advantages/disadvantages of each?</li>
+<li>Rather than faceting on day of the week, create a new faceting variable like this: <code>mutate(wday = ifelse(lubridate::wday(sdate) %in% c(1,7), "weekend", "weekday"))</code>. What does the variable <code>wday</code> represent? Try to understand the code.</li>
+<li>Is it better to facet on <code>wday</code> and fill with <code>client</code>, or vice versa?</li>
+<li>Of all of the graphics you created so far, which is most effective at telling an interesting story?</li>
+</ol>
+</div>
+<div id="mutating-join-practice-spatial-patterns" class="section level3 unnumbered hasAnchor">
+<h3>Mutating join practice: Spatial patterns<a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-54" class="exercise"><strong>Exercise 2.4  (Visualization of bicycle departures by station) </strong></span>Use the latitude and longitude variables in <code>Stations</code> to make a visualization of the total number of departures from each station in the <code>Trips</code> data. To layer your data on top of a map, start your plotting code as follows:</p>
+</div>
+<pre><code>myMap&lt;-get_stamenmap(c(-77.1,38.87,-76.975,38.95),zoom=14,maptype=&quot;terrain&quot;) 
+ggmap(myMap) + ...</code></pre>
+<p>Note: If you want to use Google Maps instead, which do look a bit nicer, you’ll need to get a Google Maps API Key (free but requires credit card to sign up), and then you can use <code>get_map</code> instead of <code>get_stamenmap</code>.</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-55" class="exercise"><strong>Exercise 2.5  </strong></span>Only 14.4% of the trips in our data are carried out by casual users.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> Create a map that shows which area(s) of the city have stations with a much higher percentage of departures by casual users. Interpret your map.</p>
+</div>
+</div>
+<div id="filtering-join-practice-spatiotemporal-patterns" class="section level3 unnumbered hasAnchor">
+<h3>Filtering join practice: Spatiotemporal patterns<a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="exercise">
+<ol style="list-style-type: lower-alpha">
+<li><span id="exr:unnamed-chunk-56" class="exercise"><strong>Exercise 2.6  (High traffic points) </strong></span></li>
+<li>Make a table with the ten station-date combinations (e.g., 14th &amp; V St., 2014-10-14) with the highest number of departures, sorted from most departures to fewest. Hint: <code>as_date(sdate)</code> converts <code>sdate</code> from date-time format to date format.</li>
+<li>Use a join operation to make a table with only those trips whose departures match those top ten station-date combinations from part (a).</li>
+<li>Group the trips you filtered out in part (b) by client type and <code>wday</code> (weekend/weekday), and count the total number of trips in each of the four groups. Interpret your results.</li>
+</ol>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>There is also a <code>right_join()</code> that adds variables in the reverse direction from the left table to the right table, but we do not really need it as we can always switch the roles of the two tables.<a href="joining-two-data-frames.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>They are courses that are cross-listed in multiple departments!<a href="joining-two-data-frames.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><strong>Important</strong>: To avoid repeatedly re-reading the files, start the data import chunk with <code>{r cache = TRUE}</code> rather than the usual <code>{r}</code>.<a href="joining-two-data-frames.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>We can compute this statistic via <code>mean(Trips$client=="Casual")</code>.<a href="joining-two-data-frames.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-r-rstudio-and-r-markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
