@@ -16,9 +16,9 @@ library(mosaic)
 
 - Understand the Grammar of Graphics
 - Use ggplot2 to create basic layers of graphics
-- Understand the different basic univariate visualizations for categorical and quantiative variables
+- Understand the different basic univariate visualizations for categorical and quantitative variables
 
-You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd).
+You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd) or a template .qmd of this activity [here](template_qmd/02-Intro_Data_Viz.qmd).
 
 ## Benefits of Visualizations {-}
 
@@ -28,7 +28,7 @@ You can download a template .Rmd of this activity [here](template_rmd/02-Intro_D
 
 ## Glyphs {-}
 
-In its original sense, in archeology, a glyph is a carved symbol.
+In its original sense, in archaeology, a glyph is a carved symbol.
 
 Heiro**glyph** | Mayan **glyph**
 ---------------|----------------:

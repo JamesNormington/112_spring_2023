@@ -20,7 +20,8 @@ knitr::opts_chunk$set(tidy = FALSE, message=FALSE, cache.extra = packageVersion(
 - Identify appropriate types of bivariate visualizations, depending on the type of variables (categorical, quantitative)
 - Create basic bivariate visualizations based on real data
 
-You can download a template .Rmd of this activity [here](template_rmd/03-Effective_Bivariate_Viz.Rmd).
+You can download a template .Rmd of this activity [here](template_rmd/03-Effective_Bivariate_Viz.Rmd) or a template .qmd of this activity [here](template_qmd/03-Effective_Bivariate_Viz.qmd).
+
 
 ## Effective Visualizations {-}
 

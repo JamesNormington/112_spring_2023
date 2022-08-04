@@ -108,7 +108,7 @@ square_3 + 2
 ```
 
 
-### Tidy Data {-}
+### Data {-}
 
 Not only does "Data Science" require statistical software, it requires *DATA*!  Consider the Google definition:
 
@@ -143,9 +143,9 @@ data(Galton)
 head(Galton)
 ```
 
-This isn't as restrictive as it seems.  How can we convert the above signals, photos, videos, and text to a data table format?  
+This isn't as restrictive as it seems.  We can convert the above signals: photos, videos, and text to a data table format!  
     
-
+### Tidy Data {-}
 
 **Example:** After a scandal among FIFA officials, fivethirtyeight.com posted an analysis of FIFA viewership, ["How to Break FIFA"](https://fivethirtyeight.com/features/how-to-break-fifa/).  Here's a snapshot of the data used in this article:
 
@@ -160,7 +160,7 @@ fifa <- fifa_audience
 
 The data table above is in *tidy* format. *Tidy* data tables have three key features:    
 
-1.  Each row represents a **unit of observation**.    
+1.  Each row represents a **unit of observation** (also referred to as a case).    
 2.  Each column represents a **variable** (ie. an attribute of the cases that can vary from case to case).  Each variable is one of two types:    
   - **quantitative** = numerical    
   - **categorical** =  discrete possibilities/categories    
@@ -179,11 +179,11 @@ Consider the following in a group:
 
 <details>
   <summary>Solution</summary>
-```{collapse=TRUE}
+
 a. A FIFA member country
 b. country name, soccer or football confederation, country's share of global population (percentage), country's share of global world cup TV Audience (percentage), country's GDP-weighted audience share (percentage)
 c. Yes
-```
+
 </details>
 \
 
@@ -214,10 +214,10 @@ Check out the following data.  Explain to each other why they are untidy and how
 
 <details>
   <summary>Solution</summary>
-```{collapse=TRUE}
+
 a. There are notes such as "I don't know" and "look up later" in columns with numeric values; the last row with the total is a summary. We could remove the text notes, replace it with the value if known, and remove the last row with the total summary. 
 b. The first column does not have a row name. It should be continent. Additionally, Bahrain needs a value for the continent. 
-```
+
 </details>
 \
 
@@ -281,9 +281,11 @@ names(fifa)
 
 
 ```{exercise, name="Codebooks"}
-Data are also only useful if we know what they measure!  The `fifa` data table is *tidy* -- it doesn't have any helpful notes.  
-Rather, information about the data is stored in a separate *codebook*.  Codebooks can be stored in many ways (eg: Google docs, word docs, etc).  Here the authors have made their codebook available in RStudio (under the original `fifa_audience` name).  Check it out (run the following code in the console):
+Data are also only useful if we know what they measure!  The `fifa` data table is *tidy*; it doesn't have any helpful notes in the data itself.
 ```
+
+Rather, information about the data is stored in a separate *codebook*.  Codebooks can be stored in many ways (eg: Google docs, word docs, etc).  Here the authors have made their codebook available in RStudio (under the original `fifa_audience` name).  Check it out (run the following code in the console):
+
 
 ```{r eval=FALSE}
 ?fifa_audience
@@ -294,10 +296,10 @@ Rather, information about the data is stored in a separate *codebook*.  Codebook
 
 <details>
   <summary>Solution</summary>
-```{collapse=TRUE}
+
 a. Country's share of global population 
 b. Percentage between 0 and 100
-```
+
 </details>
 \    
 
@@ -307,24 +309,24 @@ Consider the following:
 
 a. We might want to access and focus on a single variable.  To this end, we can use the `$` notation:
 
-    ```{r eval=FALSE}
-    fifa$tv_audience_share
-    fifa$confederation
-    ```    
+```{r eval=FALSE}
+fifa$tv_audience_share
+fifa$confederation
+```    
     
 b. It's important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:
     
-    ```{r eval=FALSE}
-    class(fifa$tv_audience_share)
-    class(fifa$confederation)
-    ```    
+```{r eval=FALSE}
+class(fifa$tv_audience_share)
+class(fifa$confederation)
+```    
     
 c. If a variable is categorical (either in `character` or `factor` format), we can determine its `levels` / category labels:
     
-    ```{r eval=FALSE}
-    levels(fifa$confederation)
-    levels(factor(fifa$confederation))
-    ```    
+```{r eval=FALSE}
+levels(fifa$confederation)
+levels(factor(fifa$confederation))
+```    
 
         
 
@@ -382,8 +384,8 @@ Complete the following. If you get stuck along the way, refer to the R Markdown 
 ```{exercise name="Your First R Markdown File"}
 Create a new R Markdown about your favorite food.    
 
-a. Create a new file in RStudio (File -> New File -> R Markdown) called `First_Markdown`.    
-b. Make sure you can compile (Knit) the Markdown into a webpage (html file).  
+a. Create a new file in RStudio (File -> New File -> R Markdown) with a Title of `First_Markdown`. Save it to a new folder on your Desktop called `COMP_STAT_112`; within that new folder, create another new folder called `Day_01`.  
+b. Make sure you can compile/render (Knit) the Markdown into a webpage (html file).  
 c. Add a new line between `title` and `output` that reads: `author: Your Name`.
 d. Create a brief essay about your favorite food. Make sure to include:    
   * A picture from the web    
@@ -394,8 +396,7 @@ e. Compile the document into an html file.
 
 
 ```{exercise name="New Data!"}
-There's a data set named `comic_characters` in the `fivethirtyeightdata` package. Check out the codebook (hint: use ?) to understand what these data measure. Then add a second section to your R Markdown file,
-and then use code chunks and R commands to perform/answer the following tasks/questions:    
+There's a data set named `comic_characters` in the `fivethirtyeightdata` package. Check out the codebook (hint: use ?) to understand what these data measure. Then add a second section to your R Markdown file, and then use code chunks and R commands to perform/answer the following tasks/questions:    
   
   a. Load the data.    
   b. What are the units of observation?  How many observations are there?    

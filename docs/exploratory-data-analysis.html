@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 2 Exploratory Data Analysis | COMP/STAT 112: Introduction to Data Science</title>
+  <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="generator" content="bookdown 0.27.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 2 Exploratory Data Analysis | COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/logo.png" />
+  <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="github-repo" content="bcheggeseth/112_fall_2022/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 2 Exploratory Data Analysis | COMP/STAT 112: Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="twitter:image" content="/images/logo.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-r-rstudio-and-r-markdown.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">COMP/STAT 112: Introduction to Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="course-schedule.html"><a href="course-schedule.html"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html"><i class="fa fa-check"></i>Learning Goals</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#general-skills"><i class="fa fa-check"></i>General Skills</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html"><i class="fa fa-check"></i><b>1</b> Intro to R, RStudio, and R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio"><i class="fa fa-check"></i>Getting Started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#first-steps-of-a-data-analysis"><i class="fa fa-check"></i>First Steps of a Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#understand-the-basic-data"><i class="fa fa-check"></i>Understand the Basic Data</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualize-and-describe-the-data"><i class="fa fa-check"></i>Visualize and Describe the Data</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#formulate-a-research-question"><i class="fa fa-check"></i>Formulate a Research Question</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#examples"><i class="fa fa-check"></i>Examples</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#practice-flight-data"><i class="fa fa-check"></i>Practice: Flight Data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">COMP/STAT 112: Introduction to Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Topic 2</span> Exploratory Data Analysis<a href="exploratory-data-analysis.html#exploratory-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-2" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="exploratory-data-analysis.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Understand the first steps that should be taken when you encounter a new data set</li>
+<li>Develop comfort in knowing how to explore data to understand it</li>
+<li>Develop comfort in formulating research questions</li>
+</ul>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/11-EDA.Rmd">here</a>.</p>
+</div>
+<div id="first-steps-of-a-data-analysis" class="section level2 unnumbered hasAnchor">
+<h2>First Steps of a Data Analysis<a href="exploratory-data-analysis.html#first-steps-of-a-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What are the first steps to take when you start a project or get a hold of a new data set?</p>
+<p>In a data science project, you will typically have a question or idea brought to you: How are people interacting with the new version of my software? How is weather in St. Paul changing in the last decade? What type of people are most likely to enroll in Obamacare?</p>
+<p>You will sometimes be given a dataset when asked one of these questions, or more often, a general description of the data you <em>could</em> get if you talked to the right people or interacted with the right software systems.</p>
+<p>In this section, we will talk about <strong>Exploratory Data Analysis</strong> (EDA), a name given to the process of</p>
+<ol style="list-style-type: decimal">
+<li>“getting to know” a dataset, and</li>
+<li>trying to identify any meaningful insights within it.</li>
+</ol>
+<p><a href="%22https://r4ds.had.co.nz/explore-intro.html%22">Grolemund and Wickham</a> visualize the place of this “Understand” process with a simple diagram:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="http://r4ds.had.co.nz/diagrams/data-science.png" alt="The process of EDA, as described by Grolemund and Wickham."  />
+<p class="caption">
+Figure 2.1: The process of EDA, as described by Grolemund and Wickham.
+</p>
+</div>
+<p>We view the process similarly:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Understand</strong> the basic data that is available to you.</li>
+<li><strong>Visualize and describe</strong> the variables that seem most interesting or relevant.</li>
+<li><strong>Formulate</strong> a research question.</li>
+<li><strong>Analyze</strong> the data related to the research question, starting from simple analyses to more complex ones.</li>
+<li><strong>Interpret</strong> your findings, <strong>refine</strong> your research question, and return to step 4.</li>
+</ol>
+</div>
+<div id="understand-the-basic-data" class="section level2 unnumbered hasAnchor">
+<h2>Understand the Basic Data<a href="exploratory-data-analysis.html#understand-the-basic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Start by understanding the data that is available to you. If you have a codebook, you have struck gold! If not (the more common case), you’ll need to do some detective work that often involves talking to people. At this stage, ask yourself:</p>
+<ul>
+<li>Where does my data come from? How was it collected?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>Is there a codebook? If not, how can I learn about it?</li>
+<li>Are there people I can reach out to who have experience with this data?</li>
+</ul>
+<p>Next, you need to load the data and clean it. Once the data is loaded, ask yourself about each table:</p>
+<ul>
+<li>What is an observation?</li>
+<li>How many observations are there?</li>
+<li>What is the meaning of each variable?</li>
+<li>What is the type of each variable (date, location, string, factor, number, boolean, etc.)?</li>
+</ul>
+<p>Some great methods to start with are the functions</p>
+<ul>
+<li><code>str()</code> to learn about the numbers of variables and observations as well as the classes of variables</li>
+<li><code>head()</code> to view the top of the data table (can specify the number of rows with <code>n=</code> )</li>
+<li><code>tail()</code> to view the bottom of the data table</li>
+</ul>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="exploratory-data-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://datasets.flowingdata.com/crimeRatesByState2005.csv&quot;</span>)</span>
+<span id="cb17-2"><a href="exploratory-data-analysis.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(crime)</span></code></pre></div>
+<pre><code>## spec_tbl_df [52 × 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ state              : chr [1:52] &quot;United States&quot; &quot;Alabama&quot; &quot;Alaska&quot; &quot;Arizona&quot; ...
+##  $ murder             : num [1:52] 5.6 8.2 4.8 7.5 6.7 6.9 3.7 2.9 4.4 35.4 ...
+##  $ forcible_rape      : num [1:52] 31.7 34.3 81.1 33.8 42.9 26 43.4 20 44.7 30.2 ...
+##  $ robbery            : num [1:52] 140.7 141.4 80.9 144.4 91.1 ...
+##  $ aggravated_assault : num [1:52] 291 248 465 327 387 ...
+##  $ burglary           : num [1:52] 727 954 622 948 1085 ...
+##  $ larceny_theft      : num [1:52] 2286 2650 2599 2965 2711 ...
+##  $ motor_vehicle_theft: num [1:52] 417 288 391 924 262 ...
+##  $ population         : num [1:52] 2.96e+08 4.55e+06 6.69e+05 5.97e+06 2.78e+06 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   state = col_character(),
+##   ..   murder = col_double(),
+##   ..   forcible_rape = col_double(),
+##   ..   robbery = col_double(),
+##   ..   aggravated_assault = col_double(),
+##   ..   burglary = col_double(),
+##   ..   larceny_theft = col_double(),
+##   ..   motor_vehicle_theft = col_double(),
+##   ..   population = col_double()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="exploratory-data-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crime)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 9
+##   state         murder forcible_rape robbery
+##   &lt;chr&gt;          &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+## 1 United States    5.6          31.7   141. 
+## 2 Alabama          8.2          34.3   141. 
+## 3 Alaska           4.8          81.1    80.9
+## 4 Arizona          7.5          33.8   144. 
+## 5 Arkansas         6.7          42.9    91.1
+## 6 California       6.9          26     176. 
+## # … with 5 more variables:
+## #   aggravated_assault &lt;dbl&gt;,
+## #   burglary &lt;dbl&gt;, larceny_theft &lt;dbl&gt;,
+## #   motor_vehicle_theft &lt;dbl&gt;,
+## #   population &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="exploratory-data-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(crime)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 9
+##   state         murder forcible_rape robbery
+##   &lt;chr&gt;          &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Vermont          1.3          23.3    11.7
+## 2 Virginia         6.1          22.7    99.2
+## 3 Washington       3.3          44.7    92.1
+## 4 West Virginia    4.4          17.7    44.6
+## 5 Wisconsin        3.5          20.6    82.2
+## 6 Wyoming          2.7          24      15.3
+## # … with 5 more variables:
+## #   aggravated_assault &lt;dbl&gt;,
+## #   burglary &lt;dbl&gt;, larceny_theft &lt;dbl&gt;,
+## #   motor_vehicle_theft &lt;dbl&gt;,
+## #   population &lt;dbl&gt;</code></pre>
+<p>Finally, ask yourself about the relationships between tables:</p>
+<ul>
+<li>What variables are keys and link the tables (i.e., which variables can you use in <code>join</code> commands)?</li>
+</ul>
+</div>
+<div id="visualize-and-describe-the-data" class="section level2 unnumbered hasAnchor">
+<h2>Visualize and Describe the Data<a href="exploratory-data-analysis.html#visualize-and-describe-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you have the data loaded and cleaned, it is usually helpful to do some univariate visualization; e.g., plotting histograms, densities, and box plots of different variables. You might ask questions such as:</p>
+<ul>
+<li>What do you see that is interesting?</li>
+<li>Which values are most common or unusual (outliers)?</li>
+<li>Is there a lot of missing data?</li>
+<li>What type of variation occurs within the individual variables?</li>
+<li>What might be causing the interesting findings?</li>
+<li>How could you figure out whether your ideas are correct?</li>
+</ul>
+<p>Once you have done some univariate visualization, you might examine the <strong>covariation</strong> between different variables. One convenient way to do this is with a <code>pairs</code> plot.</p>
+<p>Here are three different versions of such plots based on 2005 crime data (rates per 100,000 population) from Chapter 6 of <em>Visualize This</em>, by Nathan Yau. The main point of such plots is not necessarily to draw any conclusions, but help generate more specific research questions and hypotheses.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="exploratory-data-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a>crime2 <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="exploratory-data-analysis.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">!=</span> <span class="st">&quot;District of Columbia&quot;</span>, state <span class="sc">!=</span> <span class="st">&quot;United States&quot;</span>)</span>
+<span id="cb23-3"><a href="exploratory-data-analysis.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(crime2[, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">bg =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">panel =</span> panel.smooth)</span></code></pre></div>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-27-1.png" width="960" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="exploratory-data-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(crime2[, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="fu">aes</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>))</span></code></pre></div>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-28-1.png" width="960" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="exploratory-data-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a>lowerFn <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mapping, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, ...) {</span>
+<span id="cb25-2"><a href="exploratory-data-analysis.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> mapping) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="exploratory-data-analysis.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="exploratory-data-analysis.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> method, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, ...)</span>
+<span id="cb25-5"><a href="exploratory-data-analysis.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  p</span>
+<span id="cb25-6"><a href="exploratory-data-analysis.html#cb25-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-7"><a href="exploratory-data-analysis.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="exploratory-data-analysis.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(</span>
+<span id="cb25-9"><a href="exploratory-data-analysis.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  crime2[, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>],</span>
+<span id="cb25-10"><a href="exploratory-data-analysis.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(lowerFn, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)),</span>
+<span id="cb25-11"><a href="exploratory-data-analysis.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;barDiag&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)),</span>
+<span id="cb25-12"><a href="exploratory-data-analysis.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;cor&quot;</span>, <span class="at">size =</span> <span class="dv">5</span>))</span>
+<span id="cb25-13"><a href="exploratory-data-analysis.html#cb25-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-29-1.png" width="960" /></p>
+</div>
+<div id="formulate-a-research-question" class="section level2 unnumbered hasAnchor">
+<h2>Formulate a Research Question<a href="exploratory-data-analysis.html#formulate-a-research-question" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You will often end up with a lot of data, and it can be easy to be overwhelmed. How should you get started? One easy idea is to brainstorm ideas for research questions, and pick one that seems promising. This process is much easier with more than one brain! You will often be working off of a broad question posed by your business, organization, or supervisor, and be thinking about how to narrow it down. To do so, you can again revisit questions like “What patterns do you see?” or “Why might they be occurring?”</p>
+</div>
+<div id="examples" class="section level2 unnumbered hasAnchor">
+<h2>Examples<a href="exploratory-data-analysis.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here are some exploratory data analysis examples I like:</p>
+<ul>
+<li><p><a href="https://www.kaggle.com/mircat/violent-crime-mapping">Crime mapping</a></p></li>
+<li><p><a href="https://bookdown.org/rdpeng/exdata/data-analysis-case-study-changes-in-fine-particle-air-pollution-in-the-u-s-.html">Changes in fine particle air pollution in the US</a></p></li>
+<li><p><a href="http://flowingdata.com/2017/07/03/married-people-sex/">Married people have more sex</a><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
+<li><p><a href="https://www.r-bloggers.com/2017/09/exploratory-data-analysis-of-tropical-storms-in-r/">Tropical storm analysis</a></p></li>
+</ul>
+</div>
+<div id="practice-flight-data" class="section level2 unnumbered hasAnchor">
+<h2>Practice: Flight Data<a href="exploratory-data-analysis.html#practice-flight-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s practice these steps using data about <a href="https://www.kaggle.com/usdot/flight-delays">flight delays from Kaggle</a>. You have access to the data for <a href="data/airlines.csv">airlines</a>, <a href="data/airports.csv">airports</a>, and <a href="data/flights_jan_jul_sample2.csv">flights</a>.</p>
+<p>There are three tables of data:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="exploratory-data-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a>airlines <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/airlines.csv&quot;</span>)</span>
+<span id="cb26-2"><a href="exploratory-data-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a>airports <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/airports.csv&quot;</span>)</span>
+<span id="cb26-3"><a href="exploratory-data-analysis.html#cb26-3" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/flights_jan_jul_sample2.csv&quot;</span>)</span></code></pre></div>
+<p>Note that the full set of flight data has more than 5.8 million flights. To start, I have given you a subset that includes all flights in the first 15 days of January 2015 and in the first 15 days of July 2015. If at the end you wish to try your analysis on the whole data set, you can download the original .csv file from the Kaggle page and substitute a link to it in the code chunk above.</p>
+<p>There is a ton of data here, and it can be easy to be overwhelmed. We are going to focus our exploration a bit by considering the following broad research question: <strong>which flights are most likely to be delayed?</strong></p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-32" class="exercise"><strong>Exercise 2.1  (Data source) </strong></span>Where does this data come from? Who collected it?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-33" class="exercise"><strong>Exercise 2.2  (Explore codebook) </strong></span>This data set comes with a codebook on the Kaggle site. Have a look at the codebook to understand which variables are contained in each of the three tables. For example, what are the levels of <code>CANCELLATION_REASON</code> and what do they mean? What is the unit of observation for each table?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-34" class="exercise"><strong>Exercise 2.3  (Possible joins) </strong></span>What variables link the three tables? How could you join data from one table to another?</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-35" class="exercise"><strong>Exercise 2.4  (Visualize and describe the data) </strong></span>Use some univariate and bivariate visualizations to start to explore the questions mentioned above:</p>
+<ul>
+<li>What do you see that is interesting?</li>
+<li>Which values are most common or unusual (outliers)?</li>
+<li>Is there a lot of missing data?</li>
+<li>What type of variation occurs within the individual variables?</li>
+<li>What might be causing the interesting findings?</li>
+<li>How could you figure out whether your ideas are correct?</li>
+</ul>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-36" class="exercise"><strong>Exercise 2.5  (Formulate a specific research question) </strong></span>Based on your preliminary visualizations and exploration of the date, formulate a more specific research question/hypothesis within this broad area of understanding the causes of flight delays.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-37" class="exercise"><strong>Exercise 2.6  (Share a visualization) </strong></span>Develop a single visualization to share with the class that tells a story about your more specific research question/hypothesis. Note: the story may very well be something along the lines of “we thought variable X would affect flight delays in way Y, but the evidence does not support that.”</p>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Particularly important questions about how it was collected include WHO (whether it is a sample of a larger data set, and, if so, how the sampling was done? Randomly? All cases during a specific time frame? All data for a selected set of users?), WHEN (is this current data or historical? what events may have had an impact?), WHAT (what variables were measured? how was it measured, self-reported through a questionnaire or measured directly?), WHY (who funded the data collection? for what purposes what the data collected? to whose benefit was the data collected?) Answers to such questions strongly impact the conclusions you will be able to draw from the data.<a href="exploratory-data-analysis.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The graphics in this one are a bit more developed than you would really see in an exploratory analysis, but I think the progression of visualizations is interesting and follows an exploratory story.<a href="exploratory-data-analysis.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-r-rstudio-and-r-markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

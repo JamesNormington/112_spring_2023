@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 2 Mini-Project | COMP/STAT 112: Introduction to Data Science</title>
+  <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="generator" content="bookdown 0.27.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 2 Mini-Project | COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/logo.png" />
+  <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="github-repo" content="bcheggeseth/112_fall_2022/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 2 Mini-Project | COMP/STAT 112: Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="twitter:image" content="/images/logo.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-r-rstudio-and-r-markdown.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">COMP/STAT 112: Introduction to Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="course-schedule.html"><a href="course-schedule.html"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html"><i class="fa fa-check"></i>Learning Goals</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#general-skills"><i class="fa fa-check"></i>General Skills</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#project-presentations-communication"><i class="fa fa-check"></i>Project Presentations &amp; Communication</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html"><i class="fa fa-check"></i><b>1</b> Intro to R, RStudio, and R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio"><i class="fa fa-check"></i>Getting Started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="mini-project.html"><a href="mini-project.html"><i class="fa fa-check"></i><b>2</b> Mini-Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#data-kiva"><i class="fa fa-check"></i>Data: Kiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-partners-data-table"><i class="fa fa-check"></i>Investigate the <code>partners</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-loans-data-table"><i class="fa fa-check"></i>Investigate the <code>loans</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">COMP/STAT 112: Introduction to Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mini-project" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Topic 2</span> Mini-Project<a href="mini-project.html#mini-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-2" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="mini-project.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Apply data wrangling and visualization skills to a new data set</li>
+</ul>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/10-Mini_Project.Rmd">here</a>.</p>
+</div>
+<div id="data-kiva" class="section level2 unnumbered hasAnchor">
+<h2>Data: Kiva<a href="mini-project.html#data-kiva" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.kiva.org/">Kiva</a> is a non-profit that allows people from around the world to lend small amounts to others to start or grow a business, go to school, access clean energy, etc. Since its founding in 2005, more than $1.2 billion in loans to over 3 million borrowers have been funded. In this activity, we’ll examine some lending data from 2005-2012.</p>
+<div id="investigate-the-partners-data-table" class="section level3 unnumbered hasAnchor">
+<h3>Investigate the <code>partners</code> Data Table<a href="mini-project.html#investigate-the-partners-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kiva has field partners who generally act as intermediaries between borrowers and Kiva (lenders). They evaluate borrower risk, post loan requests on Kiva, and process payments. The following command loads a table with <a href="data/kiva_partners2.csv">data</a> on Kiva’s field partners.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="mini-project.html#cb17-1" aria-hidden="true" tabindex="-1"></a>partners <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners2.csv&quot;</span>)</span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-26" class="exercise"><strong>Exercise 2.1  (View codebook) </strong></span>Examine the <a href="data/kiva_partners_vars.xlsx">codebook</a> for the <code>partners</code> table.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-27" class="exercise"><strong>Exercise 2.2  (Regional distribution) </strong></span>Make a summary table with only five columns: region, total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted.</p>
+<p>The four columns after region should all be on a per region basis; for example, the row for Central America should include average loan size per loan posted in Central America. Sort your table by total amount raised.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-28" class="exercise"><strong>Exercise 2.3  (Partners in Africa) </strong></span>Draw a map of all of the partners in Africa, with the size of the dot corresponding to the amount raised.</p>
+</div>
+</div>
+<div id="investigate-the-loans-data-table" class="section level3 unnumbered hasAnchor">
+<h3>Investigate the <code>loans</code> Data Table<a href="mini-project.html#investigate-the-loans-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>loans</code> <a href="data/kiva_loans_small.csv">table</a> below contains information about individual loans to borrowers; full data is available <a href="data/kiva_loans.csv">here</a>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="mini-project.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a random sample of 10,000</span></span>
+<span id="cb18-2"><a href="mini-project.html#cb18-2" aria-hidden="true" tabindex="-1"></a>loans <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_small.csv&quot;</span>)</span>
+<span id="cb18-3"><a href="mini-project.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># if you want to use all 97,183 loan entries, uncomment this line:</span></span>
+<span id="cb18-4"><a href="mini-project.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loans &lt;- read_csv(&quot;https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans.csv&quot;)</span></span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-30" class="exercise"><strong>Exercise 2.4  (View codebook) </strong></span>Examine the <a href="data/kiva_loans_vars.xlsx">codebook</a> for the <code>loans</code> table. View the <code>loans</code> table and browse through some of the data (e.g., different sectors, uses, countries)</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-31" class="exercise"><strong>Exercise 2.5  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Remove all rows where the funded amount is 0.<br />
+</li>
+<li>Note that the date information about when a loan request was posted is separated out into different fields for year, month, day, hour, etc. It would be more helpful to have a single field for the exact time at which each loan was posted. We’ll do this in three steps. First, create (mutate) a new column by pasting together the year, month, and date, separated by hyphens: <code>post_dt=paste(posted_yr, posted_mo, posted_day, sep='-')</code>. Second, create a new column with the time: <code>post_time=paste(posted_hr,posted_min,posted_sec, sep=':')</code>. Third, using the <code>ymd_hms</code> command from <code>lubridate</code>, add a new column with the full date (including time of day):<br />
+<code>post_date=ymd_hms(paste(post_dt,post_time,sep=' '))</code>.<br />
+</li>
+<li>Repeat the previous part to add a column <code>funded_date</code> with the exact time at which each loan was funded.<br />
+</li>
+<li>Create a new table called <code>loans2</code> that only contains the following columns from <code>loans</code>: loan_id,status,funded_amount,paid_amount,sector,location.country,lat,lon,partner_id,post_date,funded_date</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-32" class="exercise"><strong>Exercise 2.6  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Find the top 5 countries by number of loans.<br />
+</li>
+<li>Find the top 5 countries by total funded loan amount.</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-33" class="exercise"><strong>Exercise 2.7  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
+</div>
+<p><em>Hint: start by wrangling the data into glyph-ready form, with one row corresponding to one glyph.</em></p>
+</div>
+<div id="putting-them-together" class="section level3 unnumbered hasAnchor">
+<h3>Putting them together<a href="mini-project.html#putting-them-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-34" class="exercise"><strong>Exercise 2.8  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-35" class="exercise"><strong>Exercise 2.9  (Defaults) </strong></span>Consider the following:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Starting with <code>loans3</code>, create a new table <code>DefaultData</code> that only includes those loans whose status is either “defaulted” or “paid”.<br />
+</li>
+<li>Make a density plot of the funded amount, split by laon status (“defaulted” or “paid”). That is, your plot should have two separate density curves on top of each other. Interpret the plot.<br />
+</li>
+<li>Make a bar chart with 10 bars, such that each bar is a $1000 range of funding amount; that is, the first bar should be for $0-$1000, the second for $1001-$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.<br />
+</li>
+<li>Starting with the data in <code>DefaultData</code> from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage. Hint: start by filtering out partners that have not had any defaulted loans.</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-36" class="exercise"><strong>Exercise 2.10  (Funding time) </strong></span>Consider the following:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Use the command <code>days_to_fund = difftime(funded_date, post_date, units="days")</code> to add a column to the <code>loans3</code> data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as <code>loans4</code>.<br />
+</li>
+<li>The <code>days_to_fund</code> should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table <code>loans4</code>.<br />
+</li>
+<li>Make a bar chart with days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.<br />
+</li>
+<li>Make a bar chart with days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.<br />
+</li>
+<li>Make a scatterplot with <code>funded_amount</code> on the x-axis and <code>days_to_fund</code> on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends?</li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-r-rstudio-and-r-markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

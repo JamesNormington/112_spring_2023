@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 2 SQL | COMP/STAT 112: Introduction to Data Science</title>
+  <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 2 SQL | COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/logo.png" />
+  <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="github-repo" content="bcheggeseth/112_fall_2022/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 2 SQL | COMP/STAT 112: Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
+  <meta name="twitter:image" content="/images/logo.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-r-rstudio-and-r-markdown.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">COMP/STAT 112: Introduction to Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="course-schedule.html"><a href="course-schedule.html"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html"><i class="fa fa-check"></i>Learning Goals</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#general-skills"><i class="fa fa-check"></i>General Skills</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
+<ul>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Foundation</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html"><i class="fa fa-check"></i><b>1</b> Intro to R, RStudio, and R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#getting-started-in-rstudio"><i class="fa fa-check"></i>Getting Started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>2</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-to-sql"><i class="fa fa-check"></i>Introduction to SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#stack-exchange-data-explorer"><i class="fa fa-check"></i>Stack Exchange Data Explorer</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#basic-select-queries"><i class="fa fa-check"></i>Basic Select Queries</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-summarization"><i class="fa fa-check"></i>SQL Summarization</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-joins"><i class="fa fa-check"></i>SQL Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#additional-exercises"><i class="fa fa-check"></i>Additional Exercises</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#accessing-sql-databases-from-rstudio"><i class="fa fa-check"></i>Accessing SQL Databases from RStudio</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">COMP/STAT 112: Introduction to Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sql" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Topic 2</span> SQL<a href="sql.html#sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-2" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="sql.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Develop comfort in composing SQL queries</li>
+<li>See the connections between tidyverse verbs and SQL commands</li>
+</ul>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/15-SQL.Rmd">here</a>.</p>
+</div>
+<div id="introduction-to-sql" class="section level2 unnumbered hasAnchor">
+<h2>Introduction to SQL<a href="sql.html#introduction-to-sql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Additional readings and video tutorial:<br />
+1. <a href="https://community.modeanalytics.com/sql/tutorial/introduction-to-sql/">SQL Tutorial for Data Analysis</a><br />
+2. <a href="https://data.stackexchange.com/help">Data Explorer Tutorial</a><br />
+3. <a href="https://mdsr-book.github.io/mdsr2e/ch-sql.html">Database querying using SQL</a>, Baumer, Kaplan, and Horton</p>
+<p>If you find yourself analyzing data within a medium or large organization, you will probably draw on data stored within a centralized <a href="https://en.wikipedia.org/wiki/Data_warehouse">data warehouse</a>.</p>
+<p>Data warehouses contain vast collections of information; far more than a desktop computer can easily analyze and they typically rely on structured data repositories called SQL databases.</p>
+<p>Data scientists interacting with data warehouses often follow a pattern that balances the scalability of SQL databases and the expressivity of data science langauges like <code>R</code> and Python. After finding and understanding data relevant to a project<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, a data scientist writes <a href="https://en.wikipedia.org/wiki/SQL">SQL code</a> that creates a filtered, simplified or aggregated version of the data within the warehouse. This smaller dataset is then exported as a CSV and analyzed in <code>R</code>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>SQL databases can be conceptually thought of as a collection of data <strong>tables</strong>, where each table resembles a data frame. While there is a core subset of SQL supported by all databases, different databases (Hive, Postgres, MySQL, Oracle, RedShift, etc.) use slightly different variants of SQL. Even though SQL is a complex language, the basic data wrangling techniques we learned earlier (filtering, joining and summarizing) follow easily replicable patterns and cover the majority of needs.</p>
+<div id="stack-exchange-data-explorer" class="section level3 unnumbered hasAnchor">
+<h3>Stack Exchange Data Explorer<a href="sql.html#stack-exchange-data-explorer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<img src="images/stack_exchange_explorer.jpeg" alt="Stack Exchange Explorer for [up vs down votes for questions and answers by weekday](https://data.stackexchange.com/travel/query/1718/up-vs-down-votes-by-day-of-week-of-question-or-answer)" width="1600" />
+<p class="caption">
+Figure 2.1: Stack Exchange Explorer for <a href="https://data.stackexchange.com/travel/query/1718/up-vs-down-votes-by-day-of-week-of-question-or-answer">up vs down votes for questions and answers by weekday</a>
+</p>
+</div>
+<p>We will experiment with the <a href="https://data.stackexchange.com/">Stack Exchange Data Explorer</a>, a website that provides a SQL interface for all the data in StackExchange. StackExchange powers the StackOverflow programming question and answer site, but it also powers question and answer sites related to <a href="https://stackexchange.com/sites?view=grid">126 topics</a> including <a href="https://english.stackexchange.com/">English</a>, <a href="https://travel.stackexchange.com/">Travel</a>, <a href="https://bicycles.stackexchange.com/">Bicycles</a>, and <a href="https://parenting.stackexchange.com/">Parenting</a>.</p>
+<p>StackExchange provides an in-depth <a href="https://data.stackexchange.com/help">Data Explorer Tutorial</a>. We will take a quick walk through the basics of SQL using the data explorer. I chose to analyze the <a href="https://data.stackexchange.com/travel/queries">Travel Data Explorer</a>, but you could perform the steps below on <a href="https://data.stackexchange.com/">any one of StackExchange data explorer sites</a></p>
+<p>Head to the <a href="https://data.stackexchange.com/travel/queries">Stack Exchange Data Explorer for Travel</a>. You see a list of queries other users have created in the past. These queries are for all Stack Exchange sites, so some may not be relevant. Queries about <em>your</em> activity (for example, “How many upvotes do I have for each tag?”) will not be useful either if you do not have activity for the particular site.</p>
+<p>Click on one of them and you see the SQL code for the query. Then click the “Run Query” button to get results. For example, you might look at the number of <a href="https://data.stackexchange.com/travel/query/1718/up-vs-down-votes-by-day-of-week-of-question-or-answer">up vs down votes for questions and answers by weekday</a> and notice that for questions, Tuesday has the highest up vs. down vote ratio and Saturday has the lowest. You can contemplate hypotheses for this difference!</p>
+</div>
+<div id="basic-select-queries" class="section level3 unnumbered hasAnchor">
+<h3>Basic Select Queries<a href="sql.html#basic-select-queries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s experiment with our own queries. Click on “Compose Query” in the upper right, and notice the tables are shown in the right. As a reminder, a table is similar to a data frame. Each table lists the columns stored within the table and the data types for the columns. Look through the tables for Posts, Users, and Comments. Do the columns generally make sense, and correspond to the StackOverflow website? There’s a <a href="https://meta.stackexchange.com/a/2678">description of the tables and columns</a> (called a schema) available on StackExchange’s Meta Q&amp;A Site.</p>
+<p>Now enter your first query in the text box and click the “Run Query” button:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="sql.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>) <span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb17-2"><a href="sql.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span></code></pre></div>
+<p>In this query we already see several important features of SQL:</p>
+<ul>
+<li><code>SELECT</code> tells SQL that a query is coming.</li>
+<li><code>TOP(100)</code> only returns the first 100 rows.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
+<li><code>Id, Title, Score, Body, Tags</code> determines what columns are included in the result</li>
+<li><code>FROM Posts</code> determines the source dataset.</li>
+</ul>
+<p>From glancing at the results, it appears that this table contains both questions and answers. Let’s try to focus on answers. Looking again at the <a href="https://meta.stackexchange.com/a/2678">Schema Description</a>, notice that there is a <code>PostTypeId</code> column in <code>Posts</code>, and a value of <code>1</code> corresponds to questions. Let’s update our query to only include questions:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb18-1"><a href="sql.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb18-2"><a href="sql.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb18-3"><a href="sql.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
+<span id="cb18-4"><a href="sql.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+<p>The SQL command <code>WHERE</code> is like the <code>filter</code> command we have been using in <code>dplyr</code>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-46" class="exercise"><strong>Exercise 2.1  </strong></span>Find the title and score of Posts that have a score of at least 110. <em>Hint: TOP is not necessary here because you want all result rows.</em></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-47" class="exercise"><strong>Exercise 2.2  </strong></span>Find posts whose title contains some place you are interested in (you pick!). <em>Hint: use SQL’s <a href="http://www.sqltutorial.org/sql-like/">LIKE operator</a>.</em></p>
+</div>
+<p>Note that you can look up the actual webpage for any question using its Id. For example, if the Id is 19591, the webpage <a href="https://en.wikipedia.org/wiki/URL">URL</a> would be <a href="https://travel.stackexchange.com/questions/19591/" class="uri">https://travel.stackexchange.com/questions/19591/</a>. Look up a few of the questions by their Id.</p>
+<p>It’s unclear how the 100 questions we saw were selected from among the over 43,000 total questions.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> Let’s try to arrange the Posts by score. The following query surfaces the top scoring question: <a href="https://travel.stackexchange.com/questions/3080/ok-were-all-adults-here-so-really-how-on-earth-should-i-use-a-squat-toilet">OK we’re all adults here, so really, how on earth should I use a squat toilet?</a></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb19-1"><a href="sql.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="sql.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb19-3"><a href="sql.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
+<span id="cb19-4"><a href="sql.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb19-5"><a href="sql.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">DESC</span></span></code></pre></div>
+<p>The <code>ORDER BY ??? DESC</code> syntax is similar to R’s <code>arrange()</code>. You can leave off the <code>DESC</code> if you want the results ordered smallest to largest.</p>
+<p>We could also find the <a href="https://travel.stackexchange.com/questions/tagged/italy">highest rated questions tagged “italy”</a> (the top question is <a href="https://travel.stackexchange.com/questions/tagged/italy">Does Venice Smell?</a>):</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="sql.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb20-2"><a href="sql.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb20-3"><a href="sql.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
+<span id="cb20-4"><a href="sql.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> Tags <span class="kw">LIKE</span> <span class="st">&#39;%italy%&#39;</span></span>
+<span id="cb20-5"><a href="sql.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">DESC</span></span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-50" class="exercise"><strong>Exercise 2.3  </strong></span>Pick two tags that interest you and you think will occur together and find the top voted posts that contain both.</p>
+</div>
+</div>
+<div id="sql-summarization" class="section level3 unnumbered hasAnchor">
+<h3>SQL Summarization<a href="sql.html#sql-summarization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So far, we have covered the equivalent of R’s selecting, filtering, and arranging. Let’s take a look at grouping and summarizing now, which has similar structures in both <code>R</code> and SQL. Imagine we want to see how many posts of each type there are. This query shows us that there are 44K questions and 71K answers.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="sql.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb21-2"><a href="sql.html#cb21-2" aria-hidden="true" tabindex="-1"></a>PostTypeId, <span class="fu">COUNT</span>(<span class="kw">Id</span>) numPosts</span>
+<span id="cb21-3"><a href="sql.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts</span>
+<span id="cb21-4"><a href="sql.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> PostTypeId </span>
+<span id="cb21-5"><a href="sql.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> PostTypeId</span></code></pre></div>
+<p>Note two characteristics of SQL summarization here:</p>
+<ul>
+<li>The <code>GROUP BY</code>clause indicates the table column for grouping, much like R’s <code>group_by</code>.</li>
+<li>There is no explicit <code>summarize</code>. Instead, all columns that appear in the SELECT except for those listed in <code>GROUP BY</code> must make use of an aggregate function. <code>COUNT(*)</code> is one of these, and is the equivalent of R’s <code>n()</code>. Many other <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/aggregate-functions-transact-sql">aggregate functions</a> exist, including <code>MAX</code>, <code>SUM</code>, <code>AVG</code>, and many others. Every aggregate function requires a column as an argument (even <code>COUNT()</code> which doesn’t logically need one).</li>
+<li>The aggregate column (in this case <code>COUNT(Id)</code>) must immediately be followed by a name that will be used for it in the results (in this case <code>numPosts</code>). This can be particularly useful if you want to order by the aggregated value.</li>
+</ul>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-52" class="exercise"><strong>Exercise 2.4  </strong></span>Change the previous query so it orders the result rows by the number of posts of that type. <em>Hint: Reuse the name you assigned to the aggregate function.</em></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-53" class="exercise"><strong>Exercise 2.5  </strong></span>Find the most commonly used tagsets applied to posts. Note that I am not asking you to count the most common individual tags — this would be more complex because multiple tags are squashed into the Tags field.</p>
+</div>
+</div>
+<div id="sql-joins" class="section level3 unnumbered hasAnchor">
+<h3>SQL Joins<a href="sql.html#sql-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finally, as with <code>R</code>, we often want to join data from two or more tables. The types of joins in SQL are the same as we saw with R (inner, outer, left, right). Most commonly we want to perform an INNER join, which is the default if you just say <code>JOIN</code>.</p>
+<p>Let’s say we wanted to enhance the earlier query to find the highest scoring answers with some information about each user.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb22-1"><a href="sql.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb22-2"><a href="sql.html#cb22-2" aria-hidden="true" tabindex="-1"></a>Title, Score, DisplayName, Reputation</span>
+<span id="cb22-3"><a href="sql.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts p</span>
+<span id="cb22-4"><a href="sql.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> users u</span>
+<span id="cb22-5"><a href="sql.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> p.OwnerUserId <span class="op">=</span> u.<span class="kw">Id</span></span>
+<span id="cb22-6"><a href="sql.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span><span class="dv">1</span></span>
+<span id="cb22-7"><a href="sql.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">Desc</span></span></code></pre></div>
+<p>We see a few notable items here:</p>
+<ul>
+<li>The <code>JOIN</code> keyword must go in between the two tables we want to join.</li>
+<li>Each table must be named. In this case we named posts <code>p</code> and users <code>u</code>.</li>
+<li>We need to specify the relationship that joins the two tables. In this case, a posts <code>OwnerUserId</code> column refers to the <code>Id</code> column in the users table.</li>
+</ul>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-55" class="exercise"><strong>Exercise 2.6  </strong></span>Create a query similar to the one above that identifies the authors of the top rated comments instead of posts.</p>
+</div>
+</div>
+</div>
+<div id="additional-exercises" class="section level2 unnumbered hasAnchor">
+<h2>Additional Exercises<a href="sql.html#additional-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first few exercises will ask you to analyze <a href="https://stackoverflow.com/help/badges">Stack Exchange badges</a>. Start at <a href="https://data.stackexchange.com/stackoverflow/query/new" class="uri">https://data.stackexchange.com/stackoverflow/query/new</a>. For each exercise, <strong>record the query you used</strong>.</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-56" class="exercise"><strong>Exercise 2.7  </strong></span>Count the number of total badges that have been given out. Hint: count the number of rows in the relevant table.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-57" class="exercise"><strong>Exercise 2.8  </strong></span>Find how many times each badge has been awarded, sorted from most awarded to least awarded.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-58" class="exercise"><strong>Exercise 2.9  </strong></span>Find a badge that looks interesting to you. Find all the user <strong>DisplayNames</strong> that have received the badge, along with the date at which they received it.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-59" class="exercise"><strong>Exercise 2.10  </strong></span>Show the users who have received the most badges, along with how many they have received.</p>
+</div>
+<p>The next few activities analyze user activity. These activities mimic the common workflow of creating datasets in SQL that you analyze in <code>R</code>.</p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-60" class="exercise"><strong>Exercise 2.11  </strong></span>Export a CSV file containing information about each user: <code>DisplayName, Id, Reputation, and CreationDate</code>. Name your file <code>users.csv</code></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-61" class="exercise"><strong>Exercise 2.12  </strong></span>Make a table that has each user’s total number of posts and total number of upvotes, and export this file as a CSV named <code>posts.csv</code>. <em>Hint: Start with the posts table, join information from users, and perform some grouped summaries.</em></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-62" class="exercise"><strong>Exercise 2.13  </strong></span>Calculate the number of comments per user, and the total number of upvotes across all comments per user (this is the sum of the <code>Score</code> variable under the Comments table) and export this as a CSV file named <code>comments.csv</code>.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-63" class="exercise"><strong>Exercise 2.14  </strong></span>Import these three datasets into <code>R</code>. Visualize the relationship between the three datasets. Include at least one visualization comparing each of:</p>
+<ol style="list-style-type: lower-alpha">
+<li>information from the user CSV and the post CSV, and</li>
+<li>information from the user CSV and comment CSV</li>
+</ol>
+<p>To receive full credit your visualizations must tell a compelling story.</p>
+</div>
+</div>
+<div id="accessing-sql-databases-from-rstudio" class="section level2 unnumbered hasAnchor">
+<h2>Accessing SQL Databases from RStudio<a href="sql.html#accessing-sql-databases-from-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While we will not cover the details of how to do so, you can indeed access SQL databases directly from RStudio. <a href="https://mdsr-book.github.io/mdsr2e/ch-sql.html#the-sql-universe">Chapters 15 and 16 of Modern Data Science with <code>R</code></a> have detailed instructions and examples on how to do so. The basic gist is to first set up a connection with the database (slightly trickier part covered in Chapter 16) and then write queries, either in SQL or – even cooler – using the common <code>dplyr</code> data verbs we have already learned like <code>select</code>, <code>group_by</code>, <code>filter</code> and <code>inner_join</code>. <code>R</code> can then automatically translate a piping sequence with many of these data verbs into an SQL query and execute that query. The reason this method is so powerful is that the bulk of the data still lives in the original database (i.e., it is not on your computer). With each query, you can access a small and customized amount of data tailored to your specific analysis needs.</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>A word of caution: It can be difficult to discover and understand information in a data warehouse that is relevant to a project. Data is often produced across different arms of a large organization, and documentation describing the data can be scattered, missing, or out-of-date. The best way to decode information is by talking to the people who produced it!<a href="sql.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>An alternative is to use an <code>R</code> package like <code>DBI</code> to generate the SQL calls directly in <code>R</code> (similar to what we did with API wrapper packages); however, this often results in more trouble than it is worth.<a href="sql.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>The StackExchange data explorer uses a variant of SQL called <a href="https://en.wikipedia.org/wiki/Transact-SQL">Transact SQL</a> that is supported by Microsoft databases. <code>TOP(100)</code> is a non-standard SQL feature supported by T-SQL. For most databases you would accomplish the same goal by adding <code>LIMIT 100</code> to the end of the query.<a href="sql.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Note that whereas we used the double equals <code>==</code> for comparison in <code>R</code>, the SQL <code>WHERE</code> command takes just a single <code>=</code>.<a href="sql.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>To count the number of posts, run <code>{SQL} SELECT COUNT(Id) FROM Posts Where PostTypeId = 1</code>.<a href="sql.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-r-rstudio-and-r-markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

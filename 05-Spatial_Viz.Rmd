@@ -521,7 +521,7 @@ We can change just about everything about our map. The plot below is the same pl
 
 * The `opacity` argument is the transparency, like the `alpha` argument in `ggplot2`. 
 
-* Colors need to be in "hex" form. We used the `col2hex()` function from the `gplot` library to do that. The colors also need to be valid R colors.
+* Colors need to be in "hex" form. We used the `col2hex()` function from the `gplots` library to do that. The colors also need to be valid R colors.
 
 
 ```{r}

@@ -2,12 +2,12 @@
 
 The goal of this course is for you to gain confidence in carrying out the entire data science pipeline, 
 
-from research question formulation, 
-to data collection/scraping,
-to wrangling, 
-to modeling, 
-to visualization, 
-to presentation and communication
+- from research question formulation, 
+- to data collection/scraping,
+- to wrangling, 
+- to modeling, 
+- to visualization, 
+- to presentation and communication
 
 
 Specific course topics and general skills are listed below.
@@ -48,25 +48,34 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Data Import and Basic Cleaning**
 
--   TBA
+- Develop comfort in finding an existing data set to import into R
+- Develop comfort in importing data of a variety of file types into R
+- Understand and implement the data cleaning process to make values consistent
+- Understand the implications of different ways of dealing with missing values with `replace_na` and `drop_na`
 
 <br>
 
 **Data Scraping (rvest)**
 
--   TBA  
+- Develop comfort in using CSS selectors and the Selector Gadget to identify data of interest within a website
+- Use `html_nodes` and `html_text` within `rvest` packages to scrape data from websites using CSS selectors
+- Develop initial comfort in cleaning text data
 
 <br>
 
 **APIs**
 
--   TBA
+- Understand the difference between acquiring data through web scraping vs. a web API
+- Set up an API key for a public API
+- Develop comfort in using a wrapper package or url-method of calling a web API
+- Recognize the structure in a url for a web API and adjust for your purposes
 
 <br>
 
 **SQL**
 
--   TBA
+- Develop comfort in composing SQL queries
+- See the connections between tidyverse verbs and SQL commands
 
 ### Data Wrangling {.unnumbered}
 
@@ -87,22 +96,35 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Joining Data**
 
--   TBA 
+- Understand the concept of keys and variables that uniquely identify rows or cases
+- Understand the different types of joins, different ways of combining two data frames together
+- Develop comfort in using mutating joins: `left_join`, `inner_join` and `full_join` in the `dplyr` package
+- Develop comfort in using filtering joins: `semi_join`, `anti_join` in the `dplyr` package
 
 <br>
 
-**factors**
+**Categorical Variables as Factors**
 
--   TBA 
+- Understand the difference between a variable stored as a `character` vs. a `factor`
+- Be able to convert a `character` variable to a `factor`
+- Develop comfort in manipulating the order and values of a factor with the `forcats` package to improve summaries and visualizations.
+
+<br>
+
+**Wrangling Text using Regular Expression**
+
+- Develop comfort in working with strings of text data 
+- Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
+
 
 <br>
 
+**Mini-Project**
 
-**mini-project**
-
--   TBA  
+- Apply data wrangling and visualization skills to a new data set
 
 <br>
+
 
 ### Data Visualization {.unnumbered}
 
@@ -150,19 +172,19 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Network and Interactive**
 
--   TBA
+-   TBD
 
 <br>
 
 **Shiny**
 
--   TBA
+-   TBD
 
 <br>
 
 **Tables**
 
--   TBA 
+-   TBD 
 
 <br>
 
@@ -174,29 +196,16 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **EDA**
 
--   TBA
+- Understand the first steps that should be taken when you encounter a new data set
+- Develop comfort in knowing how to explore data to understand it
+- Develop comfort in formulating research questions
 
 <br>
 
 **Text Analysis**
 
--   TBA
+-   TBD
 
 <br>
 
 
-### Project Presentations & Communication {.unnumbered}
-
-*The learning goals may be adjusted before we start the material of this section.*
-
-**Oral Communication**
-
--   TBA
-
-<br>
-
-**Written Communication**
-
--   TBA 
-
-<br>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Learning Goals | COMP/STAT 112: Introduction to Data Science</title>
   <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
-  <meta name="generator" content="bookdown 0.27.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Learning Goals | COMP/STAT 112: Introduction to Data Science" />
   <meta property="og:type" content="book" />
@@ -146,7 +146,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
-<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#project-presentations-communication"><i class="fa fa-check"></i>Project Presentations &amp; Communication</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>I Foundation</b></span></li>
@@ -157,6 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#download-r-rstudio"><i class="fa fa-check"></i>Download R &amp; RStudio</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#a-quick-tour-of-rstudio"><i class="fa fa-check"></i>A quick tour of RStudio</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data"><i class="fa fa-check"></i>Data</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data"><i class="fa fa-check"></i>Tidy Data</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio"><i class="fa fa-check"></i>Data Basics in RStudio</a></li>
 </ul></li>
@@ -186,12 +186,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="learning-goals" class="section level1 unnumbered hasAnchor">
 <h1>Learning Goals<a href="learning-goals.html#learning-goals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The goal of this course is for you to gain confidence in carrying out the entire data science pipeline,</p>
-<p>from research question formulation,
-to data collection/scraping,
-to wrangling,
-to modeling,
-to visualization,
-to presentation and communication</p>
+<ul>
+<li>from research question formulation,</li>
+<li>to data collection/scraping,</li>
+<li>to wrangling,</li>
+<li>to modeling,</li>
+<li>to visualization,</li>
+<li>to presentation and communication</li>
+</ul>
 <p>Specific course topics and general skills are listed below.</p>
 <div id="general-skills" class="section level2 unnumbered hasAnchor">
 <h2>General Skills<a href="learning-goals.html#general-skills" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -230,22 +232,31 @@ to presentation and communication</p>
 <h3>Data Acquisition<a href="learning-goals.html#data-acquisition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Data Import and Basic Cleaning</strong></p>
 <ul>
-<li>TBA</li>
+<li>Develop comfort in finding an existing data set to import into R</li>
+<li>Develop comfort in importing data of a variety of file types into R</li>
+<li>Understand and implement the data cleaning process to make values consistent</li>
+<li>Understand the implications of different ways of dealing with missing values with <code>replace_na</code> and <code>drop_na</code></li>
 </ul>
 <p><br></p>
 <p><strong>Data Scraping (rvest)</strong></p>
 <ul>
-<li>TBA</li>
+<li>Develop comfort in using CSS selectors and the Selector Gadget to identify data of interest within a website</li>
+<li>Use <code>html_nodes</code> and <code>html_text</code> within <code>rvest</code> packages to scrape data from websites using CSS selectors</li>
+<li>Develop initial comfort in cleaning text data</li>
 </ul>
 <p><br></p>
 <p><strong>APIs</strong></p>
 <ul>
-<li>TBA</li>
+<li>Understand the difference between acquiring data through web scraping vs. a web API</li>
+<li>Set up an API key for a public API</li>
+<li>Develop comfort in using a wrapper package or url-method of calling a web API</li>
+<li>Recognize the structure in a url for a web API and adjust for your purposes</li>
 </ul>
 <p><br></p>
 <p><strong>SQL</strong></p>
 <ul>
-<li>TBA</li>
+<li>Develop comfort in composing SQL queries</li>
+<li>See the connections between tidyverse verbs and SQL commands</li>
 </ul>
 </div>
 <div id="data-wrangling" class="section level3 unnumbered hasAnchor">
@@ -264,17 +275,28 @@ to presentation and communication</p>
 <p><br></p>
 <p><strong>Joining Data</strong></p>
 <ul>
-<li>TBA</li>
+<li>Understand the concept of keys and variables that uniquely identify rows or cases</li>
+<li>Understand the different types of joins, different ways of combining two data frames together</li>
+<li>Develop comfort in using mutating joins: <code>left_join</code>, <code>inner_join</code> and <code>full_join</code> in the <code>dplyr</code> package</li>
+<li>Develop comfort in using filtering joins: <code>semi_join</code>, <code>anti_join</code> in the <code>dplyr</code> package</li>
 </ul>
 <p><br></p>
-<p><strong>factors</strong></p>
+<p><strong>Categorical Variables as Factors</strong></p>
 <ul>
-<li>TBA</li>
+<li>Understand the difference between a variable stored as a <code>character</code> vs. a <code>factor</code></li>
+<li>Be able to convert a <code>character</code> variable to a <code>factor</code></li>
+<li>Develop comfort in manipulating the order and values of a factor with the <code>forcats</code> package to improve summaries and visualizations.</li>
 </ul>
 <p><br></p>
-<p><strong>mini-project</strong></p>
+<p><strong>Wrangling Text using Regular Expression</strong></p>
 <ul>
-<li>TBA</li>
+<li>Develop comfort in working with strings of text data</li>
+<li>Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the <code>stringr</code> package.</li>
+</ul>
+<p><br></p>
+<p><strong>Mini-Project</strong></p>
+<ul>
+<li>Apply data wrangling and visualization skills to a new data set</li>
 </ul>
 <p><br></p>
 </div>
@@ -318,17 +340,17 @@ to presentation and communication</p>
 <p><br></p>
 <p><strong>Network and Interactive</strong></p>
 <ul>
-<li>TBA</li>
+<li>TBD</li>
 </ul>
 <p><br></p>
 <p><strong>Shiny</strong></p>
 <ul>
-<li>TBA</li>
+<li>TBD</li>
 </ul>
 <p><br></p>
 <p><strong>Tables</strong></p>
 <ul>
-<li>TBA</li>
+<li>TBD</li>
 </ul>
 <p><br></p>
 </div>
@@ -337,26 +359,14 @@ to presentation and communication</p>
 <p><em>The learning goals may be adjusted before we start the material of this section.</em></p>
 <p><strong>EDA</strong></p>
 <ul>
-<li>TBA</li>
+<li>Understand the first steps that should be taken when you encounter a new data set</li>
+<li>Develop comfort in knowing how to explore data to understand it</li>
+<li>Develop comfort in formulating research questions</li>
 </ul>
 <p><br></p>
 <p><strong>Text Analysis</strong></p>
 <ul>
-<li>TBA</li>
-</ul>
-<p><br></p>
-</div>
-<div id="project-presentations-communication" class="section level3 unnumbered hasAnchor">
-<h3>Project Presentations &amp; Communication<a href="learning-goals.html#project-presentations-communication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>The learning goals may be adjusted before we start the material of this section.</em></p>
-<p><strong>Oral Communication</strong></p>
-<ul>
-<li>TBA</li>
-</ul>
-<p><br></p>
-<p><strong>Written Communication</strong></p>
-<ul>
-<li>TBA</li>
+<li>TBD</li>
 </ul>
 <p><br></p>
 
