@@ -577,7 +577,7 @@ newbechdel <- bechdel %>%
   mutate(yearCat=cut(year, breaks=seq(1969,2014,by=5)))
 ```
 
-Further, you'll need to add the following layer in order to get a color scheme that's close to that in the article:   
+Further, you'll need to add the following layer in order to get a color scheme that's close to that in the article:
 
     scale_fill_manual(values = c("red","salmon","pink","steelblue1","steelblue4"))
 
