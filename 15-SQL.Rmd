@@ -21,6 +21,7 @@ Additional readings and video tutorial:
 1. [SQL Tutorial for Data Analysis](https://community.modeanalytics.com/sql/tutorial/introduction-to-sql/)   
 2. [Data Explorer Tutorial](https://data.stackexchange.com/help)   
 3. [Database querying using SQL](https://mdsr-book.github.io/mdsr2e/ch-sql.html), Baumer, Kaplan, and Horton 
+4. [More Fun Practice - Solve a Mystery](https://mystery.knightlab.com/)
 
 
 If you find yourself analyzing data within a medium or large organization, you will probably draw on data stored within a centralized [data warehouse](https://en.wikipedia.org/wiki/Data_warehouse).
