@@ -91,7 +91,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Wrangling Text using Regular Expression**
 
-- Be able to in working with strings of text data 
+- Be able to work with strings of text data 
 - Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
 
 
@@ -100,6 +100,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 **Mini-Project**
 
 - Apply data wrangling and visualization skills to a new data set
+- Be able to tell a story about data through visualization
 
 <br>
 
