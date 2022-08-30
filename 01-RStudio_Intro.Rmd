@@ -37,6 +37,8 @@ To get started, take the following two steps *in the given order*. Even if you a
 1.  Download and install the R statistical software at <https://mirror.las.iastate.edu/CRAN/>\
 2.  Download and install the FREE version of RStudio at <https://www.rstudio.com/products/rstudio/download/#download>
 
+If you are having issues with downloading, log on to <https://rstudio.macalester.edu/> (use Mac credentials) to use the RStudio server.
+
 What's the difference between R and RStudio? Mainly, RStudio requires R -- thus it does everything R does *and more*. We will be using RStudio exclusively.
 
 ### A quick tour of RStudio {.unnumbered}
@@ -56,7 +58,7 @@ Use RStudio as a simple calculator to do the following:
   2) RStudio has built-in *functions* to which we supply the necessary *arguments*:  `function(arguments)`.  Use the built-in function `sqrt` to calculate the square root of 25.
   3) Use the built-in function `rep` to repeat the number "5" eight times.
   4) Use the `seq` function to create the vector `(0, 3, 6, 9, 12)`.  (The video doesnt cover this!)
-  5) Create a new vector by concatenating three repetitions of the vector from the previous part. 
+  5) Create a new vector by concatenating three repetitions of the vector from the previous part.
 ```
 
 <details>
