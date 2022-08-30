@@ -337,8 +337,8 @@ levels(factor(fifa$confederation)) #we can convert to factor format
 Useful Resources:
 
 1.  [R Markdown Quick Tour](http://rmarkdown.rstudio.com/authoring_quick_tour.html)\
-2.  [R Markdown Cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf) or in RStudio: Go to Help \> Cheat Sheets \> R Markdown Cheat Sheet
-3.  [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) or in RStudio: Go to Help \> Cheat Sheets \> R Markdown Reference Guide
+2.  [R Markdown Cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf) 
+3.  [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) 
 
 Research often makes claims that are difficult to verify. A recent [study of published psychology articles](http://science.sciencemag.org/content/349/6251/aac4716) found that less than half of published claims could be reproduced. One of the most common reasons claims cannot be reproduced is confusion about data analysis. It may be unclear exactly how data was prepared and analyzed, or there may be a mistake in the analysis.
 
