@@ -553,14 +553,17 @@ Solution
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-11" class="exercise"><strong>Exercise 1.5  (Importing Package Data) </strong></span>The first step to working with data in RStudio is getting it in there! How we do this depends on its format (eg: Excel spreadsheet, csv file, txt file) and storage locations (eg: online, within Wiki, desktop). Luckily for us, the <code>fifa_audience</code> data are stored in the <code>fivethirtyeight</code> RStudio package. Copy and paste the following code into the Console and press Enter.</p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fivethirtyeight package</span></span>
-<span id="cb6-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
-<span id="cb6-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fifa data</span></span>
-<span id="cb6-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fifa_audience&quot;</span>)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#download the data and information in the fivethirtyeight package (we only need to do this once)</span></span>
+<span id="cb6-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;fivethirtyeight&#39;</span>)</span>
+<span id="cb6-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fivethirtyeight package</span></span>
+<span id="cb6-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
 <span id="cb6-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
-<span id="cb6-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-8" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
+<span id="cb6-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fifa data</span></span>
+<span id="cb6-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fifa_audience&quot;</span>)</span>
+<span id="cb6-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
+<span id="cb6-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-11" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-13" class="exercise"><strong>Exercise 1.6  (Examining Data Structures) </strong></span>Before we can analyze our data, we must understand its structure. Try out the following functions (copy and paste into the Console). For each, make a note that describes its action.</p>
 </div>
@@ -629,20 +632,18 @@ Solution
 <p><span id="exr:unnamed-chunk-18" class="exercise"><strong>Exercise 1.8  (Examining a Single Variable) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li>We might want to access and focus on a single variable. To this end, we can use the <code>$</code> notation:</li>
+<li>We might want to access and focus on a single variable. To this end, we can use the <code>$</code> notation (see below). What are the values of <code>tv_audience_share</code>? Of <code>confederation</code>? Is it easy to figure out?</li>
 </ol>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-1" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>tv_audience_share</span>
 <span id="cb10-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-2" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>confederation</span></code></pre></div>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>It’s important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:</li>
-</ol>
+<p>It’s important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>tv_audience_share)</span>
 <span id="cb11-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>confederation)</span></code></pre></div>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>If a variable is categorical (either in <code>character</code> or <code>factor</code> format), we can determine its <code>levels</code> / category labels:</li>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>If a variable is categorical (in <code>factor</code> format), we can determine its <code>levels</code> / category labels. What are the value of <code>confederation</code>?</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fifa<span class="sc">$</span>confederation)</span>
-<span id="cb12-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(fifa<span class="sc">$</span>confederation))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fifa<span class="sc">$</span>confederation) <span class="co">#it is in character format</span></span>
+<span id="cb12-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(fifa<span class="sc">$</span>confederation)) <span class="co">#we can convert to factor format</span></span></code></pre></div>
 </div>
 </div>
 <div id="r-markdown-and-reproducible-research" class="section level2 unnumbered hasAnchor">
@@ -694,7 +695,7 @@ If echo=FALSE in curly braces, the code is not shown. Otherwise, both code and o
 <li>Make sure you can compile/render (Knit) the Markdown into a webpage (html file).<br />
 </li>
 <li>Add a new line between <code>title</code> and <code>output</code> that reads: <code>author: Your Name</code>.</li>
-<li>Create a brief essay about your favorite food. Make sure to include:<br />
+<li>Create a very brief essay about your favorite food. Make sure to include:<br />
 </li>
 </ol>
 <ul>

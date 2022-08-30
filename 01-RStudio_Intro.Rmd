@@ -228,6 +228,9 @@ The first step to working with data in RStudio is getting it in there!  How we d
 ```
 
 ```{r eval=FALSE}
+#download the data and information in the fivethirtyeight package (we only need to do this once)
+install.packages('fivethirtyeight')
+
 #load the fivethirtyeight package
 library(fivethirtyeight)
     
@@ -306,25 +309,25 @@ b.  Percentage between 0 and 100
 Consider the following:
 ```
 
-a.  We might want to access and focus on a single variable. To this end, we can use the `$` notation:
+a.  We might want to access and focus on a single variable. To this end, we can use the `$` notation (see below). What are the values of `tv_audience_share`? Of `confederation`? Is it easy to figure out?
 
 ```{r eval=FALSE}
 fifa$tv_audience_share
 fifa$confederation
 ```
 
-b.  It's important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:
+It's important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:
 
 ```{r eval=FALSE}
 class(fifa$tv_audience_share)
 class(fifa$confederation)
 ```
 
-c.  If a variable is categorical (either in `character` or `factor` format), we can determine its `levels` / category labels:
+b.  If a variable is categorical (in `factor` format), we can determine its `levels` / category labels. What are the value of `confederation`?
 
 ```{r eval=FALSE}
-levels(fifa$confederation)
-levels(factor(fifa$confederation))
+levels(fifa$confederation) #it is in character format
+levels(factor(fifa$confederation)) #we can convert to factor format
 ```
 
 ## R Markdown and Reproducible Research {.unnumbered}
@@ -381,7 +384,7 @@ Create a new R Markdown about your favorite food.
 a. Create a new file in RStudio (File -> New File -> R Markdown) with a Title of `First_Markdown`. Save it to a new folder on your Desktop called `COMP_STAT_112`; within that new folder, create another new folder called `Day_01`.  
 b. Make sure you can compile/render (Knit) the Markdown into a webpage (html file).  
 c. Add a new line between `title` and `output` that reads: `author: Your Name`.
-d. Create a brief essay about your favorite food. Make sure to include:    
+d. Create a very brief essay about your favorite food. Make sure to include:    
   * A picture from the web    
   * A bullet list    
   * A numbered list  
@@ -391,6 +394,7 @@ e. Compile (Knit) the document into an html file.
 ```{exercise name="New Data!"}
 There's a data set named `comic_characters` in the `fivethirtyeightdata` package.
 ```
+
 Install the package by running the following in the Console:
 
 ```
