@@ -387,8 +387,15 @@ e. Compile (Knit) the document into an html file.
 ```
 
 ```{exercise name="New Data!"}
-There's a data set named `comic_characters` in the `fivethirtyeightdata` package. Check out the codebook (hint: use ?) to understand what these data measure. Then add a second section to your R Markdown file, and then use code chunks and R commands to perform/answer the following tasks/questions:
+There's a data set named `comic_characters` in the `fivethirtyeightdata` package.
 ```
+Install the package by running the following in the Console:
+
+```
+install.packages('fivethirtyeightdata', repos = 'https://fivethirtyeightdata.github.io/drat/', type = 'source')
+```
+
+Check out the codebook (hint: use ?) to understand what these data measure. Then add a second section to your R Markdown file, and then use code chunks and R commands to perform/answer the following tasks/questions:
   
   a. Load the data.    
   b. What are the units of observation?  How many observations are there?    

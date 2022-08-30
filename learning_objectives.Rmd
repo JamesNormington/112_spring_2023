@@ -48,34 +48,12 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 **Data Import and Basic Cleaning**
 
-- Develop comfort in finding an existing data set to import into R
-- Develop comfort in importing data of a variety of file types into R
+- Be able to find an existing data set to import into R
+- Be able to import data of a variety of file types into R
 - Understand and implement the data cleaning process to make values consistent
 - Understand the implications of different ways of dealing with missing values with `replace_na` and `drop_na`
 
 <br>
-
-**Data Scraping (rvest)**
-
-- Develop comfort in using CSS selectors and the Selector Gadget to identify data of interest within a website
-- Use `html_nodes` and `html_text` within `rvest` packages to scrape data from websites using CSS selectors
-- Develop initial comfort in cleaning text data
-
-<br>
-
-**APIs**
-
-- Understand the difference between acquiring data through web scraping vs. a web API
-- Set up an API key for a public API
-- Develop comfort in using a wrapper package or url-method of calling a web API
-- Recognize the structure in a url for a web API and adjust for your purposes
-
-<br>
-
-**SQL**
-
-- Develop comfort in composing SQL queries
-- See the connections between tidyverse verbs and SQL commands
 
 ### Data Wrangling {.unnumbered}
 
@@ -90,7 +68,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 **Reshaping Data**
 
 - Understand the difference between wide and long data format and distinguish the case (unit of observation) for a given data set
-- Develop comfort in using `pivot_wider` and `pivot_longer` in the `tidyr` package
+- Be able to use `pivot_wider` and `pivot_longer` in the `tidyr` package
 
 <br>
 
@@ -98,8 +76,8 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 - Understand the concept of keys and variables that uniquely identify rows or cases
 - Understand the different types of joins, different ways of combining two data frames together
-- Develop comfort in using mutating joins: `left_join`, `inner_join` and `full_join` in the `dplyr` package
-- Develop comfort in using filtering joins: `semi_join`, `anti_join` in the `dplyr` package
+- Be able to use mutating joins: `left_join`, `inner_join` and `full_join` in the `dplyr` package
+- Be able to use filtering joins: `semi_join`, `anti_join` in the `dplyr` package
 
 <br>
 
@@ -107,13 +85,13 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 - Understand the difference between a variable stored as a `character` vs. a `factor`
 - Be able to convert a `character` variable to a `factor`
-- Develop comfort in manipulating the order and values of a factor with the `forcats` package to improve summaries and visualizations.
+- Be able to manipulate the order and values of a factor with the `forcats` package to improve summaries and visualizations.
 
 <br>
 
 **Wrangling Text using Regular Expression**
 
-- Develop comfort in working with strings of text data 
+- Be able to in working with strings of text data 
 - Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
 
 
@@ -157,7 +135,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 **Multivariate**
 
 - Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot with `ggplot2` functions
-- Develop comfort with creating and interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
+- Be able to with creating and interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
 
 <br>
 
@@ -167,24 +145,6 @@ Specific learning objectives for our course topics are listed below. Use these t
 - Create choropleth maps using `geom_map()`      
 - Add points and other `ggplot2` features to a map created from `geom_map()`   
 - Understand the basics of creating a map using `leaflet`, including adding points and choropleths to a base map 
-
-<br>
-
-**Network and Interactive**
-
--   TBD
-
-<br>
-
-**Shiny**
-
--   TBD
-
-<br>
-
-**Tables**
-
--   TBD 
 
 <br>
 
@@ -202,10 +162,5 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 <br>
 
-**Text Analysis**
-
--   TBD
-
-<br>
 
 

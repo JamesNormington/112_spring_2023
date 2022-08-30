@@ -232,32 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Data Acquisition<a href="learning-goals.html#data-acquisition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Data Import and Basic Cleaning</strong></p>
 <ul>
-<li>Develop comfort in finding an existing data set to import into R</li>
-<li>Develop comfort in importing data of a variety of file types into R</li>
+<li>Be able to find an existing data set to import into R</li>
+<li>Be able to import data of a variety of file types into R</li>
 <li>Understand and implement the data cleaning process to make values consistent</li>
 <li>Understand the implications of different ways of dealing with missing values with <code>replace_na</code> and <code>drop_na</code></li>
 </ul>
 <p><br></p>
-<p><strong>Data Scraping (rvest)</strong></p>
-<ul>
-<li>Develop comfort in using CSS selectors and the Selector Gadget to identify data of interest within a website</li>
-<li>Use <code>html_nodes</code> and <code>html_text</code> within <code>rvest</code> packages to scrape data from websites using CSS selectors</li>
-<li>Develop initial comfort in cleaning text data</li>
-</ul>
-<p><br></p>
-<p><strong>APIs</strong></p>
-<ul>
-<li>Understand the difference between acquiring data through web scraping vs. a web API</li>
-<li>Set up an API key for a public API</li>
-<li>Develop comfort in using a wrapper package or url-method of calling a web API</li>
-<li>Recognize the structure in a url for a web API and adjust for your purposes</li>
-</ul>
-<p><br></p>
-<p><strong>SQL</strong></p>
-<ul>
-<li>Develop comfort in composing SQL queries</li>
-<li>See the connections between tidyverse verbs and SQL commands</li>
-</ul>
 </div>
 <div id="data-wrangling" class="section level3 unnumbered hasAnchor">
 <h3>Data Wrangling<a href="learning-goals.html#data-wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -270,27 +250,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Reshaping Data</strong></p>
 <ul>
 <li>Understand the difference between wide and long data format and distinguish the case (unit of observation) for a given data set</li>
-<li>Develop comfort in using <code>pivot_wider</code> and <code>pivot_longer</code> in the <code>tidyr</code> package</li>
+<li>Be able to use <code>pivot_wider</code> and <code>pivot_longer</code> in the <code>tidyr</code> package</li>
 </ul>
 <p><br></p>
 <p><strong>Joining Data</strong></p>
 <ul>
 <li>Understand the concept of keys and variables that uniquely identify rows or cases</li>
 <li>Understand the different types of joins, different ways of combining two data frames together</li>
-<li>Develop comfort in using mutating joins: <code>left_join</code>, <code>inner_join</code> and <code>full_join</code> in the <code>dplyr</code> package</li>
-<li>Develop comfort in using filtering joins: <code>semi_join</code>, <code>anti_join</code> in the <code>dplyr</code> package</li>
+<li>Be able to use mutating joins: <code>left_join</code>, <code>inner_join</code> and <code>full_join</code> in the <code>dplyr</code> package</li>
+<li>Be able to use filtering joins: <code>semi_join</code>, <code>anti_join</code> in the <code>dplyr</code> package</li>
 </ul>
 <p><br></p>
 <p><strong>Categorical Variables as Factors</strong></p>
 <ul>
 <li>Understand the difference between a variable stored as a <code>character</code> vs. a <code>factor</code></li>
 <li>Be able to convert a <code>character</code> variable to a <code>factor</code></li>
-<li>Develop comfort in manipulating the order and values of a factor with the <code>forcats</code> package to improve summaries and visualizations.</li>
+<li>Be able to manipulate the order and values of a factor with the <code>forcats</code> package to improve summaries and visualizations.</li>
 </ul>
 <p><br></p>
 <p><strong>Wrangling Text using Regular Expression</strong></p>
 <ul>
-<li>Develop comfort in working with strings of text data</li>
+<li>Be able to in working with strings of text data</li>
 <li>Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the <code>stringr</code> package.</li>
 </ul>
 <p><br></p>
@@ -324,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Multivariate</strong></p>
 <ul>
 <li>Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot with <code>ggplot2</code> functions</li>
-<li>Develop comfort with creating and interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables.</li>
+<li>Be able to with creating and interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables.</li>
 </ul>
 <p><br></p>
 <p><strong>Spatial</strong></p>
@@ -338,21 +318,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand the basics of creating a map using <code>leaflet</code>, including adding points and choropleths to a base map</li>
 </ul>
 <p><br></p>
-<p><strong>Network and Interactive</strong></p>
-<ul>
-<li>TBD</li>
-</ul>
-<p><br></p>
-<p><strong>Shiny</strong></p>
-<ul>
-<li>TBD</li>
-</ul>
-<p><br></p>
-<p><strong>Tables</strong></p>
-<ul>
-<li>TBD</li>
-</ul>
-<p><br></p>
 </div>
 <div id="data-modeling" class="section level3 unnumbered hasAnchor">
 <h3>Data Modeling<a href="learning-goals.html#data-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -362,11 +327,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand the first steps that should be taken when you encounter a new data set</li>
 <li>Develop comfort in knowing how to explore data to understand it</li>
 <li>Develop comfort in formulating research questions</li>
-</ul>
-<p><br></p>
-<p><strong>Text Analysis</strong></p>
-<ul>
-<li>TBD</li>
 </ul>
 <p><br></p>
 
