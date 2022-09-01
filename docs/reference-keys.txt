@@ -12,3 +12,5 @@ exr:unnamed-chunk-22
 exr:unnamed-chunk-23
 exr:unnamed-chunk-24
 intro-to-r-rstudio-and-r-markdown
+r-functions-introduced
+r-as-a-calculator

@@ -411,3 +411,40 @@ Check out the codebook (hint: use ?) to understand what these data measure. Then
   f. List all of the unique entries in the `gsm` variable (no need to include NA).
   g. Compile the document into an html file.
 
+## Appendix: R Functions {-}
+
+### R as a calculator {-}
+
+
+
+| Function/Operator       | Action           | Example  |
+| ------------- |:-------------:| -----:|
+| `/`           | Division     |    `90/30` |
+| `*`           | Multiplication      |   `2*5`|
+| `+`           | Addition      |   `1+1` |
+| `-`           | Subtraction      |   `1-1` |
+| `^`           | Exponent/Power to      |   `3^2` |
+| `sqrt(x)`           | Square root      |   `sqrt(25)` |
+
+
+### R Basics {-}
+
+
+
+| Function/Operator       | Action           | Example  |
+| ------------- |:-------------:| -----:|
+| `install.packages('packagename')`           | Download a R package (function, data, etc.) from repository      |   `install.packages('fivethirtyeight')` |
+| `library(packagename)`           | Access a downloaded R package    |   `library(fivethirtyeight)` |
+| `?function_object_name`           | Opens the help/documentation for the function or object |   `?seq` |
+| `rep(x, times, each)`           | Repeat x a # times    |    `rep(5,8)` |
+| `seq(from,to,by)`           | Sequence generation      |   `2*5`|
+| `name <- value_output`           | Assign value or output to a name      |   `squared_3 <- 3^2` |
+| `View(x)`           | Open spreadsheet viewer of dataset   |   `View(fifa_audience)` |
+| `head(x)`           | Print the first 6 rows of a dataset     |   `head(fifa_audience)` |
+| `dim(x)`           | Print the dimensions (number of rows and columns) of a dataset    |   `dim(fifa_audience)` |
+| `names(x)`           | Print the names of the variables in a dataset |   `names(fifa_audience)` |
+| `class(x)`           | Print the class types argument or input |   `class(fifa_audience$confederation)` |
+| `factor(x)`           | Converts the argument or input to a factor class type (categorical variable) |   `factor(fifa_audience$confederation)` |
+| `levels(x)`           | Prints the unique categories of a factor |   `levels(factor(fifa_audience$confederation))` |
+
+

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-markdown-and-reproducible-research"><i class="fa fa-check"></i>R Markdown and Reproducible Research</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#appendix-r-functions"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-as-a-calculator"><i class="fa fa-check"></i>R as a calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r-rstudio-and-r-markdown.html"><a href="intro-to-r-rstudio-and-r-markdown.html#r-basics"><i class="fa fa-check"></i>R Basics</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -588,14 +593,14 @@ Solution
 <span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
 <span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
 <span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weigh…¹</span></span>
-<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3        11.3</span></span>
-<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9         9.1</span></span>
-<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8         7.3</span></span>
-<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9         6.3</span></span>
-<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1         5.4</span></span>
-<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1         4.2</span></span>
+<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted…¹</span></span>
+<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3           11.3</span></span>
+<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9            9.1</span></span>
+<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8            7.3</span></span>
+<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9            6.3</span></span>
+<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1            5.4</span></span>
+<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1            4.2</span></span>
 <span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable name ¹​gdp_weighted_share</span></span>
 <span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
@@ -729,7 +734,138 @@ If echo=FALSE in curly braces, the code is not shown. Otherwise, both code and o
 <li>List all of the unique entries in the <code>gsm</code> variable (no need to include NA).</li>
 <li>Compile the document into an html file.</li>
 </ol>
+</div>
+<div id="appendix-r-functions" class="section level2 unnumbered hasAnchor">
+<h2>Appendix: R Functions<a href="intro-to-r-rstudio-and-r-markdown.html#appendix-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-as-a-calculator" class="section level3 unnumbered hasAnchor">
+<h3>R as a calculator<a href="intro-to-r-rstudio-and-r-markdown.html#r-as-a-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function/Operator</th>
+<th align="center">Action</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>/</code></td>
+<td align="center">Division</td>
+<td align="right"><code>90/30</code></td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td align="center">Multiplication</td>
+<td align="right"><code>2*5</code></td>
+</tr>
+<tr class="odd">
+<td><code>+</code></td>
+<td align="center">Addition</td>
+<td align="right"><code>1+1</code></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td align="center">Subtraction</td>
+<td align="right"><code>1-1</code></td>
+</tr>
+<tr class="odd">
+<td><code>^</code></td>
+<td align="center">Exponent/Power to</td>
+<td align="right"><code>3^2</code></td>
+</tr>
+<tr class="even">
+<td><code>sqrt(x)</code></td>
+<td align="center">Square root</td>
+<td align="right"><code>sqrt(25)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="r-basics" class="section level3 unnumbered hasAnchor">
+<h3>R Basics<a href="intro-to-r-rstudio-and-r-markdown.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="44%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function/Operator</th>
+<th align="center">Action</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>install.packages('packagename')</code></td>
+<td align="center">Download a R package (function, data, etc.) from repository</td>
+<td align="right"><code>install.packages('fivethirtyeight')</code></td>
+</tr>
+<tr class="even">
+<td><code>library(packagename)</code></td>
+<td align="center">Access a downloaded R package</td>
+<td align="right"><code>library(fivethirtyeight)</code></td>
+</tr>
+<tr class="odd">
+<td><code>?function_object_name</code></td>
+<td align="center">Opens the help/documentation for the function or object</td>
+<td align="right"><code>?seq</code></td>
+</tr>
+<tr class="even">
+<td><code>rep(x, times, each)</code></td>
+<td align="center">Repeat x a # times</td>
+<td align="right"><code>rep(5,8)</code></td>
+</tr>
+<tr class="odd">
+<td><code>seq(from,to,by)</code></td>
+<td align="center">Sequence generation</td>
+<td align="right"><code>2*5</code></td>
+</tr>
+<tr class="even">
+<td><code>name &lt;- value_output</code></td>
+<td align="center">Assign value or output to a name</td>
+<td align="right"><code>squared_3 &lt;- 3^2</code></td>
+</tr>
+<tr class="odd">
+<td><code>View(x)</code></td>
+<td align="center">Open spreadsheet viewer of dataset</td>
+<td align="right"><code>View(fifa_audience)</code></td>
+</tr>
+<tr class="even">
+<td><code>head(x)</code></td>
+<td align="center">Print the first 6 rows of a dataset</td>
+<td align="right"><code>head(fifa_audience)</code></td>
+</tr>
+<tr class="odd">
+<td><code>dim(x)</code></td>
+<td align="center">Print the dimensions (number of rows and columns) of a dataset</td>
+<td align="right"><code>dim(fifa_audience)</code></td>
+</tr>
+<tr class="even">
+<td><code>names(x)</code></td>
+<td align="center">Print the names of the variables in a dataset</td>
+<td align="right"><code>names(fifa_audience)</code></td>
+</tr>
+<tr class="odd">
+<td><code>class(x)</code></td>
+<td align="center">Print the class types argument or input</td>
+<td align="right"><code>class(fifa_audience$confederation)</code></td>
+</tr>
+<tr class="even">
+<td><code>factor(x)</code></td>
+<td align="center">Converts the argument or input to a factor class type (categorical variable)</td>
+<td align="right"><code>factor(fifa_audience$confederation)</code></td>
+</tr>
+<tr class="odd">
+<td><code>levels(x)</code></td>
+<td align="center">Prints the unique categories of a factor</td>
+<td align="right"><code>levels(factor(fifa_audience$confederation))</code></td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
 </div>
             </section>
