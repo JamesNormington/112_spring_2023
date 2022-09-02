@@ -228,7 +228,7 @@ suppressPackageStartupMessages(library(knitr))
 kable(head(subb), font_size = 10)
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Before diving into any visualizations of these data, we first must understand its structure and contents. Discuss the following:
 
@@ -238,7 +238,7 @@ c.  Check out the codebook for `bechdel` (`?bechdel`). What's the difference bet
 
 > ANSWER:
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 We'll consider *univariate* visualizations of the `clean_test` and `budget_2013` variables. Discuss the following:
 
@@ -259,7 +259,7 @@ To answer the above research question, we can explore the categorical `clean_tes
 table(bechdel$clean_test)
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Examine the table of `clean_test` data, and try to interpret it. What insights does it provide about the original research question?
 
@@ -270,7 +270,7 @@ Because `clean_test` is a categorical variable, a **bar chart** provides an appr
 -   **variability**: Are cases evenly spread out among the categories or are some categories more common than others?\
 -   **contextual implications**: In the context of your research, what do you learn from the bar chart? How would you describe your findings to a broad audience?
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Try out the code below that builds up from a simple to a customized bar chart. At each step determine how each piece of code contributes to the plot.
 
@@ -301,13 +301,13 @@ geom_bar(fill = "purple") +
 labs(x = "Outcome of Bechdel Test", y = "Number of movies")
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Summarize the visualization: what did you learn about the distribution of the `clean_test` variable?
 
 > ANSWER:
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Let's return to our research question: What percent of movies in the sample pass the Bechdel test? Among those that fail the test, in which way do they fail?
 
@@ -333,7 +333,7 @@ In their examination, keep your eyes on the following.
 
 Histograms are constructed by (1) dividing up the observed range of the variable into 'bins' of equal width; and (2) counting up the number of cases that fall into each bin.
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Try out the code below. At each step determine how each piece of code contributes to the plot.
 
@@ -373,7 +373,7 @@ ggplot(bechdel, aes(x = budget_2013)) +
   labs(x = "Budget ($)", y = "Number of movies")
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Summarize the visualizations.
 
@@ -387,7 +387,7 @@ c.  Why does adding `color = "white"` improve the visualization?
 
 **Density plots** are essentially smooth versions of the histogram. Instead of sorting cases into discrete bins, the "density" of cases is calculated across the entire range of values. The greater the number of cases, the greater the density! The density is then scaled so that the area under the density curve **always equals 1** and the area under any fraction of the curve represents the fraction of cases that lie in that range.
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Try the following code and assess what each line does.
 
@@ -417,7 +417,7 @@ ggplot(bechdel, aes(x = budget_2013)) +
   labs(x = "Budget ($)")
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 The histogram and density plot both allow us to visualize the distribution of a quantitative variable. What are the pros/cons of each? Discuss.
 
@@ -425,7 +425,7 @@ The histogram and density plot both allow us to visualize the distribution of a 
 
 ## Additional exercises {.unnumbered}
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 In July 2016, fivethirtyeight.com published the article ["Hip-Hop is Turning on Donald Trump""](https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/). You can find the supporting data table `hiphop_cand_lyrics` in the `fivethirtyeight` package:
 
@@ -450,7 +450,7 @@ b.  Use RStudio functions to:
 #fill in here
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Let's start our investigation of hip hop data by asking "Who?"; that is, let's identify patterns in which 2016 presidential candidates popped up in hip hop lyrics.
 
@@ -467,7 +467,7 @@ d.  Summarize your findings about the 2016 candidates in hip hop.
 #fill in here
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 Next, consider the release dates of the hip hop songs.
 
@@ -484,7 +484,7 @@ c.  Summarize your findings about release date
 #fill in here
 ```
 
-#### Exercise {-}
+#### Exercise {.unnumbered}
 
 No class will teach you everything you need to know about RStudio or programming in general. Thus, being able to find help online is an important skill. To this end, make a single visualization that incorporates the following modifications to your density plot from above. This will require a little Googling and/or use of the visualization cheat sheet.
 

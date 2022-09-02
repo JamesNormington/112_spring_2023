@@ -443,6 +443,7 @@ Check out the codebook (hint: use ?) to understand what these data measure. Then
 | `head(x)`           | Print the first 6 rows of a dataset     |   `head(fifa_audience)` |
 | `dim(x)`           | Print the dimensions (number of rows and columns) of a dataset    |   `dim(fifa_audience)` |
 | `names(x)`           | Print the names of the variables in a dataset |   `names(fifa_audience)` |
+| `$`           | Used to access one variable in a data set based on its name |   `fifa_audience$confederation` |
 | `class(x)`           | Print the class types argument or input |   `class(fifa_audience$confederation)` |
 | `factor(x)`           | Converts the argument or input to a factor class type (categorical variable) |   `factor(fifa_audience$confederation)` |
 | `levels(x)`           | Prints the unique categories of a factor |   `levels(factor(fifa_audience$confederation))` |

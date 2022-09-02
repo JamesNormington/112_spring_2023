@@ -22,35 +22,38 @@ library(ggplot2)
 
 ## Learning Goals {-}
 
-- Understand the Grammar of Graphics
-- Use ggplot2 to create basic layers of graphics
-- Understand the different basic univariate visualizations for categorical and quantiative variables
-
+-   Understand the Grammar of Graphics
+-   Use ggplot2 to create basic layers of graphics
+-   Understand the different basic univariate visualizations for categorical and quantitative variables
 
 ## Benefits of Visualizations {-}
 
-- Visualizations help us understand what we're working with: What are the scales of our variables?  Are there any outliers, i.e. unusual cases?  What are the patterns among our variables?    
-- This understanding will inform our next steps: What method of analysis / model is appropriate?    
-- Once our analysis is complete, visualizations are a powerful way to communicate our findings and tell a story.
+-   Visualizations help us understand what we're working with:
+    -   What are the scales of our variables?\
+    -   Are there any outliers, i.e. unusual cases?\
+    -   What are the patterns among our variables?\
+-   This understanding will inform our next steps: 
+  - What method of analysis / model is appropriate?\
+-   Once our analysis is complete, visualizations are a powerful way to communicate our findings and tell a story.
 
 ## Glyphs {-}
 
 In its original sense, in archeology, a glyph is a carved symbol.
 
-
 ### Data Glyph {-}
 
-A data glyph is also a mark, e.g. 
+A data glyph is also a mark. 
 
 The features of a data glyph encodes the value of variables. 
 
-* Some are very simple, e.g. a dot: 
-* Some combine different elements, e.g. a pointrange: 
-* Some are complicated, e.g. a dotplot:
+* Some are very simple, e.g. a dot 
+* Some combine different elements, e.g. a pointrange 
+* Some are complicated, e.g. a dotplot
 
 ### Components of Graphics {-}
 
 ```{r echo=FALSE, message=FALSE}
+# Just run this code
 set.seed(102)
 require(NHANES)
 n <- 75
@@ -71,7 +74,9 @@ Tmp <-
   filter(complete.cases(.)) %>%
   data.frame()
 ```
+
 ```{r fig-bp, echo=FALSE, fig.margin=TRUE,fig.cap="Blood pressure readings from a random subset of the NHANES data set."}
+# focus on the plot for now
 ggplot(data = Tmp) + geom_point(mapping = aes(x = sbp, y = dbp, shape = sex, color = smoker), size = 5, alpha = .8) + xlab("Systolic BP") + ylab("Diastolic BP") + scale_color_manual(values = c("#F8766D", "#00BFC4", "#00BA38"))
 ```
 
@@ -237,6 +242,10 @@ Before diving into any visualizations of these data, we first must understand it
 
 > ANSWER: 
 
+```{r}
+
+```
+
 ```{exercise}
 We'll consider *univariate* visualizations of the `clean_test` and `budget_2013` variables. Discuss the following:
   
@@ -246,6 +255,7 @@ We'll consider *univariate* visualizations of the `clean_test` and `budget_2013`
 ```
 
 > ANSWER:
+
 
 ### Categorical univariate visualization {-}
 
@@ -265,6 +275,7 @@ Examine the table of `clean_test` data, and try to interpret it. What insights d
 ```
 
 > ANSWER:
+
 
 
 Because `clean_test` is a categorical variable, a **bar chart** provides an appropriate visualization of this table.  In examining the bar chart, keep your eyes on the following.
@@ -318,6 +329,10 @@ Let's return to our research question: What percent of movies in the sample pass
 ```
 
 > ANSWER: 
+
+```{r}
+
+```
 
 ### Quantitative univariate visualization {-}
 
@@ -392,7 +407,8 @@ Summarize the visualizations.
 
 ```
 
-> ANSWER:
+> ANSWER: 
+
 
 #### Density plots {-}
 
@@ -447,7 +463,7 @@ In July 2016, fivethirtyeight.com published the article ["Hip-Hop is Turning on 
 
 ```{r eval=TRUE}
 library(fivethirtyeight)
-data("hiphop_cand_lyrics")
+data(hiphop_cand_lyrics)
 ```
 
 a. What are the *cases* in this data set?    
