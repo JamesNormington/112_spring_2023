@@ -969,9 +969,9 @@ Solution
 <h3>Basic R functions<a href="intro-to-data-visualization.html#basic-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
-<col width="35%" />
-<col width="41%" />
-<col width="23%" />
+<col width="21%" />
+<col width="44%" />
+<col width="34%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1003,9 +1003,9 @@ Solution
 <h3>ggplot2 foundational functions<a href="intro-to-data-visualization.html#ggplot2-foundational-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
-<col width="35%" />
-<col width="41%" />
-<col width="23%" />
+<col width="16%" />
+<col width="54%" />
+<col width="28%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1025,20 +1025,36 @@ Solution
 <td align="center">Create a blank canvas that can create a visualization based on data with aesthetic mapping</td>
 <td align="right"><code>ggplot(data = bechdel, aes(x = budget_2013))</code></td>
 </tr>
+<tr class="odd">
+<td><code>+ geom_bar(aes(x))</code></td>
+<td align="center">Add a bar plot</td>
+<td align="right"><code>geom_bar(aes(x = clean_test))</code></td>
+</tr>
+<tr class="even">
+<td><code>+ geom_point(aes(x,y))</code></td>
+<td align="center">Add a scatterplot</td>
+<td align="right"><code>geom_bar(aes(x = year,y=budget_2013))</code></td>
+</tr>
+<tr class="odd">
+<td><code>+ geom_histogram(aes(x))</code></td>
+<td align="center">Add a histogram</td>
+<td align="right"><code>geom_histogram(aes(x = budget_2013))</code></td>
+</tr>
+<tr class="even">
+<td><code>+ geom_density(aes(x))</code></td>
+<td align="center">Add a density plot</td>
+<td align="right"><code>geom_density(aes(x = budget_2013))</code></td>
+</tr>
 </tbody>
 </table>
-<div class="line-block"><code>+ geom_bar(aes(x))</code> | Add a bar plot | <code>geom_bar(aes(x = clean_test))</code>|<br />
-<code>+ geom_point(aes(x,y))</code> | Add a scatterplot | <code>geom_bar(aes(x = year,y=budget_2013))</code> |<br />
-<code>+ geom_histogram(aes(x))</code> | Add a histogram | <code>geom_histogram(aes(x = budget_2013))</code> |<br />
-<code>+ geom_density(aes(x))</code> | Add a density plot | <code>geom_density(aes(x = budget_2013))</code> |</div>
 </div>
 <div id="more-ggplot2-functions" class="section level3 unnumbered hasAnchor">
 <h3>more ggplot2 functions<a href="intro-to-data-visualization.html#more-ggplot2-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
-<col width="35%" />
-<col width="41%" />
-<col width="23%" />
+<col width="15%" />
+<col width="55%" />
+<col width="28%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1080,9 +1096,9 @@ Solution
 <h3>ggplot2 aesthetic mapping options<a href="intro-to-data-visualization.html#ggplot2-aesthetic-mapping-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <colgroup>
-<col width="35%" />
-<col width="41%" />
-<col width="23%" />
+<col width="19%" />
+<col width="52%" />
+<col width="28%" />
 </colgroup>
 <thead>
 <tr class="header">
