@@ -19,7 +19,7 @@ library(mosaic)
 -   Use ggplot2 to create basic layers of graphics
 -   Understand the different basic univariate visualizations for categorical and quantitative variables
 
-You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd). Put this in a new folder called `Day_02` in your folder for `COMP_STAT_112`. 
+You can download a template .Rmd of this activity [here](./template_rmd/02-Intro_Data_Viz_Assign.Rmd). Put this in a new folder called `Day_02` in your folder for `COMP_STAT_112`. 
 
 ## Benefits of Visualizations {.unnumbered}
 
