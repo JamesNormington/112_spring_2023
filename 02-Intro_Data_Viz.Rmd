@@ -19,7 +19,7 @@ library(mosaic)
 -   Use ggplot2 to create basic layers of graphics
 -   Understand the different basic univariate visualizations for categorical and quantitative variables
 
-You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd).
+You can download a template .Rmd of this activity [here](template_rmd/02-Intro_Data_Viz.Rmd). Put this in a new folder called `Day_02` in your folder for `COMP_STAT_112`. 
 
 ## Benefits of Visualizations {.unnumbered}
 
@@ -667,7 +667,7 @@ Add two vertical lines to your plot: one representing the mean and the other rep
 ### Basic R functions {.unnumbered}
 
 | Function/Operator |                 Action                 |                       Example |
-|-------------------------|:---------------------------:|-----------------:|
+|-------------------------|:---------------------------:|------------------:|
 | `table(x)`        |   Frequency count of categories in x   |   `table(bechdel$clean_test)` |
 | `mean(x)`         | Average or mean of numeric values in x |   `mean(bechdel$budget_2013)` |
 | `median(x)`       |     Median of numeric values in x      | `median(bechdel$budget_2013)` |
@@ -675,7 +675,7 @@ Add two vertical lines to your plot: one representing the mean and the other rep
 ### ggplot2 foundation functions {.unnumbered}
 
 | Function/Operator          |                                           Action                                           |                                        Example |
-|-------------------------|:---------------------------:|-----------------:|
+|-------------------------|:---------------------------:|------------------:|
 | `ggplot(data)`             |            Create a blank canvas that can create a visualization based on data             |                       `ggplot(data = bechdel)` |
 | `ggplot(data,aes())`       | Create a blank canvas that can create a visualization based on data with aesthetic mapping | `ggplot(data = bechdel, aes(x = budget_2013))` |
 | `+ geom_bar(aes(x))`       |                                       Add a bar plot                                       |                `geom_bar(aes(x = clean_test))` |
@@ -686,7 +686,7 @@ Add two vertical lines to your plot: one representing the mean and the other rep
 ### more ggplot2 functions {.unnumbered}
 
 | Function/Operator        |                                            Action                                            |                                        Example |
-|-------------------------|:---------------------------:|-----------------:|
+|-------------------------|:---------------------------:|------------------:|
 | `+ xlab()`               |                                 Add an label for the x-axis                                  |                               `xlab('X axis')` |
 | `+ ylab()`               |                                 Add an label for the y-axis                                  |                               `ylab('Y axis')` |
 | `+ labs(x,y)`            |                               Add labels for the x and y-axis                                |             `labs(y = 'Y axis', x = 'X axis')` |
@@ -696,7 +696,7 @@ Add two vertical lines to your plot: one representing the mean and the other rep
 ### ggplot2 aesthetic mapping options {.unnumbered}
 
 | Function/Operator |                      Action                      |                   Example |
-|-------------------------|:---------------------------:|-----------------:|
+|-------------------------|:---------------------------:|------------------:|
 | `x`               |               variable for x-axis                |     `aes(x = clean_test)` |
 | `y`               |               variable for y-axis                |    `aes(y = budget_2013)` |
 | `color`           | variable for colors of points or strokes/outline | `aes(color = clean_test)` |
