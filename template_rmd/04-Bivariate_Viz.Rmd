@@ -1,5 +1,5 @@
 ---
-title: "Comp/Stat 112: Effective and Bivariate Visualizations"
+title: "Comp/Stat 112: Bivariate Visualizations"
 author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
 output:
   bookdown::html_document2:
@@ -11,7 +11,7 @@ output:
     number_sections: false
 ---
 
-```{r 03_setup, include=FALSE}
+```{r 04_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tufte)
 library(tidyverse)
@@ -22,33 +22,14 @@ library(babynames)
 library(readr)
 ```
 
-# Effective Visualizations and Bivariate Visualizations
+# Bivariate Visualizations
 
 ## Learning Goals {-}
 
-- Understand and apply the guiding principles of effective visualizations
+
 - Identify appropriate types of bivariate visualizations, depending on the type of variables (categorical, quantitative)
 - Create basic bivariate visualizations based on real data
 
-### Benefits of Visualizations {-}
-
-- Visualizations help us understand what we're working with: What are the scales of our variables?  Are there any outliers, i.e. unusual cases?  What are the patterns among our variables?    
-- This understanding will inform our next steps: What method of analysis / model is appropriate?    
-- Once our analysis is complete, visualizations are a powerful way to communicate our findings and tell a story.
-
-### Analysis of Graphics {-}
-
-There is not one right way to visualize a data set. However, there are guiding principles that distinguish between "good" and "bad" graphics. 
-
-One of the best ways to learn is by reading graphics and determining which ways of arranging thing are better or worse. So before jumping directly into theoretical principles, let's try some critical analysis on specific examples. 
-
-For each of the following graphics or sets of graphics, identify the following:
-
-1. the story the graphic is aiming to communicate to the audience
-2. effective features of the graphic
-3. areas for improvement
-
-> ANSWER: 
 
 ## Bivariate Visualizations {-}
 

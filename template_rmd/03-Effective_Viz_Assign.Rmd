@@ -1,0 +1,71 @@
+---
+title: "Comp/Stat 112: Effective Visualizations"
+author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
+output:
+  bookdown::html_document2:
+    split_by: none
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      toc_collapsed: true
+    number_sections: false
+---
+
+```{r 03_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+library(tufte)
+library(tidyverse)
+library(ggplot2)
+library(ggmap)
+library(fivethirtyeight)
+library(babynames) 
+library(readr)
+```
+
+# Effective Visualizations
+
+## Learning Goals {-}
+
+- Understand and apply the guiding principles of effective visualizations
+
+### Benefits of Visualizations {-}
+
+- Visualizations help us understand what we're working with: What are the scales of our variables?  Are there any outliers, i.e. unusual cases?  What are the patterns among our variables?    
+- This understanding will inform our next steps: What method of analysis / model is appropriate?    
+- Once our analysis is complete, visualizations are a powerful way to communicate our findings and tell a story.
+
+### Analysis of Graphics {-}
+
+There is not one right way to visualize a data set. However, there are guiding principles that distinguish between "good" and "bad" graphics. 
+
+One of the best ways to learn is by reading graphics and determining which ways of arranging thing are better or worse. So before jumping directly into theoretical principles, let's try some critical analysis on specific examples. 
+
+```{exercise}
+For your assigned graphics or sets of graphics, identify the following:
+
+1. the story the graphic is aiming to communicate to the audience
+2. effective features of the graphic
+3. areas for improvement
+```
+
+> ANSWER: 
+
+
+## Exercises {-}
+
+
+```{exercise}
+Pick one of the Science Notebook entries at https://www.edwardtufte.com/tufte (e.g., “Making better inferences from statistical graphics”). Write a brief reflection on the graphical principles that are illustrated by this entry.
+```
+
+> ANSWER: 
+
+```{exercise}
+Consider one of the more complicated data graphics listed at (http://mdsr-book.github.io/exercises.html#exercise_25):
+
+a. What story does the data graphic tell? What is the main message that you take away from it?
+b. Can the data graphic be described in terms of the Grammer of Graphics (frame, glyphs, aesthetics, facet, scale, guide)
+c. Critique and/or praise the visualization choices made by the designer. Do they work? Are they misleading? Thought-provoking? Brilliant? Are there things that you would have done differently? Justify your response.
+```
+
+> ANSWER: 
