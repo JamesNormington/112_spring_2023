@@ -361,10 +361,6 @@ While we will not cover all of visualization theory -- you can take a whole cour
 
 
 ```{exercise}
-Pick one of the Science Notebook entries  at https://www.edwardtufte.com/tufte (far right at website). Write a brief reflection on the graphical principles that are illustrated by this entry.
-```
-
-```{exercise}
 Consider one of the more complicated data graphics listed at (http://mdsr-book.github.io/exercises.html#exercise_25):
 
 a. What story does the data graphic tell? What is the main message that you take away from it?

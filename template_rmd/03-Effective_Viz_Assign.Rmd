@@ -13,32 +13,14 @@ output:
 
 ```{r 03_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
-library(tufte)
 library(tidyverse)
 library(ggplot2)
-library(ggmap)
-library(fivethirtyeight)
-library(babynames) 
-library(readr)
 ```
 
 # Effective Visualizations
 
-## Learning Goals {-}
-
-- Understand and apply the guiding principles of effective visualizations
-
-### Benefits of Visualizations {-}
-
-- Visualizations help us understand what we're working with: What are the scales of our variables?  Are there any outliers, i.e. unusual cases?  What are the patterns among our variables?    
-- This understanding will inform our next steps: What method of analysis / model is appropriate?    
-- Once our analysis is complete, visualizations are a powerful way to communicate our findings and tell a story.
-
 ### Analysis of Graphics {-}
 
-There is not one right way to visualize a data set. However, there are guiding principles that distinguish between "good" and "bad" graphics. 
-
-One of the best ways to learn is by reading graphics and determining which ways of arranging thing are better or worse. So before jumping directly into theoretical principles, let's try some critical analysis on specific examples. 
 
 ```{exercise}
 For your assigned graphics or sets of graphics, identify the following:
