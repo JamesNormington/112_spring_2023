@@ -311,7 +311,7 @@ knitr::include_graphics("images/rose1.png")
 
 3. Memory plays an important role in human cognition, but working memory is extremely limited.
 
-> **Implication**: Visualizations must serve as external aids to augment working memory.
+> **Implication**: Visualizations must serve as external aids to augment working memory. If a visualization is unfamiliar, then it won't be as effective.
 
 **Gestalt principles**
 
