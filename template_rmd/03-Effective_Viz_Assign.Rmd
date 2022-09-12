@@ -36,14 +36,9 @@ For your assigned graphics or sets of graphics, identify the following:
 ## Exercises {-}
 
 
-```{exercise}
-Pick one of the Science Notebook entries at https://www.edwardtufte.com/tufte (e.g., “Making better inferences from statistical graphics”). Write a brief reflection on the graphical principles that are illustrated by this entry.
-```
-
-> ANSWER: 
 
 ```{exercise}
-Consider one of the more complicated data graphics listed at (http://mdsr-book.github.io/exercises.html#exercise_25):
+Consider one of the more complicated data graphics listed for Exercise 2.5 at (http://mdsr-book.github.io/exercises.html#exercise_25):
 
 a. What story does the data graphic tell? What is the main message that you take away from it?
 b. Can the data graphic be described in terms of the Grammer of Graphics (frame, glyphs, aesthetics, facet, scale, guide)
