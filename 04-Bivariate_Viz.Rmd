@@ -623,4 +623,29 @@ NOTE: that your plot won't look *exactly* like the authors', but should be close
 knitr::include_graphics("images/bechdel_hist.jpeg")
 ```
 
- 
+## Appendix: R Functions {.unnumbered}
+
+### Data Wrangling R functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `filter(data,condition)`        |   Provide rows of a data set that satisfy a condition   |   `bechdel %>% filter(year >= 1990)` |
+| `mutate(data,varname =)`        |   Create a new variable  |   `bechdel %>% mutate(yearCat = cut(year, breaks = seq(1969, 2014, by = 5)))` |
+| `cut(x,breaks)`        |   Cut a quantitative variable into categories by the break points  |   `bechdel %>% mutate(yearCat = cut(year, breaks = seq(1969, 2014, by = 5)))` |
+
+### ggplot2 foundation functions {.unnumbered}
+
+| Function/Operator          |                                           Action                                           |                                        Example |
+|-------------------------|:---------------------------:|------------------:|
+| `ggplot(data)`             |            Create a blank canvas that can create a visualization based on data             |                       `ggplot(data = elect)` |
+| `+ geom_bar(aes(x))`       |                                       Add a bar plot                                       |                `geom_bar(aes(x = winrep_2016))` |
+| `+ geom_bar(aes(x,fill),position='fill')`       |                                       Add a propotional bar plot                                       |                `geom_bar(aes(x = winrep_2016,fill = StateColor),position='fill')` |
+| `+ geom_bar(aes(x,fill),position='dodge')`       |                                       Add a side-by-side bar plot                                       |                `geom_bar(aes(x = winrep_2016,fill = StateColor),position='dodge')` |
+| `+ geom_smooth(aes(x,y))`   |                                     Add a smoothed average curve of scatterplot                                      |        `geom_smooth()` |
+| `+ geom_smooth(aes(x,y),method='lm')`   |                                     Add a best fit line to a scatterplot                                      |        `geom_smooth(method='lm')` |
+| `+ geom_point(aes(x,y))`   |                                     Add a scatterplot                                      |        `geom_bar(aes(x = year,y=budget_2013))` |
+| `+ geom_text(aes(x,y,label))`   |                                     Add a text to a plot                                     |           `geom_text(aes(label=abb))` |
+| `+ facet_wrap(~x)`   |                                     Facet a plot (break into subplots based on groups)                                    |           `facet_wrap(~StateColor)` |
+
+
+
