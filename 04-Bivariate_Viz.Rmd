@@ -6,9 +6,9 @@ library(ggplot2)
 library(ggmap)
 library(tint)
 library(fivethirtyeight)
-library(babynames) 
+library(babynames)
 library(readr)
-knitr::opts_chunk$set(tidy = FALSE, message=FALSE, cache.extra = packageVersion('tufte'))
+knitr::opts_chunk$set(tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 # options(htmltools.dir.version = FALSE)
 ```
 
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(tidy = FALSE, message=FALSE, cache.extra = packageVersion(
 - Identify appropriate types of bivariate visualizations, depending on the type of variables (categorical, quantitative)
 - Create basic bivariate visualizations based on real data
 
-You can download a template .Rmd of this activity [here](template_rmd/04-Bivariate_Viz.Rmd). Put the file in a `Day_04` folder within your `COMP_STAT_112` folder.
+You can download a template .Rmd of this activity [here](template_rmd/04-Bivariate_Viz_Assign.Rmd). Put the file in a `Day_04` folder within your `COMP_STAT_112` folder.
 
 ## Bivariate Visualizations {-}
 
@@ -33,13 +33,15 @@ Begin by loading the data from "https://www.macalester.edu/~ajohns24/data/electi
 
 ```{r eval=FALSE}
 # Load data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv"
+elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
 
-# Check out the first rows of elect.  What are the units of observation?   
+# Check out the first rows of elect.  What are the units of observation?
 
-# How much data do we have?    
 
-# What are the names of the variables?    
+# How much data do we have?
 
+
+# What are the names of the variables?
 ```
 
 <details>
@@ -47,16 +49,16 @@ Begin by loading the data from "https://www.macalester.edu/~ajohns24/data/electi
 ```{r,collapse=TRUE}
 # Load data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv"
 elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
-    
-# Check out the first rows of elect.  
-# The units of observation are county election results 
-#  The variables are count name, vote counts for parties and total for presidential elections, and more
+
+# Check out the first rows of elect.
+# The units of observation are county election results
+#  The variables are county name, vote counts for parties and total for presidential elections, and more
 head(elect)
-    
-# There are 3,112 counties and 34 variables   
+
+# There are 3,112 counties and 34 variables
 dim(elect)
-    
-# See the long list below    
+
+# See the long list below
 names(elect)
 ```
 </details>
@@ -69,30 +71,29 @@ Explore the win column:
 ```
 
 ```{r eval=FALSE}
-#Construct a table (a numerical summary) of the number of counties that Trump won/lost
-table(???)
+# Construct a table (a numerical summary) of the number of counties that Trump won/lost
+table(xxx) # fill in the xxx
 
-#Attach a library needed for ggplots
-library(???)
+# Attach a library needed for ggplots
+library(xxx)
 
-#Construct a bar chart (a visual summary) of this variable.    
-ggplot(???, aes(???)) 
-ggplot(???, aes(???)) + 
-    geom_???()
+# Construct a bar chart (a visual summary) of this variable.
+ggplot(xxx, aes(xxx)) +
+  geom_xxx()
 ```
 
 <details>
   <summary>Solution</summary>
-```{r eval=FALSE}
-#Construct a table (a numerical summary) of the number of counties that Trump won/lost
+```{r eval=TRUE}
+# Construct a table (a numerical summary) of the number of counties that Trump won/lost
 table(elect$winrep_2016)
 
-#Attach a library needed for ggplots
+# Attach a library needed for ggplots
 library(ggplot2)
 
-#Construct a bar chart (a visual summary) of this variable.    
-ggplot(elect, aes(x = winrep_2016)) + 
-    geom_bar()
+# Construct a bar chart (a visual summary) of this variable.
+ggplot(elect, aes(x = winrep_2016)) +
+  geom_bar()
 ```
 </details>
 
@@ -104,31 +105,31 @@ The `perrep_2016` variable includes a bit more detail about Trump's support in e
 ```
 
 a. Since it's *quantitative* we need different tools to visually explore the variability in `perrep_2016`.  To this end, construct & interpret both a histogram and density plot of `perrep_2016`.  (Before you do, what do you anticipate?)    
-    ```{r eval=FALSE}
-    ggplot(elect, aes(???))
-        
-    #histogram
-    ggplot(elect, aes(???)) + 
-        geom_???(color="white")
-    
-    #density plot
-    ggplot(elect, aes(???)) + 
-        geom_???()
-    ```    
+
+```{r eval=FALSE}
+# histogram
+ggplot(elect, aes(xxx)) +
+  geom_xxx(color = "white")
+
+# density plot
+ggplot(elect, aes(xxx)) +
+  geom_xxx()
+```    
 
 <details>
   <summary>Solution</summary>
-```{r eval=FALSE}
-ggplot(elect, aes(x=perrep_2016))
+```{r eval=TRUE}
+# histogram
+ggplot(elect, aes(x = perrep_2016)) +
+  geom_histogram(color = "white")
 
-#histogram
-ggplot(elect, aes(x=perrep_2016)) + 
-    geom_histogram(color="white")
-
-#density plot
-ggplot(elect, aes(x = perrep_2016)) + 
-    geom_density()
+# density plot
+ggplot(elect, aes(x = perrep_2016)) +
+  geom_density()
 ```
+
+The vast majority of counties in the U.S. had a Republican majority vote (> 50%) within that county. 
+
 
 </details>
 
@@ -153,11 +154,13 @@ We've come up with a list of variables that might explain some of the variabilit
 
 Our goal is to construct visualizations that allow us to examine/identify the following features of the relationships among these variables:    
 
-- relationship *trends*    
+- relationship *trends* (direction and form)   
 - relationship *strength* (degree of variability from the trend)    
 - *outliers* in the relationship
 
-Before constructing visualizations of the relationship among any set of these variables, we need to understand what features these should have.  As with univariate plots, the appropriate visualization also depends upon whether the variables are quantitative or categorical. Recall some **basic rules in constructing graphics:** 
+Before constructing visualizations of the relationship among any set of these variables, we need to understand what features these should have.  As with univariate plots, the appropriate visualization also depends upon whether the variables are quantitative or categorical. 
+
+Recall some **basic rules in constructing graphics:** 
 
 - Each **quantitative variable** requires a new axis.  (We'll discuss later what to do when we run out of axes!)    
 - Each **categorical variable** requires a new way to "group" the graphic (eg: using colors, shapes, separate facets, etc to capture the grouping)    
@@ -174,10 +177,10 @@ Consider a subset  of the variables:
 ```{r echo=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library(dplyr))
 
-fd <- elect %>% 
-    filter(region %in% c(8039,28003,40129,29119,13247,27027)) %>% 
-    select(c(county, abb, perrep_2016, perrep_2012, winrep_2016, StateColor)) %>% 
-    mutate(perrep_2016 = round(perrep_2016,2), perrep_2012 = round(perrep_2012,2))
+fd <- elect %>%
+  filter(region %in% c(8039, 28003, 40129, 29119, 13247, 27027)) %>%
+  select(c(county, abb, perrep_2016, perrep_2012, winrep_2016, StateColor)) %>%
+  mutate(perrep_2016 = round(perrep_2016, 2), perrep_2012 = round(perrep_2012, 2))
 knitr::kable(fd)
 ```
 
@@ -186,21 +189,19 @@ In groups, sketch on paper a mock-up of a visualization of the relationship betw
 a. The relationship between `perrep_2016` (the response) and `perrep_2012` (the predictor).    
 
 b. The relationship between `perrep_2016` (the response) and `StateColor` (the predictor).  Think: how might we modify the below density plot of `perrep_2016` to distinguish between counties in red/purple/blue states?    
-    ```{r echo=FALSE}
-    library(ggplot2)
-    ```
+
     
-    ```{r fig.width=2, fig.height=2}
-    ggplot(elect, aes(x=perrep_2016)) + 
-        geom_density()
-    ```    
+```{r fig.width=2, fig.height=2}
+ggplot(elect, aes(x = perrep_2016)) +
+  geom_density()
+```    
 
 c. The relationship between Trump's county-levels wins/losses `winrep_2016` (the response) and `StateColor` (the predictor).  Think: how might we modify the below bar plot of `winrep_2016` to distinguish between counties in red/purple/blue states? 
 
-    ```{r fig.width=3, fig.height=2}
-    ggplot(elect, aes(x=winrep_2016)) + 
-        geom_bar()
-    ```    
+```{r fig.width=3, fig.height=2}
+ggplot(elect, aes(x = winrep_2016)) +
+  geom_bar()
+```    
 
 ### Visualizing quantitiative vs quantitative relationships {-}
 
@@ -213,23 +214,45 @@ Both `perrep_2016` and `perrep_2012` are quantitative, thus require their own ax
 
 a. Make a scatterplot of `perrep_2016` vs `perrep_2012` with different glyphs: points or text.    
   
-    ```{r eval=FALSE}
-    #just a graphics frame
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012))
-   
-    #add a layer with "point" glyphs
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-        geom_point()    
-    
-    #add a layer with symbol glyphs
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-        geom_point(shape=3)
-    
-    #add a layer with "text" glyphs
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-        geom_text(aes(label=abb))
-        
-    ```    
+```{r eval=FALSE}
+# just a graphics frame
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012))
+
+# add a layer with "point" glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point()
+
+# add a layer with symbol glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point(shape = 3)
+
+# add a layer with "text" glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_text(aes(label = abb))
+```    
+
+<details>
+  <summary>Solution</summary>
+```{r eval=TRUE}
+# just a graphics frame
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012))
+
+# add a layer with "point" glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point()
+
+# add a layer with symbol glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point(shape = 3)
+
+# add a layer with "text" glyphs
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_text(aes(label = abb))
+```   
+
+</details>
+
+\
 
 b. Summarize the relationship between the Republican candidates' support in 2016 and 2012.  Be sure to comment on:    
         - the strength of the relationship (weak/moderate/strong)    
@@ -254,17 +277,30 @@ The trend of the relationship between `perrep_2016` and `perrep_2012` is clearly
 
 a. Add a layer with a model smooth:  
   
-    ```{r eval=FALSE}
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-        geom_point() + 
-        geom_smooth()
-    ```
+```{r eval=FALSE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point() +
+  geom_smooth()
+```
+
+<details>
+  <summary>Solution</summary>
+```{r eval=TRUE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point() +
+  geom_smooth()
+``` 
+
+</details>
+
+\  
+
 b. Construct a new plot that contains the model smooth but does not include the individual cases (eg: point glyphs).    
 
 <details>
   <summary>Solution</summary>
-```{r eval=FALSE, collapse = TRUE}
-ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
+```{r eval=TRUE, collapse = TRUE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
   geom_smooth()
 ```
 </details>
@@ -281,16 +317,23 @@ There are fewer data points at the "ends" so there is more uncertainty about the
 
 d. By default, `geom_smooth` adds a smooth, localized model line.  To examine the "best" *linear model*, we can specify `method="lm"`:    
   
-    ```{r eval=FALSE}
-    ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-        geom_point() + 
-        geom_smooth(method="lm")
-    ```    
+```{r eval=FALSE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```    
 
+<details>
+  <summary>Solution</summary>
+```{r eval=TRUE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```      
+</details>
 
 ```{exercise name="Modify the Scatterplots"}
-
-  As with univariate plots, we can change the aesthetics of scatterplots.    
+As with univariate plots, we can change the aesthetics of scatterplots.    
 
 ```
 
@@ -303,10 +346,11 @@ d. Why is transparency useful in this particular graphic?
    
 <details>
   <summary>Solution</summary>
-```{r, eval=FALSE}
-ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) + 
-    geom_point(color="red",alpha=0.1) +
-    labs(x="Romney 2012 support (%)",y="Trump 2016 support (%)")
+```{r, eval=TRUE}
+ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
+  geom_point(color = "red", alpha = 0.1) +
+  labs(x = "Romney 2012 support (%)", y = "Trump 2016 support (%)") + 
+  theme_classic()
 ```
 </details>
  
@@ -314,8 +358,8 @@ ggplot(elect, aes(y=perrep_2016, x=perrep_2012)) +
  
     
 ```{exercise name="More Scatterplots"}
+2012 results aren't the only possible predictor of 2016 results.  Consider two more possibilities.    
 
-  2012 results aren't the only possible predictor of 2016 results.  Consider two more possibilities.    
 ```
 
 a. Construct a scatterplot of `perrep_2016` and `median_rent`.  Summarize the relationship between these two variables.    
@@ -329,9 +373,11 @@ Consider a univariate histogram and density plot of `perrep_2016`:
 ```{r echo=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library(gridExtra))
 suppressPackageStartupMessages(library(ggplot2))
-g1 = ggplot(elect, aes(x=perrep_2016)) + geom_histogram(color="white")
-g2 = ggplot(elect, aes(x=perrep_2016)) + geom_density(fill="white")
-grid.arrange(g1,g2,ncol=2)
+g1 <- ggplot(elect, aes(x = perrep_2016)) +
+  geom_histogram(color = "white")
+g2 <- ggplot(elect, aes(x = perrep_2016)) +
+  geom_density(fill = "white")
+grid.arrange(g1, g2, ncol = 2)
 ```     
 
 To visualize the relationship between Trump's 2016 support (`perrep_2016`) and the `StateColor` (categorical) we need to incorporate a grouping mechanism.  Work through the several options below.    
@@ -341,29 +387,35 @@ We can show density plots for each state color next to each other:
 ```
 
 a. Construct a density plot for each group.     
-    ```{r eval=FALSE}
-    ggplot(elect, aes(x=perrep_2016, fill=StateColor)) + 
-        geom_density()
-    ```    
+```{r eval=FALSE}
+ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
+  geom_density()
+```    
+
 b.  Notice that `ggplot` randomly assigns colors to group based on alphabetical order.  In this example, the random color doesn't match the group itself (red/purple/blue)!  We can fix this:    
-    ```{r eval=FALSE}
-    ggplot(elect, aes(x=perrep_2016, fill=StateColor)) + 
-        geom_density() + 
-        scale_fill_manual(values=c("blue","purple","red"))
-    ```    
-c. The overlap between the groups makes it difficult to explore the features of each.  One option is to add *transparency* to the density plots:    
-    ```{r eval=FALSE}
-    ggplot(elect, aes(x=perrep_2016, fill=StateColor)) + 
-        geom_density(alpha=0.5) + 
-        scale_fill_manual(values=c("blue","purple","red"))
-    ```    
-d. Yet another option is to separate the density plots into separate "facets" defined by group:    
-    ```{r eval=FALSE}
-    ggplot(elect, aes(x=perrep_2016, fill=StateColor)) + 
-        geom_density(alpha=0.5) + 
-        scale_fill_manual(values=c("blue","purple","red")) + 
-        facet_wrap( ~ StateColor)
-    ```
+
+```{r eval=FALSE}
+ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```    
+
+c. The overlap between the groups makes it difficult to explore the features of each.  One option is to add *transparency* to the density plots:   
+
+```{r eval=FALSE}
+ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```    
+
+d. Yet another option is to separate the density plots into separate "facets" defined by group:  
+
+```{r eval=FALSE}
+ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("blue", "purple", "red")) +
+  facet_wrap(~ StateColor)
+```
     
 
 ```{exercise name="Side-by-Side Histograms"}
@@ -371,10 +423,11 @@ Let's try a similar strategy using histograms to illustrate the relationship bet
 ```
 
 a. Start with the default histogram:    
-    ```{r eval=FALSE}
-    ggplot(elect, aes(x=perrep_2016, fill=StateColor)) + 
-        geom_histogram(color="white") 
-    ```
+```{r eval=FALSE}
+ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
+geom_histogram(color = "white")
+```
+
 b. That's not very helpful!  Separate the histograms into separate facets for each `StateColor` group.    
 
 ```{exercise name="More Options!"}
@@ -382,19 +435,20 @@ Density plots and histograms aren't the only type of viz we might use...
 ```
 
 a. Construct side-by-side violins and side-by-side boxplots (see description below).    
-    ```{r eval=FALSE}
-    #violins instead
-    ggplot(elect, aes(y=perrep_2016, x=StateColor)) + 
-        geom_violin() 
+```{r eval=FALSE}
+# violins instead
+ggplot(elect, aes(y = perrep_2016, x = StateColor)) +
+  geom_violin()
 
-    #boxes instead
-    ggplot(elect, aes(y=perrep_2016, x=StateColor)) + 
-        geom_boxplot() 
-    ```    
-    Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable: 
+# boxes instead
+ggplot(elect, aes(y = perrep_2016, x = StateColor)) +
+  geom_boxplot()
+```    
+
+Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable: 
     
 ```{r, out.width = "400px",echo=FALSE}
-knitr::include_graphics("https://www.macalester.edu/~dshuman1/data/112/Boxplot.png")
+knitr::include_graphics("images/Boxplot.png")
 ```
 
 b. In the future, we'll typically use *density plots* instead of histograms, violins, and boxes.  Explain at least one pro and one con of the density plot.    
@@ -409,7 +463,8 @@ Let's not forget the most important purpose of these visualizations!  Summarize 
 Finally, suppose that instead of Trump's percentage support, we simply want to explore his county-level wins/losses:    
 
 ```{r echo=FALSE,fig.width=4, fig.height=4}
-ggplot(elect, aes(x=winrep_2016)) + geom_bar()
+ggplot(elect, aes(x = winrep_2016)) +
+  geom_bar()
 ```
 
 
@@ -422,24 +477,24 @@ We saw above that we can incorporate a new categorical variable into a visualiza
 ```
 
 a. Construct the following 4 bar plot visualizations.    
+
     ```{r eval=FALSE}
-    #a stacked bar plot
-    ggplot(elect, aes(x=StateColor, fill=winrep_2016)) + 
-        geom_bar()
-    
-    #a side-by-side bar plot
-    ggplot(elect, aes(x=StateColor, fill=winrep_2016)) + 
-        geom_bar(position="dodge")
-    
-    #a proportional bar plot
-    ggplot(elect, aes(x=StateColor, fill=winrep_2016)) + 
-        geom_bar(position="fill")    
-    
-    #faceted bar plot
-    ggplot(elect, aes(x=StateColor, fill=winrep_2016)) + 
-        geom_bar() +
-        facet_wrap( ~ winrep_2016)
-    
+# a stacked bar plot
+ggplot(elect, aes(x = StateColor, fill = winrep_2016)) +
+  geom_bar()
+
+# a side-by-side bar plot
+ggplot(elect, aes(x = StateColor, fill = winrep_2016)) +
+  geom_bar(position = "dodge")
+
+# a proportional bar plot
+ggplot(elect, aes(x = StateColor, fill = winrep_2016)) +
+  geom_bar(position = "fill")
+
+# faceted bar plot
+ggplot(elect, aes(x = StateColor, fill = winrep_2016)) +
+  geom_bar() +
+  facet_wrap(~winrep_2016)
     ```    
 
 b. Name one pro and one con of using the "proportional bar plot" instead of one of the other three options.    
@@ -457,7 +512,7 @@ hotdogs <- read_csv("http://datasets.flowingdata.com/hot-dog-contest-winners.csv
 ```   
 
 ```{exercise}
-   
+Address the following:
    
 a. Construct a visualization of the winning number of hot dogs by year. THINK: Which is the response variable?      
 b. Temporal trends are often visualized using a line plot.  Add a `geom_line()` layer to your plot from part (a).       
@@ -474,12 +529,13 @@ All but two of the past winners are from the U.S. or Japan:
 ```{r}
 table(hotdogs$Country)
 ```    
+
 Use the following code to *filter* out just the winners from U.S. and Japan and name this `hotdogsSub`.  (Don't worry about the code itself - we'll discuss similar syntax later in the semester!)    
 
 ```{r}
 library(dplyr)
-hotdogsSub <- hotdogs %>% 
-    filter(Country %in% c("Japan","United States"))
+hotdogsSub <- hotdogs %>%
+  filter(Country %in% c("Japan", "United States"))
 ```    
 
 a. Using a density plot approach *without* facets, construct a visualization of how the number of hot dogs eaten varies by country.
@@ -507,36 +563,36 @@ In investigating budgets and profits, the authors "focus on films released from 
 
 ```{r}
 library(dplyr)
-Beyond1990 <- bechdel %>% 
-    filter(year >= 1990)
+Beyond1990 <- bechdel %>%
+  filter(year >= 1990)
 ```
 
 ```{exercise}
-
-   
+Address the following:
+  
 a. Construct a visualization that addresses the following research question: Do bigger budgets (`budget_2013`) pay off with greater box office returns (`domgross_2013`)?  In constructing this visualization, add a smooth to highlight trends and pay attention to which of these variables is the response.       
 b. Using your visualization as supporting evidence, answer the research question.          
 c. Part of the fivethirtyeight article focuses on how budgets (`budget_2013`) differ among movies with different degrees of female character development (`clean_test`).  Construct a visualization that highlights the relationship between these two variables.  There are many options - some are better than others!       
 d. Using your visualization as supporting evidence, address fivethirtyeight's concerns.  
+```
 
 ```{r eval=FALSE, echo=FALSE}
-#a
-ggplot(Beyond1990, aes(y=domgross_2013, x=budget_2013)) + 
-            geom_point(alpha=0.1) + 
-            geom_smooth()
+# a
+ggplot(Beyond1990, aes(y = domgross_2013, x = budget_2013)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth()
 
-#b
-#profits tend to increase with budget but the relationship is fairly weak
+# b
+# profits tend to increase with budget but the relationship is fairly weak
 
-#c
-#one option:
-ggplot(Beyond1990, aes(x=budget_2013, fill=clean_test)) + 
-            geom_density(alpha=0.5) + 
-            facet_wrap(~ clean_test)
+# c
+# one option:
+ggplot(Beyond1990, aes(x = budget_2013, fill = clean_test)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~clean_test)
 
-#d
-#Budgets tend to be smaller among movies the pass the Bechdel test. 
-
+# d
+# Budgets tend to be smaller among movies the pass the Bechdel test.
 ```
 
 ```{exercise}
@@ -545,34 +601,26 @@ NOTE: The following exercise is inspired by a similar exercise proposed by Alber
 ```
 
 a. Summarize the trends captured by this plot.  (How has the representation of women in movies evolved over time?)   
-b. Recreate this plot!  To do so, you'll need to create a new data set named `newbechdel` in which the order of the Bechdel categories (`clean_test`) and the year categories (`yearCat`) match those used by fivethirtyeight.  Don't worry about the syntax:    
-    ```{r}
-    library(dplyr)
-    newbechdel <- bechdel %>% 
-        mutate(clean_test=factor(bechdel$clean_test, c("nowomen","notalk","men","dubious","ok"))) %>% 
-        mutate(yearCat=cut(year, breaks=seq(1969,2014,by=5)))
-    ```    
-    Further, you'll need to add the following layer in order to get a color scheme that's close to that in the article:    
-    ```{r eval=FALSE}
-    scale_fill_manual(values = c("red","salmon","pink","steelblue1","steelblue4"))
-    ```
+b. Recreate this plot from the article!  
+
+To do so, you'll need to create a new data set named `newbechdel` in which the order of the Bechdel categories (`clean_test`) and the year categories (`yearCat`) match those used by fivethirtyeight.  Don't worry about the syntax:    
+```{r}
+library(dplyr)
+newbechdel <- bechdel %>%
+mutate(clean_test = factor(bechdel$clean_test, c("nowomen", "notalk", "men", "dubious", "ok"))) %>%
+mutate(yearCat = cut(year, breaks = seq(1969, 2014, by = 5)))
+```    
+
+Further, you'll need to add the following layer in order to get a color scheme that's close to that in the article: 
     
-    NOTE that your plot won't look *exactly* like the authors', but should be close to this:    
+```{r eval=FALSE}
+scale_fill_manual(values = c("red", "salmon", "pink", "steelblue1", "steelblue4"))
+```
+    
+NOTE: that your plot won't look *exactly* like the authors', but should be close to this:    
     
 ```{r, out.width = "800px",echo=FALSE}
 knitr::include_graphics("images/bechdel_hist.jpeg")
 ```
 
  
-
-
-
-
-
-
-
-
-
-
-
-
