@@ -106,7 +106,8 @@ head(fd)
 
 In groups, sketch on paper a mock-up of a visualization of the relationship between the given pair of variables (i.e., what type of chart is appropriate to demonstrate the relationship?):
 
-a. The relationship between `perrep_2016` (the response) and `perrep_2012` (the predictor).    
+a. The relationship between `perrep_2016` (the response) and `perrep_2012` (the predictor).  
+
 > ANSWER [describe sketch]: 
 
 b. The relationship between `perrep_2016` (the response) and `StateColor` (the predictor).  Think: how might we modify the below density plot of `perrep_2016` to distinguish between counties in red/purple/blue states?  
@@ -139,7 +140,7 @@ Both `perrep_2016` and `perrep_2012` are quantitative, thus require their own ax
 
 a. Make a scatterplot of `perrep_2016` vs `perrep_2012` with different glyphs: points or text.    
   
-> ANSWER:  Run code below and note the impact on the graphic.
+> ANSWER:  Run code below and look.
 
 ```{r eval=TRUE}
 # just a graphics frame
@@ -171,7 +172,7 @@ The trend of the relationship between `perrep_2016` and `perrep_2012` is clearly
 
 a. Add a layer with a model smooth:  
  
-> ANSWER: Run Code Below and note the impact on the graphic.
+> ANSWER: Run Code Below and look.
 
 ```{r eval=TRUE}
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
@@ -345,7 +346,7 @@ ggplot(elect, aes(y = perrep_2016, x = StateColor)) +
 
 Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable. 
     
-b. In the future, we'll typically use *density plots* instead of histograms, violins, and boxes.  Explain at least one pro and one con of the density plot.    
+b. In the future, we'll typically use *density plots* instead of histograms, violins, and boxplots.  Explain at least one pro and one con of the density plot.    
   
 > ANSWER:
 
@@ -414,7 +415,8 @@ hotdogs <- read_csv("http://datasets.flowingdata.com/hot-dog-contest-winners.csv
 ```   
 
 ```{exercise}
-
+Address the following:
+  
 a. Construct a visualization of the winning number of hot dogs by year. THINK: Which is the response variable?      
 b. Temporal trends are often visualized using a line plot.  Add a `geom_line()` layer to your plot from part (a).       
 c. Summarize your observations about the temporal trends in the hot dog contest.    
@@ -540,7 +542,7 @@ newbechdel <- bechdel %>%
     
 Further, you'll need to add the following layer in order to get a color scheme that's close to that in the article:   
     
-```{r eval=TRUE}
+```{r eval=FALSE}
 scale_fill_manual(values = c("red", "salmon", "pink", "steelblue1", "steelblue4"))
 ```
     
