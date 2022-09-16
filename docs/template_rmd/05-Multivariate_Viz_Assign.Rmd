@@ -1,47 +1,30 @@
+---
+title: "Comp/Stat 112: Multivariate Visualization"
+author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
+output:
+  bookdown::html_document2:
+    split_by: none
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      toc_collapsed: true
+    number_sections: false
+---
+
 ```{r 04_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tidyverse)
 library(ggplot2)
 library(gplots)
 ```
 
-# Multivariate Visualizations
 
-## Learning Goals {-}
-
-- Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot
-- Develop comfort with interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
-
-You can download a template .Rmd of this activity [here](template_rmd/04-Multivariate_Viz.Rmd).
-
-## Adding More Aesthetic Attributes {-}
+# Adding More Aesthetic Attributes {-}
 
 ### Exploring SAT Scores {-}
 
-Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state's education system.  The `education` data stored at [https://www.macalester.edu/~ajohns24/data/sat.csv](https://www.macalester.edu/~ajohns24/data/sat.csv) contain various education variables for each state:
-
 ```{r}
 education <- read.csv("https://www.macalester.edu/~ajohns24/data/sat.csv")
-```
-
-```{r, echo=FALSE}
-knitr::kable(
-  education[1:6, ],
-  caption = "The first few rows of the SAT data."
-)
-```
-
-A codebook is provided by Danny Kaplan who also made these data accessible:
-
-```{r, echo=FALSE,out.width="750px",fig.cap="Codebook for SAT data. Source: https://www.macalester.edu/~kaplan/ISM/datasets/data-documentation.pdf"}
-knitr::include_graphics("images/SATcodebook.png")
-```
-
-To examine the variability in average SAT scores from state to state, let's start with a univariate density plot:
-
-```{r, fig.width=6,fig.height=3}
-ggplot(education, aes(x = sat)) +
-  geom_density(fill = "blue", alpha = .5)
 ```
 
 The first question we'd like to answer is to what degree do per pupil spending (`expend`) and teacher `salary` *explain* this variability? We can start by plotting each against `sat`, along with a best fit linear regression model:
@@ -58,14 +41,23 @@ ggplot(education, aes(y = sat, x = expend)) +
 
 ```{exercise}
 Is there anything that surprises you in the above plots? What are the relationship trends?
-
 ```
 
+> ANSWER: 
 
 ```{exercise}
 Make a single scatterplot visualization that demonstrates the relationship between `sat`, `salary`, and `expend`. Summarize the trivariate relationship between `sat`, `salary`, and `expend`. 
 ```
 *Hints: 1. Try using the color or size aesthetics to incorporate the expenditure data. 2. Include some model smooths with `geom_smooth()` to help highlight the trends.*
+
+> ANSWER: 
+
+```{r}
+#fill in 
+
+
+```
+
 
 
 ```{exercise}
@@ -73,9 +65,38 @@ The `fracCat` variable in the `education` data categorizes the fraction of the s
 ```
 
 a. Make a univariate visualization of the `fracCat` variable to better understand how many states fall into each category.   
+
+> ANSWER: 
+
+```{r}
+#fill in 
+
+
+```
+
 b. Make a bivariate visualization that demonstrates the relationship between `fracCat` and `sat`. What story does your graphic tell?
+
+> ANSWER: 
+
+```{r}
+#fill in 
+
+
+```
+
 c. Make a trivariate visualization that demonstrates the relationship between `fracCat`, `sat`, and `expend`. Incorporate `fracCat` as the color of each point, and use a single call to `geom_smooth` to add three trendlines (one for each `fracCat`). What story does your graphic tell?   
+
+> ANSWER: 
+
+```{r}
+#fill in 
+
+
+```
+
 d. Putting all of this together, explain this example of **Simpson’s Paradox**. That is, why does it appear that SAT scores decrease as spending increases even though the opposite is true?   
+
+> ANSWER: 
 
 
 
@@ -107,7 +128,7 @@ heatmap.2(ed_mat,
 What do you notice? What insight do you gain about the variation across U.S. states?
 ```
 
-
+> ANSWER: 
 
 **Heat map with row clusters** 
 
@@ -123,10 +144,12 @@ heatmap.2(ed_mat,
   dendrogram = "row"
 )
 ```  
+
 ```{exercise}
 What do you notice? What new insight do you gain about the variation across U.S. states, now that states are grouped and ordered to represent similarity?
 ```
 
+> ANSWER: 
 
 **Heat map with column clusters** 
 
@@ -147,6 +170,7 @@ heatmap.2(ed_mat,
 What do you notice? What new insight do you gain about the variation across U.S. states, now that variables are grouped and ordered to represent similarity?
 ```
 
+> ANSWER: 
 
 ### Star plots  {-}  
 
@@ -167,4 +191,4 @@ stars(ed_mat,
 What do you notice? What new insight do you gain about the variation across U.S. states with the star plots?
 ```
     
-    
+ > ANSWER:    

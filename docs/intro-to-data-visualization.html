@@ -228,6 +228,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="bivariate-visualizations.html"><a href="bivariate-visualizations.html#ggplot2-foundation-functions-1"><i class="fa fa-check"></i>ggplot2 foundation functions</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html"><i class="fa fa-check"></i><b>5</b> Multivariate Visualizations</a>
+<ul>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#adding-more-aesthetic-attributes"><i class="fa fa-check"></i>Adding More Aesthetic Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#exploring-sat-scores"><i class="fa fa-check"></i>Exploring SAT Scores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#other-multivariate-visualization-techniques"><i class="fa fa-check"></i>Other Multivariate Visualization Techniques</a>
+<ul>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#heat-maps"><i class="fa fa-check"></i>Heat maps</a></li>
+<li class="chapter" data-level="" data-path="multivariate-visualizations.html"><a href="multivariate-visualizations.html#star-plots"><i class="fa fa-check"></i>Star plots</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -381,51 +394,109 @@ smoker -&gt; color
 <li>The variables in that row are mapped to aesthetics of the glyph (including position).</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-27">Table 2.1: </span>A subset of the NHANES data set.</caption>
+<caption>
+<span id="tab:unnamed-chunk-27">Table 2.1: </span>A subset of the NHANES data set.
+</caption>
 <thead>
-<tr class="header">
-<th align="right">sbp</th>
-<th align="right">dbp</th>
-<th align="left">sex</th>
-<th align="left">smoker</th>
+<tr>
+<th style="text-align:right;">
+sbp
+</th>
+<th style="text-align:right;">
+dbp
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+smoker
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">112</td>
-<td align="right">55</td>
-<td align="left">male</td>
-<td align="left">former</td>
+<tr>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+former
+</td>
 </tr>
-<tr class="even">
-<td align="right">144</td>
-<td align="right">84</td>
-<td align="left">male</td>
-<td align="left">never</td>
+<tr>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+never
+</td>
 </tr>
-<tr class="odd">
-<td align="right">143</td>
-<td align="right">84</td>
-<td align="left">female</td>
-<td align="left">never</td>
+<tr>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+never
+</td>
 </tr>
-<tr class="even">
-<td align="right">110</td>
-<td align="right">62</td>
-<td align="left">female</td>
-<td align="left">never</td>
+<tr>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+never
+</td>
 </tr>
-<tr class="odd">
-<td align="right">121</td>
-<td align="right">72</td>
-<td align="left">female</td>
-<td align="left">never</td>
+<tr>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+never
+</td>
 </tr>
-<tr class="even">
-<td align="right">129</td>
-<td align="right">60</td>
-<td align="left">female</td>
-<td align="left">never</td>
+<tr>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+never
+</td>
 </tr>
 </tbody>
 </table>
@@ -491,88 +562,190 @@ smoker -&gt; color
 <span id="cb22-2"><a href="intro-to-data-visualization.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bechdel)</span>
 <span id="cb22-3"><a href="intro-to-data-visualization.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bechdel)</span></code></pre></div>
 <table>
-<colgroup>
-<col width="5%" />
-<col width="11%" />
-<col width="18%" />
-<col width="12%" />
-<col width="7%" />
-<col width="13%" />
-<col width="15%" />
-<col width="15%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th align="right">year</th>
-<th align="left">imdb</th>
-<th align="left">title</th>
-<th align="left">clean_test</th>
-<th align="left">binary</th>
-<th align="right">budget_2013</th>
-<th align="right">domgross_2013</th>
-<th align="right">intgross_2013</th>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+imdb
+</th>
+<th style="text-align:left;">
+title
+</th>
+<th style="text-align:left;">
+clean_test
+</th>
+<th style="text-align:left;">
+binary
+</th>
+<th style="text-align:right;">
+budget_2013
+</th>
+<th style="text-align:right;">
+domgross_2013
+</th>
+<th style="text-align:right;">
+intgross_2013
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">2013</td>
-<td align="left">tt1711425</td>
-<td align="left">21 &amp; Over</td>
-<td align="left">notalk</td>
-<td align="left">FAIL</td>
-<td align="right">13000000</td>
-<td align="right">25682380</td>
-<td align="right">42195766</td>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+tt1711425
+</td>
+<td style="text-align:left;">
+21 &amp; Over
+</td>
+<td style="text-align:left;">
+notalk
+</td>
+<td style="text-align:left;">
+FAIL
+</td>
+<td style="text-align:right;">
+13000000
+</td>
+<td style="text-align:right;">
+25682380
+</td>
+<td style="text-align:right;">
+42195766
+</td>
 </tr>
-<tr class="even">
-<td align="right">2012</td>
-<td align="left">tt1343727</td>
-<td align="left">Dredd 3D</td>
-<td align="left">ok</td>
-<td align="left">PASS</td>
-<td align="right">45658735</td>
-<td align="right">13611086</td>
-<td align="right">41467257</td>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+tt1343727
+</td>
+<td style="text-align:left;">
+Dredd 3D
+</td>
+<td style="text-align:left;">
+ok
+</td>
+<td style="text-align:left;">
+PASS
+</td>
+<td style="text-align:right;">
+45658735
+</td>
+<td style="text-align:right;">
+13611086
+</td>
+<td style="text-align:right;">
+41467257
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2013</td>
-<td align="left">tt2024544</td>
-<td align="left">12 Years a Slave</td>
-<td align="left">notalk</td>
-<td align="left">FAIL</td>
-<td align="right">20000000</td>
-<td align="right">53107035</td>
-<td align="right">158607035</td>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+tt2024544
+</td>
+<td style="text-align:left;">
+12 Years a Slave
+</td>
+<td style="text-align:left;">
+notalk
+</td>
+<td style="text-align:left;">
+FAIL
+</td>
+<td style="text-align:right;">
+20000000
+</td>
+<td style="text-align:right;">
+53107035
+</td>
+<td style="text-align:right;">
+158607035
+</td>
 </tr>
-<tr class="even">
-<td align="right">2013</td>
-<td align="left">tt1272878</td>
-<td align="left">2 Guns</td>
-<td align="left">notalk</td>
-<td align="left">FAIL</td>
-<td align="right">61000000</td>
-<td align="right">75612460</td>
-<td align="right">132493015</td>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+tt1272878
+</td>
+<td style="text-align:left;">
+2 Guns
+</td>
+<td style="text-align:left;">
+notalk
+</td>
+<td style="text-align:left;">
+FAIL
+</td>
+<td style="text-align:right;">
+61000000
+</td>
+<td style="text-align:right;">
+75612460
+</td>
+<td style="text-align:right;">
+132493015
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2013</td>
-<td align="left">tt0453562</td>
-<td align="left">42</td>
-<td align="left">men</td>
-<td align="left">FAIL</td>
-<td align="right">40000000</td>
-<td align="right">95020213</td>
-<td align="right">95020213</td>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+tt0453562
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+men
+</td>
+<td style="text-align:left;">
+FAIL
+</td>
+<td style="text-align:right;">
+40000000
+</td>
+<td style="text-align:right;">
+95020213
+</td>
+<td style="text-align:right;">
+95020213
+</td>
 </tr>
-<tr class="even">
-<td align="right">2013</td>
-<td align="left">tt1335975</td>
-<td align="left">47 Ronin</td>
-<td align="left">men</td>
-<td align="left">FAIL</td>
-<td align="right">225000000</td>
-<td align="right">38362475</td>
-<td align="right">145803842</td>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+tt1335975
+</td>
+<td style="text-align:left;">
+47 Ronin
+</td>
+<td style="text-align:left;">
+men
+</td>
+<td style="text-align:left;">
+FAIL
+</td>
+<td style="text-align:right;">
+225000000
+</td>
+<td style="text-align:right;">
+38362475
+</td>
+<td style="text-align:right;">
+145803842
+</td>
 </tr>
 </tbody>
 </table>

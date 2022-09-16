@@ -18,35 +18,13 @@ library(ggplot2)
 library(gplots)
 ```
 
-# Multivariate Visualizations
 
-## Learning Goals {-}
-
-- Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot
-- Develop comfort with interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
-
-## Adding More Aesthetic Attributes {-}
+# Adding More Aesthetic Attributes {-}
 
 ### Exploring SAT Scores {-}
 
-Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state's education system.  The `education` data stored at [https://www.macalester.edu/~ajohns24/data/sat.csv](https://www.macalester.edu/~ajohns24/data/sat.csv) contain various education variables for each state:
-
 ```{r}
 education <- read.csv("https://www.macalester.edu/~ajohns24/data/sat.csv")
-```
-
-```{r, echo=FALSE}
-knitr::kable(
-  education[1:6, ],
-  caption = "The first few rows of the SAT data."
-)
-```
-
-To examine the variability in average SAT scores from state to state, let's start with a univariate density plot:
-
-```{r, fig.width=6,fig.height=3}
-ggplot(education, aes(x = sat)) +
-  geom_density(fill = "blue", alpha = .5)
 ```
 
 The first question we'd like to answer is to what degree do per pupil spending (`expend`) and teacher `salary` *explain* this variability? We can start by plotting each against `sat`, along with a best fit linear regression model:
@@ -63,7 +41,6 @@ ggplot(education, aes(y = sat, x = expend)) +
 
 ```{exercise}
 Is there anything that surprises you in the above plots? What are the relationship trends?
-
 ```
 
 > ANSWER: 
@@ -77,6 +54,8 @@ Make a single scatterplot visualization that demonstrates the relationship betwe
 
 ```{r}
 #fill in 
+
+
 ```
 
 
@@ -91,6 +70,8 @@ a. Make a univariate visualization of the `fracCat` variable to better understan
 
 ```{r}
 #fill in 
+
+
 ```
 
 b. Make a bivariate visualization that demonstrates the relationship between `fracCat` and `sat`. What story does your graphic tell?
@@ -99,6 +80,8 @@ b. Make a bivariate visualization that demonstrates the relationship between `fr
 
 ```{r}
 #fill in 
+
+
 ```
 
 c. Make a trivariate visualization that demonstrates the relationship between `fracCat`, `sat`, and `expend`. Incorporate `fracCat` as the color of each point, and use a single call to `geom_smooth` to add three trendlines (one for each `fracCat`). What story does your graphic tell?   
@@ -107,6 +90,8 @@ c. Make a trivariate visualization that demonstrates the relationship between `f
 
 ```{r}
 #fill in 
+
+
 ```
 
 d. Putting all of this together, explain this example of **Simpson’s Paradox**. That is, why does it appear that SAT scores decrease as spending increases even though the opposite is true?   
