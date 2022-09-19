@@ -82,3 +82,9 @@ intro-to-data-visualization
 effective-visualizations
 bivariate-visualizations
 multivariate-visualizations
+tab:unnamed-chunk-3
+fig:unnamed-chunk-4
+exr:unnamed-chunk-7
+exr:unnamed-chunk-8
+exr:unnamed-chunk-10
+exr:unnamed-chunk-18
