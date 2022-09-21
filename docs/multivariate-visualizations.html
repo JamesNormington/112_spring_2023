@@ -327,91 +327,219 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state’s education system. The <code>education</code> data stored at <a href="https://www.macalester.edu/~ajohns24/data/sat.csv">https://www.macalester.edu/~ajohns24/data/sat.csv</a> contain various education variables for each state:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="multivariate-visualizations.html#cb76-1" aria-hidden="true" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/sat.csv&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-145">Table 5.1: </span>The first few rows of the SAT data.</caption>
+<caption>
+<span id="tab:unnamed-chunk-139">Table 5.1: </span>The first few rows of the SAT data.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">State</th>
-<th align="right">expend</th>
-<th align="right">ratio</th>
-<th align="right">salary</th>
-<th align="right">frac</th>
-<th align="right">verbal</th>
-<th align="right">math</th>
-<th align="right">sat</th>
-<th align="left">fracCat</th>
+<tr>
+<th style="text-align:left;">
+State
+</th>
+<th style="text-align:right;">
+expend
+</th>
+<th style="text-align:right;">
+ratio
+</th>
+<th style="text-align:right;">
+salary
+</th>
+<th style="text-align:right;">
+frac
+</th>
+<th style="text-align:right;">
+verbal
+</th>
+<th style="text-align:right;">
+math
+</th>
+<th style="text-align:right;">
+sat
+</th>
+<th style="text-align:left;">
+fracCat
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Alabama</td>
-<td align="right">4.405</td>
-<td align="right">17.2</td>
-<td align="right">31.144</td>
-<td align="right">8</td>
-<td align="right">491</td>
-<td align="right">538</td>
-<td align="right">1029</td>
-<td align="left">(0,15]</td>
+<tr>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+4.405
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+<td style="text-align:right;">
+31.144
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+491
+</td>
+<td style="text-align:right;">
+538
+</td>
+<td style="text-align:right;">
+1029
+</td>
+<td style="text-align:left;">
+(0,15]
+</td>
 </tr>
-<tr class="even">
-<td align="left">Alaska</td>
-<td align="right">8.963</td>
-<td align="right">17.6</td>
-<td align="right">47.951</td>
-<td align="right">47</td>
-<td align="right">445</td>
-<td align="right">489</td>
-<td align="right">934</td>
-<td align="left">(45,100]</td>
+<tr>
+<td style="text-align:left;">
+Alaska
+</td>
+<td style="text-align:right;">
+8.963
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+47.951
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+445
+</td>
+<td style="text-align:right;">
+489
+</td>
+<td style="text-align:right;">
+934
+</td>
+<td style="text-align:left;">
+(45,100]
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Arizona</td>
-<td align="right">4.778</td>
-<td align="right">19.3</td>
-<td align="right">32.175</td>
-<td align="right">27</td>
-<td align="right">448</td>
-<td align="right">496</td>
-<td align="right">944</td>
-<td align="left">(15,45]</td>
+<tr>
+<td style="text-align:left;">
+Arizona
+</td>
+<td style="text-align:right;">
+4.778
+</td>
+<td style="text-align:right;">
+19.3
+</td>
+<td style="text-align:right;">
+32.175
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+448
+</td>
+<td style="text-align:right;">
+496
+</td>
+<td style="text-align:right;">
+944
+</td>
+<td style="text-align:left;">
+(15,45]
+</td>
 </tr>
-<tr class="even">
-<td align="left">Arkansas</td>
-<td align="right">4.459</td>
-<td align="right">17.1</td>
-<td align="right">28.934</td>
-<td align="right">6</td>
-<td align="right">482</td>
-<td align="right">523</td>
-<td align="right">1005</td>
-<td align="left">(0,15]</td>
+<tr>
+<td style="text-align:left;">
+Arkansas
+</td>
+<td style="text-align:right;">
+4.459
+</td>
+<td style="text-align:right;">
+17.1
+</td>
+<td style="text-align:right;">
+28.934
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+482
+</td>
+<td style="text-align:right;">
+523
+</td>
+<td style="text-align:right;">
+1005
+</td>
+<td style="text-align:left;">
+(0,15]
+</td>
 </tr>
-<tr class="odd">
-<td align="left">California</td>
-<td align="right">4.992</td>
-<td align="right">24.0</td>
-<td align="right">41.078</td>
-<td align="right">45</td>
-<td align="right">417</td>
-<td align="right">485</td>
-<td align="right">902</td>
-<td align="left">(15,45]</td>
+<tr>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:right;">
+4.992
+</td>
+<td style="text-align:right;">
+24.0
+</td>
+<td style="text-align:right;">
+41.078
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+417
+</td>
+<td style="text-align:right;">
+485
+</td>
+<td style="text-align:right;">
+902
+</td>
+<td style="text-align:left;">
+(15,45]
+</td>
 </tr>
-<tr class="even">
-<td align="left">Colorado</td>
-<td align="right">5.443</td>
-<td align="right">18.4</td>
-<td align="right">34.571</td>
-<td align="right">29</td>
-<td align="right">462</td>
-<td align="right">518</td>
-<td align="right">980</td>
-<td align="left">(15,45]</td>
+<tr>
+<td style="text-align:left;">
+Colorado
+</td>
+<td style="text-align:right;">
+5.443
+</td>
+<td style="text-align:right;">
+18.4
+</td>
+<td style="text-align:right;">
+34.571
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+462
+</td>
+<td style="text-align:right;">
+518
+</td>
+<td style="text-align:right;">
+980
+</td>
+<td style="text-align:left;">
+(15,45]
+</td>
 </tr>
 </tbody>
 </table>
 <p>A codebook is provided by Danny Kaplan who also made these data accessible:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-140"></span>
 <img src="images/SATcodebook.png" alt="Codebook for SAT data. Source: https://www.macalester.edu/~kaplan/ISM/datasets/data-documentation.pdf" width="750px" />
 <p class="caption">
 Figure 5.1: Codebook for SAT data. Source: <a href="https://www.macalester.edu/~kaplan/ISM/datasets/data-documentation.pdf" class="uri">https://www.macalester.edu/~kaplan/ISM/datasets/data-documentation.pdf</a>
@@ -420,7 +548,7 @@ Figure 5.1: Codebook for SAT data. Source: <a href="https://www.macalester.edu/~
 <p>To examine the variability in average SAT scores from state to state, let’s start with a univariate density plot:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="multivariate-visualizations.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat)) <span class="sc">+</span></span>
 <span id="cb77-2"><a href="multivariate-visualizations.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-147-1.png" width="576" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-141-1.png" width="576" /></p>
 <p>The first question we’d like to answer is to what degree do per pupil spending (<code>expend</code>) and teacher <code>salary</code> <em>explain</em> this variability? We can start by plotting each against <code>sat</code>, along with a best fit linear regression model:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="multivariate-visualizations.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary)) <span class="sc">+</span></span>
 <span id="cb78-2"><a href="multivariate-visualizations.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -431,9 +559,9 @@ Figure 5.1: Codebook for SAT data. Source: <a href="https://www.macalester.edu/~
 <span id="cb78-7"><a href="multivariate-visualizations.html#cb78-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb78-8"><a href="multivariate-visualizations.html#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb78-9"><a href="multivariate-visualizations.html#cb78-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-148-1.png" width="288" /><img src="stat112_manual_files/figure-html/unnamed-chunk-148-2.png" width="288" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-142-1.png" width="288" /><img src="stat112_manual_files/figure-html/unnamed-chunk-142-2.png" width="288" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-149" class="exercise"><strong>Exercise 5.1  </strong></span>Is there anything that surprises you in the above plots? What are the relationship trends?</p>
+<p><span id="exr:unnamed-chunk-143" class="exercise"><strong>Exercise 5.1  </strong></span>Is there anything that surprises you in the above plots? What are the relationship trends?</p>
 </div>
 <details>
 <summary>
@@ -444,7 +572,7 @@ Solution
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-150" class="exercise"><strong>Exercise 5.2  </strong></span>Make a single scatterplot visualization that demonstrates the relationship between <code>sat</code>, <code>salary</code>, and <code>expend</code>. Summarize the trivariate relationship between <code>sat</code>, <code>salary</code>, and <code>expend</code>.</p>
+<p><span id="exr:unnamed-chunk-144" class="exercise"><strong>Exercise 5.2  </strong></span>Make a single scatterplot visualization that demonstrates the relationship between <code>sat</code>, <code>salary</code>, and <code>expend</code>. Summarize the trivariate relationship between <code>sat</code>, <code>salary</code>, and <code>expend</code>.</p>
 </div>
 <p><em>Hints: 1. Try using the color or size aesthetics to incorporate the expenditure data. 2. Include some model smooths with <code>geom_smooth()</code> to help highlight the trends.</em></p>
 <details>
@@ -474,12 +602,12 @@ Solution
 <span id="cb79-20"><a href="multivariate-visualizations.html#cb79-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-21"><a href="multivariate-visualizations.html#cb79-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb79-22"><a href="multivariate-visualizations.html#cb79-22" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(g1, g2, g3, g4, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-151-1.png" width="768" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-145-1.png" width="768" /></p>
 </details>
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-152" class="exercise"><strong>Exercise 5.3  </strong></span>The <code>fracCat</code> variable in the <code>education</code> data categorizes the fraction of the state’s students that take the SAT into <code>low</code> (below 15%), <code>medium</code> (15-45%), and <code>high</code> (at least 45%).</p>
+<p><span id="exr:unnamed-chunk-146" class="exercise"><strong>Exercise 5.3  </strong></span>The <code>fracCat</code> variable in the <code>education</code> data categorizes the fraction of the state’s students that take the SAT into <code>low</code> (below 15%), <code>medium</code> (15-45%), and <code>high</code> (at least 45%).</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Make a univariate visualization of the <code>fracCat</code> variable to better understand how many states fall into each category.<br />
@@ -511,9 +639,9 @@ Solution
 <span id="cb80-13"><a href="multivariate-visualizations.html#cb80-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">sepcolor =</span> <span class="st">&quot;white&quot;</span>, <span class="at">cexRow =</span> <span class="dv">2</span>, <span class="at">cexCol =</span> <span class="dv">2</span>, <span class="at">trace =</span> <span class="st">&quot;none&quot;</span>,</span>
 <span id="cb80-14"><a href="multivariate-visualizations.html#cb80-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">dendrogram =</span> <span class="st">&quot;none&quot;</span></span>
 <span id="cb80-15"><a href="multivariate-visualizations.html#cb80-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-153-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-147-1.png" width="960" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-154" class="exercise"><strong>Exercise 5.4  </strong></span>What do you notice? What insight do you gain about the variation across U.S. states?</p>
+<p><span id="exr:unnamed-chunk-148" class="exercise"><strong>Exercise 5.4  </strong></span>What do you notice? What insight do you gain about the variation across U.S. states?</p>
 </div>
 <p><strong>Heat map with row clusters</strong></p>
 <p>It can be tough to identify interesting patterns by visually comparing across rows and columns. Including <em>dendrograms</em> helps to identify interesting clusters.</p>
@@ -525,9 +653,9 @@ Solution
 <span id="cb81-6"><a href="multivariate-visualizations.html#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sepcolor =</span> <span class="st">&quot;white&quot;</span>, <span class="at">cexRow =</span> <span class="dv">2</span>, <span class="at">cexCol =</span> <span class="dv">2</span>, <span class="at">trace =</span> <span class="st">&quot;none&quot;</span>,</span>
 <span id="cb81-7"><a href="multivariate-visualizations.html#cb81-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dendrogram =</span> <span class="st">&quot;row&quot;</span></span>
 <span id="cb81-8"><a href="multivariate-visualizations.html#cb81-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-155-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-149-1.png" width="960" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-156" class="exercise"><strong>Exercise 5.5  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states, now that states are grouped and ordered to represent similarity?</p>
+<p><span id="exr:unnamed-chunk-150" class="exercise"><strong>Exercise 5.5  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states, now that states are grouped and ordered to represent similarity?</p>
 </div>
 <p><strong>Heat map with column clusters</strong></p>
 <p>We can also construct a heat map which identifies interesting clusters of columns (variables).</p>
@@ -539,9 +667,9 @@ Solution
 <span id="cb82-6"><a href="multivariate-visualizations.html#cb82-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sepcolor =</span> <span class="st">&quot;white&quot;</span>, <span class="at">cexRow =</span> <span class="dv">2</span>, <span class="at">cexCol =</span> <span class="dv">2</span>, <span class="at">trace =</span> <span class="st">&quot;none&quot;</span>,</span>
 <span id="cb82-7"><a href="multivariate-visualizations.html#cb82-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dendrogram =</span> <span class="st">&quot;column&quot;</span></span>
 <span id="cb82-8"><a href="multivariate-visualizations.html#cb82-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-157-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-151-1.png" width="960" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-158" class="exercise"><strong>Exercise 5.6  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states, now that variables are grouped and ordered to represent similarity?</p>
+<p><span id="exr:unnamed-chunk-152" class="exercise"><strong>Exercise 5.6  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states, now that variables are grouped and ordered to represent similarity?</p>
 </div>
 </div>
 <div id="star-plots" class="section level3 unnumbered hasAnchor">
@@ -551,14 +679,14 @@ Solution
 <span id="cb83-2"><a href="multivariate-visualizations.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">flip.labels =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb83-3"><a href="multivariate-visualizations.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="fl">1.5</span>), <span class="at">cex =</span> <span class="fl">1.5</span></span>
 <span id="cb83-4"><a href="multivariate-visualizations.html#cb83-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-159-1.png" width="1440" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-153-1.png" width="1440" /></p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="multivariate-visualizations.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(ed_mat,</span>
 <span id="cb84-2"><a href="multivariate-visualizations.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">flip.labels =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb84-3"><a href="multivariate-visualizations.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="fl">1.5</span>), <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">draw.segments =</span> <span class="cn">TRUE</span></span>
 <span id="cb84-4"><a href="multivariate-visualizations.html#cb84-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-159-2.png" width="1440" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-153-2.png" width="1440" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-160" class="exercise"><strong>Exercise 5.7  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states with the star plots?</p>
+<p><span id="exr:unnamed-chunk-154" class="exercise"><strong>Exercise 5.7  </strong></span>What do you notice? What new insight do you gain about the variation across U.S. states with the star plots?</p>
 </div>
 
 </div>
