@@ -376,12 +376,10 @@ Solution
 <span id="cb1-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0  3  6  9 12</span></span>
 <span id="cb1-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">times =</span>  <span class="dv">3</span>)</span>
-<span id="cb1-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  3  6  9 12  0  3  6  9 12  0  3</span></span>
-<span id="cb1-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [13]  6  9 12</span></span>
-<span id="cb1-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>) <span class="co">#notice the difference between times and each</span></span>
-<span id="cb1-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  0  0  3  3  3  6  6  6  9  9  9</span></span>
-<span id="cb1-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 12 12 12</span></span></code></pre></div>
+<span id="cb1-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  3  6  9 12  0  3  6  9 12  0  3  6  9 12</span></span>
+<span id="cb1-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">3</span>), <span class="at">each =</span> <span class="dv">3</span>) <span class="co">#notice the difference between times and each</span></span>
+<span id="cb1-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  0  0  0  3  3  3  6  6  6  9  9  9 12 12 12</span></span></code></pre></div>
 </details>
 <p><br />
 </p>
@@ -710,30 +708,23 @@ Solution
 <span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
 <span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
 <span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country  confe…¹ popul…² tv_au…³ gdp_w…⁴</span></span>
-<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United … CONCAC…     4.5     4.3    11.3</span></span>
-<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan    AFC         1.9     4.9     9.1</span></span>
-<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China    AFC        19.5    14.8     7.3</span></span>
-<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany  UEFA        1.2     2.9     6.3</span></span>
-<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil   CONMEB…     2.8     7.1     5.4</span></span>
-<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United … UEFA        0.9     2.1     4.2</span></span>
-<span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable names</span></span>
-<span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​confederation, ²​population_share,</span></span>
-<span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ³​tv_audience_share,</span></span>
-<span id="cb8-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ⁴​gdp_weighted_share</span></span>
+<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted_share</span></span>
+<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;              &lt;dbl&gt;</span></span>
+<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3               11.3</span></span>
+<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9                9.1</span></span>
+<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8                7.3</span></span>
+<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9                6.3</span></span>
+<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1                5.4</span></span>
+<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1                4.2</span></span>
+<span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
+<span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
+<span id="cb8-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
 <span id="cb8-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
-<span id="cb8-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
-<span id="cb8-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
-<span id="cb8-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
-<span id="cb8-25"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
-<span id="cb8-26"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;           </span></span>
-<span id="cb8-27"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;confederation&quot;     </span></span>
-<span id="cb8-28"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;population_share&quot;  </span></span>
-<span id="cb8-29"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;tv_audience_share&quot; </span></span>
-<span id="cb8-30"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
+<span id="cb8-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
+<span id="cb8-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
+<span id="cb8-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;      &quot;population_share&quot;   &quot;tv_audience_share&quot; </span></span>
+<span id="cb8-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>

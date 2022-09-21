@@ -531,7 +531,7 @@ starbucks_with_2018_pop_est <-
 
 
 ```{exercise}
-Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the continental US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.   
+Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the contiguous US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.   
 ```
 
 
