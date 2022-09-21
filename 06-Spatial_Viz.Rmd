@@ -790,7 +790,7 @@ leaflet(nc) %>%
 * [`leaflet` cheat sheet](https://ugoproto.github.io/ugo_r_doc/pdf/leaflet-cheat-sheet.pdf)
 * [Provider map previews](http://leaflet-extras.github.io/leaflet-providers/preview/)
 * [Tutorial](https://learn.r-journalism.com/en/mapping/census_maps/census-maps/) by Andrew Ba Tran, investigative data reporter at Washington Post
-
+* For more advanced work with spatial mapping, GIS in R, etc. see the [sf package](https://r-spatial.github.io/sf/).
 
 ### Exercise: Favorite Places {-}
 
