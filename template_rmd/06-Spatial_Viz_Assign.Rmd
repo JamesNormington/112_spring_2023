@@ -16,6 +16,12 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tidyverse)
 library(ggplot2)
 library(gplots)
+library(maps) # for map data  #install.packages('maps')
+library(ggmap) # for mapping points on maps  #install.packages('ggmap')
+library(RColorBrewer) # for color palettes #install.packages('RColorBrewer')
+library(leaflet) # for highly customizable mapping  #install.packages('leaflet')
+library(ggthemes) # for more themes (including theme_map())  #install.packages('ggthemes')
+library(usdata) #install.packages('usdata')
 ```
 
 # Spatial Visualizations
