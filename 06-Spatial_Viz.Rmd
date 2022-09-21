@@ -289,12 +289,12 @@ ggmap(US_map2) +
   geom_density_2d(data = Starbucks, aes(x = Longitude, y = Latitude), size = 0.3) +
   stat_density_2d(
     data = Starbucks,
-    aes(x = Longitude, y = Latitude, fill = ..level.., alpha = ..level..),
-    size = 0.1, bins = 20, geom = "polygon"
+    aes(x = Longitude, y = Latitude, fill = stat(level)),
+    size = 0.1, alpha = .2, bins = 20, geom = "polygon", color = 'darkblue'
   ) +
   scale_alpha(guide = 'none') +
   scale_fill_gradient(
-    low = "green", high = "red",
+    low = "darkblue", high = "red",
     guide = 'none'
   )
 ```
@@ -803,3 +803,49 @@ b. Create a map that uses circles to indicate your favorite places. Label them w
 c. If there are other variables you want to add that could enhance your plot, do that now. You could also connect all your locations together with a line in a meaningful way (you may need to order them differently in the original data).    
 
 ```
+
+## Appendix: R Functions {.unnumbered}
+
+### Mapping Points Functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `ggmap()`        |   Create a plotting canvas with a map background   |   `ggmap(world) + geom_point(...)` |
+| `get_stamenmap(bbox,maptype,zoom)`        |   Fetches a stamen map as background  |   `get_stamenmap(bbox = c(left = -180, bottom = -57, right = 179, top = 82.1), maptype = "terrain", zoom = 2)` |
+| `ggthemes::theme_map()`        |   Clean plotting themes for maps  |   `ggmap(world) + geom_point(...) + theme_map()` |
+
+
+
+### Contour/Density Mapping Functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `geom_density_2d`        |   Plots contour maps (2d density)   |   `ggmap(world) + geom_density_2d(data,aes(x,y))` |
+| `stat_density_2d`        |   Plots a filled in contour heat map  |   `ggmap(world) + state_density_2d(data,aes(x,y,fill = stat(level)),geom='polygon')` |
+| `scale_fill_gradient(low,high)`        |   Change fill gradient scale based on a low and high color  |   `ggmap(world) + geom_point(...) + scale_fill_gradient(low='darkblue',high='red')` |
+
+
+### Choropleths Mapping Functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `map_data()`        |  Get map region boundaries from maps package into a dataframe for plotting with ggplot2 |   `state_map <- map_data('state')` |
+| `geom_map()`        |   Links map regions with data set with info about regions and plots it  |   `ggplot(starbucks_us_by_state) + geom_map(map = states_map,aes(map_id = state_name,fill = n))` |
+| `expand_limits(x,y)`        |   Ensure limits include data values in x and y  |   `+ expand_limits(x = states_map$long, y = states_map$lat)` |
+
+
+### Dynamic Mapping Functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `leaflet(data)`        |  Create base dynamic plot |   `leaflet(data = favorite_stp) ` |
+| `addTiles()`        |   Adds the base map - default is openstreet map  |   `+ addTiles()` |
+| `addProviderTiles()`        |   Adds the alternative base maps  |   `+ addProviderTiles(providers$Stamen.Watercolor)` |
+| `addMarkers(lng,lat,label)`        |   Add marker glyphs to dynamic map  |   `+ addMarkers(lng= ~long, lat= ~lat, label=~place)` |
+| `addCircles(lng,lat,label,weight,opactiy,color)`        |   Add circle glyphs to dynamic map  |   `+ addCircles(lng= ~long, lat= ~lat, label=~place, weight=10,opacity=1,color = col2hex('darkblue'))` |
+| `addPolylines(lng,lat)`        |   Add lines that connect locations to dynamic map  |   `+ addPolylines(lng= ~long, lat= ~lat, color = col2hex('darkred'))` |
+| `addPolygons(fillColor,fillOpacity)`        |   Add polygons to dynamic map (if data is sf class)  |   `+ addPolygons()` |
+
+
+
+

@@ -282,6 +282,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#exercise-favorite-places"><i class="fa fa-check"></i>Exercise: Favorite Places</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#appendix-r-functions-3"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#mapping-points-functions"><i class="fa fa-check"></i>Mapping Points Functions</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#contourdensity-mapping-functions"><i class="fa fa-check"></i>Contour/Density Mapping Functions</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choropleths-mapping-functions"><i class="fa fa-check"></i>Choropleths Mapping Functions</a></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#dynamic-mapping-functions"><i class="fa fa-check"></i>Dynamic Mapping Functions</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -319,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-to-know-the-dataset" class="section level3 unnumbered hasAnchor">
 <h3>Getting to know the dataset<a href="bivariate-visualizations.html#getting-to-know-the-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-84" class="exercise"><strong>Exercise 4.1  </strong></span>Begin by loading the data from “<a href="https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv" class="uri">https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv</a>” and getting to know the data. Follow the prompts below to guide you.</p>
+<p><span id="exr:unnamed-chunk-91" class="exercise"><strong>Exercise 4.1  </strong></span>Begin by loading the data from “<a href="https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv" class="uri">https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv</a>” and getting to know the data. Follow the prompts below to guide you.</p>
 </div>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="bivariate-visualizations.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data from &quot;https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv&quot;</span></span>
 <span id="cb39-2"><a href="bivariate-visualizations.html#cb39-2" aria-hidden="true" tabindex="-1"></a>elect <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv&quot;</span>)</span>
@@ -343,42 +350,35 @@ Solution
 <span id="cb40-6"><a href="bivariate-visualizations.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  The variables are county name, vote counts for parties and total for presidential elections, and more</span></span>
 <span id="cb40-7"><a href="bivariate-visualizations.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(elect)</span>
 <span id="cb40-8"><a href="bivariate-visualizations.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 34</span></span>
-<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county     total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟</span></span>
-<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker Co…   28652    7420   20722     510   28497    6551   21633     313   29243    4486</span></span>
-<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock C…    5415    4011    1391      13    5318    4058    1250      10    4701    3530</span></span>
-<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun C…   49242   16334   32348     560   46240   15500   30272     468   47376   13197</span></span>
-<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour C…   11630    5697    5866      67   11459    5873    5539      47   10390    4848</span></span>
-<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette C…    7957    1994    5883      80    7912    1803    6034      75    8196    1358</span></span>
-<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin C…   81413   19386   61271     756   84988   18329   65772     887   94090   18409</span></span>
-<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 23 more variables: gop_2016 &lt;dbl&gt;, oth_2016 &lt;dbl&gt;, perdem_2016 &lt;dbl&gt;,</span></span>
-<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   perrep_2016 &lt;dbl&gt;, winrep_2016 &lt;lgl&gt;, perdem_2012 &lt;dbl&gt;, perrep_2012 &lt;dbl&gt;,</span></span>
-<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   winrep_2012 &lt;lgl&gt;, perdem_2008 &lt;dbl&gt;, perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;,</span></span>
-<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;,</span></span>
-<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_asian &lt;dbl&gt;, percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;,</span></span>
-<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;, and</span></span>
-<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   abbreviated variable names ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, …</span></span>
-<span id="cb40-24"><a href="bivariate-visualizations.html#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-25"><a href="bivariate-visualizations.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3,112 counties and 34 variables</span></span>
-<span id="cb40-26"><a href="bivariate-visualizations.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elect)</span>
-<span id="cb40-27"><a href="bivariate-visualizations.html#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3112   34</span></span>
-<span id="cb40-28"><a href="bivariate-visualizations.html#cb40-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-29"><a href="bivariate-visualizations.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="co"># See the long list below</span></span>
-<span id="cb40-30"><a href="bivariate-visualizations.html#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(elect)</span>
-<span id="cb40-31"><a href="bivariate-visualizations.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;county&quot;            &quot;total_2008&quot;        &quot;dem_2008&quot;          &quot;gop_2008&quot;         </span></span>
-<span id="cb40-32"><a href="bivariate-visualizations.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;oth_2008&quot;          &quot;total_2012&quot;        &quot;dem_2012&quot;          &quot;gop_2012&quot;         </span></span>
-<span id="cb40-33"><a href="bivariate-visualizations.html#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;oth_2012&quot;          &quot;total_2016&quot;        &quot;dem_2016&quot;          &quot;gop_2016&quot;         </span></span>
-<span id="cb40-34"><a href="bivariate-visualizations.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;oth_2016&quot;          &quot;perdem_2016&quot;       &quot;perrep_2016&quot;       &quot;winrep_2016&quot;      </span></span>
-<span id="cb40-35"><a href="bivariate-visualizations.html#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] &quot;perdem_2012&quot;       &quot;perrep_2012&quot;       &quot;winrep_2012&quot;       &quot;perdem_2008&quot;      </span></span>
-<span id="cb40-36"><a href="bivariate-visualizations.html#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] &quot;perrep_2008&quot;       &quot;winrep_2008&quot;       &quot;region&quot;            &quot;total_population&quot; </span></span>
-<span id="cb40-37"><a href="bivariate-visualizations.html#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] &quot;percent_white&quot;     &quot;percent_black&quot;     &quot;percent_asian&quot;     &quot;percent_hispanic&quot; </span></span>
-<span id="cb40-38"><a href="bivariate-visualizations.html#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] &quot;per_capita_income&quot; &quot;median_rent&quot;       &quot;median_age&quot;        &quot;polyname&quot;         </span></span>
-<span id="cb40-39"><a href="bivariate-visualizations.html#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] &quot;abb&quot;               &quot;StateColor&quot;</span></span></code></pre></div>
+<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county      total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟ gop_2…˟ oth_2…˟ perde…˟ perre…˟ winre…˟ perde…˟ perre…˟ winre…˟</span></span>
+<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  </span></span>
+<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker Cou…   28652    7420   20722     510   28497    6551   21633     313   29243    4486   24208     549    15.3    82.8 TRUE       23.0    75.9 TRUE   </span></span>
+<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock Co…    5415    4011    1391      13    5318    4058    1250      10    4701    3530    1139      32    75.1    24.2 FALSE      76.3    23.5 FALSE  </span></span>
+<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun Co…   49242   16334   32348     560   46240   15500   30272     468   47376   13197   32803    1376    27.9    69.2 TRUE       33.5    65.5 TRUE   </span></span>
+<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour Co…   11630    5697    5866      67   11459    5873    5539      47   10390    4848    5431     111    46.7    52.3 TRUE       51.3    48.3 FALSE  </span></span>
+<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette Co…    7957    1994    5883      80    7912    1803    6034      75    8196    1358    6705     133    16.6    81.8 TRUE       22.8    76.3 TRUE   </span></span>
+<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin Co…   81413   19386   61271     756   84988   18329   65772     887   94090   18409   72780    2901    19.6    77.4 TRUE       21.6    77.4 TRUE   </span></span>
+<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 15 more variables: perdem_2008 &lt;dbl&gt;, perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;, region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;,</span></span>
+<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_black &lt;dbl&gt;, percent_asian &lt;dbl&gt;, percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;, median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;,</span></span>
+<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   abb &lt;chr&gt;, StateColor &lt;chr&gt;, and abbreviated variable names ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, ⁶​dem_2012, ⁷​gop_2012, ⁸​oth_2012,</span></span>
+<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ⁹​total_2016, ˟​dem_2016, ˟​gop_2016, ˟​oth_2016, ˟​perdem_2016, ˟​perrep_2016, ˟​winrep_2016, ˟​perdem_2012, ˟​perrep_2012, ˟​winrep_2012</span></span>
+<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3,112 counties and 34 variables</span></span>
+<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elect)</span>
+<span id="cb40-24"><a href="bivariate-visualizations.html#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3112   34</span></span>
+<span id="cb40-25"><a href="bivariate-visualizations.html#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="bivariate-visualizations.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co"># See the long list below</span></span>
+<span id="cb40-27"><a href="bivariate-visualizations.html#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(elect)</span>
+<span id="cb40-28"><a href="bivariate-visualizations.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;county&quot;            &quot;total_2008&quot;        &quot;dem_2008&quot;          &quot;gop_2008&quot;          &quot;oth_2008&quot;          &quot;total_2012&quot;        &quot;dem_2012&quot;         </span></span>
+<span id="cb40-29"><a href="bivariate-visualizations.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  [8] &quot;gop_2012&quot;          &quot;oth_2012&quot;          &quot;total_2016&quot;        &quot;dem_2016&quot;          &quot;gop_2016&quot;          &quot;oth_2016&quot;          &quot;perdem_2016&quot;      </span></span>
+<span id="cb40-30"><a href="bivariate-visualizations.html#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [15] &quot;perrep_2016&quot;       &quot;winrep_2016&quot;       &quot;perdem_2012&quot;       &quot;perrep_2012&quot;       &quot;winrep_2012&quot;       &quot;perdem_2008&quot;       &quot;perrep_2008&quot;      </span></span>
+<span id="cb40-31"><a href="bivariate-visualizations.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [22] &quot;winrep_2008&quot;       &quot;region&quot;            &quot;total_population&quot;  &quot;percent_white&quot;     &quot;percent_black&quot;     &quot;percent_asian&quot;     &quot;percent_hispanic&quot; </span></span>
+<span id="cb40-32"><a href="bivariate-visualizations.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] &quot;per_capita_income&quot; &quot;median_rent&quot;       &quot;median_age&quot;        &quot;polyname&quot;          &quot;abb&quot;               &quot;StateColor&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-87" class="exercise"><strong>Exercise 4.2  </strong></span>Explore the win column:
+<p><span id="exr:unnamed-chunk-94" class="exercise"><strong>Exercise 4.2  </strong></span>Explore the win column:
 The <code>winrep_2016</code> variable indicates whether or not the Republican (Trump) won the county in 2016, thus is <em>categorical</em>. Let’s construct both numerical and visual summaries of Trump wins/losses. (Before you do, what do you anticipate?)</p>
 </div>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="bivariate-visualizations.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a table (a numerical summary) of the number of counties that Trump won/lost</span></span>
@@ -405,12 +405,12 @@ Solution
 <span id="cb44-4"><a href="bivariate-visualizations.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a bar chart (a visual summary) of this variable.</span></span>
 <span id="cb44-5"><a href="bivariate-visualizations.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> winrep_2016)) <span class="sc">+</span></span>
 <span id="cb44-6"><a href="bivariate-visualizations.html#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-89-1.png" width="672" />
+<img src="stat112_manual_files/figure-html/unnamed-chunk-96-1.png" width="672" />
 </details>
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-90" class="exercise"><strong>Exercise 4.3  (Explore Vote Percentages) </strong></span>The <code>perrep_2016</code> variable includes a bit more detail about Trump’s support in each county.</p>
+<p><span id="exr:unnamed-chunk-97" class="exercise"><strong>Exercise 4.3  (Explore Vote Percentages) </strong></span>The <code>perrep_2016</code> variable includes a bit more detail about Trump’s support in each county.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Since it’s <em>quantitative</em> we need different tools to visually explore the variability in <code>perrep_2016</code>. To this end, construct &amp; interpret both a histogram and density plot of <code>perrep_2016</code>. (Before you do, what do you anticipate?)</li>
@@ -429,11 +429,11 @@ Solution
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="bivariate-visualizations.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
 <span id="cb46-2"><a href="bivariate-visualizations.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016)) <span class="sc">+</span></span>
 <span id="cb46-3"><a href="bivariate-visualizations.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="bivariate-visualizations.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># density plot</span></span>
 <span id="cb47-2"><a href="bivariate-visualizations.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016)) <span class="sc">+</span></span>
 <span id="cb47-3"><a href="bivariate-visualizations.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-92-2.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
 <p>The vast majority of counties in the U.S. had a Republican majority vote (&gt; 50%) within that county.</p>
 </details>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -472,7 +472,7 @@ Maybe past election history and information about the people that live there and
 <li>For visualizations in which <strong>overlap</strong> in glyphs or plots obscures the patterns, try faceting or transparency.</li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-93" class="exercise"><strong>Exercise 4.4  (Mock-Ups) </strong></span>Consider a subset of the variables:</p>
+<p><span id="exr:unnamed-chunk-100" class="exercise"><strong>Exercise 4.4  (Mock-Ups) </strong></span>Consider a subset of the variables:</p>
 </div>
 <table>
 <colgroup>
@@ -551,19 +551,19 @@ Maybe past election history and information about the people that live there and
 </ol>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="bivariate-visualizations.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016)) <span class="sc">+</span></span>
 <span id="cb48-2"><a href="bivariate-visualizations.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-95-1.png" width="192" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-102-1.png" width="192" /></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>The relationship between Trump’s county-levels wins/losses <code>winrep_2016</code> (the response) and <code>StateColor</code> (the predictor). Think: how might we modify the below bar plot of <code>winrep_2016</code> to distinguish between counties in red/purple/blue states?</li>
 </ol>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="bivariate-visualizations.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> winrep_2016)) <span class="sc">+</span></span>
 <span id="cb49-2"><a href="bivariate-visualizations.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-96-1.png" width="288" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-103-1.png" width="288" /></p>
 </div>
 <div id="visualizing-quantitiative-vs-quantitative-relationships" class="section level3 unnumbered hasAnchor">
 <h3>Visualizing quantitiative vs quantitative relationships<a href="bivariate-visualizations.html#visualizing-quantitiative-vs-quantitative-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start by exploring the relationship between Trump’s 2016 support (<code>perrep_2016</code>) and Romney’s 2012 support (<code>perrep_2012</code>), both quantitative variables.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-97" class="exercise"><strong>Exercise 4.5  (Scatterplots and Glyphs) </strong></span>Both <code>perrep_2016</code> and <code>perrep_2012</code> are quantitative, thus require their own axes. Traditionally, the response variable (what we are trying to predict or explain) is placed on the y-axis. Once the axes are set up, each case is represented by a “glyph” at the coordinates defined by these axes.</p>
+<p><span id="exr:unnamed-chunk-104" class="exercise"><strong>Exercise 4.5  (Scatterplots and Glyphs) </strong></span>Both <code>perrep_2016</code> and <code>perrep_2012</code> are quantitative, thus require their own axes. Traditionally, the response variable (what we are trying to predict or explain) is placed on the y-axis. Once the axes are set up, each case is represented by a “glyph” at the coordinates defined by these axes.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Make a scatterplot of <code>perrep_2016</code> vs <code>perrep_2012</code> with different glyphs: points or text.</li>
@@ -588,20 +588,19 @@ Solution
 </summary>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="bivariate-visualizations.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just a graphics frame</span></span>
 <span id="cb51-2"><a href="bivariate-visualizations.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012))</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="bivariate-visualizations.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a layer with &quot;point&quot; glyphs</span></span>
 <span id="cb52-2"><a href="bivariate-visualizations.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
 <span id="cb52-3"><a href="bivariate-visualizations.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="bivariate-visualizations.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a layer with symbol glyphs</span></span>
 <span id="cb53-2"><a href="bivariate-visualizations.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
 <span id="cb53-3"><a href="bivariate-visualizations.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-106-3.png" width="672" /></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="bivariate-visualizations.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a layer with &quot;text&quot; glyphs</span></span>
 <span id="cb54-2"><a href="bivariate-visualizations.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
 <span id="cb54-3"><a href="bivariate-visualizations.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> abb))</span></code></pre></div>
-<pre><code>## Warning: Removed 398 rows containing missing values (geom_text).</code></pre>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-106-4.png" width="672" /></p>
 </details>
 <p><br />
 </p>
@@ -620,22 +619,22 @@ Solution
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-100" class="exercise"><strong>Exercise 4.6  (Capture the Trend with 'smooths') </strong></span>The trend of the relationship between <code>perrep_2016</code> and <code>perrep_2012</code> is clearly positive and (mostly) linear. We can highlight this trend by adding a model “smooth” to the plot.</p>
+<p><span id="exr:unnamed-chunk-107" class="exercise"><strong>Exercise 4.6  (Capture the Trend with 'smooths') </strong></span>The trend of the relationship between <code>perrep_2016</code> and <code>perrep_2012</code> is clearly positive and (mostly) linear. We can highlight this trend by adding a model “smooth” to the plot.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Add a layer with a model smooth:</li>
 </ol>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="bivariate-visualizations.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb56-2"><a href="bivariate-visualizations.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb56-3"><a href="bivariate-visualizations.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="bivariate-visualizations.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="bivariate-visualizations.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb55-3"><a href="bivariate-visualizations.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <details>
 <summary>
 Solution
 </summary>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="bivariate-visualizations.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb57-2"><a href="bivariate-visualizations.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb57-3"><a href="bivariate-visualizations.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="bivariate-visualizations.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="bivariate-visualizations.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb56-3"><a href="bivariate-visualizations.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 </details>
 <p> </p>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -645,9 +644,9 @@ Solution
 <summary>
 Solution
 </summary>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="bivariate-visualizations.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb58-2"><a href="bivariate-visualizations.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-103-1.png" width="672" />
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="bivariate-visualizations.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb57-2"><a href="bivariate-visualizations.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<img src="stat112_manual_files/figure-html/unnamed-chunk-110-1.png" width="672" />
 </details>
 <p><br />
 </p>
@@ -663,20 +662,20 @@ There are fewer data points at the “ends” so there is more uncertainty about
 <ol start="4" style="list-style-type: lower-alpha">
 <li>By default, <code>geom_smooth</code> adds a smooth, localized model line. To examine the “best” <em>linear model</em>, we can specify <code>method="lm"</code>:</li>
 </ol>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-visualizations.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb59-2"><a href="bivariate-visualizations.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb59-3"><a href="bivariate-visualizations.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="bivariate-visualizations.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb58-2"><a href="bivariate-visualizations.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb58-3"><a href="bivariate-visualizations.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <details>
 <summary>
 Solution
 </summary>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="bivariate-visualizations.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb60-2"><a href="bivariate-visualizations.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb60-3"><a href="bivariate-visualizations.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-105-1.png" width="672" />
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-visualizations.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb59-2"><a href="bivariate-visualizations.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb59-3"><a href="bivariate-visualizations.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<img src="stat112_manual_files/figure-html/unnamed-chunk-112-1.png" width="672" />
 </details>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-106" class="exercise"><strong>Exercise 4.7  (Modify the Scatterplots) </strong></span>As with univariate plots, we can change the aesthetics of scatterplots.</p>
+<p><span id="exr:unnamed-chunk-113" class="exercise"><strong>Exercise 4.7  (Modify the Scatterplots) </strong></span>As with univariate plots, we can change the aesthetics of scatterplots.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Add appropriate axis labels to your scatterplot. Label the y-axis “Trump 2016 support (%)” and label the x-axis “Romney 2012 support (%)”.<br />
@@ -691,16 +690,16 @@ Solution
 <summary>
 Solution
 </summary>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="bivariate-visualizations.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
-<span id="cb61-2"><a href="bivariate-visualizations.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb61-3"><a href="bivariate-visualizations.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Romney 2012 support (%)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Trump 2016 support (%)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-4"><a href="bivariate-visualizations.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-107-1.png" width="672" />
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="bivariate-visualizations.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="bivariate-visualizations.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb60-3"><a href="bivariate-visualizations.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Romney 2012 support (%)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Trump 2016 support (%)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb60-4"><a href="bivariate-visualizations.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<img src="stat112_manual_files/figure-html/unnamed-chunk-114-1.png" width="672" />
 </details>
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-108" class="exercise"><strong>Exercise 4.8  (More Scatterplots) </strong></span>2012 results aren’t the only possible predictor of 2016 results. Consider two more possibilities.</p>
+<p><span id="exr:unnamed-chunk-115" class="exercise"><strong>Exercise 4.8  (More Scatterplots) </strong></span>2012 results aren’t the only possible predictor of 2016 results. Consider two more possibilities.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Construct a scatterplot of <code>perrep_2016</code> and <code>median_rent</code>. Summarize the relationship between these two variables.<br />
@@ -713,94 +712,94 @@ Solution
 <div id="visualizing-quantitative-vs.-categorical-relationships" class="section level3 unnumbered hasAnchor">
 <h3>Visualizing quantitative vs. categorical relationships<a href="bivariate-visualizations.html#visualizing-quantitative-vs.-categorical-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider a univariate histogram and density plot of <code>perrep_2016</code>:</p>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p>To visualize the relationship between Trump’s 2016 support (<code>perrep_2016</code>) and the <code>StateColor</code> (categorical) we need to incorporate a grouping mechanism. Work through the several options below.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-110" class="exercise"><strong>Exercise 4.9  (Side-by-Side Density Plots) </strong></span>We can show density plots for each state color next to each other:</p>
+<p><span id="exr:unnamed-chunk-117" class="exercise"><strong>Exercise 4.9  (Side-by-Side Density Plots) </strong></span>We can show density plots for each state color next to each other:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Construct a density plot for each group.</li>
 </ol>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="bivariate-visualizations.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb62-2"><a href="bivariate-visualizations.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="bivariate-visualizations.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb61-2"><a href="bivariate-visualizations.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Notice that <code>ggplot</code> randomly assigns colors to group based on alphabetical order. In this example, the random color doesn’t match the group itself (red/purple/blue)! We can fix this:</li>
 </ol>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="bivariate-visualizations.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb63-2"><a href="bivariate-visualizations.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb63-3"><a href="bivariate-visualizations.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="bivariate-visualizations.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb62-2"><a href="bivariate-visualizations.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb62-3"><a href="bivariate-visualizations.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>The overlap between the groups makes it difficult to explore the features of each. One option is to add <em>transparency</em> to the density plots:</li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="bivariate-visualizations.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb64-2"><a href="bivariate-visualizations.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb64-3"><a href="bivariate-visualizations.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="bivariate-visualizations.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb63-2"><a href="bivariate-visualizations.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb63-3"><a href="bivariate-visualizations.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Yet another option is to separate the density plots into separate “facets” defined by group:</li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="bivariate-visualizations.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb65-2"><a href="bivariate-visualizations.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb65-3"><a href="bivariate-visualizations.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb65-4"><a href="bivariate-visualizations.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> StateColor)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="bivariate-visualizations.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb64-2"><a href="bivariate-visualizations.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb64-3"><a href="bivariate-visualizations.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="bivariate-visualizations.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> StateColor)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-115" class="exercise"><strong>Exercise 4.10  (Side-by-Side Histograms) </strong></span>Let’s try a similar strategy using histograms to illustrate the relationship between <code>perrep_2016</code> and <code>StateColor</code>.</p>
+<p><span id="exr:unnamed-chunk-122" class="exercise"><strong>Exercise 4.10  (Side-by-Side Histograms) </strong></span>Let’s try a similar strategy using histograms to illustrate the relationship between <code>perrep_2016</code> and <code>StateColor</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Start with the default histogram:</li>
 </ol>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="bivariate-visualizations.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb66-2"><a href="bivariate-visualizations.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="bivariate-visualizations.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> perrep_2016, <span class="at">fill =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb65-2"><a href="bivariate-visualizations.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>That’s not very helpful! Separate the histograms into separate facets for each <code>StateColor</code> group.</li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-117" class="exercise"><strong>Exercise 4.11  (More Options!) </strong></span>Density plots and histograms aren’t the only type of viz we might use…</p>
+<p><span id="exr:unnamed-chunk-124" class="exercise"><strong>Exercise 4.11  (More Options!) </strong></span>Density plots and histograms aren’t the only type of viz we might use…</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Construct side-by-side violins and side-by-side boxplots (see description below).</li>
 </ol>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="bivariate-visualizations.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># violins instead</span></span>
-<span id="cb67-2"><a href="bivariate-visualizations.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb67-3"><a href="bivariate-visualizations.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span>
-<span id="cb67-4"><a href="bivariate-visualizations.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="bivariate-visualizations.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># boxes instead</span></span>
-<span id="cb67-6"><a href="bivariate-visualizations.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> StateColor)) <span class="sc">+</span></span>
-<span id="cb67-7"><a href="bivariate-visualizations.html#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="bivariate-visualizations.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># violins instead</span></span>
+<span id="cb66-2"><a href="bivariate-visualizations.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb66-3"><a href="bivariate-visualizations.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span>
+<span id="cb66-4"><a href="bivariate-visualizations.html#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="bivariate-visualizations.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># boxes instead</span></span>
+<span id="cb66-6"><a href="bivariate-visualizations.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> StateColor)) <span class="sc">+</span></span>
+<span id="cb66-7"><a href="bivariate-visualizations.html#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p>Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable:</p>
 <p><img src="images/Boxplot.png" width="400px" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>In the future, we’ll typically use <em>density plots</em> instead of histograms, violins, and boxes. Explain at least one pro and one con of the density plot.</li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-120" class="exercise"><strong>Exercise 4.12  </strong></span>Let’s not forget the most important purpose of these visualizations! Summarize the relationship between Trump’s 2016 county-level support among red/purple/blue states.</p>
+<p><span id="exr:unnamed-chunk-127" class="exercise"><strong>Exercise 4.12  </strong></span>Let’s not forget the most important purpose of these visualizations! Summarize the relationship between Trump’s 2016 county-level support among red/purple/blue states.</p>
 </div>
 </div>
 <div id="visualizing-categorical-vs-categorical-relationships" class="section level3 unnumbered hasAnchor">
 <h3>Visualizing categorical vs categorical relationships<a href="bivariate-visualizations.html#visualizing-categorical-vs-categorical-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, suppose that instead of Trump’s percentage support, we simply want to explore his county-level wins/losses:</p>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-121-1.png" width="384" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-128-1.png" width="384" /></p>
 <p>Specifically, let’s explore the relationship between <code>winrep_2016</code> and <code>StateColor</code>, another categorical variable.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-122" class="exercise"><strong>Exercise 4.13  (Side-by-side bar plots) </strong></span>We saw above that we can incorporate a new categorical variable into a visualization by using grouping features such as color or facets. Let’s add information about <code>StateColor</code> to our bar plot of <code>winrep_2016</code>.</p>
+<p><span id="exr:unnamed-chunk-129" class="exercise"><strong>Exercise 4.13  (Side-by-side bar plots) </strong></span>We saw above that we can incorporate a new categorical variable into a visualization by using grouping features such as color or facets. Let’s add information about <code>StateColor</code> to our bar plot of <code>winrep_2016</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Construct the following 4 bar plot visualizations.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="bivariate-visualizations.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a stacked bar plot</span></span>
-<span id="cb68-2"><a href="bivariate-visualizations.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
-<span id="cb68-3"><a href="bivariate-visualizations.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb68-4"><a href="bivariate-visualizations.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="bivariate-visualizations.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co"># a side-by-side bar plot</span></span>
-<span id="cb68-6"><a href="bivariate-visualizations.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
-<span id="cb68-7"><a href="bivariate-visualizations.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span>
-<span id="cb68-8"><a href="bivariate-visualizations.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="bivariate-visualizations.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="co"># a proportional bar plot</span></span>
-<span id="cb68-10"><a href="bivariate-visualizations.html#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
-<span id="cb68-11"><a href="bivariate-visualizations.html#cb68-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span>
-<span id="cb68-12"><a href="bivariate-visualizations.html#cb68-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-13"><a href="bivariate-visualizations.html#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="co"># faceted bar plot</span></span>
-<span id="cb68-14"><a href="bivariate-visualizations.html#cb68-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
-<span id="cb68-15"><a href="bivariate-visualizations.html#cb68-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb68-16"><a href="bivariate-visualizations.html#cb68-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>winrep_2016)</span></code></pre></div></li>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="bivariate-visualizations.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a stacked bar plot</span></span>
+<span id="cb67-2"><a href="bivariate-visualizations.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="bivariate-visualizations.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb67-4"><a href="bivariate-visualizations.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="bivariate-visualizations.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># a side-by-side bar plot</span></span>
+<span id="cb67-6"><a href="bivariate-visualizations.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
+<span id="cb67-7"><a href="bivariate-visualizations.html#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span>
+<span id="cb67-8"><a href="bivariate-visualizations.html#cb67-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="bivariate-visualizations.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co"># a proportional bar plot</span></span>
+<span id="cb67-10"><a href="bivariate-visualizations.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
+<span id="cb67-11"><a href="bivariate-visualizations.html#cb67-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span>
+<span id="cb67-12"><a href="bivariate-visualizations.html#cb67-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-13"><a href="bivariate-visualizations.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="co"># faceted bar plot</span></span>
+<span id="cb67-14"><a href="bivariate-visualizations.html#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">x =</span> StateColor, <span class="at">fill =</span> winrep_2016)) <span class="sc">+</span></span>
+<span id="cb67-15"><a href="bivariate-visualizations.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb67-16"><a href="bivariate-visualizations.html#cb67-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>winrep_2016)</span></code></pre></div></li>
 <li><p>Name one pro and one con of using the “proportional bar plot” instead of one of the other three options.</p></li>
 <li><p>What’s your favorite bar plot from part (a)? Why?</p></li>
 </ol>
@@ -810,9 +809,9 @@ Solution
 <div id="hot-dogs" class="section level4 unnumbered hasAnchor">
 <h4>Hot Dogs<a href="bivariate-visualizations.html#hot-dogs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In the annual Nathan’s hot dog eating contest, people compete to eat as many hot dogs as possible in ten minutes. Data on past competitions were compiled by Nathan Yau for “Visualize This: The FlowingData Guide to Design, Visualization, and Statistics”:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="bivariate-visualizations.html#cb69-1" aria-hidden="true" tabindex="-1"></a>hotdogs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://datasets.flowingdata.com/hot-dog-contest-winners.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="bivariate-visualizations.html#cb68-1" aria-hidden="true" tabindex="-1"></a>hotdogs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://datasets.flowingdata.com/hot-dog-contest-winners.csv&quot;</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-125" class="exercise"><strong>Exercise 4.14  </strong></span>Address the following:</p>
+<p><span id="exr:unnamed-chunk-132" class="exercise"><strong>Exercise 4.14  </strong></span>Address the following:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Construct a visualization of the winning number of hot dogs by year. THINK: Which is the response variable?<br />
 </li>
@@ -822,16 +821,16 @@ Solution
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-126" class="exercise"><strong>Exercise 4.15  </strong></span>All but two of the past winners are from the U.S. or Japan:</p>
+<p><span id="exr:unnamed-chunk-133" class="exercise"><strong>Exercise 4.15  </strong></span>All but two of the past winners are from the U.S. or Japan:</p>
 </div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="bivariate-visualizations.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hotdogs<span class="sc">$</span>Country)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="bivariate-visualizations.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hotdogs<span class="sc">$</span>Country)</span></code></pre></div>
 <pre><code>## 
 ##       Germany         Japan        Mexico United States 
 ##             1             9             1            20</code></pre>
 <p>Use the following code to <em>filter</em> out just the winners from U.S. and Japan and name this <code>hotdogsSub</code>. (Don’t worry about the code itself - we’ll discuss similar syntax later in the semester!)</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="bivariate-visualizations.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb72-2"><a href="bivariate-visualizations.html#cb72-2" aria-hidden="true" tabindex="-1"></a>hotdogsSub <span class="ot">&lt;-</span> hotdogs <span class="sc">%&gt;%</span></span>
-<span id="cb72-3"><a href="bivariate-visualizations.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;United States&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="bivariate-visualizations.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb71-2"><a href="bivariate-visualizations.html#cb71-2" aria-hidden="true" tabindex="-1"></a>hotdogsSub <span class="ot">&lt;-</span> hotdogs <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="bivariate-visualizations.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;United States&quot;</span>))</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Using a density plot approach <em>without</em> facets, construct a visualization of how the number of hot dogs eaten varies by country.</li>
 <li>Repeat part a using a density plot approach <em>with</em> facets.<br />
@@ -852,14 +851,14 @@ Solution
 <li>at least 1 time, they talk about something other than a male character</li>
 </ul>
 <p>In the fivethirtyeight.com article <a href="http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/">“The Dollar-And-Cents Case Against Hollywood’s Exclusion of Women”</a>, the authors analyze which Hollywood movies do/don’t pass the test. Their data are available in the <code>fivethirtyeight</code> package:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="bivariate-visualizations.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
-<span id="cb73-2"><a href="bivariate-visualizations.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bechdel)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="bivariate-visualizations.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
+<span id="cb72-2"><a href="bivariate-visualizations.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bechdel)</span></code></pre></div>
 <p>In investigating budgets and profits, the authors “focus on films released from 1990 to 2013, since the data has significantly more depth since then.” Use the following code to filter out just the movies in these years and name the resulting data set <code>Beyond1990</code> (don’t worry about the syntax):</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="bivariate-visualizations.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb74-2"><a href="bivariate-visualizations.html#cb74-2" aria-hidden="true" tabindex="-1"></a>Beyond1990 <span class="ot">&lt;-</span> bechdel <span class="sc">%&gt;%</span></span>
-<span id="cb74-3"><a href="bivariate-visualizations.html#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="bivariate-visualizations.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb73-2"><a href="bivariate-visualizations.html#cb73-2" aria-hidden="true" tabindex="-1"></a>Beyond1990 <span class="ot">&lt;-</span> bechdel <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="bivariate-visualizations.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1990</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-131" class="exercise"><strong>Exercise 4.16  </strong></span>Address the following:</p>
+<p><span id="exr:unnamed-chunk-138" class="exercise"><strong>Exercise 4.16  </strong></span>Address the following:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Construct a visualization that addresses the following research question: Do bigger budgets (<code>budget_2013</code>) pay off with greater box office returns (<code>domgross_2013</code>)? In constructing this visualization, add a smooth to highlight trends and pay attention to which of these variables is the response.<br />
 </li>
@@ -872,7 +871,7 @@ Solution
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-133" class="exercise"><strong>Exercise 4.17  </strong></span>NOTE: The following exercise is inspired by a similar exercise proposed by Albert Kim, one of the <code>fivethirtyeight</code> package authors.<br />
+<p><span id="exr:unnamed-chunk-140" class="exercise"><strong>Exercise 4.17  </strong></span>NOTE: The following exercise is inspired by a similar exercise proposed by Albert Kim, one of the <code>fivethirtyeight</code> package authors.<br />
 Return to the fivethirtyeight.com article and examine the plot titled “The Bechdel Test Over Time”.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -881,12 +880,12 @@ Return to the fivethirtyeight.com article and examine the plot titled “The Bec
 <li>Recreate this plot from the article!</li>
 </ol>
 <p>To do so, you’ll need to create a new data set named <code>newbechdel</code> in which the order of the Bechdel categories (<code>clean_test</code>) and the year categories (<code>yearCat</code>) match those used by fivethirtyeight. Don’t worry about the syntax:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="bivariate-visualizations.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb75-2"><a href="bivariate-visualizations.html#cb75-2" aria-hidden="true" tabindex="-1"></a>newbechdel <span class="ot">&lt;-</span> bechdel <span class="sc">%&gt;%</span></span>
-<span id="cb75-3"><a href="bivariate-visualizations.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">clean_test =</span> <span class="fu">factor</span>(bechdel<span class="sc">$</span>clean_test, <span class="fu">c</span>(<span class="st">&quot;nowomen&quot;</span>, <span class="st">&quot;notalk&quot;</span>, <span class="st">&quot;men&quot;</span>, <span class="st">&quot;dubious&quot;</span>, <span class="st">&quot;ok&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb75-4"><a href="bivariate-visualizations.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">yearCat =</span> <span class="fu">cut</span>(year, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1969</span>, <span class="dv">2014</span>, <span class="at">by =</span> <span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="bivariate-visualizations.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb74-2"><a href="bivariate-visualizations.html#cb74-2" aria-hidden="true" tabindex="-1"></a>newbechdel <span class="ot">&lt;-</span> bechdel <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="bivariate-visualizations.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">clean_test =</span> <span class="fu">factor</span>(bechdel<span class="sc">$</span>clean_test, <span class="fu">c</span>(<span class="st">&quot;nowomen&quot;</span>, <span class="st">&quot;notalk&quot;</span>, <span class="st">&quot;men&quot;</span>, <span class="st">&quot;dubious&quot;</span>, <span class="st">&quot;ok&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb74-4"><a href="bivariate-visualizations.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">yearCat =</span> <span class="fu">cut</span>(year, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1969</span>, <span class="dv">2014</span>, <span class="at">by =</span> <span class="dv">5</span>)))</span></code></pre></div>
 <p>Further, you’ll need to add the following layer in order to get a color scheme that’s close to that in the article:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="bivariate-visualizations.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;salmon&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;steelblue1&quot;</span>, <span class="st">&quot;steelblue4&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="bivariate-visualizations.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;salmon&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;steelblue1&quot;</span>, <span class="st">&quot;steelblue4&quot;</span>))</span></code></pre></div>
 <p>NOTE: that your plot won’t look <em>exactly</em> like the authors’, but should be close to this:</p>
 <p><img src="images/bechdel_hist.jpeg" width="800px" /></p>
 </div>
