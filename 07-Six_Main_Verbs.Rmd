@@ -1,18 +1,5 @@
----
-title: "Comp/Stat 112: Six Main Verbs"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
-output:
-  bookdown::html_document2:
-    split_by: none
-    toc: yes
-    toc_depth: 3
-    toc_float:
-      toc_collapsed: true
-    number_sections: false
----
-
-```{r 06_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```{r 07_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 library(tidyverse)
 library(ggplot2)
 library(mosaicData)
@@ -20,12 +7,18 @@ library(lubridate)
 Birthdays <- Birthdays %>% select(state, date, year, births)
 ```
 
+# (PART) Data Wrangling {-}
 # Six Main Verbs
 
 ## Learning Goals {-}
 
 - Understand and be able to use the following verbs appropriate: `select`, `mutate`, `filter`, `arrange`, `summarize`, `group_by`
 - Develop working knowledge of working with dates and `lubridate` functions
+
+You can download a template .Rmd of this activity [here](template_rmd/07-Six_Main_Verbs_Assign.Rmd). Add it to a folder called `Day_07` in your `COMP_STAT_112` folder.
+
+
+
 
 ## Data Wrangling Introduction {-}
 
@@ -82,20 +75,36 @@ The first two verbs change which variables (columns) are included in the data fr
 
 - **`mutate()`** adds one or more columns to the data frame. Each column is a function of the other columns that is applied on a row by row basis. For example, we can use arithmetic operations like adding two other variables or logical operations like checking if two columns are equal, or equal to a target number.
 
-```{example,name="select and mutate"}
+```{exercise,name="select and mutate"}
 Consider the `Birthdays` data
 ```
 
 a. Add two new variables to the `Birthdays` data: one that has only the last two digits of the year, and one that states whether there were more than 100 births in the given state on the given date.   
 b. Then form a new table that only has three columns: the state and your two new columns.   
-c. What does the following operation return: `select(Birthdays,ends_with("te"))`?
+c. What does the following operation return: `select(Birthdays, ends_with("te"))`?
 
-Try first, then check solutions online.
+<details>
+<summary>Solution</summary>
+
+The commands for the first two parts are
 
 ```{r}
+BirthdaysExtra <- mutate(Birthdays,
+  year_short = year - 1900,
+  busy_birthday = (births > 100)
+)
 
+BirthdaysExtraTable <- select(
+  BirthdaysExtra, state,
+  year_short, busy_birthday
+)
+
+#select(Birthdays, ends_with("te"))
 ```
 
+The operation in (c) selects only the first two columns `state` and `date` because they end in 'te'.
+</details>
+\
 
 
 #### Verbs that change the cases (rows) but not the variables (columns) {-}
@@ -107,16 +116,31 @@ The next two verbs change which cases (rows) are included in the data frame, but
 
 - **`arrange()`** reorders the rows according to a specified criteria. To sort in reverse order based on the variable `x`, use `arrange(desc(x))`.
 
-```{example, name="filter and arrange", label="ex-ma"}
+```{exercise, name="filter and arrange", label="ex-ma"}
 Create a table with only births in Massachusetts in 1979, and sort the days from those with the most births to those with the fewest.
 
 ```
 
-Try first, then check solutions online.
+<details>
+<summary>Solution</summary>
+
+
+We want to `filter` and then `arrange`:
 
 ```{r}
-
+MABirths1979 <- filter(Birthdays, state == "MA", year == 1979)
+MABirths1979Sorted <- arrange(MABirths1979, desc(births))
 ```
+
+```{r, echo=FALSE}
+knitr::kable(
+  MABirths1979Sorted[1:6, ],
+  caption = "Birthdays in Massachusetts in 1979, sorted from those dates with the most births to those dates with the fewest births."
+)
+```
+
+</details>
+\
 
 When filtering, we often use logical comparison operators like `==`, `>`, `<`, `>=` (greater than or equal to), `<=` (less than or equal to), and `%in%`, which compares the value to a list of entries.^[**Important note about `=` vs. `==`**: A single `=` is an assignment operator that assigns the value after the equal sign to the variable before the equal sign. We saw an example of this above with `year_short = year - 1900`. In order to compare whether two values are the same, we need to use the double equal `==` as in `year == 1979`.] For example, if we want all births in AK, CA, and MA, we can write
 
@@ -153,18 +177,26 @@ Rather, we will mostly use it to create **grouped summaries**, which brings us t
 
 - **`group_by()`** groups the cases of a data frame by a specified set of variables. The size of the stored data frame does not actually change (neither the cases nor the variables change), but then other functions can be applied to the specified groups instead of the entire data set. We'll often use `group_by` in conjunction with `summarise` to get a grouped summary.
 
-```{example, name="grouped summary"}  
+```{exercise, name="grouped summary"}  
 Consider the `Birthdays` data again.
 ```
 
   (a) Find the average number of daily births (per state) in each year.
   (b) Find the average number of daily births in each year, by state.
 
-Try first, then check solutions online.
+<details>
+<summary>Solution</summary>
+
+We have to first group by the desired grouping and then perform a summarise.
 
 ```{r}
-
+BirthdaysYear <- group_by(Birthdays, year)
+summarise(BirthdaysYear, average = mean(births))
+BirthdaysYearState <- group_by(Birthdays, year, state)
+summarise(BirthdaysYearState, average = mean(births))
 ```
+</details>
+\
 
 ### Piping {-}
 
@@ -173,7 +205,7 @@ Additional reading:
 * [Wickham and Grolemund, Combining Multiple Operations with the Pipe](https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe)
 * [Wickham and Grolemund, Pipes](http://r4ds.had.co.nz/pipes.html)
 
-Pipes offer an efficient way to execute multiple operations at once. Here is a more efficient way to redo Example \@ref(exm:ex-ma) with **the pipe**:
+Pipes offer an efficient way to execute multiple operations at once. Here is a more efficient way to redo Exercise 7.2 with **the pipe**:
 
 ```{r}
 QuickMABirths1979 <-
@@ -182,7 +214,7 @@ QuickMABirths1979 <-
   arrange(desc(births))
 ```
 
-With the pipe notation, `x %>% f(y)` becomes `f(x,y)`, where in the first line here, `x` is `Birthdays`, the function `f` is `filter`, and `y` is `state == "MA",year == 1979`. The really nice thing about piping is that you can chain together a bunch of different operations without having to save the intermediate results. This is what we have done above by chaining together a `filter` followed by an `arrange`.
+With the pipe notation, `x %>% f(y)` becomes `f(x,y)`, where in the first line here, `x` is `Birthdays`, the function `f` is `filter`, and `y` is `state == "MA", year == 1979`. The really nice thing about piping is that you can chain together a bunch of different operations without having to save the intermediate results. This is what we have done above by chaining together a `filter` followed by an `arrange`.
 
 ### Manipulating Dates {-}
 
@@ -220,15 +252,36 @@ knitr::kable(
 ```
 
 
-```{example}
+```{exercise}
 Make a table showing the five states with the most births between September 9, 1979 and September 11, 1979, inclusive. Arrange the table in descending order of births.
 ```
 
-Try first, then check solutions online.
+<details>
+<summary>Solution</summary>
+
+The plan of attack is to first filter the dates, then group by state, then use a `summarise` to add up totals for each state, and finally arrange them in descending order to find the top 5.^[The verbs `head(n = 5)`, `tail(n = 3)` are often used just after an `arrange` to keep, e.g., only the first 5 entries or last 3 entries, where `n` specifies the number of entries to keep.]
+
 
 ```{r}
-
+SepTable <-
+  Birthdays %>%
+  filter(date >= ymd("1979-09-09"), date <= ymd("1979-09-11")) %>%
+  group_by(state) %>%
+  summarise(total = sum(births)) %>%
+  arrange(desc(total)) %>%
+  head(n = 5)
 ```
+
+```{r}
+knitr::kable(
+  SepTable[, ],
+  caption = "States with the
+  most births between September 9, 1979
+  and September 11, 1979, inclusive."
+)
+```
+</details>
+\
 
 ## Exercises Part 1: Baby Names {-}
 
@@ -247,20 +300,9 @@ Add a new boolean (true or false) variable called `has2000` that indicates wheth
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ```{exercise}
 Find the number of total babies per year, sorted by most babies to least babies.
-
-```
-
-> ANSWER:
-
-```{r}
 
 ```
 
@@ -269,22 +311,12 @@ Find the twelve most popular names overall (i.e., totaled over all year and sexe
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ```{exercise}
 Find the most popular names for males, over all years and ordered by popularity.
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ```{exercise}
 Find the most popular names for females, over all years and ordered by popularity.
@@ -298,22 +330,13 @@ Calculate the number of babies born each decade, and arrange them in descending 
   
 ```
    
-> ANSWER:
 
-```{r}
-
-```
 
 ```{exercise}
 Calculate the most popular name for each year. Print out the answer for the years 2006-2015. This is tricky, but try Googling for hints.
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ## Exercises Part 2: US Births {-}
 
@@ -325,12 +348,6 @@ For this activity, we need to work with data aggregated across the states.
 
 ```{exercise, name="Total Across States", label="us-daily-births"}
 Create a new data table, `DailyBirths`, that adds up all the births for each day across all the states.  Plot out daily births vs date.
-
-```
-
-> ANSWER:
-
-```{r}
 
 ```
 
@@ -348,12 +365,6 @@ When are the most babies born? The fewest?
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
 
 ### Day of the Week {-}
 
@@ -362,11 +373,6 @@ To examine patterns within the week, make a box plot showing the number of birth
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ### Holidays {-}
 
@@ -378,18 +384,17 @@ Pick a two-year span of the `Birthdays` that falls in the 1980s, say, 1980/1981.
 ```
 
 
+The plot you generate for Exercise \@ref(exr:two-year) should be generally consistent with the weekend effect and seasonal patterns we have already seen; however, a few days each year stand out as exceptions. We are going to examine the hypothesis that these are holidays.  You can find a data set listing US federal holidays [here](data/US-Holidays.csv).  Read it in as follows:^[The point of the `lubridate::dmy()` function is to convert the character-string date stored in the CSV to a POSIX date-number.]
 
-The plot you generate for Exercise \@ref(exr:two-year) should be generally consistent with the weekend effect and seasonal patterns we have already seen; however, a few days each year stand out as excepetions. We are going to examine the hypothesis that these are holidays.  You can find a data set listing US federal holidays [here](https://bcheggeseth.github.io/112_fall_2022/data/US-Holidays.csv).  Read it in as follows:^[The point of the `lubridate::dmy()` function is to convert the character-string date stored in the CSV to a POSIX date-number.]
-
-> ANSWER:
-
-```{r error=FALSE}
-Holidays <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/US-Holidays.csv") %>%
+```{r,warning=FALSE,message=FALSE,echo=FALSE}
+Holidays <- read_csv("data/US-Holidays.csv") %>%
   mutate(date = as.POSIXct(lubridate::dmy(date)))
-
-
 ```
 
+```{r,warning=FALSE,message=FALSE,eval=FALSE}
+Holidays <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/US-Holidays.csv") %>%
+  mutate(date = as.POSIXct(lubridate::dmy(date)))
+```
 
 ```{exercise, name="Holidays", label="holidays"}
 Now let's update the plot from Exercise \@ref(exr:two-year) to include the holidays.   
@@ -400,32 +405,13 @@ c. Finally, some holidays seem to have more of an effect than others. It would b
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 ### Geography {-}
 
 ```{exercise, name="Examine the Effect of Geography", label="geography"}
 In any way you choose, explore the effect of geography on birth patterns. For example, do parents in Minnesota have fewer winter babies than in other states? Which states have the largest increases or decreases in their portion of US births over time? Is the weekend effect less strong for states with a higher percentage of their populations living in rural areas? Pick any issue (not all of these) that interests you, explore it, and create a graphic to illustrate your findings.
-
 ```
-
-> ANSWER:
-
-```{r}
-
-```
-
 
 ### Superstition {-}
 
 This [article](https://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/) from FiveThirtyEight demonstrates that fewer babies are born on the 13th of each month, and the effect is even stronger when the 13th falls on a Friday. If you have extra time or want some extra practice, you can try to recreate the first graphic in the article.
-
-> ANSWER:
-
-```{r}
-
-```

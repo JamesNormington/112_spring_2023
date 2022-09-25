@@ -290,6 +290,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#dynamic-mapping-functions"><i class="fa fa-check"></i>Dynamic Mapping Functions</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III Data Wrangling</b></span></li>
+<li class="chapter" data-level="7" data-path="six-main-verbs.html"><a href="six-main-verbs.html"><i class="fa fa-check"></i><b>7</b> Six Main Verbs</a>
+<ul>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#data-wrangling-introduction"><i class="fa fa-check"></i>Data Wrangling Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#example-us-births"><i class="fa fa-check"></i>Example: US Births</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#tidy-data-1"><i class="fa fa-check"></i>Tidy Data</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#data-verbs"><i class="fa fa-check"></i>Data Verbs</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#piping"><i class="fa fa-check"></i>Piping</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#manipulating-dates"><i class="fa fa-check"></i>Manipulating Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#exercises-part-1-baby-names"><i class="fa fa-check"></i>Exercises Part 1: Baby Names</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#exercises-part-2-us-births"><i class="fa fa-check"></i>Exercises Part 2: US Births</a>
+<ul>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#seasonality"><i class="fa fa-check"></i>Seasonality</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#day-of-the-week"><i class="fa fa-check"></i>Day of the Week</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#holidays"><i class="fa fa-check"></i>Holidays</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#geography"><i class="fa fa-check"></i>Geography</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#superstition"><i class="fa fa-check"></i>Superstition</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -350,21 +372,21 @@ Solution
 <span id="cb40-6"><a href="bivariate-visualizations.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  The variables are county name, vote counts for parties and total for presidential elections, and more</span></span>
 <span id="cb40-7"><a href="bivariate-visualizations.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(elect)</span>
 <span id="cb40-8"><a href="bivariate-visualizations.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 34</span></span>
-<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county     total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟</span></span>
-<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker Co…   28652    7420   20722     510   28497    6551   21633     313   29243    4486</span></span>
-<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock C…    5415    4011    1391      13    5318    4058    1250      10    4701    3530</span></span>
-<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun C…   49242   16334   32348     560   46240   15500   30272     468   47376   13197</span></span>
-<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour C…   11630    5697    5866      67   11459    5873    5539      47   10390    4848</span></span>
-<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette C…    7957    1994    5883      80    7912    1803    6034      75    8196    1358</span></span>
-<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin C…   81413   19386   61271     756   84988   18329   65772     887   94090   18409</span></span>
-<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 23 more variables: gop_2016 &lt;dbl&gt;, oth_2016 &lt;dbl&gt;, perdem_2016 &lt;dbl&gt;,</span></span>
-<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   perrep_2016 &lt;dbl&gt;, winrep_2016 &lt;lgl&gt;, perdem_2012 &lt;dbl&gt;, perrep_2012 &lt;dbl&gt;,</span></span>
-<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   winrep_2012 &lt;lgl&gt;, perdem_2008 &lt;dbl&gt;, perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;,</span></span>
-<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;,</span></span>
-<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_asian &lt;dbl&gt;, percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;,</span></span>
-<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;, and</span></span>
-<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   abbreviated variable names ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, …</span></span>
+<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟ gop_2…˟</span></span>
+<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walke…   28652    7420   20722     510   28497    6551   21633     313   29243    4486   24208</span></span>
+<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullo…    5415    4011    1391      13    5318    4058    1250      10    4701    3530    1139</span></span>
+<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calho…   49242   16334   32348     560   46240   15500   30272     468   47376   13197   32803</span></span>
+<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbo…   11630    5697    5866      67   11459    5873    5539      47   10390    4848    5431</span></span>
+<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayet…    7957    1994    5883      80    7912    1803    6034      75    8196    1358    6705</span></span>
+<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldw…   81413   19386   61271     756   84988   18329   65772     887   94090   18409   72780</span></span>
+<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 22 more variables: oth_2016 &lt;dbl&gt;, perdem_2016 &lt;dbl&gt;, perrep_2016 &lt;dbl&gt;,</span></span>
+<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   winrep_2016 &lt;lgl&gt;, perdem_2012 &lt;dbl&gt;, perrep_2012 &lt;dbl&gt;, winrep_2012 &lt;lgl&gt;,</span></span>
+<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   perdem_2008 &lt;dbl&gt;, perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;, region &lt;dbl&gt;,</span></span>
+<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;, percent_asian &lt;dbl&gt;,</span></span>
+<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;, median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;,</span></span>
+<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;, and abbreviated variable names ¹​total_2008,</span></span>
+<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, ⁶​dem_2012, ⁷​gop_2012, ⁸​oth_2012, …</span></span>
 <span id="cb40-24"><a href="bivariate-visualizations.html#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-25"><a href="bivariate-visualizations.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3,112 counties and 34 variables</span></span>
 <span id="cb40-26"><a href="bivariate-visualizations.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elect)</span>
