@@ -429,3 +429,15 @@ This [article](https://fivethirtyeight.com/features/some-people-are-too-supersti
 | `arrange()`        |   Sorts the rows of a dataset |   `arrange(Birthdays, desc(births)) ` |
 | `summarize()`        |   Collapses rows into summaries of variables across rows |   `summarise(Birthdays,total_births = sum(births), average_births = mean(births), nstates = n_distinct(state), ncases = n()) ` |
 | `group_by()`        |   Collapses rows into summaries of variables across rows |   `group_by(Birthdays, year, state) %>% summarise(average = mean(births))` |
+
+
+### Logical/Boolean Operators {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `==`        |  Checks whether two items are equal  |   `year == 2000` |
+| `>`        |  Checks whether left is greater than the right |   `year > 2000` |
+| `<`        |   Checks whether left is less than the right |   `year < 2000 ` |
+| `>=`        |   Checks whether left is greater than or equal to right  |   `year >= 2000 ` |
+| `<=`        |   Checks whether left is less than or equal to right |   `year <= 2000` |
+| `%in%`        |   Checks whether left is in vector on right |   `state %in% c("AK","CA","MA")` |

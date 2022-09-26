@@ -314,6 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#appendix-r-functions-4"><i class="fa fa-check"></i>Appendix: R Functions</a>
 <ul>
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#six-main-verbs-1"><i class="fa fa-check"></i>Six Main Verbs</a></li>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#logicalboolean-operators"><i class="fa fa-check"></i>Logical/Boolean Operators</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -1267,6 +1268,55 @@ Margaret
 <td><code>group_by()</code></td>
 <td align="center">Collapses rows into summaries of variables across rows</td>
 <td align="right"><code>group_by(Birthdays, year, state) %&gt;% summarise(average = mean(births))</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logicalboolean-operators" class="section level3 unnumbered hasAnchor">
+<h3>Logical/Boolean Operators<a href="six-main-verbs.html#logicalboolean-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="39%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function/Operator</th>
+<th align="center">Action</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td align="center">Checks whether two items are equal</td>
+<td align="right"><code>year == 2000</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td align="center">Checks whether left is greater than the right</td>
+<td align="right"><code>year &gt; 2000</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td align="center">Checks whether left is less than the right</td>
+<td align="right"><code>year &lt; 2000</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td align="center">Checks whether left is greater than or equal to right</td>
+<td align="right"><code>year &gt;= 2000</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td align="center">Checks whether left is less than or equal to right</td>
+<td align="right"><code>year &lt;= 2000</code></td>
+</tr>
+<tr class="even">
+<td><code>%in%</code></td>
+<td align="center">Checks whether left is in vector on right</td>
+<td align="right"><code>state %in% c("AK","CA","MA")</code></td>
 </tr>
 </tbody>
 </table>
