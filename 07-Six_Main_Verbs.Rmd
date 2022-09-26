@@ -99,7 +99,7 @@ BirthdaysExtraTable <- select(
   year_short, busy_birthday
 )
 
-#select(Birthdays, ends_with("te"))
+select(Birthdays, ends_with("te")) %>% head()
 ```
 
 The operation in (c) selects only the first two columns `state` and `date` because they end in 'te'.
@@ -415,3 +415,17 @@ In any way you choose, explore the effect of geography on birth patterns. For ex
 ### Superstition {-}
 
 This [article](https://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/) from FiveThirtyEight demonstrates that fewer babies are born on the 13th of each month, and the effect is even stronger when the 13th falls on a Friday. If you have extra time or want some extra practice, you can try to recreate the first graphic in the article.
+
+
+## Appendix: R Functions {.unnumbered}
+
+### Six Main Verbs {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `select()`        |   Provides a subset of variables   |   `select(Birthdays, state, date, year, births)` |
+| `mutate()`        |  Creates a new variable |   `mutate(Birthdays, year_short = year - 1900)` |
+| `filter()`        |   Provides a subset of rows |   `filter(Birthdays, state %in% c("AK","CA","MA")) ` |
+| `arrange()`        |   Sorts the rows of a dataset |   `arrange(Birthdays, desc(births)) ` |
+| `summarize()`        |   Collapses rows into summaries of variables across rows |   `summarise(Birthdays,total_births = sum(births), average_births = mean(births), nstates = n_distinct(state), ncases = n()) ` |
+| `group_by()`        |   Collapses rows into summaries of variables across rows |   `group_by(Birthdays, year, state) %>% summarise(average = mean(births))` |
