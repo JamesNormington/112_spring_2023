@@ -440,4 +440,5 @@ This [article](https://fivethirtyeight.com/features/some-people-are-too-supersti
 | `<`        |   Checks whether left is less than the right |   `year < 2000 ` |
 | `>=`        |   Checks whether left is greater than or equal to right  |   `year >= 2000 ` |
 | `<=`        |   Checks whether left is less than or equal to right |   `year <= 2000` |
+| `!=`        |   Checks whether left is not equal to right |   `year != 2000` |
 | `%in%`        |   Checks whether left is in vector on right |   `state %in% c("AK","CA","MA")` |
