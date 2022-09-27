@@ -167,6 +167,11 @@ Find the most popular names for females, over all years and ordered by popularit
 
 ```
 
+> ANSWER:
+
+```{r}
+
+```
 
 ```{exercise}
 Calculate the number of babies born each decade, and arrange them in descending order. Calculating the decade may be the trickiest part of this question!   
@@ -245,8 +250,6 @@ To examine patterns within the week, make a box plot showing the number of birth
 ```
 
 ### Holidays {-}
-
-
 
 ```{exercise, name="Two Year Sample", label="two-year"}
 Pick a two-year span of the `Birthdays` that falls in the 1980s, say, 1980/1981.  Extract out the data just in this interval, calling it `MyTwoYears`.  (Hint: `filter()`, `year()`).  Plot out the births in this two-year span day by day. Color each date according to its day of the week.  Make sure to choose your font size, line widths, and color scheme to make your figure legible. Explain the pattern that you see.

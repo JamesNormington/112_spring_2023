@@ -102,6 +102,18 @@ exr:weekday
 exr:two-year
 exr:holidays
 exr:geography
+tab:unnamed-chunk-219
+tab:unnamed-chunk-221
+exm:unnamed-chunk-222
+fig:unnamed-chunk-223
+tab:unnamed-chunk-225
+tab:unnamed-chunk-227
+fig:unnamed-chunk-228
+tab:unnamed-chunk-230
+exr:unnamed-chunk-233
+exr:unnamed-chunk-238
+tab:lesotho-table
+exr:unnamed-chunk-241
 intro-to-r-rstudio-and-r-markdown
 intro-to-data-visualization
 effective-visualizations
@@ -109,3 +121,4 @@ bivariate-visualizations
 multivariate-visualizations
 spatial-visualization
 six-main-verbs
+reshaping-data
