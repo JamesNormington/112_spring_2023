@@ -119,8 +119,9 @@ Daily <- daily_show_guests
 ### Popular guests {-}
 
 ```{exercise}
-Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order). Hint: the function `rowSums()` adds up all of the entries in each row of a table. Try using it in a `mutate`.
+Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order).
 
+Hints: Try Googling "summarize count rows dplyr". Also, the function `rowSums()` adds up all of the entries in each row of a table. Try using it in a `mutate`.
 ```
 
 > ANSWER:
