@@ -370,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The data table <code>Birthdays</code> in the <code>mosaicData</code> package gives the number of births recorded on each day of the year in each state from 1969 to 1988.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-237">Table 7.1: </span>A subset of the initial birthday data.
+<span id="tab:unnamed-chunk-200">Table 7.1: </span>A subset of the initial birthday data.
 </caption>
 <thead>
 <tr>
@@ -508,7 +508,7 @@ CO
 <li><p><strong><code>mutate()</code></strong> adds one or more columns to the data frame. Each column is a function of the other columns that is applied on a row by row basis. For example, we can use arithmetic operations like adding two other variables or logical operations like checking if two columns are equal, or equal to a target number.</p></li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-238" class="exercise"><strong>Exercise 7.1  (select and mutate) </strong></span>Consider the <code>Birthdays</code> data</p>
+<p><span id="exr:unnamed-chunk-201" class="exercise"><strong>Exercise 7.1  (select and mutate) </strong></span>Consider the <code>Birthdays</code> data</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Add two new variables to the <code>Birthdays</code> data: one that has only the last two digits of the year, and one that states whether there were more than 100 births in the given state on the given date.<br />
@@ -564,7 +564,7 @@ Solution
 <span id="cb121-2"><a href="six-main-verbs.html#cb121-2" aria-hidden="true" tabindex="-1"></a>MABirths1979Sorted <span class="ot">&lt;-</span> <span class="fu">arrange</span>(MABirths1979, <span class="fu">desc</span>(births))</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-241">Table 7.2: </span>Birthdays in Massachusetts in 1979, sorted from those dates with the most births to those dates with the fewest births.
+<span id="tab:unnamed-chunk-204">Table 7.2: </span>Birthdays in Massachusetts in 1979, sorted from those dates with the most births to those dates with the fewest births.
 </caption>
 <thead>
 <tr>
@@ -698,7 +698,7 @@ MA
 <li><strong><code>group_by()</code></strong> groups the cases of a data frame by a specified set of variables. The size of the stored data frame does not actually change (neither the cases nor the variables change), but then other functions can be applied to the specified groups instead of the entire data set. We’ll often use <code>group_by</code> in conjunction with <code>summarise</code> to get a grouped summary.</li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-244" class="exercise"><strong>Exercise 7.3  (grouped summary) </strong></span>Consider the <code>Birthdays</code> data again.</p>
+<p><span id="exr:unnamed-chunk-207" class="exercise"><strong>Exercise 7.3  (grouped summary) </strong></span>Consider the <code>Birthdays</code> data again.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Find the average number of daily births (per state) in each year.</li>
@@ -795,7 +795,7 @@ Solution
 <p>Here is what the data table looks like with our new columns:</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-248">Table 7.3: </span>A subset of the birthday data with additional variables.
+<span id="tab:unnamed-chunk-211">Table 7.3: </span>A subset of the birthday data with additional variables.
 </caption>
 <thead>
 <tr>
@@ -943,7 +943,7 @@ Wed
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-249" class="exercise"><strong>Exercise 7.4  </strong></span>Make a table showing the five states with the most births between September 9, 1979 and September 11, 1979, inclusive. Arrange the table in descending order of births.</p>
+<p><span id="exr:unnamed-chunk-212" class="exercise"><strong>Exercise 7.4  </strong></span>Make a table showing the five states with the most births between September 9, 1979 and September 11, 1979, inclusive. Arrange the table in descending order of births.</p>
 </div>
 <details>
 <summary>
@@ -965,7 +965,7 @@ Solution
 <span id="cb136-6"><a href="six-main-verbs.html#cb136-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-251">Table 7.4: </span>States with the
+<span id="tab:unnamed-chunk-214">Table 7.4: </span>States with the
 most births between September 9, 1979
 and September 11, 1979, inclusive.
 </caption>
@@ -1032,7 +1032,7 @@ OH
 <p>We are going to practice the six data verbs on the <code>babynames</code> dataset:</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-252">Table 7.5: </span>A subset of the babynames data, which runs from 1880-2015 and is provided by the US Social Security Administration.
+<span id="tab:unnamed-chunk-215">Table 7.5: </span>A subset of the babynames data, which runs from 1880-2015 and is provided by the US Social Security Administration.
 </caption>
 <thead>
 <tr>
@@ -1159,25 +1159,25 @@ Margaret
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-253" class="exercise"><strong>Exercise 7.5  </strong></span>Add a new boolean (true or false) variable called <code>has2000</code> that indicates whether there were more than 2000 babies of that sex assigned at birth with that name in each year. Display the first six rows of your new table.</p>
+<p><span id="exr:unnamed-chunk-216" class="exercise"><strong>Exercise 7.5  </strong></span>Add a new boolean (true or false) variable called <code>has2000</code> that indicates whether there were more than 2000 babies of that sex assigned at birth with that name in each year. Display the first six rows of your new table.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-254" class="exercise"><strong>Exercise 7.6  </strong></span>Find the number of total babies per year, sorted by most babies to least babies.</p>
+<p><span id="exr:unnamed-chunk-217" class="exercise"><strong>Exercise 7.6  </strong></span>Find the number of total babies per year, sorted by most babies to least babies.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-255" class="exercise"><strong>Exercise 7.7  </strong></span>Find the twelve most popular names overall (i.e., totaled over all year and sexes), ordered by popularity.</p>
+<p><span id="exr:unnamed-chunk-218" class="exercise"><strong>Exercise 7.7  </strong></span>Find the twelve most popular names overall (i.e., totaled over all year and sexes), ordered by popularity.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-256" class="exercise"><strong>Exercise 7.8  </strong></span>Find the most popular names for males, over all years and ordered by popularity.</p>
+<p><span id="exr:unnamed-chunk-219" class="exercise"><strong>Exercise 7.8  </strong></span>Find the most popular names for males, over all years and ordered by popularity.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-257" class="exercise"><strong>Exercise 7.9  </strong></span>Find the most popular names for females, over all years and ordered by popularity.</p>
+<p><span id="exr:unnamed-chunk-220" class="exercise"><strong>Exercise 7.9  </strong></span>Find the most popular names for females, over all years and ordered by popularity.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-258" class="exercise"><strong>Exercise 7.10  </strong></span>Calculate the number of babies born each decade, and arrange them in descending order. Calculating the decade may be the trickiest part of this question!</p>
+<p><span id="exr:unnamed-chunk-221" class="exercise"><strong>Exercise 7.10  </strong></span>Calculate the number of babies born each decade, and arrange them in descending order. Calculating the decade may be the trickiest part of this question!</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-259" class="exercise"><strong>Exercise 7.11  </strong></span>Calculate the most popular name for each year. Print out the answer for the years 2006-2015. This is tricky, but try Googling for hints.</p>
+<p><span id="exr:unnamed-chunk-222" class="exercise"><strong>Exercise 7.11  </strong></span>Calculate the most popular name for each year. Print out the answer for the years 2006-2015. This is tricky, but try Googling for hints.</p>
 </div>
 </div>
 <div id="exercises-part-2-us-births" class="section level2 unnumbered hasAnchor">
