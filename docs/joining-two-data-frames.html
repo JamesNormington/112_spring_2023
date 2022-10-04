@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="reshaping-data.html"/>
-
+<link rel="next" href="categorical-variables-as-factors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -350,6 +350,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns"><i class="fa fa-check"></i>Filtering join practice: Spatiotemporal patterns</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html"><i class="fa fa-check"></i><b>10</b> Categorical Variables as Factors</a>
+<ul>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#example-grade-distribution"><i class="fa fa-check"></i>Example: Grade Distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#converting-to-factor"><i class="fa fa-check"></i>Converting to factor</a></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-order-of-levels"><i class="fa fa-check"></i>Changing the order of levels</a></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels"><i class="fa fa-check"></i>Changing the value of levels</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -618,8 +628,7 @@ Solution
 <span id="cb151-6"><a href="joining-two-data-frames.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 4
 ## # Groups:   sessionID, level, sem [0]
-## # … with 4 variables: sessionID &lt;chr&gt;, level &lt;dbl&gt;, sem &lt;chr&gt;,
-## #   n &lt;int&gt;</code></pre>
+## # … with 4 variables: sessionID &lt;chr&gt;, level &lt;dbl&gt;, sem &lt;chr&gt;, n &lt;int&gt;</code></pre>
 <p><code>sessionID</code> in <code>Courses</code> is part of a foreign key that uniquely identify rows in <code>Grades</code>.</p>
 </details>
 </div>
@@ -1021,23 +1030,6 @@ ggmap(myMap) + ...</code></pre>
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="8">
@@ -1052,8 +1044,8 @@ ggmap(myMap) + ...</code></pre>
           </div>
         </div>
       </div>
-<a href="reshaping-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="reshaping-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="categorical-variables-as-factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

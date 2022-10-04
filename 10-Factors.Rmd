@@ -1,4 +1,4 @@
-```{r 09_setup, include=FALSE}
+```{r 10_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 library(tidyverse)
 library(ggplot2)
@@ -12,7 +12,7 @@ library(ggplot2)
 - Be able to convert a `character` variable to a `factor`
 - Develop comfort in manipulating the order and values of a factor with the `forcats` package to improve summaries and visualizations.
 
-You can download a template .Rmd of this activity [here](template_rmd/09-Factors.Rmd).
+You can download a template .Rmd of this activity [here](template_rmd/10-Factors_Assign.Rmd). Put this in a folder `Day_10` in your `COMP_STAT_112` folder.
 
 ## Example: Grade Distribution {-}
 
@@ -84,6 +84,7 @@ For example, when the entries are stored as character strings, we cannot use the
 ```{r}
 levels(Grades$grade)
 ```
+
 ### Converting to factor {-}
 
 Let's first convert the `grade` variable to a factor:
