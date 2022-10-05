@@ -207,3 +207,14 @@ knitr::kable(
 Make a side-by-side bar chart with the `year` on the horizontal axis, and three side-by-side vertical columns for average interest rate on deposits, average interest rate on loans, and inflation rate for each year. In order to get the data into glyph-ready form, you'll need to use `pivot_longer`. Hint: `pivot_longer` uses the `dplyr::select()` notation, so you can, e.g., list the columns you want to select, use colon notation, or use `starts_with(a string)`. See [Wickham and Grolemund](https://r4ds.had.co.nz/transform.html#select) for more information.
 
 ```
+
+
+
+## Appendix: R Functions {.unnumbered}
+
+### Reshaping Functions {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `pivot_wider()`        |   Takes a long data set and spreads information in columns into many new variables (wider)  |   `BabyNamesTotal %>% pivot_wider(names_from = sex, values_from = total, values_fill = 0, names_sort = TRUE)` |
+| `pivot_longer()`        | Takes a wide data set and gathers information in columns into fewer variables (longer) |   ` Neutral %>% pivot_longer(cols = c(`F`, `M`), names_to = "sex", values_to = "total")` |

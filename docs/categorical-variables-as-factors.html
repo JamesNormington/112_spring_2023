@@ -331,6 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#recreating-a-graphic"><i class="fa fa-check"></i>Recreating a graphic</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#more-exercises-practice-pivoting-longer"><i class="fa fa-check"></i>More Exercises: Practice Pivoting Longer</a></li>
+<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#appendix-r-functions-5"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#reshaping-functions"><i class="fa fa-check"></i>Reshaping Functions</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html"><i class="fa fa-check"></i><b>9</b> Joining Two Data Frames</a>
 <ul>
@@ -349,6 +353,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns"><i class="fa fa-check"></i>Mutating join practice: Spatial patterns</a></li>
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns"><i class="fa fa-check"></i>Filtering join practice: Spatiotemporal patterns</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#appendix-r-functions-6"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-joins-1"><i class="fa fa-check"></i>Mutating Joins</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-joins-1"><i class="fa fa-check"></i>Filtering Joins</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html"><i class="fa fa-check"></i><b>10</b> Categorical Variables as Factors</a>
 <ul>
@@ -358,6 +367,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#converting-to-factor"><i class="fa fa-check"></i>Converting to factor</a></li>
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-order-of-levels"><i class="fa fa-check"></i>Changing the order of levels</a></li>
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels"><i class="fa fa-check"></i>Changing the value of levels</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#appendix-r-functions-7"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-order-of-levels-1"><i class="fa fa-check"></i>Changing the order of levels</a></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1"><i class="fa fa-check"></i>Changing the value of levels</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -400,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will continue with the grades data from the previous activity. Here is a sample to remember what it looks like:</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-276">Table 10.1: </span>Student grades.
+<span id="tab:unnamed-chunk-278">Table 10.1: </span>Student grades.
 </caption>
 <thead>
 <tr>
@@ -465,7 +479,7 @@ NC
 <p>Here is a bar chart of the grade distribution:</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="categorical-variables-as-factors.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Grades, <span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
 <span id="cb170-2"><a href="categorical-variables-as-factors.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>We can also wrangle a table that just has each grade and the number of times it appears:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="categorical-variables-as-factors.html#cb171-1" aria-hidden="true" tabindex="-1"></a>GradeDistribution <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
 <span id="cb171-2"><a href="categorical-variables-as-factors.html#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grade) <span class="sc">%&gt;%</span></span>
@@ -475,7 +489,7 @@ NC
 <span id="cb172-3"><a href="categorical-variables-as-factors.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(grade) </span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-280">Table 10.2: </span>Grade distribution.
+<span id="tab:unnamed-chunk-282">Table 10.2: </span>Grade distribution.
 </caption>
 <thead>
 <tr>
@@ -643,7 +657,7 @@ S
 <p><br />
 </p>
 <div class="example">
-<p><span id="exm:unnamed-chunk-285" class="example"><strong>Example 10.1  (Reorder factors) </strong></span>Let’s reorder the grades so that they are in a more meaningful order for the bar chart above. Here are three options:</p>
+<p><span id="exm:unnamed-chunk-287" class="example"><strong>Example 10.1  (Reorder factors) </strong></span>Let’s reorder the grades so that they are in a more meaningful order for the bar chart above. Here are three options:</p>
 </div>
 <p><br />
 </p>
@@ -652,28 +666,28 @@ S
 <span id="cb180-2"><a href="categorical-variables-as-factors.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_relevel</span>(grade, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A-&quot;</span>, <span class="st">&quot;B+&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B-&quot;</span>, <span class="st">&quot;C+&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C-&quot;</span>, <span class="st">&quot;D+&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;D-&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;AU&quot;</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb180-3"><a href="categorical-variables-as-factors.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
 <span id="cb180-4"><a href="categorical-variables-as-factors.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-286-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p><strong>Option 2</strong>: In terms of ascending frequency:</p>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="categorical-variables-as-factors.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(GradeDistribution) <span class="sc">+</span></span>
 <span id="cb181-2"><a href="categorical-variables-as-factors.html#cb181-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(grade, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
 <span id="cb181-3"><a href="categorical-variables-as-factors.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;grade&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p><strong>Option 3</strong>: In terms of descending frequency:</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="categorical-variables-as-factors.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(GradeDistribution) <span class="sc">+</span></span>
 <span id="cb182-2"><a href="categorical-variables-as-factors.html#cb182-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(grade, count, <span class="at">.desc =</span> <span class="cn">TRUE</span>), <span class="at">y =</span> count)) <span class="sc">+</span></span>
 <span id="cb182-3"><a href="categorical-variables-as-factors.html#cb182-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;grade&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <div class="example">
-<p><span id="exm:unnamed-chunk-289" class="example"><strong>Example 10.2  (Recode factors) </strong></span>Because it may not be clear what “AU” and “S” stand for, let’s rename them to “Audit” and “Satisfactory”.</p>
+<p><span id="exm:unnamed-chunk-291" class="example"><strong>Example 10.2  (Recode factors) </strong></span>Because it may not be clear what “AU” and “S” stand for, let’s rename them to “Audit” and “Satisfactory”.</p>
 </div>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="categorical-variables-as-factors.html#cb183-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
 <span id="cb183-2"><a href="categorical-variables-as-factors.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_relevel</span>(grade, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A-&quot;</span>, <span class="st">&quot;B+&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B-&quot;</span>, <span class="st">&quot;C+&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C-&quot;</span>, <span class="st">&quot;D+&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;D-&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;AU&quot;</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb183-3"><a href="categorical-variables-as-factors.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_recode</span>(grade, <span class="st">&quot;Satisfactory&quot;</span> <span class="ot">=</span> <span class="st">&quot;S&quot;</span>, <span class="st">&quot;Audit&quot;</span> <span class="ot">=</span> <span class="st">&quot;AU&quot;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb183-4"><a href="categorical-variables-as-factors.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
 <span id="cb183-5"><a href="categorical-variables-as-factors.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-291" class="exercise"><strong>Exercise 10.1  </strong></span>Now that you’ve developed your data visualization and wrangling skills,</p>
+<p><span id="exr:unnamed-chunk-293" class="exercise"><strong>Exercise 10.1  </strong></span>Now that you’ve developed your data visualization and wrangling skills,</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>develop a research question to address with the grades and courses data,</li>
@@ -681,6 +695,77 @@ S
 <li>write a brief description of the visualization and include the insight you gain about the research question.</li>
 </ol>
 <pre><code>Courses &lt;- read_csv(&quot;https://bcheggeseth.github.io/112_fall_2022/data/courses.csv&quot;)</code></pre>
+</div>
+</div>
+<div id="appendix-r-functions-7" class="section level2 unnumbered hasAnchor">
+<h2>Appendix: R Functions<a href="categorical-variables-as-factors.html#appendix-r-functions-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="changing-the-order-of-levels-1" class="section level3 unnumbered hasAnchor">
+<h3>Changing the order of levels<a href="categorical-variables-as-factors.html#changing-the-order-of-levels-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="39%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function/Operator</th>
+<th align="center">Action</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fct_relevel()</code></td>
+<td align="center">manually reorder levels of a factor</td>
+<td align="right"><code>Grades %&gt;% mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU")))</code></td>
+</tr>
+<tr class="even">
+<td><code>fct_infreq()</code></td>
+<td align="center">order levels from highest to lowest frequency</td>
+<td align="right"><code>ggplot(Grades) + geom_bar(aes(x = fct_infreq(grade)))</code></td>
+</tr>
+<tr class="odd">
+<td><code>fct_reorder()</code></td>
+<td align="center">reorder levels by values of another variable</td>
+<td align="right"><code>ggplot(GradeDistribution) + geom_col(aes(x = fct_reorder(grade, count), y = count))</code></td>
+</tr>
+<tr class="even">
+<td><code>fct_rev()</code></td>
+<td align="center">reverse the current order</td>
+<td align="right"><code>ggplot(Grades) + geom_bar(aes(x = fct_rev(fct_infreq(grade))))</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="changing-the-value-of-levels-1" class="section level3 unnumbered hasAnchor">
+<h3>Changing the value of levels<a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="39%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function/Operator</th>
+<th align="center">Action</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fct_recode()</code></td>
+<td align="center">manually change levels</td>
+<td align="right"><code>Grades %&gt;%  mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU"))</code></td>
+</tr>
+<tr class="even">
+<td><code>fct_lump()</code></td>
+<td align="center">group together least common levels</td>
+<td align="right"><code>Grades %&gt;% mutate(grade = fct_lump(grade, n = 5))</code></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

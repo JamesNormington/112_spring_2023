@@ -411,3 +411,21 @@ Consider the following:
 (c) Group the trips you filtered out in part (b) by client type and `wday` (weekend/weekday), and count the total number of trips in each of the four groups. Interpret your results.
 
 ```
+
+
+## Appendix: R Functions {.unnumbered}
+
+### Mutating Joins {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `left_join()`        |  Joins two data sets together (adding variables from right to left data sets), keeping all rows of the left or 1st dataset  |   `Grades %>% left_join(CourseSizes, by = c("sessionID" = "sessionID"))` |
+| `inner_join()`        | Joins two data sets together (adding variables from right to left data sets), keeping only rows in left that have a match in right |   `Grades %>% inner_join(GPAConversion)` |
+| `full_join()`        | Joins two data sets together (adding variables from right to left data sets), keeping all rows of both left and right datasets |   `Grades %>% full_join(CourseSizes, by = c("sessionID" = "sessionID"))` |
+
+### Filtering Joins {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `semi_join()`        |  Keep only rows in left that have a match in right   |   `Grades %>% semi_join(LargeSections)` |
+| `anti_join()`        | Keep only rows in left that don't have a match in right |   `Grades %>% anti_join(CrossListedSections)` |

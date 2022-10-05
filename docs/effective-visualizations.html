@@ -331,6 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#recreating-a-graphic"><i class="fa fa-check"></i>Recreating a graphic</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#more-exercises-practice-pivoting-longer"><i class="fa fa-check"></i>More Exercises: Practice Pivoting Longer</a></li>
+<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#appendix-r-functions-5"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#reshaping-functions"><i class="fa fa-check"></i>Reshaping Functions</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html"><i class="fa fa-check"></i><b>9</b> Joining Two Data Frames</a>
 <ul>
@@ -349,6 +353,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns"><i class="fa fa-check"></i>Mutating join practice: Spatial patterns</a></li>
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns"><i class="fa fa-check"></i>Filtering join practice: Spatiotemporal patterns</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#appendix-r-functions-6"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-joins-1"><i class="fa fa-check"></i>Mutating Joins</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-joins-1"><i class="fa fa-check"></i>Filtering Joins</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html"><i class="fa fa-check"></i><b>10</b> Categorical Variables as Factors</a>
 <ul>
@@ -358,6 +367,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#converting-to-factor"><i class="fa fa-check"></i>Converting to factor</a></li>
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-order-of-levels"><i class="fa fa-check"></i>Changing the order of levels</a></li>
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels"><i class="fa fa-check"></i>Changing the value of levels</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#appendix-r-functions-7"><i class="fa fa-check"></i>Appendix: R Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-order-of-levels-1"><i class="fa fa-check"></i>Changing the order of levels</a></li>
+<li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1"><i class="fa fa-check"></i>Changing the value of levels</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -413,14 +427,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>However, there are guiding principles that distinguish between “good” and “bad” graphics.</p>
 <p>One of the best ways to learn is by reading graphics and determining which ways of arranging thing are better or worse. So before jumping directly into theoretical principles, let’s try some critical analysis on specific examples.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-61" class="exercise"><strong>Exercise 3.1  </strong></span>For your assigned graphics or sets of graphics, identify the following:</p>
+<p><span id="exr:unnamed-chunk-63" class="exercise"><strong>Exercise 3.1  </strong></span>For your assigned graphics or sets of graphics, identify the following:</p>
 <ol style="list-style-type: decimal">
 <li>the story the graphic is aiming to communicate to the audience</li>
 <li>effective features of the graphic</li>
 <li>areas for improvement</li>
 </ol>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
 <img src="images/badviz3.png" alt="Source: http://viz.wtf/" width="50%" />
 <p class="caption">
 Figure 3.1: Source: <a href="http://viz.wtf/" class="uri">http://viz.wtf/</a>
@@ -430,7 +444,7 @@ Figure 3.1: Source: <a href="http://viz.wtf/" class="uri">http://viz.wtf/</a>
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-63"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
 <img src="images/trilogies.gif" alt="Source: N. Yau, *Visualize This*, 2011, p. 223-225." width="50%" />
 <p class="caption">
 Figure 3.2: Source: N. Yau, <em>Visualize This</em>, 2011, p. 223-225.
@@ -440,7 +454,7 @@ Figure 3.2: Source: N. Yau, <em>Visualize This</em>, 2011, p. 223-225.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
 <img src="images/chernoff.png" alt="Source: N. Yau, *Visualize This*, 2011, p. 242." width="60%" />
 <p class="caption">
 Figure 3.3: Source: N. Yau, <em>Visualize This</em>, 2011, p. 242.
@@ -450,7 +464,7 @@ Figure 3.3: Source: N. Yau, <em>Visualize This</em>, 2011, p. 242.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
 <img src="images/badviz2.png" alt="Gun deaths." width="70%" />
 <p class="caption">
 Figure 3.4: Gun deaths.
@@ -460,7 +474,7 @@ Figure 3.4: Gun deaths.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
 <img src="images/obama1.png" alt="Source: N. Yau, *Visualize This*, 2011, p. 150." width="80%" />
 <p class="caption">
 Figure 3.5: Source: N. Yau, <em>Visualize This</em>, 2011, p. 150.
@@ -470,7 +484,7 @@ Figure 3.5: Source: N. Yau, <em>Visualize This</em>, 2011, p. 150.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
 <img src="images/breakup.png" alt="Source: C. N. Knaflic, *Storytelling with Data*, 2015, p. 142." width="80%" />
 <p class="caption">
 Figure 3.6: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 142.
@@ -480,7 +494,7 @@ Figure 3.6: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 14
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
 <img src="images/heatmap.png" alt="Source: S. Few, *Now You See It*, 2009, p. 45." width="60%" />
 <p class="caption">
 Figure 3.7: Source: S. Few, <em>Now You See It</em>, 2009, p. 45.
@@ -490,7 +504,7 @@ Figure 3.7: Source: S. Few, <em>Now You See It</em>, 2009, p. 45.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-71"></span>
 <img src="images/badviz1.png" alt="Climate change." width="60%" />
 <p class="caption">
 Figure 3.8: Climate change.
@@ -500,7 +514,7 @@ Figure 3.8: Climate change.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
 <img src="images/slopegraph1.png" alt="Source: C. N. Knaflic, *Storytelling with Data*, 2015, p. 48." width="50%" />
 <p class="caption">
 Figure 3.9: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 48.
@@ -510,8 +524,8 @@ Figure 3.9: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 48
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-71"></span>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-71-1.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-71-2.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-71-3.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-71-4.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-71-5.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<img src="stat112_manual_files/figure-html/unnamed-chunk-73-1.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-73-2.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-73-3.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-73-4.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" /><img src="stat112_manual_files/figure-html/unnamed-chunk-73-5.png" alt="Diamond data visualizations from [*R for Data Science*](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments), 2017" width="336" />
 <p class="caption">
 Figure 3.10: Diamond data visualizations from <a href="http://r4ds.had.co.nz/data-visualisation.html#position-adjustments"><em>R for Data Science</em></a>, 2017
 </p>
@@ -520,7 +534,7 @@ Figure 3.10: Diamond data visualizations from <a href="http://r4ds.had.co.nz/dat
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
 <img src="images/piechart.png" alt="Source: S. Few, *Now You See It*, 2009, p. 37." width="100%" />
 <p class="caption">
 Figure 3.11: Source: S. Few, <em>Now You See It</em>, 2009, p. 37.
@@ -530,7 +544,7 @@ Figure 3.11: Source: S. Few, <em>Now You See It</em>, 2009, p. 37.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
 <img src="images/Nightingale.png" alt="Source: N. Yau, *Visualize This*, 2011, p. 249." width="70%" />
 <p class="caption">
 Figure 3.12: Source: N. Yau, <em>Visualize This</em>, 2011, p. 249.
@@ -540,7 +554,7 @@ Figure 3.12: Source: N. Yau, <em>Visualize This</em>, 2011, p. 249.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
 <img src="images/compensation.png" alt="Source: S. Few, *Now You See It*, 2009, p. 61." width="80%" />
 <p class="caption">
 Figure 3.13: Source: S. Few, <em>Now You See It</em>, 2009, p. 61.
@@ -550,7 +564,7 @@ Figure 3.13: Source: S. Few, <em>Now You See It</em>, 2009, p. 61.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
 <img src="images/employees.png" alt="Source: C. N. Knaflic, *Storytelling with Data*, 2015, p. 68." width="100%" />
 <p class="caption">
 Figure 3.14: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 68.
@@ -560,7 +574,7 @@ Figure 3.14: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 6
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
 <img src="images/clutter.png" alt="Source: C. N. Knaflic, *Storytelling with Data*, 2015, p. 81." width="70%" />
 <p class="caption">
 Figure 3.15: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 81.
@@ -570,7 +584,7 @@ Figure 3.15: Source: C. N. Knaflic, <em>Storytelling with Data</em>, 2015, p. 8
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
 <img src="images/badviz4.png" alt="Source: http://viz.wtf/" width="60%" />
 <p class="caption">
 Figure 3.16: Source: <a href="http://viz.wtf/" class="uri">http://viz.wtf/</a>
@@ -580,7 +594,7 @@ Figure 3.16: Source: <a href="http://viz.wtf/" class="uri">http://viz.wtf/</a>
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
 <img src="images/plagiarism.png" alt="Source: A. Cairo, *The Functional Art*, 2013, p. 340." width="85%" />
 <p class="caption">
 Figure 3.17: Source: A. Cairo, <em>The Functional Art</em>, 2013, p. 340.
@@ -590,7 +604,7 @@ Figure 3.17: Source: A. Cairo, <em>The Functional Art</em>, 2013, p. 340.
 <br />
 <br />
 </p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
 <img src="images/tv-size-by-year1.png" alt="Source: N. Yau, *Visualize This*, 2011, p. 220." width="70%" />
 <p class="caption">
 Figure 3.18: Source: N. Yau, <em>Visualize This</em>, 2011, p. 220.
@@ -679,7 +693,7 @@ endeavor.” in his <a href="https://arxiv.org/pdf/1811.07271.pdf">article from 
 <ol style="list-style-type: decimal">
 <li>Visual perception is selective, and our attention is often drawn to constrasts from the norm.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
 <img src="images/contrast.png" alt="Our attention is drawn to contrasts to the norm. What stands out in this example image?, which is originally from C. Ware, *Information Visualization: Perception for Design*, 2004? Source: S. Few, *Now You See It*, 2009, p. 33." width="100%" />
 <p class="caption">
 Figure 3.19: Our attention is drawn to contrasts to the norm. What stands out in this example image?, which is originally from C. Ware, <em>Information Visualization: Perception for Design</em>, 2004? Source: S. Few, <em>Now You See It</em>, 2009, p. 33.
@@ -691,7 +705,7 @@ Figure 3.19: Our attention is drawn to contrasts to the norm. What stands out in
 <ol start="2" style="list-style-type: decimal">
 <li>Our eyes are drawn to familiar patterns. We see what we know and expect.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
 <img src="images/rose1.png" alt="Do you see anything embedded in this rose image from coolbubble.com? Source: S. Few, *Now You See It*, 2009, p. 34." width="90%" />
 <p class="caption">
 Figure 3.20: Do you see anything embedded in this rose image from coolbubble.com? Source: S. Few, <em>Now You See It</em>, 2009, p. 34.
@@ -709,7 +723,7 @@ Figure 3.20: Do you see anything embedded in this rose image from coolbubble.com
 <p><strong>Gestalt principles</strong></p>
 <p>The Gestalt principles (more info <a href="https://en.wikipedia.org/wiki/Principles_of_grouping">here</a> or <a href="https://www.smashingmagazine.com/2014/03/design-principles-visual-perception-and-the-principles-of-gestalt/">here</a>) were developed by psychologists including Max Wertheimer in the early 1900s to explain how humans perceive organized patterns and objects.</p>
 <p>In a design setting, they help us understand how to incorporate <strong>preattentive features</strong> into visualizations. The figure below shows some preattentive features, all of which are processed prior to conscious attention (“at a glance”) and can help the reader focus on relevant information in a visualization.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
 <img src="images/gestalt.png" alt="Preattentive features based on the Gestalt principles. Source: I. Meirelles, *Design for Information*, 2013, p. 23." width="100%" />
 <p class="caption">
 Figure 3.21: Preattentive features based on the Gestalt principles. Source: I. Meirelles, <em>Design for Information</em>, 2013, p. 23.
@@ -755,7 +769,7 @@ Figure 3.21: Preattentive features based on the Gestalt principles. Source: I. M
 <div id="exercises" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="effective-visualizations.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-83" class="exercise"><strong>Exercise 3.2  </strong></span>Consider one of the more complicated data graphics listed at (<a href="http://mdsr-book.github.io/exercises.html#exercise_25" class="uri">http://mdsr-book.github.io/exercises.html#exercise_25</a>):</p>
+<p><span id="exr:unnamed-chunk-85" class="exercise"><strong>Exercise 3.2  </strong></span>Consider one of the more complicated data graphics listed at (<a href="http://mdsr-book.github.io/exercises.html#exercise_25" class="uri">http://mdsr-book.github.io/exercises.html#exercise_25</a>):</p>
 <ol style="list-style-type: lower-alpha">
 <li>What story does the data graphic tell? What is the main message that you take away from it?</li>
 <li>Can the data graphic be described in terms of the Grammar of Graphics (frame, glyphs, aesthetics, facet, scale, guide)? If so, please describe.</li>

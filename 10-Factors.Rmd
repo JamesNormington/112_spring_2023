@@ -176,3 +176,24 @@ c. write a brief description of the visualization and include the insight you ga
 ```
 Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
 ```
+
+## Appendix: R Functions {.unnumbered}
+
+### Changing the order of levels {.unnumbered}
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `fct_relevel()`        |  manually reorder levels of a factor  |   `Grades %>% mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU")))` |
+| `fct_infreq()`        | order levels from highest to lowest frequency    |   `ggplot(Grades) + geom_bar(aes(x = fct_infreq(grade)))` |
+| `fct_reorder()`        | reorder levels by values of another variable |   `ggplot(GradeDistribution) + geom_col(aes(x = fct_reorder(grade, count), y = count))` |
+| `fct_rev()`        | reverse the current order |   `ggplot(Grades) + geom_bar(aes(x = fct_rev(fct_infreq(grade))))` |
+
+
+
+### Changing the value of levels {-} 
+
+| Function/Operator |                 Action                 |                       Example |
+|-------------------------|:---------------------------:|------------------:|
+| `fct_recode()`        |  manually change levels    |   `Grades %>%  mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU")) ` |
+| `fct_lump()`        | group together least common levels      |   `Grades %>% mutate(grade = fct_lump(grade, n = 5))` |
+
