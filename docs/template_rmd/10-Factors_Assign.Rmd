@@ -1,6 +1,6 @@
 ---
 title: "Comp/Stat 112: Factors"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
+author: "INSERT STUDENTS NAME HERE"
 output:
   bookdown::html_document2:
     split_by: none
@@ -11,7 +11,7 @@ output:
     number_sections: false
 ---
 
-```{r 09_setup, include=FALSE}
+```{r 10_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tidyverse)
 library(ggplot2)
@@ -19,79 +19,22 @@ library(ggplot2)
 
 # Categorical Variables as Factors
 
-
-## Example: Grade Distribution {-}
-
-
 ```{r,cache=TRUE}
 Grades <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
-```
-
-
-### Converting to factor {-}
-
-Let's first convert the `grade` variable to a factor:
-
-```{r}
 
 Grades <- Grades %>%
-  mutate(grade = factor(grade))
-```
+  mutate(grade = factor(grade)) #converts grade to a factor in R
 
-```{r}
-GradeDistribution <- Grades %>%
+GradeDistribution <- Grades %>% #summarized grade frequencies
   group_by(grade) %>%
   summarize(count = n())
+
+Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
 ```
 
-```{example, name="Reorder factors"}
-Let's reorder the grades so that they are in a more meaningful order for the bar chart above. Here are three options:
-   
-```
-
-\
-
-**Option 1**: From high grade to low grade, with "S" and "AU" at the end:
-
-```{r}
-Grades %>%
-  mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) %>%
-  ggplot(aes(x = grade)) +
-  geom_bar()
-```
-
-**Option 2**: In terms of ascending frequency:
-
-```{r}
-ggplot(GradeDistribution) +
-  geom_col(aes(x = fct_reorder(grade, count), y = count)) +
-  labs(x = "grade")
-```
-     
-**Option 3**: In terms of descending frequency:
-
-```{r}
-ggplot(GradeDistribution) +
-  geom_col(aes(x = fct_reorder(grade, count, .desc = TRUE), y = count)) +
-  labs(x = "grade")
-```        
-         
-
-```{example, name="Recode factors"}
-Because it may not be clear what "AU" and "S" stand for, let's rename them to "Audit" and "Satisfactory".   
-```
-
-
-```{r}
-Grades %>%
-  mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) %>%
-  mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU")) %>%
-  ggplot(aes(x = grade)) +
-  geom_bar()
-```
 
 ```{exercise}
 Now that you've developed your data visualization and wrangling skills, 
@@ -101,15 +44,20 @@ a. develop a research question to address with the grades and courses data,
 
 > ANSWER:
 
+```{r}
+
+```
+
 b. create a high quality visualization that addresses your research question,
 
 > ANSWER:
 
 ```{r}
-Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
+
 ```
 
 c. write a brief description of the visualization and include the insight you gain about the research question.
 
 > ANSWER:
+
 
