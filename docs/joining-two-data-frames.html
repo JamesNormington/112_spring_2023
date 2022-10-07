@@ -423,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As an example, we’ll examine the following two tables on grades and courses. The <code>Grades</code> <a href="data/grades.csv">file</a> has one case for each class of each student, and includes variables describing the ID of the student (<code>sid</code>), the ID of the session (section/class), and the grade received. The <code>Courses</code> <a href="data/courses.csv">file</a> has variables for the ID of the session (section/class), the department (coded), the level, the semester, the enrollment, and the ID of the instructor (<code>iid</code>). We show a few random rows of each table below.</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-243">Table 9.1: </span>Student grades.
+<span id="tab:unnamed-chunk-373">Table 9.1: </span>Student grades.
 </caption>
 <thead>
 <tr>
@@ -487,7 +487,7 @@ NC
 </table>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-245">Table 9.2: </span>Information about each course section.
+<span id="tab:unnamed-chunk-375">Table 9.2: </span>Information about each course section.
 </caption>
 <thead>
 <tr>
@@ -602,7 +602,7 @@ inst312
 <li><p>A <strong>foreign key</strong> uniquely identifies an observation in another table.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unnamed-chunk-246" class="example"><strong>Example 9.1  </strong></span>What variables are the primary keys for <code>Grades</code>?
+<p><span id="exm:unnamed-chunk-376" class="example"><strong>Example 9.1  </strong></span>What variables are the primary keys for <code>Grades</code>?
 What variables are the primary keys for <code>Courses</code>?</p>
 </div>
 <details>
@@ -626,7 +626,7 @@ Solution
 ## # … with 3 variables: sessionID &lt;chr&gt;, dept &lt;chr&gt;, n &lt;int&gt;</code></pre>
 </details>
 <div class="example">
-<p><span id="exm:unnamed-chunk-249" class="example"><strong>Example 9.2  </strong></span>What variables are the foreign keys in <code>Grades</code> for <code>Courses</code>?
+<p><span id="exm:unnamed-chunk-379" class="example"><strong>Example 9.2  </strong></span>What variables are the foreign keys in <code>Grades</code> for <code>Courses</code>?
 What variables are the foreign keys in <code>Courses</code> for <code>Grades</code>?</p>
 </div>
 <details>
@@ -672,7 +672,7 @@ Solution
 </ul>
 <p>When there are multiple matches in the right table for a particular case in the left table, all three of these mutating join operators produce a separate case in the new table for each of the matches from the right.</p>
 <div class="example">
-<p><span id="exm:unnamed-chunk-251" class="example"><strong>Example 9.3  (Average class size: varying viewpoints) </strong></span>Determine the average class size from the viewpoint of a student and the viewpoint of the Provost / Admissions Office.</p>
+<p><span id="exm:unnamed-chunk-381" class="example"><strong>Example 9.3  (Average class size: varying viewpoints) </strong></span>Determine the average class size from the viewpoint of a student and the viewpoint of the Provost / Admissions Office.</p>
 </div>
 <details>
 <summary>
@@ -698,7 +698,7 @@ In this case, the only variable in common is the <code>sessionID</code>, so we w
 <span id="cb155-5"><a href="joining-two-data-frames.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sid, sessionID, total_enroll)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-254">Table 9.3: </span>Student enrollments with the section size.
+<span id="tab:unnamed-chunk-384">Table 9.3: </span>Student enrollments with the section size.
 </caption>
 <thead>
 <tr>
@@ -765,7 +765,7 @@ session3512
 <span id="cb156-3"><a href="joining-two-data-frames.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ave_enroll =</span> <span class="fu">mean</span>(total_enroll, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-256">Table 9.4: </span>Average class size seen by each individual student.
+<span id="tab:unnamed-chunk-386">Table 9.4: </span>Average class size seen by each individual student.
 </caption>
 <thead>
 <tr>
@@ -828,7 +828,7 @@ We see that the average size from the student perspective (24.4) is greater than
 </ul>
 <p>A particularly common employment of these joins is to use a filtered summary as a comparison to select a subset of the original cases, as follows.</p>
 <div class="example">
-<p><span id="exm:unnamed-chunk-258" class="example"><strong>Example 9.4  (semi_join to compare to a filtered summary) </strong></span>Find a subset of the <code>Grades</code> data that only contains data on the four largest sections in the <code>Courses</code> data set.</p>
+<p><span id="exm:unnamed-chunk-388" class="example"><strong>Example 9.4  (semi_join to compare to a filtered summary) </strong></span>Find a subset of the <code>Grades</code> data that only contains data on the four largest sections in the <code>Courses</code> data set.</p>
 </div>
 <details>
 <summary>
@@ -842,7 +842,7 @@ Solution
 <span id="cb159-6"><a href="joining-two-data-frames.html#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(LargeSections)</span></code></pre></div>
 </details>
 <div class="example">
-<p><span id="exm:unnamed-chunk-260" class="example"><strong>Example 9.5  (semi_join) </strong></span>Use <code>semi_join()</code> to create a table with a subset of the rows of <code>Grades</code> corresponding to all classes taken in department <code>J</code>.</p>
+<p><span id="exm:unnamed-chunk-390" class="example"><strong>Example 9.5  (semi_join) </strong></span>Use <code>semi_join()</code> to create a table with a subset of the rows of <code>Grades</code> corresponding to all classes taken in department <code>J</code>.</p>
 </div>
 <details>
 <summary>
@@ -938,7 +938,7 @@ What department should it be?</p>
 <div id="more-join-practice" class="section level3 unnumbered hasAnchor">
 <h3>More join practice<a href="joining-two-data-frames.html#more-join-practice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-264" class="exercise"><strong>Exercise 9.1  </strong></span>Use your wrangling skills to answer the following questions.</p>
+<p><span id="exr:unnamed-chunk-394" class="exercise"><strong>Exercise 9.1  </strong></span>Use your wrangling skills to answer the following questions.</p>
 </div>
 <p><em>Hint 1: start by thinking about what tables you might need to join (if any) and identifying the corresponding variables to match.</em>
 <em>Hint 2: you’ll need an extra table to convert grades to grade point averages. I’ve given you the code below.</em></p>
@@ -971,13 +971,13 @@ What department should it be?</p>
 <div id="bicycle-use-patterns" class="section level2 unnumbered hasAnchor">
 <h2>Bicycle-Use Patterns<a href="joining-two-data-frames.html#bicycle-use-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this activity, you’ll examine some factors that may influence the use of bicycles in a bike-renting program. The data come from Washington, DC and cover the last quarter of 2014.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-266"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-396"></span>
 <img src="images/bike_station.jpeg" alt="A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops." width="400px" />
 <p class="caption">
 Figure 9.1: A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-267"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-397"></span>
 <img src="images/bike_van.jpeg" alt="One of the vans used to redistribute bicycles to different stations." width="400px" />
 <p class="caption">
 Figure 9.2: One of the vans used to redistribute bicycles to different stations.
@@ -1008,7 +1008,7 @@ Figure 9.2: One of the vans used to redistribute bicycles to different stations.
 </ol>
 <p>The variable <code>client</code> describes whether the renter is a regular user (level <code>Registered</code>) or has not joined the bike-rental organization (<code>Causal</code>). Do you think these two different categories of users show different rental behavior? How might it interact with the patterns you found in Exercise <a href="joining-two-data-frames.html#exr:exr-temp">9.2</a>?</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-270" class="exercise"><strong>Exercise 9.3  (Customer segmentation) </strong></span>Repeat the graphic from Exercise <a href="joining-two-data-frames.html#exr:exr-temp">9.2</a> (d) with the following changes:</p>
+<p><span id="exr:unnamed-chunk-400" class="exercise"><strong>Exercise 9.3  (Customer segmentation) </strong></span>Repeat the graphic from Exercise <a href="joining-two-data-frames.html#exr:exr-temp">9.2</a> (d) with the following changes:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Set the <code>fill</code> aesthetic for <code>geom_density()</code> to the <code>client</code> variable. You may also want to set the <code>alpha</code> for transparency and <code>color=NA</code> to suppress the outline of the density function.</li>
@@ -1021,19 +1021,19 @@ Figure 9.2: One of the vans used to redistribute bicycles to different stations.
 <div id="mutating-join-practice-spatial-patterns" class="section level3 unnumbered hasAnchor">
 <h3>Mutating join practice: Spatial patterns<a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-271" class="exercise"><strong>Exercise 9.4  (Visualization of bicycle departures by station) </strong></span>Use the latitude and longitude variables in <code>Stations</code> to make a visualization of the total number of departures from each station in the <code>Trips</code> data. To layer your data on top of a map, start your plotting code as follows:</p>
+<p><span id="exr:unnamed-chunk-401" class="exercise"><strong>Exercise 9.4  (Visualization of bicycle departures by station) </strong></span>Use the latitude and longitude variables in <code>Stations</code> to make a visualization of the total number of departures from each station in the <code>Trips</code> data. To layer your data on top of a map, start your plotting code as follows:</p>
 </div>
 <pre><code>myMap&lt;-get_stamenmap(c(-77.1,38.87,-76.975,38.95),zoom=14,maptype=&quot;terrain&quot;) 
 ggmap(myMap) + ...</code></pre>
 <p>Note: If you want to use Google Maps instead, which do look a bit nicer, you’ll need to get a Google Maps API Key (free but requires credit card to sign up), and then you can use <code>get_map</code> instead of <code>get_stamenmap</code>.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-272" class="exercise"><strong>Exercise 9.5  </strong></span>Only 14.4% of the trips in our data are carried out by casual users.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> Create a map that shows which area(s) of the city have stations with a much higher percentage of departures by casual users. Interpret your map.</p>
+<p><span id="exr:unnamed-chunk-402" class="exercise"><strong>Exercise 9.5  </strong></span>Only 14.4% of the trips in our data are carried out by casual users.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> Create a map that shows which area(s) of the city have stations with a much higher percentage of departures by casual users. Interpret your map.</p>
 </div>
 </div>
 <div id="filtering-join-practice-spatiotemporal-patterns" class="section level3 unnumbered hasAnchor">
 <h3>Filtering join practice: Spatiotemporal patterns<a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-273" class="exercise"><strong>Exercise 9.6  (High traffic points) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-403" class="exercise"><strong>Exercise 9.6  (High traffic points) </strong></span>Consider the following:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Make a table with the ten station-date combinations (e.g., 14th &amp; V St., 2014-10-14) with the highest number of departures, sorted from most departures to fewest. Hint: <code>as_date(sdate)</code> converts <code>sdate</code> from date-time format to date format.</li>
 <li>Use a join operation to make a table with only those trips whose departures match those top ten station-date combinations from part (a).</li>
