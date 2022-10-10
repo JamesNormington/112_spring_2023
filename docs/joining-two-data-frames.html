@@ -374,6 +374,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1"><i class="fa fa-check"></i>Changing the value of levels</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="mini-project.html"><a href="mini-project.html"><i class="fa fa-check"></i><b>11</b> Mini-Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#data-kiva"><i class="fa fa-check"></i>Data: Kiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-partners-data-table"><i class="fa fa-check"></i>Investigate the <code>partners</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-loans-data-table"><i class="fa fa-check"></i>Investigate the <code>loans</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -615,7 +625,8 @@ Solution
 <span id="cb147-3"><a href="joining-two-data-frames.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sid, sessionID) <span class="sc">%&gt;%</span></span>
 <span id="cb147-4"><a href="joining-two-data-frames.html#cb147-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 3
-## # … with 3 variables: sid &lt;chr&gt;, sessionID &lt;chr&gt;, n &lt;int&gt;</code></pre>
+## # … with 3 variables: sid &lt;chr&gt;, sessionID &lt;chr&gt;,
+## #   n &lt;int&gt;</code></pre>
 <p><code>sessionID</code> (class ID) and <code>dept</code> are the primary keys for <code>Courses</code> as they unique identify each case. You may have thought that <code>sessionID</code> alone was sufficient; however, if a course is cross-listed, then it may have multiple departments listed.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="joining-two-data-frames.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check to make sure that there are no combinations </span></span>
 <span id="cb149-2"><a href="joining-two-data-frames.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of session ID and dept that have more than 1 row</span></span>
@@ -623,7 +634,8 @@ Solution
 <span id="cb149-4"><a href="joining-two-data-frames.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sessionID, dept) <span class="sc">%&gt;%</span></span>
 <span id="cb149-5"><a href="joining-two-data-frames.html#cb149-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 3
-## # … with 3 variables: sessionID &lt;chr&gt;, dept &lt;chr&gt;, n &lt;int&gt;</code></pre>
+## # … with 3 variables: sessionID &lt;chr&gt;, dept &lt;chr&gt;,
+## #   n &lt;int&gt;</code></pre>
 </details>
 <div class="example">
 <p><span id="exm:unnamed-chunk-249" class="example"><strong>Example 9.2  </strong></span>What variables are the foreign keys in <code>Grades</code> for <code>Courses</code>?
@@ -642,7 +654,8 @@ Solution
 <span id="cb151-6"><a href="joining-two-data-frames.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 4
 ## # Groups:   sessionID, level, sem [0]
-## # … with 4 variables: sessionID &lt;chr&gt;, level &lt;dbl&gt;, sem &lt;chr&gt;, n &lt;int&gt;</code></pre>
+## # … with 4 variables: sessionID &lt;chr&gt;, level &lt;dbl&gt;,
+## #   sem &lt;chr&gt;, n &lt;int&gt;</code></pre>
 <p><code>sessionID</code> in <code>Courses</code> is part of a foreign key that uniquely identify rows in <code>Grades</code>.</p>
 </details>
 </div>

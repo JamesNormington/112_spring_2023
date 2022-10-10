@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="joining-two-data-frames.html"/>
-
+<link rel="next" href="mini-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -374,6 +374,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1"><i class="fa fa-check"></i>Changing the value of levels</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="mini-project.html"><a href="mini-project.html"><i class="fa fa-check"></i><b>11</b> Mini-Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#data-kiva"><i class="fa fa-check"></i>Data: Kiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-partners-data-table"><i class="fa fa-check"></i>Investigate the <code>partners</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-loans-data-table"><i class="fa fa-check"></i>Investigate the <code>loans</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -631,7 +641,8 @@ S
 <span id="cb177-2"><a href="categorical-variables-as-factors.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">factor</span>(grade))</span></code></pre></div>
 <p>Now we can see the levels:</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="categorical-variables-as-factors.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Grades<span class="sc">$</span>grade)</span></code></pre></div>
-<pre><code>##  [1] &quot;A&quot;  &quot;A-&quot; &quot;AU&quot; &quot;B&quot;  &quot;B-&quot; &quot;B+&quot; &quot;C&quot;  &quot;C-&quot; &quot;C+&quot; &quot;D&quot;  &quot;D-&quot; &quot;D+&quot; &quot;NC&quot; &quot;S&quot;</code></pre>
+<pre><code>##  [1] &quot;A&quot;  &quot;A-&quot; &quot;AU&quot; &quot;B&quot;  &quot;B-&quot; &quot;B+&quot; &quot;C&quot;  &quot;C-&quot; &quot;C+&quot;
+## [10] &quot;D&quot;  &quot;D-&quot; &quot;D+&quot; &quot;NC&quot; &quot;S&quot;</code></pre>
 <p>Moreover, the <code>forcats</code> package (part of <code>tidyverse</code>) allows us to manipulate these factors. Its commands include the following.</p>
 </div>
 <div id="changing-the-order-of-levels" class="section level3 unnumbered hasAnchor">
@@ -770,30 +781,13 @@ S
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="joining-two-data-frames.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="joining-two-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mini-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

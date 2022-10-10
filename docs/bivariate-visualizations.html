@@ -374,6 +374,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="categorical-variables-as-factors.html"><a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1"><i class="fa fa-check"></i>Changing the value of levels</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="mini-project.html"><a href="mini-project.html"><i class="fa fa-check"></i><b>11</b> Mini-Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#data-kiva"><i class="fa fa-check"></i>Data: Kiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-partners-data-table"><i class="fa fa-check"></i>Investigate the <code>partners</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#investigate-the-loans-data-table"><i class="fa fa-check"></i>Investigate the <code>loans</code> Data Table</a></li>
+<li class="chapter" data-level="" data-path="mini-project.html"><a href="mini-project.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -434,21 +444,21 @@ Solution
 <span id="cb40-6"><a href="bivariate-visualizations.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  The variables are county name, vote counts for parties and total for presidential elections, and more</span></span>
 <span id="cb40-7"><a href="bivariate-visualizations.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(elect)</span>
 <span id="cb40-8"><a href="bivariate-visualizations.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 34</span></span>
-<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county  total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟</span></span>
-<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker…   28652    7420   20722     510   28497    6551   21633     313   29243    4486</span></span>
-<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bulloc…    5415    4011    1391      13    5318    4058    1250      10    4701    3530</span></span>
-<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhou…   49242   16334   32348     560   46240   15500   30272     468   47376   13197</span></span>
-<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbou…   11630    5697    5866      67   11459    5873    5539      47   10390    4848</span></span>
-<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayett…    7957    1994    5883      80    7912    1803    6034      75    8196    1358</span></span>
-<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwi…   81413   19386   61271     756   84988   18329   65772     887   94090   18409</span></span>
-<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 23 more variables: gop_2016 &lt;dbl&gt;, oth_2016 &lt;dbl&gt;, perdem_2016 &lt;dbl&gt;,</span></span>
-<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   perrep_2016 &lt;dbl&gt;, winrep_2016 &lt;lgl&gt;, perdem_2012 &lt;dbl&gt;, perrep_2012 &lt;dbl&gt;,</span></span>
-<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   winrep_2012 &lt;lgl&gt;, perdem_2008 &lt;dbl&gt;, perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;,</span></span>
-<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;,</span></span>
-<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_asian &lt;dbl&gt;, percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;,</span></span>
-<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;,</span></span>
-<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   and abbreviated variable names ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, …</span></span>
+<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county    total…¹ dem_2…² gop_2…³ oth_2…⁴</span></span>
+<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker C…   28652    7420   20722     510</span></span>
+<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock …    5415    4011    1391      13</span></span>
+<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun …   49242   16334   32348     560</span></span>
+<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour …   11630    5697    5866      67</span></span>
+<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette …    7957    1994    5883      80</span></span>
+<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin …   81413   19386   61271     756</span></span>
+<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 29 more variables:</span></span>
+<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   total_2012 &lt;dbl&gt;, dem_2012 &lt;dbl&gt;,</span></span>
+<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   gop_2012 &lt;dbl&gt;, oth_2012 &lt;dbl&gt;,</span></span>
+<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   total_2016 &lt;dbl&gt;, dem_2016 &lt;dbl&gt;,</span></span>
+<span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   gop_2016 &lt;dbl&gt;, oth_2016 &lt;dbl&gt;,</span></span>
+<span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   perdem_2016 &lt;dbl&gt;, perrep_2016 &lt;dbl&gt;,</span></span>
+<span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   winrep_2016 &lt;lgl&gt;, …</span></span>
 <span id="cb40-24"><a href="bivariate-visualizations.html#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-25"><a href="bivariate-visualizations.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3,112 counties and 34 variables</span></span>
 <span id="cb40-26"><a href="bivariate-visualizations.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elect)</span>
@@ -456,15 +466,40 @@ Solution
 <span id="cb40-28"><a href="bivariate-visualizations.html#cb40-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-29"><a href="bivariate-visualizations.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="co"># See the long list below</span></span>
 <span id="cb40-30"><a href="bivariate-visualizations.html#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(elect)</span>
-<span id="cb40-31"><a href="bivariate-visualizations.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;county&quot;            &quot;total_2008&quot;        &quot;dem_2008&quot;          &quot;gop_2008&quot;         </span></span>
-<span id="cb40-32"><a href="bivariate-visualizations.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;oth_2008&quot;          &quot;total_2012&quot;        &quot;dem_2012&quot;          &quot;gop_2012&quot;         </span></span>
-<span id="cb40-33"><a href="bivariate-visualizations.html#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;oth_2012&quot;          &quot;total_2016&quot;        &quot;dem_2016&quot;          &quot;gop_2016&quot;         </span></span>
-<span id="cb40-34"><a href="bivariate-visualizations.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;oth_2016&quot;          &quot;perdem_2016&quot;       &quot;perrep_2016&quot;       &quot;winrep_2016&quot;      </span></span>
-<span id="cb40-35"><a href="bivariate-visualizations.html#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] &quot;perdem_2012&quot;       &quot;perrep_2012&quot;       &quot;winrep_2012&quot;       &quot;perdem_2008&quot;      </span></span>
-<span id="cb40-36"><a href="bivariate-visualizations.html#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] &quot;perrep_2008&quot;       &quot;winrep_2008&quot;       &quot;region&quot;            &quot;total_population&quot; </span></span>
-<span id="cb40-37"><a href="bivariate-visualizations.html#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] &quot;percent_white&quot;     &quot;percent_black&quot;     &quot;percent_asian&quot;     &quot;percent_hispanic&quot; </span></span>
-<span id="cb40-38"><a href="bivariate-visualizations.html#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] &quot;per_capita_income&quot; &quot;median_rent&quot;       &quot;median_age&quot;        &quot;polyname&quot;         </span></span>
-<span id="cb40-39"><a href="bivariate-visualizations.html#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] &quot;abb&quot;               &quot;StateColor&quot;</span></span></code></pre></div>
+<span id="cb40-31"><a href="bivariate-visualizations.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;county&quot;           </span></span>
+<span id="cb40-32"><a href="bivariate-visualizations.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  [2] &quot;total_2008&quot;       </span></span>
+<span id="cb40-33"><a href="bivariate-visualizations.html#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  [3] &quot;dem_2008&quot;         </span></span>
+<span id="cb40-34"><a href="bivariate-visualizations.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  [4] &quot;gop_2008&quot;         </span></span>
+<span id="cb40-35"><a href="bivariate-visualizations.html#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;oth_2008&quot;         </span></span>
+<span id="cb40-36"><a href="bivariate-visualizations.html#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  [6] &quot;total_2012&quot;       </span></span>
+<span id="cb40-37"><a href="bivariate-visualizations.html#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] &quot;dem_2012&quot;         </span></span>
+<span id="cb40-38"><a href="bivariate-visualizations.html#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  [8] &quot;gop_2012&quot;         </span></span>
+<span id="cb40-39"><a href="bivariate-visualizations.html#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;oth_2012&quot;         </span></span>
+<span id="cb40-40"><a href="bivariate-visualizations.html#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] &quot;total_2016&quot;       </span></span>
+<span id="cb40-41"><a href="bivariate-visualizations.html#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="do">## [11] &quot;dem_2016&quot;         </span></span>
+<span id="cb40-42"><a href="bivariate-visualizations.html#cb40-42" aria-hidden="true" tabindex="-1"></a><span class="do">## [12] &quot;gop_2016&quot;         </span></span>
+<span id="cb40-43"><a href="bivariate-visualizations.html#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;oth_2016&quot;         </span></span>
+<span id="cb40-44"><a href="bivariate-visualizations.html#cb40-44" aria-hidden="true" tabindex="-1"></a><span class="do">## [14] &quot;perdem_2016&quot;      </span></span>
+<span id="cb40-45"><a href="bivariate-visualizations.html#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="do">## [15] &quot;perrep_2016&quot;      </span></span>
+<span id="cb40-46"><a href="bivariate-visualizations.html#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="do">## [16] &quot;winrep_2016&quot;      </span></span>
+<span id="cb40-47"><a href="bivariate-visualizations.html#cb40-47" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] &quot;perdem_2012&quot;      </span></span>
+<span id="cb40-48"><a href="bivariate-visualizations.html#cb40-48" aria-hidden="true" tabindex="-1"></a><span class="do">## [18] &quot;perrep_2012&quot;      </span></span>
+<span id="cb40-49"><a href="bivariate-visualizations.html#cb40-49" aria-hidden="true" tabindex="-1"></a><span class="do">## [19] &quot;winrep_2012&quot;      </span></span>
+<span id="cb40-50"><a href="bivariate-visualizations.html#cb40-50" aria-hidden="true" tabindex="-1"></a><span class="do">## [20] &quot;perdem_2008&quot;      </span></span>
+<span id="cb40-51"><a href="bivariate-visualizations.html#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] &quot;perrep_2008&quot;      </span></span>
+<span id="cb40-52"><a href="bivariate-visualizations.html#cb40-52" aria-hidden="true" tabindex="-1"></a><span class="do">## [22] &quot;winrep_2008&quot;      </span></span>
+<span id="cb40-53"><a href="bivariate-visualizations.html#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="do">## [23] &quot;region&quot;           </span></span>
+<span id="cb40-54"><a href="bivariate-visualizations.html#cb40-54" aria-hidden="true" tabindex="-1"></a><span class="do">## [24] &quot;total_population&quot; </span></span>
+<span id="cb40-55"><a href="bivariate-visualizations.html#cb40-55" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] &quot;percent_white&quot;    </span></span>
+<span id="cb40-56"><a href="bivariate-visualizations.html#cb40-56" aria-hidden="true" tabindex="-1"></a><span class="do">## [26] &quot;percent_black&quot;    </span></span>
+<span id="cb40-57"><a href="bivariate-visualizations.html#cb40-57" aria-hidden="true" tabindex="-1"></a><span class="do">## [27] &quot;percent_asian&quot;    </span></span>
+<span id="cb40-58"><a href="bivariate-visualizations.html#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="do">## [28] &quot;percent_hispanic&quot; </span></span>
+<span id="cb40-59"><a href="bivariate-visualizations.html#cb40-59" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] &quot;per_capita_income&quot;</span></span>
+<span id="cb40-60"><a href="bivariate-visualizations.html#cb40-60" aria-hidden="true" tabindex="-1"></a><span class="do">## [30] &quot;median_rent&quot;      </span></span>
+<span id="cb40-61"><a href="bivariate-visualizations.html#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="do">## [31] &quot;median_age&quot;       </span></span>
+<span id="cb40-62"><a href="bivariate-visualizations.html#cb40-62" aria-hidden="true" tabindex="-1"></a><span class="do">## [32] &quot;polyname&quot;         </span></span>
+<span id="cb40-63"><a href="bivariate-visualizations.html#cb40-63" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] &quot;abb&quot;              </span></span>
+<span id="cb40-64"><a href="bivariate-visualizations.html#cb40-64" aria-hidden="true" tabindex="-1"></a><span class="do">## [34] &quot;StateColor&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>
@@ -566,72 +601,148 @@ Maybe past election history and information about the people that live there and
 <p><span id="exr:unnamed-chunk-93" class="exercise"><strong>Exercise 4.4  (Mock-Ups) </strong></span>Consider a subset of the variables:</p>
 </div>
 <table>
-<colgroup>
-<col width="27%" />
-<col width="5%" />
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
-<col width="15%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th align="left">county</th>
-<th align="left">abb</th>
-<th align="right">perrep_2016</th>
-<th align="right">perrep_2012</th>
-<th align="left">winrep_2016</th>
-<th align="left">StateColor</th>
+<tr>
+<th style="text-align:left;">
+county
+</th>
+<th style="text-align:left;">
+abb
+</th>
+<th style="text-align:right;">
+perrep_2016
+</th>
+<th style="text-align:right;">
+perrep_2012
+</th>
+<th style="text-align:left;">
+winrep_2016
+</th>
+<th style="text-align:left;">
+StateColor
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Elbert County</td>
-<td align="left">CO</td>
-<td align="right">73.53</td>
-<td align="right">72.52</td>
-<td align="left">TRUE</td>
-<td align="left">blue</td>
+<tr>
+<td style="text-align:left;">
+Elbert County
+</td>
+<td style="text-align:left;">
+CO
+</td>
+<td style="text-align:right;">
+73.53
+</td>
+<td style="text-align:right;">
+72.52
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+blue
+</td>
 </tr>
-<tr class="even">
-<td align="left">Rockdale County</td>
-<td align="left">GA</td>
-<td align="right">35.82</td>
-<td align="right">41.37</td>
-<td align="left">FALSE</td>
-<td align="left">purple</td>
+<tr>
+<td style="text-align:left;">
+Rockdale County
+</td>
+<td style="text-align:left;">
+GA
+</td>
+<td style="text-align:right;">
+35.82
+</td>
+<td style="text-align:right;">
+41.37
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+purple
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Clay County</td>
-<td align="left">MN</td>
-<td align="right">46.55</td>
-<td align="right">44.91</td>
-<td align="left">TRUE</td>
-<td align="left">blue</td>
+<tr>
+<td style="text-align:left;">
+Clay County
+</td>
+<td style="text-align:left;">
+MN
+</td>
+<td style="text-align:right;">
+46.55
+</td>
+<td style="text-align:right;">
+44.91
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+blue
+</td>
 </tr>
-<tr class="even">
-<td align="left">McDonald County</td>
-<td align="left">MO</td>
-<td align="right">80.15</td>
-<td align="right">72.84</td>
-<td align="left">TRUE</td>
-<td align="left">purple</td>
+<tr>
+<td style="text-align:left;">
+McDonald County
+</td>
+<td style="text-align:left;">
+MO
+</td>
+<td style="text-align:right;">
+80.15
+</td>
+<td style="text-align:right;">
+72.84
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+purple
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Alcorn County</td>
-<td align="left">MS</td>
-<td align="right">79.95</td>
-<td align="right">75.11</td>
-<td align="left">TRUE</td>
-<td align="left">red</td>
+<tr>
+<td style="text-align:left;">
+Alcorn County
+</td>
+<td style="text-align:left;">
+MS
+</td>
+<td style="text-align:right;">
+79.95
+</td>
+<td style="text-align:right;">
+75.11
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+red
+</td>
 </tr>
-<tr class="even">
-<td align="left">Roger Mills County</td>
-<td align="left">OK</td>
-<td align="right">87.94</td>
-<td align="right">83.75</td>
-<td align="left">TRUE</td>
-<td align="left">red</td>
+<tr>
+<td style="text-align:left;">
+Roger Mills County
+</td>
+<td style="text-align:left;">
+OK
+</td>
+<td style="text-align:right;">
+87.94
+</td>
+<td style="text-align:right;">
+83.75
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+red
+</td>
 </tr>
 </tbody>
 </table>
@@ -691,7 +802,8 @@ Solution
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="bivariate-visualizations.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a layer with &quot;text&quot; glyphs</span></span>
 <span id="cb54-2"><a href="bivariate-visualizations.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
 <span id="cb54-3"><a href="bivariate-visualizations.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> abb))</span></code></pre></div>
-<pre><code>## Warning: Removed 398 rows containing missing values (geom_text).</code></pre>
+<pre><code>## Warning: Removed 398 rows containing missing
+## values (geom_text).</code></pre>
 <p><img src="stat112_manual_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
 </details>
 <p><br />
@@ -917,8 +1029,10 @@ Solution
 </div>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="bivariate-visualizations.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hotdogs<span class="sc">$</span>Country)</span></code></pre></div>
 <pre><code>## 
-##       Germany         Japan        Mexico United States 
-##             1             9             1            20</code></pre>
+##       Germany         Japan        Mexico 
+##             1             9             1 
+## United States 
+##            20</code></pre>
 <p>Use the following code to <em>filter</em> out just the winners from U.S. and Japan and name this <code>hotdogsSub</code>. (Don’t worry about the code itself - we’ll discuss similar syntax later in the semester!)</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="bivariate-visualizations.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb72-2"><a href="bivariate-visualizations.html#cb72-2" aria-hidden="true" tabindex="-1"></a>hotdogsSub <span class="ot">&lt;-</span> hotdogs <span class="sc">%&gt;%</span></span>

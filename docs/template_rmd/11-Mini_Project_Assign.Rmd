@@ -1,6 +1,6 @@
 ---
 title: "Comp/Stat 112: Mini Project"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
+author: "INSERT STUDENT NAMES HERE"
 output:
   bookdown::html_document2:
     split_by: none
@@ -11,7 +11,7 @@ output:
     number_sections: false
 ---
 
-```{r 10_setup, include=FALSE}
+```{r 11_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tidyverse)
 library(ggplot2)
@@ -39,17 +39,11 @@ Kiva has field partners who generally act as intermediaries between borrowers an
 partners <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners2.csv")
 ```
 
-
-```{exercise,  name="View codebook"}
 Examine the [codebook](https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners_vars.xlsx) for the `partners` table.   
-
-```
-
-> ANSWER: Nothing needed here.
 
 
 ```{exercise, name="Regional distribution"}
-Make a summary table with only five columns: region, total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted. 
+Make a summary table with only five columns: region (`countries.region`), total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted. 
 
 The four columns after region should all be on a per region basis; for example, the row for Central America should include average loan size per loan posted in Central America. Sort your table by total amount raised.
 
@@ -80,16 +74,9 @@ The `loans` table below contains information about individual loans to borrowers
 ```{r, cache=TRUE,message=FALSE,warning=FALSE}
 # a random sample of 10,000
 loans <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_small.csv")
-# if you want to use all 97,183 loan entries, uncomment this line:
-# loans <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans.csv")
 ```
 
-```{exercise, name="View codebook"}
 Examine the [codebook](https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_vars.xlsx) for the `loans` table. View the `loans` table and browse through some of the data (e.g., different sectors, uses, countries)
-
-```
-
-> ANSWER: Nothing needed here.
 
 ```{r}
 # View(loans)
@@ -109,7 +96,7 @@ d. Create a new table called `loans2` that only contains the following columns f
 > ANSWER: 
 
 ```{r}
-
+#loans2 <-  
 ```
 
 ```{exercise, name="Loans by country"}
@@ -168,6 +155,8 @@ a. Starting with `loans3`, create a new table `DefaultData` that only includes t
 > ANSWER: 
 
 ```{r}
+# DefaultData <-
+
 
 ```
 
@@ -200,11 +189,12 @@ d. Starting with the data in `DefaultData` from part (a), make a table with four
 Consider the following:
 ```
 
-a. Use the command `days_to_fund = difftime(funded_date, post_date, units="days")` to add a column to the `loans3` data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as `loans4`. 
+a. Use the command `days_to_fund = difftime(funded_date, post_date, units="days")` within `mutate()` to add a column to the `loans3` data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as `loans4`. 
 
 > ANSWER: 
 
 ```{r}
+# loans4 <- 
 
 ```
 

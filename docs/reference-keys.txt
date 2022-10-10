@@ -137,6 +137,14 @@ tab:unnamed-chunk-280
 exm:unnamed-chunk-285
 exm:unnamed-chunk-289
 exr:unnamed-chunk-291
+exr:unnamed-chunk-293
+exr:unnamed-chunk-294
+exr:unnamed-chunk-296
+exr:unnamed-chunk-297
+exr:unnamed-chunk-298
+exr:unnamed-chunk-299
+exr:unnamed-chunk-300
+exr:unnamed-chunk-301
 intro-to-r-rstudio-and-r-markdown
 intro-to-data-visualization
 effective-visualizations
@@ -147,3 +155,4 @@ six-main-verbs
 reshaping-data
 joining-two-data-frames
 categorical-variables-as-factors
+mini-project
