@@ -109,9 +109,12 @@ d. Starting with the data in `DefaultData` from part (a), make a table with four
 Consider the following:
 ```
 
-a. Use the command `days_to_fund = difftime(funded_date, post_date, units="days")` to add a column to the `loans3` data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as `loans4`.      
+a. Use the command `days_to_fund = difftime(funded_date, post_date, units="days")` within `mutate()` to add a column to the `loans3` data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as `loans4`.      
 b. The `days_to_fund` should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table `loans4`.   
 c. Make a bar chart with days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.   
 d. Make a bar chart with days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.   
 e. Make a scatterplot with `funded_amount` on the x-axis and `days_to_fund` on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends? 
 
+```{exercise, name="Your Own Question"}
+Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.
+```

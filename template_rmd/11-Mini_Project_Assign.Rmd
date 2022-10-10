@@ -230,3 +230,13 @@ e. Make a scatterplot with `funded_amount` on the x-axis and `days_to_fund` on t
 
 ```
 
+
+```{exercise, name="Your Own Question"}
+Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.
+```
+
+> ANSWER: 
+
+```{r}
+
+```
