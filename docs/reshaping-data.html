@@ -30,15 +30,15 @@
   
 <link rel="prev" href="six-main-verbs.html"/>
 <link rel="next" href="joining-two-data-frames.html"/>
-<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,19 +47,19 @@
 
 
 
-<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections/anchor-sections.js"></script>
-<script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet/leaflet.js"></script>
-<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding/leaflet.js"></script>
-<script src="libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -551,9 +551,9 @@ Margaret
 </tbody>
 </table>
 <p>It is often necessary to rearrange your data in order to create visualizations, run statistical analysis, etc. We have already seen some ways to rearrange the data to change the unit of observation (also known as case). For example, what is the case after performing the following command?</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="reshaping-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a>BabyNamesTotal <span class="ot">&lt;-</span> BabyNames <span class="sc">%&gt;%</span></span>
-<span id="cb137-2"><a href="reshaping-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb137-3"><a href="reshaping-data.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="reshaping-data.html#cb138-1" aria-hidden="true" tabindex="-1"></a>BabyNamesTotal <span class="ot">&lt;-</span> BabyNames <span class="sc">%&gt;%</span></span>
+<span id="cb138-2"><a href="reshaping-data.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb138-3"><a href="reshaping-data.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
 <p>Each case now represents one name-sex combination:</p>
 <table>
 <caption>
@@ -661,8 +661,8 @@ F
 Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
 </p>
 </div>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="reshaping-data.html#cb138-1" aria-hidden="true" tabindex="-1"></a>BabyWide <span class="ot">&lt;-</span> BabyNamesTotal <span class="sc">%&gt;%</span></span>
-<span id="cb138-2"><a href="reshaping-data.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> total, <span class="at">values_fill =</span> <span class="dv">0</span>, <span class="at">names_sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="reshaping-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a>BabyWide <span class="ot">&lt;-</span> BabyNamesTotal <span class="sc">%&gt;%</span></span>
+<span id="cb139-2"><a href="reshaping-data.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> total, <span class="at">values_fill =</span> <span class="dv">0</span>, <span class="at">names_sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:unnamed-chunk-225">Table 8.3: </span>A wide format with one case per name enables us to examine gender balance.
@@ -750,10 +750,10 @@ Aada
 </tbody>
 </table>
 <p>Now we can choose common names with frequency greater than 25,000 for both males and females, and sort by the ratio to identify gender-neutral names.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="reshaping-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a>Neutral <span class="ot">&lt;-</span> BabyWide <span class="sc">%&gt;%</span></span>
-<span id="cb139-2"><a href="reshaping-data.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(M <span class="sc">&gt;</span> <span class="dv">25000</span>, F <span class="sc">&gt;</span> <span class="dv">25000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb139-3"><a href="reshaping-data.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">pmin</span>(M <span class="sc">/</span> F, F <span class="sc">/</span> M)) <span class="sc">%&gt;%</span> <span class="co">#pmin() stands for parallel min, finds the min(M/F, F/M) for each row</span></span>
-<span id="cb139-4"><a href="reshaping-data.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio))</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="reshaping-data.html#cb140-1" aria-hidden="true" tabindex="-1"></a>Neutral <span class="ot">&lt;-</span> BabyWide <span class="sc">%&gt;%</span></span>
+<span id="cb140-2"><a href="reshaping-data.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(M <span class="sc">&gt;</span> <span class="dv">25000</span>, F <span class="sc">&gt;</span> <span class="dv">25000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb140-3"><a href="reshaping-data.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">pmin</span>(M <span class="sc">/</span> F, F <span class="sc">/</span> M)) <span class="sc">%&gt;%</span> <span class="co">#pmin() stands for parallel min, finds the min(M/F, F/M) for each row</span></span>
+<span id="cb140-4"><a href="reshaping-data.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio))</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:unnamed-chunk-227">Table 8.4: </span>The most gender-neutral common names, in wide format.
@@ -955,11 +955,11 @@ Jody
 Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 </p>
 </div>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="reshaping-data.html#cb140-1" aria-hidden="true" tabindex="-1"></a>NeutralLong <span class="ot">&lt;-</span> Neutral <span class="sc">%&gt;%</span></span>
-<span id="cb140-2"><a href="reshaping-data.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;=</span> .<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb140-3"><a href="reshaping-data.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">F</span><span class="st">`</span>, <span class="st">`</span><span class="at">M</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">&quot;sex&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;total&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb140-4"><a href="reshaping-data.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sex, total) <span class="sc">%&gt;%</span></span>
-<span id="cb140-5"><a href="reshaping-data.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="reshaping-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a>NeutralLong <span class="ot">&lt;-</span> Neutral <span class="sc">%&gt;%</span></span>
+<span id="cb141-2"><a href="reshaping-data.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;=</span> .<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb141-3"><a href="reshaping-data.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">F</span><span class="st">`</span>, <span class="st">`</span><span class="at">M</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">&quot;sex&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;total&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb141-4"><a href="reshaping-data.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sex, total) <span class="sc">%&gt;%</span></span>
+<span id="cb141-5"><a href="reshaping-data.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:unnamed-chunk-230">Table 8.5: </span>Long format for the most gender-neutral common names.
@@ -1249,7 +1249,7 @@ M
 <div id="example-the-daily-show-guests" class="section level2 unnumbered hasAnchor">
 <h2>Example: The Daily Show Guests<a href="reshaping-data.html#example-the-daily-show-guests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The data associated with <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">this article</a> is available in the <code>fivethirtyeight</code> package, and is loaded into <code>Daily</code> below. It includes a list of every guest to ever appear on Jon Stewart’s The Daily Show. Note that when multiple people appeared together, each person receives their own line.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="reshaping-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> daily_show_guests</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="reshaping-data.html#cb142-1" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> daily_show_guests</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1469,15 +1469,16 @@ Sarah Jessica Parker
 <div id="recreating-a-graphic" class="section level3 unnumbered hasAnchor">
 <h3>Recreating a graphic<a href="reshaping-data.html#recreating-a-graphic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The original data has 18 different entries for the <code>group</code> variable:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="reshaping-data.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Daily<span class="sc">$</span>group)</span></code></pre></div>
-<pre><code>##  [1] &quot;Acting&quot;         &quot;Comedy&quot;         &quot;Musician&quot;       &quot;Media&quot;          NA              
-##  [6] &quot;Politician&quot;     &quot;Athletics&quot;      &quot;Business&quot;       &quot;Advocacy&quot;       &quot;Political Aide&quot;
-## [11] &quot;Misc&quot;           &quot;Academic&quot;       &quot;Government&quot;     &quot;media&quot;          &quot;Clergy&quot;        
-## [16] &quot;Science&quot;        &quot;Consultant&quot;     &quot;Military&quot;</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="reshaping-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Daily<span class="sc">$</span>group)</span></code></pre></div>
+<pre><code>##  [1] &quot;Acting&quot;         &quot;Comedy&quot;         &quot;Musician&quot;       &quot;Media&quot;         
+##  [5] NA               &quot;Politician&quot;     &quot;Athletics&quot;      &quot;Business&quot;      
+##  [9] &quot;Advocacy&quot;       &quot;Political Aide&quot; &quot;Misc&quot;           &quot;Academic&quot;      
+## [13] &quot;Government&quot;     &quot;media&quot;          &quot;Clergy&quot;         &quot;Science&quot;       
+## [17] &quot;Consultant&quot;     &quot;Military&quot;</code></pre>
 <p>In order to help you recreate the first figure from <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">the article</a>, I have added a new variable with three broader groups: (i) entertainment; (ii) politics, business, and government, and (iii) commentators. The data is available <a href="data/daily-group-assignment.csv">here</a>. We will learn in the next activity what the <code>inner_join</code> in this code chunk is doing.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="reshaping-data.html#cb144-1" aria-hidden="true" tabindex="-1"></a>DailyGroups <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/daily-group-assignment.csv&quot;</span>)</span>
-<span id="cb144-2"><a href="reshaping-data.html#cb144-2" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> Daily <span class="sc">%&gt;%</span></span>
-<span id="cb144-3"><a href="reshaping-data.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(DailyGroups, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;group&quot;</span> <span class="ot">=</span> <span class="st">&quot;group&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="reshaping-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a>DailyGroups <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/daily-group-assignment.csv&quot;</span>)</span>
+<span id="cb145-2"><a href="reshaping-data.html#cb145-2" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> Daily <span class="sc">%&gt;%</span></span>
+<span id="cb145-3"><a href="reshaping-data.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(DailyGroups, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;group&quot;</span> <span class="ot">=</span> <span class="st">&quot;group&quot;</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1632,7 +1633,7 @@ Entertainment
 <div id="more-exercises-practice-pivoting-longer" class="section level2 unnumbered hasAnchor">
 <h2>More Exercises: Practice Pivoting Longer<a href="reshaping-data.html#more-exercises-practice-pivoting-longer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A typical situation that requires a <code>pivot_longer</code> command is when the columns represent the possible values of a variable. Table <a href="reshaping-data.html#tab:lesotho-table">8.6</a> shows example data set from <a href="http://dataportal.opendataforafrica.org/">opendataforafrica.org</a> with different years in different columns. You can find the data <a href="data/Lesotho.csv">here</a>.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="reshaping-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a>Lesotho <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/Lesotho.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="reshaping-data.html#cb146-1" aria-hidden="true" tabindex="-1"></a>Lesotho <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/Lesotho.csv&quot;</span>)</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:lesotho-table">Table 8.6: </span>Financial statistics about Lesotho.
@@ -1809,14 +1810,14 @@ Average Interest Rate on Deposits
 <a href="joining-two-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/clipboard.min.js"></script>
-<script src="libs/gitbook/js/plugin-search.js"></script>
-<script src="libs/gitbook/js/plugin-sharing.js"></script>
-<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook/js/jquery.highlight.js"></script>
-<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
