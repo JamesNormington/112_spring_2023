@@ -444,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb86-8"><a href="spatial-visualization.html#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">0.2</span></span>
 <span id="cb86-9"><a href="spatial-visualization.html#cb86-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb86-10"><a href="spatial-visualization.html#cb86-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <p>The code for a point pattern probably looks familiar. To highlight the geographical nature of this scatterplot, we can superimpose the points on top of a background map, using the <code>ggmap()</code> function from the <code>ggmap</code> library.</p>
 <p><em>NOTE: We used to be able to easily bring in Google maps. As of mid-2018, in order to bring those in, you need to have a registered API key with Google. If you want to do that, see <code>google_key</code> in the help. Then, see the documentation for <code>get_map()</code>. We will bring in other types of maps since Google maps are harder to do now and require you to submit credit card information.</em></p>
 <p>We will use a stamen map as our background. You can also take a look at stamen maps on their <a href="http://maps.stamen.com/#watercolor/12/37.7706/-122.3782">website</a>. First, let’s look at an example.</p>
@@ -485,13 +485,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code class='language-r'><code># Get the map information<br><span style='background-color:#ffff7f'><span style='background-color:#ffff7f'>world</span> <-</span> get_stamenmap(<br>&nbsp;&nbsp;bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),<br>&nbsp;&nbsp;maptype = "terrain",<br>&nbsp;&nbsp;zoom = 2<br>)<br><br># Plot the points on the map<br>ggmap(<span style='background-color:#ffff7f'>world</span>) + # creates the map "background"<br>&nbsp;&nbsp;geom_point(<br>&nbsp;&nbsp;&nbsp;&nbsp;data = Starbucks,<br>&nbsp;&nbsp;&nbsp;&nbsp;aes(x = Longitude, y = Latitude),<br>&nbsp;&nbsp;&nbsp;&nbsp;alpha = .3,<br>&nbsp;&nbsp;&nbsp;&nbsp;size = 0.2<br>&nbsp;&nbsp;) +<br>&nbsp;&nbsp;theme_map()</code></code></pre>
 <p>The <code>ggmap()</code> function will print the “background” map. Think of it as the providing the canvas on which we will plot. This takes the place of our usual <code>ggplot()</code>.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="spatial-visualization.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(world)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 <p>After that, we can use the <code>geom_XXX()</code> functions from <code>ggplot2</code> that we are used to in order to put points, lines, etc. on top of the map. But, we need to remember to also provide the data we are using in the <code>geom_XXX()</code> function(s) we use since we do not have the <code>ggplot()</code> function in which to provide it.</p>
 <pre><code class='language-r'><code># Get the map information<br>world <- get_stamenmap(<br>&nbsp;&nbsp;bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),<br>&nbsp;&nbsp;maptype = "terrain",<br>&nbsp;&nbsp;zoom = 2<br>)<br><br># Plot the points on the map<br>ggmap(world) + # creates the map "background"<br>&nbsp;&nbsp;geom_point(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style='background-color:#ffff7f'>data = Starbucks</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;aes(x = Longitude, y = Latitude),<br>&nbsp;&nbsp;&nbsp;&nbsp;alpha = .3,<br>&nbsp;&nbsp;&nbsp;&nbsp;size = 0.2<br>&nbsp;&nbsp;) +<br>&nbsp;&nbsp;theme_map()</code></code></pre>
 <p><strong><code>theme_map()</code></strong></p>
 <p>The last line of the code is <code>theme_map()</code>. This is optional, but it often makes it look nice.</p>
 <pre><code class='language-r'><code># Get the map information<br>world <- get_stamenmap(<br>&nbsp;&nbsp;bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),<br>&nbsp;&nbsp;maptype = "terrain",<br>&nbsp;&nbsp;zoom = 2<br>)<br><br># Plot the points on the map<br>ggmap(world) + # creates the map "background"<br>&nbsp;&nbsp;geom_point(<br>&nbsp;&nbsp;&nbsp;&nbsp;data = Starbucks,<br>&nbsp;&nbsp;&nbsp;&nbsp;aes(x = Longitude, y = Latitude),<br>&nbsp;&nbsp;&nbsp;&nbsp;alpha = .3,<br>&nbsp;&nbsp;&nbsp;&nbsp;size = 0.2<br>&nbsp;&nbsp;) +<br>&nbsp;&nbsp;<span style='background-color:#ffff7f'>theme_map()</span></code></code></pre>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-308-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-317-1.png" width="672" /></p>
 <p>So, the final map as a world map as the background with points plotted on top that show the Starbucks locations. The points are 20 percent (0.2) of their usual size and have a transparency level of 0.3.</p>
 </div>
 <div id="resources" class="section level3 unnumbered hasAnchor">
@@ -506,7 +506,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-more-with-starbucks" class="section level3 unnumbered hasAnchor">
 <h3>Exercise: More with Starbucks<a href="spatial-visualization.html#exercise-more-with-starbucks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-162" class="exercise"><strong>Exercise 6.1  </strong></span>Now it is your turn to work with the Starbucks data.</p>
+<p><span id="exr:unnamed-chunk-171" class="exercise"><strong>Exercise 6.1  </strong></span>Now it is your turn to work with the Starbucks data.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Add an aesthetic to the world map that sets the color of the points according to the ownership type. What, if anything, can you deduce from this visualization?</li>
@@ -536,7 +536,7 @@ Solution
 <span id="cb90-13"><a href="spatial-visualization.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;purple&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb90-14"><a href="spatial-visualization.html#cb90-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb90-15"><a href="spatial-visualization.html#cb90-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.background =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li>It appears that most of the locations in the western hemisphere are company owned or licensed, while franchising is more common in western Europe and joint ventures are more common in eastern Asia.</li>
 </ol>
@@ -554,7 +554,7 @@ Solution
 <span id="cb91-12"><a href="spatial-visualization.html#cb91-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> .<span class="dv">7</span>,</span>
 <span id="cb91-13"><a href="spatial-visualization.html#cb91-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;green&quot;</span></span>
 <span id="cb91-14"><a href="spatial-visualization.html#cb91-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>A higher zoom number leads to more detail.</li>
 </ol>
@@ -573,7 +573,7 @@ Solution
 <span id="cb92-13"><a href="spatial-visualization.html#cb92-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">7</span>, <span class="at">size =</span> <span class="dv">1</span>,</span>
 <span id="cb92-14"><a href="spatial-visualization.html#cb92-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#00704A&quot;</span></span>
 <span id="cb92-15"><a href="spatial-visualization.html#cb92-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="spatial-visualization.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e)</span></span>
 <span id="cb93-2"><a href="spatial-visualization.html#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-3"><a href="spatial-visualization.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(TwinCities) <span class="sc">+</span></span>
@@ -598,7 +598,7 @@ Solution
 <span id="cb93-22"><a href="spatial-visualization.html#cb93-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb93-23"><a href="spatial-visualization.html#cb93-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb93-24"><a href="spatial-visualization.html#cb93-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.background =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<img src="stat112_manual_files/figure-html/unnamed-chunk-166-1.png" width="672" />
+<img src="stat112_manual_files/figure-html/unnamed-chunk-175-1.png" width="672" />
 </details>
 <p><br />
 </p>
@@ -625,7 +625,7 @@ Solution
 <span id="cb94-16"><a href="spatial-visualization.html#cb94-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>,</span>
 <span id="cb94-17"><a href="spatial-visualization.html#cb94-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">&#39;none&#39;</span></span>
 <span id="cb94-18"><a href="spatial-visualization.html#cb94-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 </div>
 <div id="choropleths" class="section level2 unnumbered hasAnchor">
 <h2>Choropleths<a href="spatial-visualization.html#choropleths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -659,7 +659,7 @@ Solution
 <span id="cb95-24"><a href="spatial-visualization.html#cb95-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This assures the map looks decently nice:</span></span>
 <span id="cb95-25"><a href="spatial-visualization.html#cb95-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb95-26"><a href="spatial-visualization.html#cb95-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <p>Now, let’s look more closely at what each piece of the code below is doing.</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="spatial-visualization.html#cb96-1" aria-hidden="true" tabindex="-1"></a>starbucks_us_by_state <span class="sc">%&gt;%</span></span>
 <span id="cb96-2"><a href="spatial-visualization.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -720,7 +720,7 @@ Solution
 <span id="cb97-18"><a href="spatial-visualization.html#cb97-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Starbucks in MN&quot;</span>) <span class="sc">+</span></span>
 <span id="cb97-19"><a href="spatial-visualization.html#cb97-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb97-20"><a href="spatial-visualization.html#cb97-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.background =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
 </div>
 <div id="resources-1" class="section level3 unnumbered hasAnchor">
 <h3>Resources<a href="spatial-visualization.html#resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -762,7 +762,7 @@ Solution
 <span id="cb100-4"><a href="spatial-visualization.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb100-5"><a href="spatial-visualization.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb100-6"><a href="spatial-visualization.html#cb100-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
 <div id="alternative-1-ggplot-geom_polygon" class="section level4 unnumbered hasAnchor">
 <h4>Alternative 1: <code>ggplot</code> + <code>geom_polygon</code><a href="spatial-visualization.html#alternative-1-ggplot-geom_polygon" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="spatial-visualization.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mapping_data, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">fill =</span> perrep_2016, <span class="at">group =</span> group)) <span class="sc">+</span></span>
@@ -771,14 +771,14 @@ Solution
 <span id="cb101-4"><a href="spatial-visualization.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">name =</span> <span class="st">&quot;Percent Republican&quot;</span>, <span class="at">colours =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">values =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))) <span class="sc">+</span></span>
 <span id="cb101-5"><a href="spatial-visualization.html#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb101-6"><a href="spatial-visualization.html#cb101-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
 </div>
 <div id="alternative-2-plot_usmap" class="section level4 unnumbered hasAnchor">
 <h4>Alternative 2: <code>plot_usmap</code><a href="spatial-visualization.html#alternative-2-plot_usmap" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="spatial-visualization.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This function is in the usmap package</span></span>
 <span id="cb102-2"><a href="spatial-visualization.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data =</span> elect, <span class="at">values =</span> <span class="st">&quot;brk&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>, <span class="at">exclude =</span> <span class="st">&quot;AK&quot;</span>) <span class="sc">+</span></span>
 <span id="cb102-3"><a href="spatial-visualization.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;RdBu&quot;</span>)), <span class="at">name =</span> <span class="st">&quot;Percent Republican&quot;</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exercise-even-more-with-starbucks" class="section level3 unnumbered hasAnchor">
@@ -795,7 +795,7 @@ Solution
 <span id="cb104-5"><a href="spatial-visualization.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb104-6"><a href="spatial-visualization.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">starbucks_per_10000 =</span> (n <span class="sc">/</span> est_pop_2018) <span class="sc">*</span> <span class="dv">10000</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-183" class="exercise"><strong>Exercise 6.2  </strong></span>Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the contiguous US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.</p>
+<p><span id="exr:unnamed-chunk-192" class="exercise"><strong>Exercise 6.2  </strong></span>Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the contiguous US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.</p>
 </div>
 </div>
 </div>
@@ -1030,7 +1030,7 @@ Solution
 <div id="exercise-favorite-places" class="section level3 unnumbered hasAnchor">
 <h3>Exercise: Favorite Places<a href="spatial-visualization.html#exercise-favorite-places" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-193" class="exercise"><strong>Exercise 6.3  </strong></span>In this exercise, you are going to create a single map of some of your favorite places! The end result will be one map.</p>
+<p><span id="exr:unnamed-chunk-202" class="exercise"><strong>Exercise 6.3  </strong></span>In this exercise, you are going to create a single map of some of your favorite places! The end result will be one map.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Create a data set using the <code>tibble()</code> function that has 10-15 rows of your favorite places. The columns will be the name of the location, the latitude, the longitude, and a column that indicates if it is in your top 3 favorite locations or not. For an example of how to use <code>tibble()</code>, look at the <code>favorite_stp</code> that is created manually above.<br />
 </li>
