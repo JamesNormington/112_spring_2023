@@ -1,18 +1,5 @@
----
-title: "Comp/Stat 112: Exploratory Data Analysis"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
-output:
-  bookdown::html_document2:
-    split_by: none
-    toc: yes
-    toc_depth: 3
-    toc_float:
-      toc_collapsed: true
-    number_sections: false
----
-
-```{r 11_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```{r 12_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 library(tidyverse)
 library(ggplot2)
 library(lubridate)
@@ -27,6 +14,9 @@ library(GGally)
 - Understand the first steps that should be taken when you encounter a new data set
 - Develop comfort in knowing how to explore data to understand it
 - Develop comfort in formulating research questions
+
+
+You can download a template .Rmd of this activity [here](template_rmd/12-EDA_Assign.Rmd). Put it in a folder called `Day12` in your `Comp_Stat_112` folder.
 
 
 ## First Steps of a Data Analysis {-}
@@ -111,7 +101,7 @@ Here are three different versions of such plots based on 2005 crime data (rates 
 ```{r fig.width=10,fig.height=8}
 crime2 <- crime %>%
   filter(state != "District of Columbia", state != "United States")
-pairs(crime2[, 2:9], bg = "lightblue", panel = panel.smooth)
+pairs(crime2[, 2:9], panel = panel.smooth)
 ```
 ```{r fig.width=10,fig.height=8}
 ggpairs(crime2[, 2:9], aes(alpha = 0.4))
@@ -153,12 +143,17 @@ Here are some exploratory data analysis examples I like:
 
 ## Practice: Flight Data {-}
 
-Let's practice these steps using data about [flight delays from Kaggle](https://www.kaggle.com/usdot/flight-delays). You have access to the data for airlines, airports, and flights.
+Let's practice these steps using data about [flight delays from Kaggle](https://www.kaggle.com/usdot/flight-delays). You have access to the data for [airlines](data/airlines.csv), [airports](data/airports.csv), and [flights](data/flights_jan_jul_sample2.csv).
 
 There are three tables of data:
 
+```{r, cache=TRUE, echo=FALSE}
+airlines <- read_csv("data/airlines.csv")
+airports <- read_csv("data/airports.csv")
+flights <- read_csv("data/flights_jan_jul_sample2.csv")
+```
 
-```{r, cache=TRUE}
+```{r, cache=TRUE,eval=FALSE}
 airlines <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/airlines.csv")
 airports <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/airports.csv")
 flights <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/flights_jan_jul_sample2.csv")
@@ -173,23 +168,16 @@ There is a ton of data here, and it can be easy to be overwhelmed. We are going 
 Where does this data come from? Who collected it?   
 ```
 
-> ANSWER:
-
-
 
 ```{exercise, name="Explore codebook"}
 This data set comes with a codebook on the Kaggle site. Have a look at the codebook to understand which variables are contained in each of the three tables. For example, what are the levels of `CANCELLATION_REASON` and what do they mean? What is the unit of observation for each table?
 
 ```
 
-> ANSWER:
-
 ```{exercise, name="Possible joins"}
 What variables link the three tables? How could you join data from one table to another?
   
 ```
-
-> ANSWER:
 
 
 ```{exercise, name="Visualize and describe the data"}
@@ -204,33 +192,12 @@ Use some univariate and bivariate visualizations to start to explore the questio
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
 ```{exercise, name="Formulate a specific research question"}
 Based on your preliminary visualizations and exploration of the date, formulate a more specific research question/hypothesis within this broad area of understanding the causes of flight delays.
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
-
 ```{exercise, name="Share a visualization"}
 Develop a single visualization to share with the class that tells a story about your more specific research question/hypothesis. Note: the story may very well be something along the lines of "we thought variable X would affect flight delays in way Y, but the evidence does not support that."
 
 ```
-
-> ANSWER:
-
-```{r}
-
-```
-
-
