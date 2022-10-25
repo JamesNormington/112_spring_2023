@@ -395,6 +395,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#examples"><i class="fa fa-check"></i>Examples</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#practice-flight-data"><i class="fa fa-check"></i>Practice: Flight Data</a></li>
 </ul></li>
+<li class="part"><span><b>V Data Acquisition</b></span></li>
+<li class="chapter" data-level="13" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>13</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#learning-goals-13"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-importing-and-cleaning-data"><i class="fa fa-check"></i>Finding, Importing, and Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-existing-data-sets"><i class="fa fa-check"></i>Finding Existing Data Sets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#loading-datasets"><i class="fa fa-check"></i>Loading Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#checking-the-imported-datasets"><i class="fa fa-check"></i>Checking the Imported Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#cleaning-datasets"><i class="fa fa-check"></i>Cleaning Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#additional-practice"><i class="fa fa-check"></i>Additional Practice</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -652,8 +665,7 @@ S
 <span id="cb177-2"><a href="categorical-variables-as-factors.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">factor</span>(grade))</span></code></pre></div>
 <p>Now we can see the levels:</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="categorical-variables-as-factors.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Grades<span class="sc">$</span>grade)</span></code></pre></div>
-<pre><code>##  [1] &quot;A&quot;  &quot;A-&quot; &quot;AU&quot; &quot;B&quot;  &quot;B-&quot; &quot;B+&quot; &quot;C&quot;  &quot;C-&quot; &quot;C+&quot;
-## [10] &quot;D&quot;  &quot;D-&quot; &quot;D+&quot; &quot;NC&quot; &quot;S&quot;</code></pre>
+<pre><code>##  [1] &quot;A&quot;  &quot;A-&quot; &quot;AU&quot; &quot;B&quot;  &quot;B-&quot; &quot;B+&quot; &quot;C&quot;  &quot;C-&quot; &quot;C+&quot; &quot;D&quot;  &quot;D-&quot; &quot;D+&quot; &quot;NC&quot; &quot;S&quot;</code></pre>
 <p>Moreover, the <code>forcats</code> package (part of <code>tidyverse</code>) allows us to manipulate these factors. Its commands include the following.</p>
 </div>
 <div id="changing-the-order-of-levels" class="section level3 unnumbered hasAnchor">

@@ -395,6 +395,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#examples"><i class="fa fa-check"></i>Examples</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#practice-flight-data"><i class="fa fa-check"></i>Practice: Flight Data</a></li>
 </ul></li>
+<li class="part"><span><b>V Data Acquisition</b></span></li>
+<li class="chapter" data-level="13" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>13</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#learning-goals-13"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-importing-and-cleaning-data"><i class="fa fa-check"></i>Finding, Importing, and Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-existing-data-sets"><i class="fa fa-check"></i>Finding Existing Data Sets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#loading-datasets"><i class="fa fa-check"></i>Loading Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#checking-the-imported-datasets"><i class="fa fa-check"></i>Checking the Imported Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#cleaning-datasets"><i class="fa fa-check"></i>Cleaning Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#additional-practice"><i class="fa fa-check"></i>Additional Practice</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -923,27 +936,23 @@ Solution
 <span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
 <span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
 <span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederat…¹ popul…² tv_au…³ gdp_w…⁴</span></span>
-<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF         4.5     4.3    11.3</span></span>
-<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC              1.9     4.9     9.1</span></span>
-<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC             19.5    14.8     7.3</span></span>
-<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA             1.2     2.9     6.3</span></span>
-<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL         2.8     7.1     5.4</span></span>
-<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA             0.9     2.1     4.2</span></span>
-<span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable names ¹​confederation,</span></span>
-<span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ²​population_share, ³​tv_audience_share,</span></span>
-<span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ⁴​gdp_weighted_share</span></span>
-<span id="cb8-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
-<span id="cb8-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
-<span id="cb8-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
-<span id="cb8-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
-<span id="cb8-24"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
-<span id="cb8-25"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;     </span></span>
-<span id="cb8-26"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;population_share&quot;   &quot;tv_audience_share&quot; </span></span>
-<span id="cb8-27"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
+<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted_share</span></span>
+<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;              &lt;dbl&gt;</span></span>
+<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3               11.3</span></span>
+<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9                9.1</span></span>
+<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8                7.3</span></span>
+<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9                6.3</span></span>
+<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1                5.4</span></span>
+<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1                4.2</span></span>
+<span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
+<span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
+<span id="cb8-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
+<span id="cb8-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
+<span id="cb8-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
+<span id="cb8-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;      &quot;population_share&quot;   &quot;tv_audience_share&quot; </span></span>
+<span id="cb8-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>

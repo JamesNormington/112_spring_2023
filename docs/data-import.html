@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>COMP/STAT 112: Introduction to Data Science</title>
+  <title>Topic 13 Data Import | COMP/STAT 112: Introduction to Data Science</title>
   <meta name="description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:title" content="Topic 13 Data Import | COMP/STAT 112: Introduction to Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/logo.png" />
   <meta property="og:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
   <meta name="github-repo" content="bcheggeseth/112_fall_2022/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="COMP/STAT 112: Introduction to Data Science" />
+  <meta name="twitter:title" content="Topic 13 Data Import | COMP/STAT 112: Introduction to Data Science" />
   
   <meta name="twitter:description" content="This is the class website for Introduction to Data Science at Macalester College for Fall 2022." />
   <meta name="twitter:image" content="/images/logo.png" />
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="exploratory-data-analysis.html"/>
 
-<link rel="next" href="course-schedule.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -428,33 +428,352 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">COMP/STAT 112: Introduction to Data Science</h1>
+<div id="data-import" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Topic 13</span> Data Import<a href="data-import.html#data-import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-13" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="data-import.html#learning-goals-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Develop comfort in finding an existing data set to import into R</li>
+<li>Develop comfort in importing data of a variety of file types into R</li>
+<li>Understand and implement the data cleaning process to make values consistent</li>
+<li>Understand the implications of different ways of dealing with missing values with <code>replace_na</code> and <code>drop_na</code></li>
+</ul>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/13-Data_Import_Assign.Rmd">here</a>.</p>
 </div>
-<div id="welcome" class="section level1 unnumbered hasAnchor">
-<h1>Welcome!<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<center>
-<p><img src="images/logo.png" width="300"></p>
-<a href="https://www.flaticon.com/free-icons/data" title="data icons">Data icons created by Kiranshastry - Flaticon</a>
-</center>
-<p><br>
-<br></p>
-<p><em>Note: This site is still in construction!</em></p>
-<p>This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor <a href="https://bcheggeseth.github.io">Brianna Heggeseth</a> at Macalester College for Fall 2022. The activities here were developed by a variety of faculty in the <a href="https://macalester.edu/mscs">MSCS Department</a> at <a href="https://macalester.edu">Macalester College</a>.</p>
-<p><br>
-<br>
-<br></p>
-<p><img src="images/cc_license_button.png" /></p>
-<p>This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="finding-importing-and-cleaning-data" class="section level2 unnumbered hasAnchor">
+<h2>Finding, Importing, and Cleaning Data<a href="data-import.html#finding-importing-and-cleaning-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Additional resources and readings:<br />
+1. <a href="https://github.com/rstudio/cheatsheets/raw/main/data-import.pdf">Data Import Cheat Sheet</a><br />
+2. <a href="https://readr.tidyverse.org/"><code>readr</code> documentation</a><br />
+3. <a href="http://r4ds.had.co.nz/data-import.html">Data import</a> from Wickham and Grolemund <br/>
+4. <a href="http://r4ds.had.co.nz/tidy-data.html#missing-values-3">Missing data</a> from Wickham and Grolemund <br/>
+5. <a href="https://mdsr-book.github.io/mdsr2e/ch-dataII.html#data-intake">Data intake</a> from Baumer, Kaplan, and Horton<br />
+6. <a href="https://www.youtube.com/watch?v=GtCsjtZBNp4">Using the import wizard</a> from Prof. Lendway</p>
+<p>In practice, data science is not as glamorous as building fancy classifiers and creating visualizations all the time. Data scientists spend <a href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#755d4d426f63">80% of their time acquiring and cleaning data</a>. While the skill of data acquisition is best learned through experience, this section of the course will outline the most common approaches to acquiring data.</p>
+<p>When importing and cleaning a dataset, take careful notes in your R Markdown. Explain where you found the dataset (the source). Record the steps you took to clean and import the data in case somebody else needs to replicate your analysis. You should also make sure to cite and credit the creator of the dataset.</p>
+<div id="finding-existing-data-sets" class="section level3 unnumbered hasAnchor">
+<h3>Finding Existing Data Sets<a href="data-import.html#finding-existing-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-316"></span>
+<img src="images/csv_search.jpeg" alt="An example Google search." width="486" />
+<p class="caption">
+Figure 13.1: An example Google search.
+</p>
+</div>
+<p>The easiest way to get data is by finding an existing dataset that has been created by somebody else. Search engines such as Google can be excellent tools, especially when using file type filters. For example, if you are looking for a dataset about movie reviews, you might search for “<code>movie reviews filetype:csv</code>”. You could also try searching for other common filetypes that are compatible with R, such as <code>.tsv</code>, <code>.xls</code>, <code>.xlsx</code>, or <code>.rds</code>.</p>
+<p>Another good resource for datasets are compendiums of datasets such as the excellent and continuously-evolving <a href="https://github.com/caesar0301/awesome-public-datasets">awesome-public-datasets</a> GitHub repo, <a href="https://www.kaggle.com/datasets">Kaggle datasets</a> or the <a href="https://data.world/">data.world website</a> website. You can find links to other similar compendiums at the end of the awesome-public-datasets page.</p>
+</div>
+<div id="loading-datasets" class="section level3 unnumbered hasAnchor">
+<h3>Loading Datasets<a href="data-import.html#loading-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once you have a dataset, it’s time to load it into <code>R</code>. Don’t be frustrated if this step takes some time.</p>
+<p>The table below lists some common data import functions and when you would use them.</p>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read_csv()</code></td>
+<td>data are saved in .csv (comma delimited or comma separated values) format - you can save Excel files and Google Sheets in this format</td>
+</tr>
+<tr class="even">
+<td><code>read_delim()</code></td>
+<td>data are saved in other delimited formats (tab, space, etc.)</td>
+</tr>
+<tr class="odd">
+<td><code>read_sheet()</code></td>
+<td>data are in a Google Sheet</td>
+</tr>
+<tr class="even">
+<td><code>st_read()</code></td>
+<td>reading in a shapefile</td>
+</tr>
+</tbody>
+</table>
+<p>A few tips:</p>
+<ul>
+<li>When reading in data from a file, one tip is to initially use the Import Wizard to help write the code. DO NOT use it to import the data as you will need the code to read in the data in order to knit your document. Prof. Lendway has posted a <a href="https://www.youtube.com/embed/GtCsjtZBNp4">video tutorial on the Import Wizard</a><br />
+</li>
+<li>The import functions <code>read_csv</code>, <code>read_csv2</code>, and <code>read_tsv</code> from the <code>readr</code> package are faster than their counterparts <code>read.csv</code>, <code>read.csv2</code>, and <code>read.tsv</code> from the <code>base</code> package for large files. They also have more flexible parsers (e.g., for dates, times, percentages). We recommend you use these functions instead of the <code>base</code> functions like <code>read.csv</code>. The package <code>fread</code> has other import functions and is also faster for large datasets. For smaller data sets (say 1MB or less), there won’t be that much difference in time for the three different packages.</li>
+<li><code>read_csv2</code> is for semi-colon delimited files, whereas <code>read_csv</code> is for comma delimited files.</li>
+<li>The <code>readr</code> functions automatically guess the type of data in each column (e.g., character, double, integer). You will often see a message just after the import telling you what it chose for each column. If you think there is an issue, you can use the function <code>problems()</code> to detect problems, and/or specify how the columns should be imported. See the section on “column specification” in the <a href="https://github.com/rstudio/cheatsheets/raw/main/data-import.pdf">Data Import Cheat Sheet</a> for more info.</li>
+<li>If you have trouble importing a dataset, try to first import it into a different data such as Google Sheets or Excel tool and then export it as a TSV or CSV before reading it into <code>R</code>.</li>
+<li>For really messy data, <a href="http://openrefine.org/">OpenRefine</a> is complicated but powerful (<a href="https://www.youtube.com/watch?v=WCRexQXYFrI">YouTube demo</a>).</li>
+<li>When you are importing a large file, you might want to first try importing a subset of the data. For example, if you want to take the first 17 rows only, you can write <code>read_csv("file.csv",n_max=17)</code></li>
+<li>Similarly, you might want to skip the first <span class="math inline">\(n\)</span> lines of the file when importing, select only certain columns to read in, or choose a random subset of the rows. See the cheat sheet for instructions on these tasks or just google!</li>
+</ul>
+</div>
+<div id="checking-the-imported-datasets" class="section level3 unnumbered hasAnchor">
+<h3>Checking the Imported Datasets<a href="data-import.html#checking-the-imported-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After reading in new data, it is ALWAYS a good idea to do some quick checks of the data. Here are two first steps that are especially useful:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the data in the spreadsheet-like viewer with <code>View(dataset_name)</code> and take a look at it. Sort it by different variables by clicking on the arrows next to the variable name. Make sure there isn’t anything unexpected.</p></li>
+<li><p>Do a quick summary of the data. The code below is one way to do this. For quantitative variables, it provides summary statistics and will let you know if there are missing values. For factors (they need to be factors, not just character variables - the <code>mutate()</code> changes them to factors), it shows you counts for the top categories and tells you if there are any missing values.</p></li>
+</ol>
+<pre><code>dataset_name %&gt;% 
+  mutate(across(where(is.character), as.factor)) %&gt;% 
+  summary()</code></pre>
+</div>
+<div id="cleaning-datasets" class="section level3 unnumbered hasAnchor">
+<h3>Cleaning Datasets<a href="data-import.html#cleaning-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Cleaning Categorical Variables</strong></p>
+<p>First we want to make sure the factors are “clean”, meaning consistent values in the correct format. For example, <code>true</code> and <code>TRUE</code> and <code>T</code> will be three different factors. The easiest way to manage this is to look at the levels for the factor and replace values with a messy factor to a clean one. For example, the following code cleans up values in true/false values in column <code>X</code> in a data set called <code>df</code>:</p>
+<pre><code>df &lt;- df %&gt;% mutate(X = fct_recode(X, &quot;TRUE&quot; = &quot;T&quot;, &quot;TRUE&quot; = &quot;true&quot;, &quot;FALSE&quot; = &quot;f&quot;, &quot;FALSE&quot; = &quot;N&quot;, &quot;FALSE&quot; = &quot;No&quot;))</code></pre>
+<div class="example">
+<p><span id="exm:unnamed-chunk-317" class="example"><strong>Example 13.1  (Clean up the levels on the Messy IMDB 5000 dataset) </strong></span>We will use a slightly “messied” <a href="data/imdb_5000_messy.csv">version</a> of the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">IMDB 5000 Dataset</a>, collected by chuansun76 on Kaggle.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Use <code>read_csv</code> to load the IMDB 5000 dataset from “<a href="https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv" class="uri">https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv</a>”, and save it as <code>imdbMessy</code>.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="data-import.html#cb199-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv&quot;</span>)</span></code></pre></div>
+</details>
+<p> 
+b. Print out the variable names.</p>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-import.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imdbMessy) <span class="co">#order = order in dataset</span></span></code></pre></div>
+<pre><code>##  [1] &quot;...1&quot;                      &quot;color&quot;                     &quot;director_name&quot;            
+##  [4] &quot;num_critic_for_reviews&quot;    &quot;duration&quot;                  &quot;director_facebook_likes&quot;  
+##  [7] &quot;actor_3_facebook_likes&quot;    &quot;actor_2_name&quot;              &quot;actor_1_facebook_likes&quot;   
+## [10] &quot;gross&quot;                     &quot;genres&quot;                    &quot;actor_1_name&quot;             
+## [13] &quot;movie_title&quot;               &quot;num_voted_users&quot;           &quot;cast_total_facebook_likes&quot;
+## [16] &quot;actor_3_name&quot;              &quot;facenumber_in_poster&quot;      &quot;plot_keywords&quot;            
+## [19] &quot;movie_imdb_link&quot;           &quot;num_user_for_reviews&quot;      &quot;language&quot;                 
+## [22] &quot;country&quot;                   &quot;content_rating&quot;            &quot;budget&quot;                   
+## [25] &quot;title_year&quot;                &quot;actor_2_facebook_likes&quot;    &quot;imdb_score&quot;               
+## [28] &quot;aspect_ratio&quot;              &quot;movie_facebook_likes&quot;</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-import.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(imdbMessy) <span class="co">#order = alphabetical order</span></span></code></pre></div>
+<pre><code>##  [1] &quot;actor_1_facebook_likes&quot;    &quot;actor_1_name&quot;              &quot;actor_2_facebook_likes&quot;   
+##  [4] &quot;actor_2_name&quot;              &quot;actor_3_facebook_likes&quot;    &quot;actor_3_name&quot;             
+##  [7] &quot;aspect_ratio&quot;              &quot;budget&quot;                    &quot;cast_total_facebook_likes&quot;
+## [10] &quot;color&quot;                     &quot;content_rating&quot;            &quot;country&quot;                  
+## [13] &quot;director_facebook_likes&quot;   &quot;director_name&quot;             &quot;duration&quot;                 
+## [16] &quot;facenumber_in_poster&quot;      &quot;genres&quot;                    &quot;gross&quot;                    
+## [19] &quot;imdb_score&quot;                &quot;language&quot;                  &quot;movie_facebook_likes&quot;     
+## [22] &quot;movie_imdb_link&quot;           &quot;movie_title&quot;               &quot;num_critic_for_reviews&quot;   
+## [25] &quot;num_user_for_reviews&quot;      &quot;num_voted_users&quot;           &quot;plot_keywords&quot;            
+## [28] &quot;title_year&quot;</code></pre>
+</details>
+<p> 
+c. Examine the color variable. What are the existing values?</p>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="data-import.html#cb204-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">select</span>(color) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 1
+##   color
+##   &lt;chr&gt;
+## 1 Color
+## 2 Color
+## 3 Color
+## 4 Color
+## 5 &lt;NA&gt; 
+## 6 Color</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-import.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(imdbMessy<span class="sc">$</span>color))</span></code></pre></div>
+<pre><code>## [1] &quot;B&amp;W&quot;             &quot;Black and White&quot; &quot;color&quot;           &quot;Color&quot;           &quot;COLOR&quot;</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-import.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(imdbMessy<span class="sc">$</span>color)</span></code></pre></div>
+<pre><code>## [1] &quot;Color&quot;           NA                &quot;Black and White&quot; &quot;COLOR&quot;           &quot;color&quot;          
+## [6] &quot;B&amp;W&quot;</code></pre>
+</details>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>How often does each color occur? <em>Hint:</em> <code>table</code> or <code>count</code></li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="data-import.html#cb210-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">count</span>(color)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   color               n
+##   &lt;chr&gt;           &lt;int&gt;
+## 1 B&amp;W                10
+## 2 Black and White   199
+## 3 color              30
+## 4 Color            4755
+## 5 COLOR              30
+## 6 &lt;NA&gt;               19</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="data-import.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(imdbMessy<span class="sc">$</span>color)</span></code></pre></div>
+<pre><code>## 
+##             B&amp;W Black and White           color           Color           COLOR 
+##              10             199              30            4755              30</code></pre>
+</details>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>The <code>read_csv</code> read in the <code>color</code> values as strings. For this exercise, let’s convert them to factor using the code: <code>imdbMessy &lt;- imdbMessy %&gt;% mutate(color = factor(color))</code>.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="data-import.html#cb214-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="ot">&lt;-</span> imdbMessy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">color =</span> <span class="fu">factor</span>(color))</span></code></pre></div>
+</details>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Select what you think is the best value for each level and replace “messy” versions of the value with clean ones with the <code>fct_recode</code> function as shown above. How many entries are there for each level now?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="data-import.html#cb215-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="ot">&lt;-</span> imdbMessy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">color =</span> <span class="fu">fct_recode</span>(color, <span class="st">&quot;B&amp;W&quot;</span> <span class="ot">=</span> <span class="st">&quot;Black and White&quot;</span>, <span class="st">&quot;Color&quot;</span> <span class="ot">=</span> <span class="st">&quot;color&quot;</span>, <span class="st">&quot;Color&quot;</span> <span class="ot">=</span> <span class="st">&quot;COLOR&quot;</span>))</span>
+<span id="cb215-2"><a href="data-import.html#cb215-2" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">count</span>(color)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   color     n
+##   &lt;fct&gt; &lt;int&gt;
+## 1 B&amp;W     209
+## 2 Color  4815
+## 3 &lt;NA&gt;     19</code></pre>
+</details>
+<p><strong>Addressing Missing Data</strong></p>
+<p>Finally, you should look for and address missing data, encoded as <code>NA</code> (not available) in <code>R</code>. There is no single formula for dealing with NAs. You should first look to see how many NAs appear in each column:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="data-import.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(imdbMessy))</span></code></pre></div>
+<p>Study the individual observations with NAs carefully. Why do you think they are missing? Are certain types of observations more likely to have NAs?</p>
+<p>You have several options for dealing with NAs (<em>and they have different consequences</em>):</p>
+<ul>
+<li>You can remove observations with one or more NAs (see <a href="https://tidyr.tidyverse.org/reference/drop_na.html"><code>drop_na</code></a>).</li>
+<li>You can remove columns with many NA values.</li>
+<li>You can replace NAs with a reasonable value (called <em>imputing</em> values). This could be a default value (like zero), or the average for a column. (see <a href="https://tidyr.tidyverse.org/reference/replace_na.html"><code>replace_na</code></a>)</li>
+<li>You can use packages such as <code>missForest</code> that fill in missing values with statistical predictions.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></li>
+</ul>
+<p>There is no perfect approach to dealing with NAs, and you must <em>think carefully</em> about how removing or replacing missing data may affect your work.</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-325" class="example"><strong>Example 13.2  (Address NA values in the Messy IMDB 5000 dataset) </strong></span>Consider <code>imdbMessy</code>.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Print out the number of NAs in each of the columns.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-import.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(imdbMessy))</span></code></pre></div>
+<pre><code>##                      ...1                     color             director_name 
+##                         0                        19                       104 
+##    num_critic_for_reviews                  duration   director_facebook_likes 
+##                        50                        15                       104 
+##    actor_3_facebook_likes              actor_2_name    actor_1_facebook_likes 
+##                        23                        13                         7 
+##                     gross                    genres              actor_1_name 
+##                       884                         0                         7 
+##               movie_title           num_voted_users cast_total_facebook_likes 
+##                         0                         0                         0 
+##              actor_3_name      facenumber_in_poster             plot_keywords 
+##                        23                        13                       153 
+##           movie_imdb_link      num_user_for_reviews                  language 
+##                         0                        21                        12 
+##                   country            content_rating                    budget 
+##                         5                       303                       492 
+##                title_year    actor_2_facebook_likes                imdb_score 
+##                       108                        13                         0 
+##              aspect_ratio      movie_facebook_likes 
+##                       329                         0</code></pre>
+</details>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Consider the <code>actor_1_facebook_likes</code> column. Take a look at a few of the records that have NA values. Why do you think there are NAs?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<p>This variable is missing if <code>actor_1_name</code> is missing, which suggests that this movie doesn’t have an actor 1 listed.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-import.html#cb220-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(actor_1_facebook_likes)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 29
+##    ...1 color directo…¹ num_c…² durat…³ direc…⁴ actor…⁵ actor…⁶ actor…⁷  gross genres actor…⁸
+##   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
+## 1  4503 Color Léa Pool       23      97       4      NA &lt;NA&gt;         NA  24784 Docum… &lt;NA&gt;   
+## 2  4520 Color Harry Ga…      12     105       0      NA &lt;NA&gt;         NA 247740 Docum… &lt;NA&gt;   
+## 3  4721 Color U. Rober…       3      80       6      NA &lt;NA&gt;         NA   2245 Docum… &lt;NA&gt;   
+## 4  4838 Color Pan Nalin      15     102      95      NA &lt;NA&gt;         NA  16892 Docum… &lt;NA&gt;   
+## 5  4946 Color Amal Al-…      NA      62      58      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;   
+## 6  4947 Color Andrew B…      12      90       0      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;   
+## # … with 17 more variables: movie_title &lt;chr&gt;, num_voted_users &lt;dbl&gt;,
+## #   cast_total_facebook_likes &lt;dbl&gt;, actor_3_name &lt;chr&gt;, facenumber_in_poster &lt;dbl&gt;,
+## #   plot_keywords &lt;chr&gt;, movie_imdb_link &lt;chr&gt;, num_user_for_reviews &lt;dbl&gt;, language &lt;chr&gt;,
+## #   country &lt;chr&gt;, content_rating &lt;chr&gt;, budget &lt;dbl&gt;, title_year &lt;dbl&gt;,
+## #   actor_2_facebook_likes &lt;dbl&gt;, imdb_score &lt;dbl&gt;, aspect_ratio &lt;dbl&gt;,
+## #   movie_facebook_likes &lt;dbl&gt;, and abbreviated variable names ¹​director_name,
+## #   ²​num_critic_for_reviews, ³​duration, ⁴​director_facebook_likes, ⁵​actor_3_facebook_likes, …</code></pre>
+</details>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Create a new dataframe that removes observations that have NAs for <code>actor_1_facebook_likes</code>.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="data-import.html#cb222-1" aria-hidden="true" tabindex="-1"></a>imdbMessysub <span class="ot">&lt;-</span> imdbMessy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(actor_1_facebook_likes))  <span class="co">#Notice how I saved this new smaller dataset to a new name</span></span></code></pre></div>
+</details>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Create a second new dataframe that replaces NAs in <code>actor_1_facebook_likes</code> with 0.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="data-import.html#cb223-1" aria-hidden="true" tabindex="-1"></a>imdbMessysub2 <span class="ot">&lt;-</span> imdbMessy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">actor_1_facebook_likes =</span> <span class="fu">replace_na</span>(actor_1_facebook_likes,<span class="dv">0</span>))  </span></code></pre></div>
+</details>
+</div>
+</div>
+<div id="additional-practice" class="section level2 unnumbered hasAnchor">
+<h2>Additional Practice<a href="data-import.html#additional-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-330" class="exercise"><strong>Exercise 13.1  </strong></span>Find a dataset that is not built into <code>R</code> and is related to one of the following topics:</p>
+</div>
+<ul>
+<li>Macalester College (On Moodle Assignment 12, there is a dataset available from Macalester College IR you could use)</li>
+<li>A personal hobby or passion</li>
+<li>Your hometown, or a place you have lived</li>
+</ul>
+<p>Load the data into <code>R</code>, make sure it is clean, and construct one interesting visualization of the data.</p>
 
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="14">
+<li id="fn14"><p>Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We’ll learn this technique soon.<a href="data-import.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>This is dangerous unless you know what you are doing.<a href="data-import.html#fnref15" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="exploratory-data-analysis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="course-schedule.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

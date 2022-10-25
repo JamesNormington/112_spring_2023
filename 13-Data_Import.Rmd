@@ -1,22 +1,10 @@
----
-title: "Comp/Stat 112: Data Import"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
-output:
-  bookdown::html_document2:
-    split_by: none
-    toc: yes
-    toc_depth: 3
-    toc_float:
-      toc_collapsed: true
-    number_sections: false
----
-
-```{r 12_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```{r 13_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 library(tidyverse)
-library(ggplot2)
 library(lubridate)
 ```
+
+# (PART) Data Acquisition {-}
 
 # Data Import
 
@@ -26,6 +14,12 @@ library(lubridate)
 - Develop comfort in importing data of a variety of file types into R
 - Understand and implement the data cleaning process to make values consistent
 - Understand the implications of different ways of dealing with missing values with `replace_na` and `drop_na`
+
+
+
+You can download a template .Rmd of this activity [here](template_rmd/13-Data_Import_Assign.Rmd).
+
+
 
 ## Finding, Importing, and Cleaning Data {-}
 
@@ -47,11 +41,14 @@ When importing and cleaning a dataset, take careful notes in your R Markdown. Ex
 
 ### Finding Existing Data Sets {-}
 
+```{r, echo=FALSE,fig.margin=TRUE, fig.cap="An example Google search."}
+knitr::include_graphics("images/csv_search.jpeg")
+```
+
 The easiest way to get data is by finding an existing dataset that has been created by somebody else. Search engines such as Google can be excellent tools, especially when using file type filters. For example, if you are looking for a dataset about movie reviews, you might search for "`movie reviews filetype:csv`". You could also try searching for other common filetypes that are compatible with R, such as `.tsv`, `.xls`, `.xlsx`, or `.rds`.
 
 
 Another good resource for datasets are compendiums of datasets such as the excellent and continuously-evolving [awesome-public-datasets](https://github.com/caesar0301/awesome-public-datasets) GitHub repo, [Kaggle datasets](https://www.kaggle.com/datasets) or the [data.world website](https://data.world/) website. You can find links to other similar compendiums at the end of the awesome-public-datasets page.
-
 
 
 ### Loading Datasets {-}
@@ -100,62 +97,83 @@ dataset_name %>%
 First we want to make sure the factors are "clean", meaning consistent values in the correct format. For example, `true` and `TRUE` and `T` will be three different factors. The easiest way to manage this is to look at the levels for the factor and replace values with a messy factor to a clean one. For example, the following code cleans up values in true/false values in column `X` in a data set called `df`:
 
 ```
-levels(df$X) <- list(TRUE = c("T", "true"), FALSE = c("f", "FALSE", "N", "No"))
+df <- df %>% mutate(X = fct_recode(X, "TRUE" = "T", "TRUE" = "true", "FALSE" = "f", "FALSE" = "N", "FALSE" = "No"))
 ```
 
-```{exercise, name="Clean up the levels on the Messy IMDB 5000 dataset"}
-We will use a slightly "messied" version of the [IMDB 5000 Dataset](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset), collected by chuansun76 on Kaggle.^[Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We'll learn this technique soon.]
+```{example, name="Clean up the levels on the Messy IMDB 5000 dataset"}
+We will use a slightly "messied" [version](data/imdb_5000_messy.csv) of the [IMDB 5000 Dataset](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset), collected by chuansun76 on Kaggle.^[Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We'll learn this technique soon.]
 ```
 
 a. Use `read_csv` to load the IMDB 5000 dataset from "https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv", and save it as `imdbMessy`.
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessy <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv")
 ```
-
+  
+</details>
+\  
 b. Print out the variable names.
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+names(imdbMessy) #order = order in dataset
+ls(imdbMessy) #order = alphabetical order
 ```
-
+  
+</details>
+\  
 c. Examine the color variable. What are the existing values? 
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessy %>% select(color) %>% head()
+levels(factor(imdbMessy$color))
+unique(imdbMessy$color)
 ```
+  
+</details>
 
-d. How often does each color occur? *Hint: `table` or `count`*
+d. How often does each color occur? *Hint:* `table` or `count`
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessy %>% count(color)
+table(imdbMessy$color)
 ```
+  
+</details>
 
-e. The `read_csv` read in the `color` values as strings. For this exercise, let's convert them to factor using the code: `imdbMessy$color <- as.factor(imdbMessy$color)`.
+e. The `read_csv` read in the `color` values as strings. For this exercise, let's convert them to factor using the code: `imdbMessy <- imdbMessy %>% mutate(color = factor(color))`.
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessy <- imdbMessy %>% mutate(color = factor(color))
 ```
+  
+</details>
 
-f. Select what you think is the best value for each level and replace "messy" versions of the value with clean ones by assigning to the `levels()` function as shown above. How many entries are there for each level now?
+f. Select what you think is the best value for each level and replace "messy" versions of the value with clean ones with the `fct_recode` function as shown above. How many entries are there for each level now?
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessy <- imdbMessy %>% mutate(color = fct_recode(color, "B&W" = "Black and White", "Color" = "color", "Color" = "COLOR"))
+imdbMessy %>% count(color)
 ```
-
-
+  
+</details>
 
 **Addressing Missing Data**
 
@@ -171,64 +189,72 @@ You have several options for dealing with NAs (*and they have different conseque
 
 * You can remove observations with one or more NAs (see [`drop_na`](https://tidyr.tidyverse.org/reference/drop_na.html)).
 * You can remove columns with many NA values.
-* You can replace NAs with a reasonable value (called *imputing* values). This could be a default value (like zero), or the average for a column. (see [`replace`_na`](https://tidyr.tidyverse.org/reference/replace_na.html))
+* You can replace NAs with a reasonable value (called *imputing* values). This could be a default value (like zero), or the average for a column. (see [`replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html))
 * You can use packages such as `missForest` that fill in missing values with statistical predictions.^[This is dangerous unless you know what you are doing.]
 
 There is no perfect approach to dealing with NAs, and you must *think carefully* about how removing or replacing missing data may affect your work.
 
-```{exercise,name="Address NA values in the Messy IMDB 5000 dataset"}
+```{example, name="Address NA values in the Messy IMDB 5000 dataset"}
 Consider `imdbMessy`.
 ```
 
 a. Print out the number of NAs in each of the columns.
 
-> ANSWER:
+
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+colSums(is.na(imdbMessy))
 ```
+  
+</details>
+
 
 b. Consider the `actor_1_facebook_likes` column. Take a look at a few of the records that have NA values. Why do you think there are NAs?
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
+
+This variable is missing if `actor_1_name` is missing, which suggests that this movie doesn't have an actor 1 listed. 
 
 ```{r}
-
+imdbMessy %>% filter(is.na(actor_1_facebook_likes)) %>% head()
 ```
+  
+</details>
 
 c. Create a new dataframe that removes observations that have NAs for `actor_1_facebook_likes`.
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessysub <- imdbMessy %>% filter(!is.na(actor_1_facebook_likes))  #Notice how I saved this new smaller dataset to a new name
 ```
+  
+</details>
 
 d. Create a second new dataframe that replaces NAs in `actor_1_facebook_likes` with 0.
 
-> ANSWER:
+<details>
+  <summary>Solution</summary>
 
 ```{r}
-
+imdbMessysub2 <- imdbMessy %>% mutate(actor_1_facebook_likes = replace_na(actor_1_facebook_likes,0))  
 ```
+  
+</details>
 
-
-## Additional Practice
+## Additional Practice {-}
 
 ```{exercise}
 Find a dataset that is not built into `R` and is related to one of the following topics:  
   
 ```
 
-* Macalester College
+* Macalester College (On Moodle Assignment 12, there is a dataset available from Macalester College IR you could use)
 * A personal hobby or passion
 * Your hometown, or a place you have lived
   
 Load the data into `R`, make sure it is clean, and construct one interesting visualization of the data.
-
-
-> ANSWER:
-
-```{r}
-
-```
