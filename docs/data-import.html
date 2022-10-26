@@ -544,27 +544,19 @@ b. Print out the variable names.</p>
 Solution
 </summary>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-import.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imdbMessy) <span class="co">#order = order in dataset</span></span></code></pre></div>
-<pre><code>##  [1] &quot;...1&quot;                      &quot;color&quot;                     &quot;director_name&quot;            
-##  [4] &quot;num_critic_for_reviews&quot;    &quot;duration&quot;                  &quot;director_facebook_likes&quot;  
-##  [7] &quot;actor_3_facebook_likes&quot;    &quot;actor_2_name&quot;              &quot;actor_1_facebook_likes&quot;   
-## [10] &quot;gross&quot;                     &quot;genres&quot;                    &quot;actor_1_name&quot;             
-## [13] &quot;movie_title&quot;               &quot;num_voted_users&quot;           &quot;cast_total_facebook_likes&quot;
-## [16] &quot;actor_3_name&quot;              &quot;facenumber_in_poster&quot;      &quot;plot_keywords&quot;            
-## [19] &quot;movie_imdb_link&quot;           &quot;num_user_for_reviews&quot;      &quot;language&quot;                 
-## [22] &quot;country&quot;                   &quot;content_rating&quot;            &quot;budget&quot;                   
-## [25] &quot;title_year&quot;                &quot;actor_2_facebook_likes&quot;    &quot;imdb_score&quot;               
-## [28] &quot;aspect_ratio&quot;              &quot;movie_facebook_likes&quot;</code></pre>
+<pre><code>##  [1] &quot;...1&quot;                      &quot;color&quot;                     &quot;director_name&quot;             &quot;num_critic_for_reviews&quot;    &quot;duration&quot;                 
+##  [6] &quot;director_facebook_likes&quot;   &quot;actor_3_facebook_likes&quot;    &quot;actor_2_name&quot;              &quot;actor_1_facebook_likes&quot;    &quot;gross&quot;                    
+## [11] &quot;genres&quot;                    &quot;actor_1_name&quot;              &quot;movie_title&quot;               &quot;num_voted_users&quot;           &quot;cast_total_facebook_likes&quot;
+## [16] &quot;actor_3_name&quot;              &quot;facenumber_in_poster&quot;      &quot;plot_keywords&quot;             &quot;movie_imdb_link&quot;           &quot;num_user_for_reviews&quot;     
+## [21] &quot;language&quot;                  &quot;country&quot;                   &quot;content_rating&quot;            &quot;budget&quot;                    &quot;title_year&quot;               
+## [26] &quot;actor_2_facebook_likes&quot;    &quot;imdb_score&quot;                &quot;aspect_ratio&quot;              &quot;movie_facebook_likes&quot;</code></pre>
 <div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-import.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(imdbMessy) <span class="co">#order = alphabetical order</span></span></code></pre></div>
-<pre><code>##  [1] &quot;actor_1_facebook_likes&quot;    &quot;actor_1_name&quot;              &quot;actor_2_facebook_likes&quot;   
-##  [4] &quot;actor_2_name&quot;              &quot;actor_3_facebook_likes&quot;    &quot;actor_3_name&quot;             
-##  [7] &quot;aspect_ratio&quot;              &quot;budget&quot;                    &quot;cast_total_facebook_likes&quot;
-## [10] &quot;color&quot;                     &quot;content_rating&quot;            &quot;country&quot;                  
-## [13] &quot;director_facebook_likes&quot;   &quot;director_name&quot;             &quot;duration&quot;                 
-## [16] &quot;facenumber_in_poster&quot;      &quot;genres&quot;                    &quot;gross&quot;                    
-## [19] &quot;imdb_score&quot;                &quot;language&quot;                  &quot;movie_facebook_likes&quot;     
-## [22] &quot;movie_imdb_link&quot;           &quot;movie_title&quot;               &quot;num_critic_for_reviews&quot;   
-## [25] &quot;num_user_for_reviews&quot;      &quot;num_voted_users&quot;           &quot;plot_keywords&quot;            
-## [28] &quot;title_year&quot;</code></pre>
+<pre><code>##  [1] &quot;actor_1_facebook_likes&quot;    &quot;actor_1_name&quot;              &quot;actor_2_facebook_likes&quot;    &quot;actor_2_name&quot;              &quot;actor_3_facebook_likes&quot;   
+##  [6] &quot;actor_3_name&quot;              &quot;aspect_ratio&quot;              &quot;budget&quot;                    &quot;cast_total_facebook_likes&quot; &quot;color&quot;                    
+## [11] &quot;content_rating&quot;            &quot;country&quot;                   &quot;director_facebook_likes&quot;   &quot;director_name&quot;             &quot;duration&quot;                 
+## [16] &quot;facenumber_in_poster&quot;      &quot;genres&quot;                    &quot;gross&quot;                     &quot;imdb_score&quot;                &quot;language&quot;                 
+## [21] &quot;movie_facebook_likes&quot;      &quot;movie_imdb_link&quot;           &quot;movie_title&quot;               &quot;num_critic_for_reviews&quot;    &quot;num_user_for_reviews&quot;     
+## [26] &quot;num_voted_users&quot;           &quot;plot_keywords&quot;             &quot;title_year&quot;</code></pre>
 </details>
 <p> 
 c. Examine the color variable. What are the existing values?</p>
@@ -585,8 +577,7 @@ Solution
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-import.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(imdbMessy<span class="sc">$</span>color))</span></code></pre></div>
 <pre><code>## [1] &quot;B&amp;W&quot;             &quot;Black and White&quot; &quot;color&quot;           &quot;Color&quot;           &quot;COLOR&quot;</code></pre>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-import.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(imdbMessy<span class="sc">$</span>color)</span></code></pre></div>
-<pre><code>## [1] &quot;Color&quot;           NA                &quot;Black and White&quot; &quot;COLOR&quot;           &quot;color&quot;          
-## [6] &quot;B&amp;W&quot;</code></pre>
+<pre><code>## [1] &quot;Color&quot;           NA                &quot;Black and White&quot; &quot;COLOR&quot;           &quot;color&quot;           &quot;B&amp;W&quot;</code></pre>
 </details>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>How often does each color occur? <em>Hint:</em> <code>table</code> or <code>count</code></li>
@@ -658,26 +649,16 @@ Solution
 Solution
 </summary>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-import.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(imdbMessy))</span></code></pre></div>
-<pre><code>##                      ...1                     color             director_name 
-##                         0                        19                       104 
-##    num_critic_for_reviews                  duration   director_facebook_likes 
-##                        50                        15                       104 
-##    actor_3_facebook_likes              actor_2_name    actor_1_facebook_likes 
-##                        23                        13                         7 
-##                     gross                    genres              actor_1_name 
-##                       884                         0                         7 
-##               movie_title           num_voted_users cast_total_facebook_likes 
-##                         0                         0                         0 
-##              actor_3_name      facenumber_in_poster             plot_keywords 
-##                        23                        13                       153 
-##           movie_imdb_link      num_user_for_reviews                  language 
-##                         0                        21                        12 
-##                   country            content_rating                    budget 
-##                         5                       303                       492 
-##                title_year    actor_2_facebook_likes                imdb_score 
-##                       108                        13                         0 
-##              aspect_ratio      movie_facebook_likes 
-##                       329                         0</code></pre>
+<pre><code>##                      ...1                     color             director_name    num_critic_for_reviews                  duration   director_facebook_likes 
+##                         0                        19                       104                        50                        15                       104 
+##    actor_3_facebook_likes              actor_2_name    actor_1_facebook_likes                     gross                    genres              actor_1_name 
+##                        23                        13                         7                       884                         0                         7 
+##               movie_title           num_voted_users cast_total_facebook_likes              actor_3_name      facenumber_in_poster             plot_keywords 
+##                         0                         0                         0                        23                        13                       153 
+##           movie_imdb_link      num_user_for_reviews                  language                   country            content_rating                    budget 
+##                         0                        21                        12                         5                       303                       492 
+##                title_year    actor_2_facebook_likes                imdb_score              aspect_ratio      movie_facebook_likes 
+##                       108                        13                         0                       329                         0</code></pre>
 </details>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Consider the <code>actor_1_facebook_likes</code> column. Take a look at a few of the records that have NA values. Why do you think there are NAs?</li>
@@ -689,21 +670,18 @@ Solution
 <p>This variable is missing if <code>actor_1_name</code> is missing, which suggests that this movie doesn’t have an actor 1 listed.</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-import.html#cb220-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(actor_1_facebook_likes)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 29
-##    ...1 color directo…¹ num_c…² durat…³ direc…⁴ actor…⁵ actor…⁶ actor…⁷  gross genres actor…⁸
-##   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
-## 1  4503 Color Léa Pool       23      97       4      NA &lt;NA&gt;         NA  24784 Docum… &lt;NA&gt;   
-## 2  4520 Color Harry Ga…      12     105       0      NA &lt;NA&gt;         NA 247740 Docum… &lt;NA&gt;   
-## 3  4721 Color U. Rober…       3      80       6      NA &lt;NA&gt;         NA   2245 Docum… &lt;NA&gt;   
-## 4  4838 Color Pan Nalin      15     102      95      NA &lt;NA&gt;         NA  16892 Docum… &lt;NA&gt;   
-## 5  4946 Color Amal Al-…      NA      62      58      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;   
-## 6  4947 Color Andrew B…      12      90       0      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;   
-## # … with 17 more variables: movie_title &lt;chr&gt;, num_voted_users &lt;dbl&gt;,
-## #   cast_total_facebook_likes &lt;dbl&gt;, actor_3_name &lt;chr&gt;, facenumber_in_poster &lt;dbl&gt;,
-## #   plot_keywords &lt;chr&gt;, movie_imdb_link &lt;chr&gt;, num_user_for_reviews &lt;dbl&gt;, language &lt;chr&gt;,
-## #   country &lt;chr&gt;, content_rating &lt;chr&gt;, budget &lt;dbl&gt;, title_year &lt;dbl&gt;,
-## #   actor_2_facebook_likes &lt;dbl&gt;, imdb_score &lt;dbl&gt;, aspect_ratio &lt;dbl&gt;,
-## #   movie_facebook_likes &lt;dbl&gt;, and abbreviated variable names ¹​director_name,
-## #   ²​num_critic_for_reviews, ³​duration, ⁴​director_facebook_likes, ⁵​actor_3_facebook_likes, …</code></pre>
+##    ...1 color direct…¹ num_c…² durat…³ direc…⁴ actor…⁵ actor…⁶ actor…⁷  gross genres actor…⁸ movie…⁹ num_v…˟ cast_…˟ actor…˟ facen…˟ plot_…˟ movie…˟ num_u…˟ langu…˟
+##   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+## 1  4503 Color Léa Pool      23      97       4      NA &lt;NA&gt;         NA  24784 Docum… &lt;NA&gt;    Pink R…     591       0 &lt;NA&gt;          0 breast… http:/…      10 English
+## 2  4520 Color Harry G…      12     105       0      NA &lt;NA&gt;         NA 247740 Docum… &lt;NA&gt;    Sex wi…     285       0 &lt;NA&gt;          0 bisexu… http:/…       8 English
+## 3  4721 Color U. Robe…       3      80       6      NA &lt;NA&gt;         NA   2245 Docum… &lt;NA&gt;    The Ha…      57       0 &lt;NA&gt;          0 child … http:/…       2 English
+## 4  4838 Color Pan Nal…      15     102      95      NA &lt;NA&gt;         NA  16892 Docum… &lt;NA&gt;    Ayurve…     341       0 &lt;NA&gt;          0 easter… http:/…      12 English
+## 5  4946 Color Amal Al…      NA      62      58      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;    The Br…      18       0 &lt;NA&gt;          1 autism… http:/…      NA Arabic 
+## 6  4947 Color Andrew …      12      90       0      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;    The Bl…     102       0 &lt;NA&gt;          1 americ… http:/…       7 English
+## # … with 8 more variables: country &lt;chr&gt;, content_rating &lt;chr&gt;, budget &lt;dbl&gt;, title_year &lt;dbl&gt;, actor_2_facebook_likes &lt;dbl&gt;, imdb_score &lt;dbl&gt;, aspect_ratio &lt;dbl&gt;,
+## #   movie_facebook_likes &lt;dbl&gt;, and abbreviated variable names ¹​director_name, ²​num_critic_for_reviews, ³​duration, ⁴​director_facebook_likes,
+## #   ⁵​actor_3_facebook_likes, ⁶​actor_2_name, ⁷​actor_1_facebook_likes, ⁸​actor_1_name, ⁹​movie_title, ˟​num_voted_users, ˟​cast_total_facebook_likes, ˟​actor_3_name,
+## #   ˟​facenumber_in_poster, ˟​plot_keywords, ˟​movie_imdb_link, ˟​num_user_for_reviews, ˟​language</code></pre>
 </details>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Create a new dataframe that removes observations that have NAs for <code>actor_1_facebook_likes</code>.</li>
