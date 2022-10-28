@@ -468,18 +468,18 @@ Solution
 <span id="cb40-6"><a href="bivariate-visualizations.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  The variables are county name, vote counts for parties and total for presidential elections, and more</span></span>
 <span id="cb40-7"><a href="bivariate-visualizations.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(elect)</span>
 <span id="cb40-8"><a href="bivariate-visualizations.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 34</span></span>
-<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county     total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟ gop_2…˟ oth_2…˟ perde…˟ perre…˟ winre…˟ perde…˟ perre…˟ winre…˟ perde…˟</span></span>
-<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker Co…   28652    7420   20722     510   28497    6551   21633     313   29243    4486   24208     549    15.3    82.8 TRUE       23.0    75.9 TRUE       25.9</span></span>
-<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock C…    5415    4011    1391      13    5318    4058    1250      10    4701    3530    1139      32    75.1    24.2 FALSE      76.3    23.5 FALSE      74.1</span></span>
-<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun C…   49242   16334   32348     560   46240   15500   30272     468   47376   13197   32803    1376    27.9    69.2 TRUE       33.5    65.5 TRUE       33.2</span></span>
-<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour C…   11630    5697    5866      67   11459    5873    5539      47   10390    4848    5431     111    46.7    52.3 TRUE       51.3    48.3 FALSE      49.0</span></span>
-<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette C…    7957    1994    5883      80    7912    1803    6034      75    8196    1358    6705     133    16.6    81.8 TRUE       22.8    76.3 TRUE       25.1</span></span>
-<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin C…   81413   19386   61271     756   84988   18329   65772     887   94090   18409   72780    2901    19.6    77.4 TRUE       21.6    77.4 TRUE       23.8</span></span>
-<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 14 more variables: perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;, region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;,</span></span>
-<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_asian &lt;dbl&gt;, percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;, median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;, and</span></span>
-<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   abbreviated variable names ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, ⁶​dem_2012, ⁷​gop_2012, ⁸​oth_2012, ⁹​total_2016, ˟​dem_2016, ˟​gop_2016,</span></span>
-<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ˟​oth_2016, ˟​perdem_2016, ˟​perrep_2016, ˟​winrep_2016, ˟​perdem_2012, ˟​perrep_2012, ˟​winrep_2012, ˟​perdem_2008</span></span>
+<span id="cb40-9"><a href="bivariate-visualizations.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   county        total…¹ dem_2…² gop_2…³ oth_2…⁴ total…⁵ dem_2…⁶ gop_2…⁷ oth_2…⁸ total…⁹ dem_2…˟ gop_2…˟ oth_2…˟ perde…˟ perre…˟ winre…˟ perde…˟ perre…˟ winre…˟ perde…˟</span></span>
+<span id="cb40-10"><a href="bivariate-visualizations.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb40-11"><a href="bivariate-visualizations.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Walker County   28652    7420   20722     510   28497    6551   21633     313   29243    4486   24208     549    15.3    82.8 TRUE       23.0    75.9 TRUE       25.9</span></span>
+<span id="cb40-12"><a href="bivariate-visualizations.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Bullock Coun…    5415    4011    1391      13    5318    4058    1250      10    4701    3530    1139      32    75.1    24.2 FALSE      76.3    23.5 FALSE      74.1</span></span>
+<span id="cb40-13"><a href="bivariate-visualizations.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Calhoun Coun…   49242   16334   32348     560   46240   15500   30272     468   47376   13197   32803    1376    27.9    69.2 TRUE       33.5    65.5 TRUE       33.2</span></span>
+<span id="cb40-14"><a href="bivariate-visualizations.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Barbour Coun…   11630    5697    5866      67   11459    5873    5539      47   10390    4848    5431     111    46.7    52.3 TRUE       51.3    48.3 FALSE      49.0</span></span>
+<span id="cb40-15"><a href="bivariate-visualizations.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Fayette Coun…    7957    1994    5883      80    7912    1803    6034      75    8196    1358    6705     133    16.6    81.8 TRUE       22.8    76.3 TRUE       25.1</span></span>
+<span id="cb40-16"><a href="bivariate-visualizations.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Baldwin Coun…   81413   19386   61271     756   84988   18329   65772     887   94090   18409   72780    2901    19.6    77.4 TRUE       21.6    77.4 TRUE       23.8</span></span>
+<span id="cb40-17"><a href="bivariate-visualizations.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 14 more variables: perrep_2008 &lt;dbl&gt;, winrep_2008 &lt;lgl&gt;, region &lt;dbl&gt;, total_population &lt;dbl&gt;, percent_white &lt;dbl&gt;, percent_black &lt;dbl&gt;, percent_asian &lt;dbl&gt;,</span></span>
+<span id="cb40-18"><a href="bivariate-visualizations.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   percent_hispanic &lt;dbl&gt;, per_capita_income &lt;dbl&gt;, median_rent &lt;dbl&gt;, median_age &lt;dbl&gt;, polyname &lt;chr&gt;, abb &lt;chr&gt;, StateColor &lt;chr&gt;, and abbreviated variable names</span></span>
+<span id="cb40-19"><a href="bivariate-visualizations.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​total_2008, ²​dem_2008, ³​gop_2008, ⁴​oth_2008, ⁵​total_2012, ⁶​dem_2012, ⁷​gop_2012, ⁸​oth_2012, ⁹​total_2016, ˟​dem_2016, ˟​gop_2016, ˟​oth_2016, ˟​perdem_2016,</span></span>
+<span id="cb40-20"><a href="bivariate-visualizations.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ˟​perrep_2016, ˟​winrep_2016, ˟​perdem_2012, ˟​perrep_2012, ˟​winrep_2012, ˟​perdem_2008</span></span>
 <span id="cb40-21"><a href="bivariate-visualizations.html#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-22"><a href="bivariate-visualizations.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3,112 counties and 34 variables</span></span>
 <span id="cb40-23"><a href="bivariate-visualizations.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elect)</span>
@@ -593,148 +593,72 @@ Maybe past election history and information about the people that live there and
 <p><span id="exr:unnamed-chunk-93" class="exercise"><strong>Exercise 4.4  (Mock-Ups) </strong></span>Consider a subset of the variables:</p>
 </div>
 <table>
+<colgroup>
+<col width="27%" />
+<col width="5%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="15%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-county
-</th>
-<th style="text-align:left;">
-abb
-</th>
-<th style="text-align:right;">
-perrep_2016
-</th>
-<th style="text-align:right;">
-perrep_2012
-</th>
-<th style="text-align:left;">
-winrep_2016
-</th>
-<th style="text-align:left;">
-StateColor
-</th>
+<tr class="header">
+<th align="left">county</th>
+<th align="left">abb</th>
+<th align="right">perrep_2016</th>
+<th align="right">perrep_2012</th>
+<th align="left">winrep_2016</th>
+<th align="left">StateColor</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Elbert County
-</td>
-<td style="text-align:left;">
-CO
-</td>
-<td style="text-align:right;">
-73.53
-</td>
-<td style="text-align:right;">
-72.52
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:left;">
-blue
-</td>
+<tr class="odd">
+<td align="left">Elbert County</td>
+<td align="left">CO</td>
+<td align="right">73.53</td>
+<td align="right">72.52</td>
+<td align="left">TRUE</td>
+<td align="left">blue</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rockdale County
-</td>
-<td style="text-align:left;">
-GA
-</td>
-<td style="text-align:right;">
-35.82
-</td>
-<td style="text-align:right;">
-41.37
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-purple
-</td>
+<tr class="even">
+<td align="left">Rockdale County</td>
+<td align="left">GA</td>
+<td align="right">35.82</td>
+<td align="right">41.37</td>
+<td align="left">FALSE</td>
+<td align="left">purple</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Clay County
-</td>
-<td style="text-align:left;">
-MN
-</td>
-<td style="text-align:right;">
-46.55
-</td>
-<td style="text-align:right;">
-44.91
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:left;">
-blue
-</td>
+<tr class="odd">
+<td align="left">Clay County</td>
+<td align="left">MN</td>
+<td align="right">46.55</td>
+<td align="right">44.91</td>
+<td align="left">TRUE</td>
+<td align="left">blue</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-McDonald County
-</td>
-<td style="text-align:left;">
-MO
-</td>
-<td style="text-align:right;">
-80.15
-</td>
-<td style="text-align:right;">
-72.84
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:left;">
-purple
-</td>
+<tr class="even">
+<td align="left">McDonald County</td>
+<td align="left">MO</td>
+<td align="right">80.15</td>
+<td align="right">72.84</td>
+<td align="left">TRUE</td>
+<td align="left">purple</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Alcorn County
-</td>
-<td style="text-align:left;">
-MS
-</td>
-<td style="text-align:right;">
-79.95
-</td>
-<td style="text-align:right;">
-75.11
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:left;">
-red
-</td>
+<tr class="odd">
+<td align="left">Alcorn County</td>
+<td align="left">MS</td>
+<td align="right">79.95</td>
+<td align="right">75.11</td>
+<td align="left">TRUE</td>
+<td align="left">red</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Roger Mills County
-</td>
-<td style="text-align:left;">
-OK
-</td>
-<td style="text-align:right;">
-87.94
-</td>
-<td style="text-align:right;">
-83.75
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:left;">
-red
-</td>
+<tr class="even">
+<td align="left">Roger Mills County</td>
+<td align="left">OK</td>
+<td align="right">87.94</td>
+<td align="right">83.75</td>
+<td align="left">TRUE</td>
+<td align="left">red</td>
 </tr>
 </tbody>
 </table>
