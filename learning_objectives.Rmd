@@ -44,7 +44,7 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 <br>
 
-### Data Acquisition {.unnumbered}
+### Data Acquisition & Cleaning {.unnumbered}
 
 **Data Import and Basic Cleaning**
 
@@ -52,6 +52,14 @@ Specific learning objectives for our course topics are listed below. Use these t
 - Be able to import data of a variety of file types into R
 - Understand and implement the data cleaning process to make values consistent
 - Understand the implications of different ways of dealing with missing values with `replace_na` and `drop_na`
+
+<br>
+
+**Wrangling Text using Regular Expression**
+
+- Be able to work with strings of text data 
+- Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
+
 
 <br>
 
@@ -89,13 +97,6 @@ Specific learning objectives for our course topics are listed below. Use these t
 
 <br>
 
-**Wrangling Text using Regular Expression**
-
-- Be able to work with strings of text data 
-- Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
-
-
-<br>
 
 **Mini-Project**
 

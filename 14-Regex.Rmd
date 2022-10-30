@@ -64,6 +64,8 @@ str_replace_all(example, "fox|dog", "****")
 ### Detect patterns with `grep` and `grepl` (`base`) or `str_detect` (`stringr`) {-}
 
 ```{r}
+example2 <- "Two roads diverged in a yellow wood, / And sorry I could not travel both / And be one traveler, long I stood / And looked down one as far as I could"
+example3 <- "This is a test"
 examples <- c(example, example2, example3)
 pat <- "[^aeiouAEIOU ]{3}" # Regular expression for three straight consonants. Note that I've excluded spaces as well
 grepl(pat, examples) # Are there three consonants in a row?
@@ -121,7 +123,7 @@ Note: The function `separate` is in the `tidyr` package.
 
 The tibble `courses` has the Fall 2021 enrollment information from the Macalester Registrar's website, which we could gain with web scraping tools.
 
-```{r, echo=TRUE,cache=TRUE,eval=FALSE}
+```{r, echo=TRUE,eval=FALSE}
 fall2021 <- read_html("https://www.macalester.edu/registrar/schedules/2021fall/class-schedule")
 
 # Retrieve and inspect course numbers
@@ -205,7 +207,7 @@ write_csv(courses, file = 'Mac2021Courses.csv')
 ```
 
 ```{r, echo=FALSE}
-load('data/Mac2021Courses.RData')
+courses <- read_csv('data/Mac2021Courses.csv')
 knitr::kable(
   courses[1:6, 1:8],
   caption = "First six entries in the Fall 2021 Macalester course info data."
@@ -228,7 +230,7 @@ d) Split the `time` variable into two separate columns: `start_time` and `end_ti
 
 
 ```{exercise,name="WA courses"}
-Make a histogram showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.^[For this exercise, you can count cross-listed courses towards both departments' WA counts.]
+Make a bar plot showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.^[For this exercise, you can count cross-listed courses towards both departments' WA counts.]
 
 ```
 
@@ -266,6 +268,6 @@ Make a table where each row contains a faculty, the number of sections they are 
 
 
 ```{exercise, name="Evening courses"}
-Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise \@ref(exr:nt)). Also make a histogram showing the number of these courses by day of the week.
+Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise \@ref(exr:nt)). Also make a bar plot showing the number of these courses by day of the week.
 
 ```

@@ -63,7 +63,7 @@ c) Use `avail` and `max` to generate a new variable called `enrollment`.
 
 ```
 
-d) Split the `time` variable into two separate columns: `start_time` and `end_time`. Convert all of these times into continuous 24 hour times (e.g., 2:15 pm should become 14.25). *Hint: check out the function `parse_date_time`.*
+d) Split the `time` variable into two separate columns: `start_time` and `end_time`. Convert all of these times into continuous 24 hour times (e.g., 2:15 pm should become 14.25). *Hint: replace TBA with TBA-TBA first and check out the function `parse_date_time`.*
 
 > ANSWER:
 
@@ -77,7 +77,7 @@ d) Split the `time` variable into two separate columns: `start_time` and `end_ti
 
 
 ```{exercise, name="WA courses"}
-Make a histogram showing the number of Fall 2021 sections satisfying the Writing WA requirement (a `gen_ed`), sorted by department code.^[For this exercise, you can count cross-listed courses towards both departments' WA counts.]
+Make a bar plot showing the number of Fall 2021 sections satisfying the Writing WA requirement (a `gen_ed`), sorted by department code.^[For this exercise, you can count cross-listed courses towards both departments' WA counts.]
 
 ```
 
@@ -92,7 +92,7 @@ Make a histogram showing the number of Fall 2021 sections satisfying the Writing
 In the next series of exercises, we are going to build up an analysis to examine the number of student enrollments for each faculty member.
 
 ```{exercise, name="Filter cases"}
-For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table:
+For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table (and save as `courses2`):
 
 a) All sections in `PE` or `INTD`.
 b) All music ensembles and dance practicum sections (these are all of the MUSI and THDA classes with numbers less than 100).
@@ -144,7 +144,7 @@ Make a table where each row contains a faculty, the number of sections they are 
 
 
 ```{exercise, name="Evening courses"}
-Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of the exercise 4). Also make a histogram showing the number of these courses by day of the week.
+Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of the exercise 4). Also make a bar plot showing the number of these courses by day of the week.
 
 ```
 
