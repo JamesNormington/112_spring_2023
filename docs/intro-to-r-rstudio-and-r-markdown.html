@@ -30,15 +30,15 @@
   
 <link rel="prev" href="learning-goals.html"/>
 <link rel="next" href="intro-to-data-visualization.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,19 +47,19 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+<script src="libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -491,7 +491,7 @@ Figure 1.1: RStudio Interface
 </div>
 <p>This short <a href="http://www.youtube.com/embed/JfIo2Ua_oqQ/">video tour of RStudio</a> summarizes some basic features of the <em>console</em>.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-29" class="exercise"><strong>Exercise 1.1  (Warm Up) </strong></span>Use RStudio as a simple calculator to do the following:</p>
+<p><span id="exr:unnamed-chunk-9" class="exercise"><strong>Exercise 1.1  (Warm Up) </strong></span>Use RStudio as a simple calculator to do the following:</p>
 <ol style="list-style-type: decimal">
 <li>Perform a simple calculation: calculate <code>90/3</code>.</li>
 <li>RStudio has built-in <em>functions</em> to which we supply the necessary <em>arguments</em>: <code>function(arguments)</code>. Use the built-in function <code>sqrt</code> to calculate the square root of 25.</li>
@@ -547,7 +547,7 @@ Solution
 <div id="data" class="section level3 unnumbered hasAnchor">
 <h3>Data<a href="intro-to-r-rstudio-and-r-markdown.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Not only does “Data Science” require statistical software, it requires <em>DATA</em>! Consider the Google definition:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
 <img src="images/datum.png" alt="A datum." width="458" />
 <p class="caption">
 Figure 1.2: A datum.
@@ -583,92 +583,195 @@ Figure 1.2: A datum.
 <h3>Tidy Data<a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Example:</strong> After a scandal among FIFA officials, fivethirtyeight.com posted an analysis of FIFA viewership, <a href="https://fivethirtyeight.com/features/how-to-break-fifa/">“How to Break FIFA”</a>. Here’s a snapshot of the data used in this article:</p>
 <table>
-<colgroup>
-<col width="18%" />
-<col width="16%" />
-<col width="20%" />
-<col width="21%" />
-<col width="22%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th align="left">country</th>
-<th align="left">confederation</th>
-<th align="right">population_share</th>
-<th align="right">tv_audience_share</th>
-<th align="right">gdp_weighted_share</th>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:left;">
+confederation
+</th>
+<th style="text-align:right;">
+population_share
+</th>
+<th style="text-align:right;">
+tv_audience_share
+</th>
+<th style="text-align:right;">
+gdp_weighted_share
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">United States</td>
-<td align="left">CONCACAF</td>
-<td align="right">4.5</td>
-<td align="right">4.3</td>
-<td align="right">11.3</td>
+<tr>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+CONCACAF
+</td>
+<td style="text-align:right;">
+4.5
+</td>
+<td style="text-align:right;">
+4.3
+</td>
+<td style="text-align:right;">
+11.3
+</td>
 </tr>
-<tr class="even">
-<td align="left">Japan</td>
-<td align="left">AFC</td>
-<td align="right">1.9</td>
-<td align="right">4.9</td>
-<td align="right">9.1</td>
+<tr>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:left;">
+AFC
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+9.1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">China</td>
-<td align="left">AFC</td>
-<td align="right">19.5</td>
-<td align="right">14.8</td>
-<td align="right">7.3</td>
+<tr>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:left;">
+AFC
+</td>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:right;">
+14.8
+</td>
+<td style="text-align:right;">
+7.3
+</td>
 </tr>
-<tr class="even">
-<td align="left">Germany</td>
-<td align="left">UEFA</td>
-<td align="right">1.2</td>
-<td align="right">2.9</td>
-<td align="right">6.3</td>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+6.3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Brazil</td>
-<td align="left">CONMEBOL</td>
-<td align="right">2.8</td>
-<td align="right">7.1</td>
-<td align="right">5.4</td>
+<tr>
+<td style="text-align:left;">
+Brazil
+</td>
+<td style="text-align:left;">
+CONMEBOL
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+7.1
+</td>
+<td style="text-align:right;">
+5.4
+</td>
 </tr>
-<tr class="even">
-<td align="left">United Kingdom</td>
-<td align="left">UEFA</td>
-<td align="right">0.9</td>
-<td align="right">2.1</td>
-<td align="right">4.2</td>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+2.1
+</td>
+<td style="text-align:right;">
+4.2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Italy</td>
-<td align="left">UEFA</td>
-<td align="right">0.9</td>
-<td align="right">2.1</td>
-<td align="right">4.0</td>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+2.1
+</td>
+<td style="text-align:right;">
+4.0
+</td>
 </tr>
-<tr class="even">
-<td align="left">France</td>
-<td align="left">UEFA</td>
-<td align="right">0.9</td>
-<td align="right">2.0</td>
-<td align="right">4.0</td>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Russia</td>
-<td align="left">UEFA</td>
-<td align="right">2.1</td>
-<td align="right">3.1</td>
-<td align="right">3.5</td>
+<tr>
+<td style="text-align:left;">
+Russia
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+2.1
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+3.5
+</td>
 </tr>
-<tr class="even">
-<td align="left">Spain</td>
-<td align="left">UEFA</td>
-<td align="right">0.7</td>
-<td align="right">1.8</td>
-<td align="right">3.1</td>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:left;">
+UEFA
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+3.1
+</td>
 </tr>
 </tbody>
 </table>
@@ -693,7 +796,7 @@ Figure 1.2: A datum.
 <p class="caption">Tidy Data: Art by Allison Horst</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-36" class="exercise"><strong>Exercise 1.3  (Units of Observation and Variables) </strong></span>Consider the following in a group:</p>
+<p><span id="exr:unnamed-chunk-16" class="exercise"><strong>Exercise 1.3  (Units of Observation and Variables) </strong></span>Consider the following in a group:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>What are the units of observation in the FIFA data?<br />
@@ -715,7 +818,7 @@ Solution
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-37" class="exercise"><strong>Exercise 1.4  (Tidy vs. Untidy) </strong></span>Check out the following data. Explain to each other why they are untidy and how we can tidy them.</p>
+<p><span id="exr:unnamed-chunk-17" class="exercise"><strong>Exercise 1.4  (Tidy vs. Untidy) </strong></span>Check out the following data. Explain to each other why they are untidy and how we can tidy them.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Data 1: FIFA</p>
 <table>
@@ -812,7 +915,7 @@ Solution
 <h3>Data Basics in RStudio<a href="intro-to-r-rstudio-and-r-markdown.html#data-basics-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For now, we’ll focus on <em>tidy</em> data. In a couple of weeks, you’ll learn how to turn untidy data into tidy data.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-38" class="exercise"><strong>Exercise 1.5  (Importing Package Data) </strong></span>The first step to working with data in RStudio is getting it in there! How we do this depends on its format (eg: Excel spreadsheet, csv file, txt file) and storage locations (eg: online, within Wiki, desktop). Luckily for us, the <code>fifa_audience</code> data are stored in the <code>fivethirtyeight</code> RStudio package. Copy and paste the following code into the Console and press Enter.</p>
+<p><span id="exr:unnamed-chunk-18" class="exercise"><strong>Exercise 1.5  (Importing Package Data) </strong></span>The first step to working with data in RStudio is getting it in there! How we do this depends on its format (eg: Excel spreadsheet, csv file, txt file) and storage locations (eg: online, within Wiki, desktop). Luckily for us, the <code>fifa_audience</code> data are stored in the <code>fivethirtyeight</code> RStudio package. Copy and paste the following code into the Console and press Enter.</p>
 </div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#download the data and information in the fivethirtyeight package (we only need to do this once)</span></span>
 <span id="cb6-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;fivethirtyeight&#39;</span>)</span>
@@ -826,7 +929,7 @@ Solution
 <span id="cb6-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
 <span id="cb6-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-11" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-40" class="exercise"><strong>Exercise 1.6  (Examining Data Structures) </strong></span>Before we can analyze our data, we must understand its structure. Try out the following functions (copy and paste into the Console). For each, make a note that describes its action.</p>
+<p><span id="exr:unnamed-chunk-20" class="exercise"><strong>Exercise 1.6  (Examining Data Structures) </strong></span>Before we can analyze our data, we must understand its structure. Try out the following functions (copy and paste into the Console). For each, make a note that describes its action.</p>
 </div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does View do?)</span></span>
 <span id="cb7-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fifa)  </span>
@@ -849,14 +952,14 @@ Solution
 <span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
 <span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
 <span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weigh…¹</span></span>
-<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3        11.3</span></span>
-<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9         9.1</span></span>
-<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8         7.3</span></span>
-<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9         6.3</span></span>
-<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1         5.4</span></span>
-<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1         4.2</span></span>
+<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted_…¹</span></span>
+<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3            11.3</span></span>
+<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9             9.1</span></span>
+<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8             7.3</span></span>
+<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9             6.3</span></span>
+<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1             5.4</span></span>
+<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1             4.2</span></span>
 <span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable name ¹​gdp_weighted_share</span></span>
 <span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
@@ -871,7 +974,7 @@ Solution
 <p><br />
 </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-43" class="exercise"><strong>Exercise 1.7  (Codebooks) </strong></span>Data are also only useful if we know what they measure! The <code>fifa</code> data table is <em>tidy</em>; it doesn’t have any helpful notes in the data itself.</p>
+<p><span id="exr:unnamed-chunk-23" class="exercise"><strong>Exercise 1.7  (Codebooks) </strong></span>Data are also only useful if we know what they measure! The <code>fifa</code> data table is <em>tidy</em>; it doesn’t have any helpful notes in the data itself.</p>
 </div>
 <p>Rather, information about the data is stored in a separate <em>codebook</em>. Codebooks can be stored in many ways (eg: Google docs, word docs, etc). Here the authors have made their codebook available in RStudio (under the original <code>fifa_audience</code> name). Check it out (run the following code in the console):</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-1" aria-hidden="true" tabindex="-1"></a>?fifa_audience</span></code></pre></div>
@@ -890,7 +993,7 @@ Solution
 </details>
 <p> </p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-45" class="exercise"><strong>Exercise 1.8  (Examining a Single Variable) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-25" class="exercise"><strong>Exercise 1.8  (Examining a Single Variable) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>We might want to access and focus on a single variable. To this end, we can use the <code>$</code> notation (see below). What are the values of <code>tv_audience_share</code>? Of <code>confederation</code>? Is it easy to figure out?</li>
@@ -923,7 +1026,7 @@ Solution
 <p>In this course we will use an innovative format called R Markdown that dramatically increases the transparency of data analysis. R Markdown interleaves data, R code, graphs, tables, and text, packaging them into an easily publishable format.</p>
 <p>To use R Markdown, you will write an R Markdown formatted file in RStudio and then ask RStudio to <strong>knit</strong> it into an HTML document (or occasionally a PDF or MS Word document).</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-49" class="exercise"><strong>Exercise 1.9  (Deduce the R Markdown Format) </strong></span>Look at this <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.Rmd">Sample RMarkdown</a> and the <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.html">HTML webpage</a> it creates. Consider the following and discuss:</p>
+<p><span id="exr:unnamed-chunk-29" class="exercise"><strong>Exercise 1.9  (Deduce the R Markdown Format) </strong></span>Look at this <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.Rmd">Sample RMarkdown</a> and the <a href="http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.html">HTML webpage</a> it creates. Consider the following and discuss:</p>
 <ol style="list-style-type: lower-alpha">
 <li>How are bullets, italics, and section headers represented in the R Markdown file?</li>
 <li>How does R code appear in the R Markdown file?</li>
@@ -949,7 +1052,7 @@ If echo=FALSE in curly braces, the code is not shown. Otherwise, both code and o
 <h2>Practice<a href="intro-to-r-rstudio-and-r-markdown.html#practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Complete the following. If you get stuck along the way, refer to the R Markdown cheatsheet linked above, search the web for answers, and/or ask for help!</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-50" class="exercise"><strong>Exercise 1.10  (Your First R Markdown File) </strong></span>Create a new R Markdown about your favorite food.</p>
+<p><span id="exr:unnamed-chunk-30" class="exercise"><strong>Exercise 1.10  (Your First R Markdown File) </strong></span>Create a new R Markdown about your favorite food.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Create a new file in RStudio (File -&gt; New File -&gt; R Markdown) with a Title of <code>First_Markdown</code>. Save it to a new folder on your Desktop called <code>COMP_STAT_112</code>; within that new folder, create another new folder called <code>Day_01</code>.<br />
 </li>
@@ -972,7 +1075,7 @@ If echo=FALSE in curly braces, the code is not shown. Otherwise, both code and o
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-51" class="exercise"><strong>Exercise 1.11  (New Data!) </strong></span>There’s a data set named <code>comic_characters</code> in the <code>fivethirtyeightdata</code> package.</p>
+<p><span id="exr:unnamed-chunk-31" class="exercise"><strong>Exercise 1.11  (New Data!) </strong></span>There’s a data set named <code>comic_characters</code> in the <code>fivethirtyeightdata</code> package.</p>
 </div>
 <p>Install the package by running the following in the Console:</p>
 <pre><code>install.packages(&#39;fivethirtyeightdata&#39;, repos = &#39;https://fivethirtyeightdata.github.io/drat/&#39;, type = &#39;source&#39;)</code></pre>
@@ -1141,14 +1244,14 @@ If echo=FALSE in curly braces, the code is not shown. Otherwise, both code and o
 <a href="intro-to-data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

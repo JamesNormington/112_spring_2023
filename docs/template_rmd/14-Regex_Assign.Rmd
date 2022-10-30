@@ -11,10 +11,9 @@ output:
     number_sections: false
 ---
 
-```{r 16_setup, include=FALSE}
+```{r 14_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 library(tidyverse)
-library(ggmap)
 library(lubridate)
 library(rvest)
 library(stringr)

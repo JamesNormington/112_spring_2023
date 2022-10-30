@@ -30,15 +30,15 @@
   
 <link rel="prev" href="six-main-verbs.html"/>
 <link rel="next" href="joining-two-data-frames.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,19 +47,19 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+<script src="libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -464,7 +464,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As we are transforming data, it is important to keep in mind what constitutes each case (row) of the data. For example, in the initial <code>BabyNames</code> data below, each case is a single name-sex-year combination. So if we have the same name and sex assigned at birth but a different year, that would be a different case.</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-246">Table 8.1: </span>Each case is one name-sex-year combination.
+<span id="tab:unnamed-chunk-226">Table 8.1: </span>Each case is one name-sex-year combination.
 </caption>
 <thead>
 <tr>
@@ -597,7 +597,7 @@ Margaret
 <p>Each case now represents one name-sex combination:</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-248">Table 8.2: </span>Long format where each case is one name-sex combination.
+<span id="tab:unnamed-chunk-228">Table 8.2: </span>Long format where each case is one name-sex combination.
 </caption>
 <thead>
 <tr>
@@ -685,7 +685,7 @@ F
 <div id="wider" class="section level3 unnumbered hasAnchor">
 <h3>Wider<a href="reshaping-data.html#wider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="example">
-<p><span id="exm:unnamed-chunk-249" class="example"><strong>Example 8.1  </strong></span>We want to find the common names that are the most gender neutral (used roughly equally for males and females). How should we rearrange the data?</p>
+<p><span id="exm:unnamed-chunk-229" class="example"><strong>Example 8.1  </strong></span>We want to find the common names that are the most gender neutral (used roughly equally for males and females). How should we rearrange the data?</p>
 </div>
 <p>Well, one nice way would be to have a single row for each name, and then have separate variables for the number of times that name is used for males and females. Using these two columns, we can then compute a third column that gives the ratio between these two columns. That is, we’d like to transform the data into a <strong>wide format</strong> with each of the possible values of the <code>sex</code> variable becoming its own column. The operation we need to perform this transformation is <strong><code>pivot_wider()</code></strong>.</p>
 <p>The inputs for this function are:</p>
@@ -695,7 +695,7 @@ F
 <li><code>values_fill = 0</code> specifies that if there are, e.g., no females named Aadam, we should include a zero in the corresponding entry of the wide format table</li>
 <li><code>names_sort = TRUE</code> dictates that the variables are listed in alphabetical order; when it is FALSE, they are listed in order of first appearance.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-250"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-230"></span>
 <img src="images/pivot_wider.png" alt="Illustration of pivot_wider from tidyr cheatsheet." width="809" />
 <p class="caption">
 Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
@@ -705,7 +705,7 @@ Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
 <span id="cb139-2"><a href="reshaping-data.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> total, <span class="at">values_fill =</span> <span class="dv">0</span>, <span class="at">names_sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-252">Table 8.3: </span>A wide format with one case per name enables us to examine gender balance.
+<span id="tab:unnamed-chunk-232">Table 8.3: </span>A wide format with one case per name enables us to examine gender balance.
 </caption>
 <thead>
 <tr>
@@ -796,7 +796,7 @@ Aada
 <span id="cb140-4"><a href="reshaping-data.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio))</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-254">Table 8.4: </span>The most gender-neutral common names, in wide format.
+<span id="tab:unnamed-chunk-234">Table 8.4: </span>The most gender-neutral common names, in wide format.
 </caption>
 <thead>
 <tr>
@@ -989,7 +989,7 @@ Jody
 <div id="longer" class="section level3 unnumbered hasAnchor">
 <h3>Longer<a href="reshaping-data.html#longer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, let’s filter these names to keep only those with a ratio of 0.5 or greater (no more than 2 to 1), and then switch back to long format. We can do this with the following <strong><code>pivot_longer()</code></strong> operation. It gathers the columns listed c(<code>F</code>,<code>M</code>) under the <code>cols</code> argument into a single column whose name is given by the <code>names_to</code> argument (“sex”), and includes the values in a column called <code>total</code>, which is the input to the <code>values_to</code> argument.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-255"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-235"></span>
 <img src="images/pivot_longer.png" alt="Illustration of pivot_longer from tidyr cheatsheet." width="784" />
 <p class="caption">
 Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
@@ -1002,7 +1002,7 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 <span id="cb141-5"><a href="reshaping-data.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-257">Table 8.5: </span>Long format for the most gender-neutral common names.
+<span id="tab:unnamed-chunk-237">Table 8.5: </span>Long format for the most gender-neutral common names.
 </caption>
 <thead>
 <tr>
@@ -1503,7 +1503,7 @@ Sarah Jessica Parker
 <div id="popular-guests" class="section level3 unnumbered hasAnchor">
 <h3>Popular guests<a href="reshaping-data.html#popular-guests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-260" class="exercise"><strong>Exercise 8.1  </strong></span>Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order). Hint: the function <code>rowSums()</code> adds up all of the entries in each row of a table. Try using it in a <code>mutate</code>.</p>
+<p><span id="exr:unnamed-chunk-240" class="exercise"><strong>Exercise 8.1  </strong></span>Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order). Hint: the function <code>rowSums()</code> adds up all of the entries in each row of a table. Try using it in a <code>mutate</code>.</p>
 </div>
 </div>
 <div id="recreating-a-graphic" class="section level3 unnumbered hasAnchor">
@@ -1666,7 +1666,7 @@ Entertainment
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-265" class="exercise"><strong>Exercise 8.2  </strong></span>Using the group assignments contained in the <code>broad_group</code> variable, recreate the graphic from the article, with three different lines showing the fraction of guests in each group over time. Hint: first think about what your case should be for the glyph-ready form.</p>
+<p><span id="exr:unnamed-chunk-245" class="exercise"><strong>Exercise 8.2  </strong></span>Using the group assignments contained in the <code>broad_group</code> variable, recreate the graphic from the article, with three different lines showing the fraction of guests in each group over time. Hint: first think about what your case should be for the glyph-ready form.</p>
 </div>
 </div>
 </div>
@@ -1804,7 +1804,7 @@ Average Interest Rate on Deposits
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-268" class="exercise"><strong>Exercise 8.3  (Practice pivoting longer) </strong></span>Make a side-by-side bar chart with the <code>year</code> on the horizontal axis, and three side-by-side vertical columns for average interest rate on deposits, average interest rate on loans, and inflation rate for each year. In order to get the data into glyph-ready form, you’ll need to use <code>pivot_longer</code>. Hint: <code>pivot_longer</code> uses the <code>dplyr::select()</code> notation, so you can, e.g., list the columns you want to select, use colon notation, or use <code>starts_with(a string)</code>. See <a href="https://r4ds.had.co.nz/transform.html#select">Wickham and Grolemund</a> for more information.</p>
+<p><span id="exr:unnamed-chunk-248" class="exercise"><strong>Exercise 8.3  (Practice pivoting longer) </strong></span>Make a side-by-side bar chart with the <code>year</code> on the horizontal axis, and three side-by-side vertical columns for average interest rate on deposits, average interest rate on loans, and inflation rate for each year. In order to get the data into glyph-ready form, you’ll need to use <code>pivot_longer</code>. Hint: <code>pivot_longer</code> uses the <code>dplyr::select()</code> notation, so you can, e.g., list the columns you want to select, use colon notation, or use <code>starts_with(a string)</code>. See <a href="https://r4ds.had.co.nz/transform.html#select">Wickham and Grolemund</a> for more information.</p>
 </div>
 </div>
 <div id="appendix-r-functions-5" class="section level2 unnumbered hasAnchor">
@@ -1850,14 +1850,14 @@ Average Interest Rate on Deposits
 <a href="joining-two-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

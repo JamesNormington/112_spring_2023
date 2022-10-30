@@ -201,7 +201,7 @@ courses <-
     gen_ed = gen_ed
   )
 
-save(courses, file = 'Mac2021Courses.RData')
+write_csv(courses, file = 'Mac2021Courses.csv')
 ```
 
 ```{r, echo=FALSE}

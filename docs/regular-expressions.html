@@ -30,15 +30,15 @@
   
 <link rel="prev" href="data-import.html"/>
 
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,19 +47,19 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+<script src="libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -640,10 +640,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb271-77"><a href="regular-expressions.html#cb271-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">gen_ed =</span> gen_ed</span>
 <span id="cb271-78"><a href="regular-expressions.html#cb271-78" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb271-79"><a href="regular-expressions.html#cb271-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb271-80"><a href="regular-expressions.html#cb271-80" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(courses, <span class="at">file =</span> <span class="st">&#39;Mac2021Courses.RData&#39;</span>)</span></code></pre></div>
+<span id="cb271-80"><a href="regular-expressions.html#cb271-80" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(courses, <span class="at">file =</span> <span class="st">&#39;Mac2021Courses.csv&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection</code></pre>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-369">Table 14.1: </span>First six entries in the Fall 2021 Macalester course info data.
+<span id="tab:unnamed-chunk-349">Table 14.1: </span>First six entries in the Fall 2021 Macalester course info data.
 </caption>
 <thead>
 <tr>
@@ -833,7 +834,7 @@ Closed 0 / 25
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-370" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table:</p>
+<p><span id="exr:unnamed-chunk-350" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Split <code>number</code> into three separate columns: <code>dept</code>, <code>number</code>, and <code>section</code>.</li>
 <li>Split the <code>avail_max</code> variable into two separate variables: <code>avail</code> and <code>max</code>. It might be helpful to first remove all appearances of “Closed”.</li>
@@ -842,12 +843,12 @@ Closed 0 / 25
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-371" class="exercise"><strong>Exercise 14.2  (WA courses) </strong></span>Make a histogram showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<p><span id="exr:unnamed-chunk-351" class="exercise"><strong>Exercise 14.2  (WA courses) </strong></span>Make a histogram showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
 </div>
 <p><br></p>
 <p>In the next series of exercises, we are going to build up an analysis to examine the number of student enrollments for each faculty member.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-372" class="exercise"><strong>Exercise 14.3  (Filter cases) </strong></span>For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table:</p>
+<p><span id="exr:unnamed-chunk-352" class="exercise"><strong>Exercise 14.3  (Filter cases) </strong></span>For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table:</p>
 <ol style="list-style-type: lower-alpha">
 <li>All sections in <code>PE</code> or <code>INTD</code>.</li>
 <li>All music ensembles and dance practicum sections (these are all of the MUSI and THDA classes with numbers less than 100).</li>
@@ -858,13 +859,13 @@ Closed 0 / 25
 <p><span id="exr:nt" class="exercise"><strong>Exercise 14.4  (Handle cross-listed courses) </strong></span>Some sections are listed under multiple different departments, and you will find the same instructor, time, enrollment data, etc. For this activity, we only want to include each actual section once and it doesn’t really matter which department code we associate with this section. Eliminate all duplicates, keeping each actual section just once. Hint: look into the <code>R</code> command <code>distinct</code>, and think carefully about how to find duplicates.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-373" class="exercise"><strong>Exercise 14.5  (Co-taught courses) </strong></span>Make a table with all Fall 2021 co-taught courses (i.e., more than one instructor).</p>
+<p><span id="exr:unnamed-chunk-353" class="exercise"><strong>Exercise 14.5  (Co-taught courses) </strong></span>Make a table with all Fall 2021 co-taught courses (i.e., more than one instructor).</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-374" class="exercise"><strong>Exercise 14.6  (Faculty enrollments) </strong></span>Make a table where each row contains a faculty, the number of sections they are teaching in Fall 2021, and the total enrollments in those section. Sort the table from highest total enrollments to lowest.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+<p><span id="exr:unnamed-chunk-354" class="exercise"><strong>Exercise 14.6  (Faculty enrollments) </strong></span>Make a table where each row contains a faculty, the number of sections they are teaching in Fall 2021, and the total enrollments in those section. Sort the table from highest total enrollments to lowest.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-375" class="exercise"><strong>Exercise 14.7  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise <a href="regular-expressions.html#exr:nt">14.4</a>). Also make a histogram showing the number of these courses by day of the week.</p>
+<p><span id="exr:unnamed-chunk-355" class="exercise"><strong>Exercise 14.7  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise <a href="regular-expressions.html#exr:nt">14.4</a>). Also make a histogram showing the number of these courses by day of the week.</p>
 </div>
 
 </div>
@@ -910,14 +911,14 @@ Closed 0 / 25
 
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

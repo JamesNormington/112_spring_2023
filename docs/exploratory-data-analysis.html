@@ -30,15 +30,15 @@
   
 <link rel="prev" href="mini-project.html"/>
 <link rel="next" href="data-import.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,19 +47,19 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet/leaflet.js"></script>
+<link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding/leaflet.js"></script>
+<script src="libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -466,7 +466,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>trying to identify any meaningful insights within it.</li>
 </ol>
 <p><a href="%22https://r4ds.had.co.nz/explore-intro.html%22">Grolemund and Wickham</a> visualize the place of this “Understand” process with a simple diagram:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-330"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-310"></span>
 <img src="http://r4ds.had.co.nz/diagrams/data-science.png" alt="The process of EDA, as described by Grolemund and Wickham."  />
 <p class="caption">
 Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
@@ -530,26 +530,26 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-data-analysis.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crime)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
-##   state        murder forci…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵ popul…⁶
-##   &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 United Stat…    5.6    31.7   141.     291.    727.   2286.    417.  2.96e8
-## 2 Alabama         8.2    34.3   141.     248.    954.   2650     288.  4.55e6
-## 3 Alaska          4.8    81.1    80.9    465.    622.   2599.    391   6.69e5
-## 4 Arizona         7.5    33.8   144.     327.    948.   2965.    924.  5.97e6
-## 5 Arkansas        6.7    42.9    91.1    387.   1085.   2711.    262.  2.78e6
-## 6 California      6.9    26     176.     317.    693.   1916.    713.  3.58e7
+##   state         murder forcible…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵ popul…⁶
+##   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 United States    5.6       31.7   141.     291.    727.   2286.    417.  2.96e8
+## 2 Alabama          8.2       34.3   141.     248.    954.   2650     288.  4.55e6
+## 3 Alaska           4.8       81.1    80.9    465.    622.   2599.    391   6.69e5
+## 4 Arizona          7.5       33.8   144.     327.    948.   2965.    924.  5.97e6
+## 5 Arkansas         6.7       42.9    91.1    387.   1085.   2711.    262.  2.78e6
+## 6 California       6.9       26     176.     317.    693.   1916.    713.  3.58e7
 ## # … with abbreviated variable names ¹​forcible_rape, ²​aggravated_assault,
 ## #   ³​burglary, ⁴​larceny_theft, ⁵​motor_vehicle_theft, ⁶​population</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="exploratory-data-analysis.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(crime)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
-##   state        murder forci…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵ popul…⁶
-##   &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 Vermont         1.3    23.3    11.7    83.5    492.   1686.    103.  618814
-## 2 Virginia        6.1    22.7    99.2   155.     392.   2035     211. 7563887
-## 3 Washington      3.3    44.7    92.1   206.     960.   3150.    784. 6261282
-## 4 West Virgin…    4.4    17.7    44.6   206.     621.   1794     210  1803920
-## 5 Wisconsin       3.5    20.6    82.2   135.     441.   1993.    227. 5541443
-## 6 Wyoming         2.7    24      15.3   188.     476.   2534.    145.  506242
+##   state         murder forcible…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵ popul…⁶
+##   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Vermont          1.3       23.3    11.7    83.5    492.   1686.    103.  618814
+## 2 Virginia         6.1       22.7    99.2   155.     392.   2035     211. 7563887
+## 3 Washington       3.3       44.7    92.1   206.     960.   3150.    784. 6261282
+## 4 West Virginia    4.4       17.7    44.6   206.     621.   1794     210  1803920
+## 5 Wisconsin        3.5       20.6    82.2   135.     441.   1993.    227. 5541443
+## 6 Wyoming          2.7       24      15.3   188.     476.   2534.    145.  506242
 ## # … with abbreviated variable names ¹​forcible_rape, ²​aggravated_assault,
 ## #   ³​burglary, ⁴​larceny_theft, ⁵​motor_vehicle_theft, ⁶​population</code></pre>
 <p>Finally, ask yourself about the relationships between tables:</p>
@@ -573,9 +573,9 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="exploratory-data-analysis.html#cb193-1" aria-hidden="true" tabindex="-1"></a>crime2 <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
 <span id="cb193-2"><a href="exploratory-data-analysis.html#cb193-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">!=</span> <span class="st">&quot;District of Columbia&quot;</span>, state <span class="sc">!=</span> <span class="st">&quot;United States&quot;</span>)</span>
 <span id="cb193-3"><a href="exploratory-data-analysis.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(crime2[, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">panel =</span> panel.smooth)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-332-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-312-1.png" width="960" /></p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="exploratory-data-analysis.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(crime2[, <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>], <span class="fu">aes</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>))</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-333-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-313-1.png" width="960" /></p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="exploratory-data-analysis.html#cb195-1" aria-hidden="true" tabindex="-1"></a>lowerFn <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mapping, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, ...) {</span>
 <span id="cb195-2"><a href="exploratory-data-analysis.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> mapping) <span class="sc">+</span></span>
 <span id="cb195-3"><a href="exploratory-data-analysis.html#cb195-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
@@ -589,7 +589,7 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 <span id="cb195-11"><a href="exploratory-data-analysis.html#cb195-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;barDiag&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)),</span>
 <span id="cb195-12"><a href="exploratory-data-analysis.html#cb195-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;cor&quot;</span>, <span class="at">size =</span> <span class="dv">5</span>))</span>
 <span id="cb195-13"><a href="exploratory-data-analysis.html#cb195-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-334-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-314-1.png" width="960" /></p>
 </div>
 <div id="formulate-a-research-question" class="section level2 unnumbered hasAnchor">
 <h2>Formulate a Research Question<a href="exploratory-data-analysis.html#formulate-a-research-question" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -615,16 +615,16 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 <p>Note that the full set of flight data has more than 5.8 million flights. To start, I have given you a subset that includes all flights in the first 15 days of January 2015 and in the first 15 days of July 2015. If at the end you wish to try your analysis on the whole data set, you can download the original .csv file from the Kaggle page and substitute a link to it in the code chunk above.</p>
 <p>There is a ton of data here, and it can be easy to be overwhelmed. We are going to focus our exploration a bit by considering the following broad research question: <strong>which flights are most likely to be delayed?</strong></p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-337" class="exercise"><strong>Exercise 12.1  (Data source) </strong></span>Where does this data come from? Who collected it?</p>
+<p><span id="exr:unnamed-chunk-317" class="exercise"><strong>Exercise 12.1  (Data source) </strong></span>Where does this data come from? Who collected it?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-338" class="exercise"><strong>Exercise 12.2  (Explore codebook) </strong></span>This data set comes with a codebook on the Kaggle site. Have a look at the codebook to understand which variables are contained in each of the three tables. For example, what are the levels of <code>CANCELLATION_REASON</code> and what do they mean? What is the unit of observation for each table?</p>
+<p><span id="exr:unnamed-chunk-318" class="exercise"><strong>Exercise 12.2  (Explore codebook) </strong></span>This data set comes with a codebook on the Kaggle site. Have a look at the codebook to understand which variables are contained in each of the three tables. For example, what are the levels of <code>CANCELLATION_REASON</code> and what do they mean? What is the unit of observation for each table?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-339" class="exercise"><strong>Exercise 12.3  (Possible joins) </strong></span>What variables link the three tables? How could you join data from one table to another?</p>
+<p><span id="exr:unnamed-chunk-319" class="exercise"><strong>Exercise 12.3  (Possible joins) </strong></span>What variables link the three tables? How could you join data from one table to another?</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-340" class="exercise"><strong>Exercise 12.4  (Visualize and describe the data) </strong></span>Use some univariate and bivariate visualizations to start to explore the questions mentioned above:</p>
+<p><span id="exr:unnamed-chunk-320" class="exercise"><strong>Exercise 12.4  (Visualize and describe the data) </strong></span>Use some univariate and bivariate visualizations to start to explore the questions mentioned above:</p>
 <ul>
 <li>What do you see that is interesting?</li>
 <li>Which values are most common or unusual (outliers)?</li>
@@ -635,10 +635,10 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 </ul>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-341" class="exercise"><strong>Exercise 12.5  (Formulate a specific research question) </strong></span>Based on your preliminary visualizations and exploration of the date, formulate a more specific research question/hypothesis within this broad area of understanding the causes of flight delays.</p>
+<p><span id="exr:unnamed-chunk-321" class="exercise"><strong>Exercise 12.5  (Formulate a specific research question) </strong></span>Based on your preliminary visualizations and exploration of the date, formulate a more specific research question/hypothesis within this broad area of understanding the causes of flight delays.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-342" class="exercise"><strong>Exercise 12.6  (Share a visualization) </strong></span>Develop a single visualization to share with the class that tells a story about your more specific research question/hypothesis. Note: the story may very well be something along the lines of “we thought variable X would affect flight delays in way Y, but the evidence does not support that.”</p>
+<p><span id="exr:unnamed-chunk-322" class="exercise"><strong>Exercise 12.6  (Share a visualization) </strong></span>Develop a single visualization to share with the class that tells a story about your more specific research question/hypothesis. Note: the story may very well be something along the lines of “we thought variable X would affect flight delays in way Y, but the evidence does not support that.”</p>
 </div>
 
 </div>
@@ -662,14 +662,14 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 <a href="data-import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
