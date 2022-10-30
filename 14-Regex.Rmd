@@ -1,18 +1,5 @@
----
-title: "Comp/Stat 112: Regular Expressions"
-author: "INSERT STUDENT NAME HERE (COLLABORATOR NAMES HERE)"
-output:
-  bookdown::html_document2:
-    split_by: none
-    toc: yes
-    toc_depth: 3
-    toc_float:
-      toc_collapsed: true
-    number_sections: false
----
-
-```{r 16_setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```{r 14_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, tidy = FALSE, message = FALSE, cache.extra = packageVersion("tufte"))
 library(tidyverse)
 library(ggmap)
 library(lubridate)
@@ -27,6 +14,7 @@ library(stringr)
 - Develop comfort in working with strings of text data 
 - Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
 
+You can download a template .Rmd of this activity [here](template_rmd/14-Regex_Assign.Rmd).
 
 ## Regular Expressions and Character Strings {-}
 
@@ -91,8 +79,9 @@ str_locate(example, pat) # starting position and ending position of first match
 ```
 
 Let's check the answer:
+
 ```{r}
-substr(example, 23, 25)
+str_sub(example, 23, 25)
 ```
 
 ### Extract patterns with `str_extract` and `str_extract_all` {-}
@@ -104,7 +93,6 @@ str_extract_all(example2, pat2, simplify = TRUE) # extract all matches
 ```
 
 ### Count the number of characters with `str_length` {-}
-
 ```{r}
 str_length(example2)
 ```
@@ -131,9 +119,9 @@ Note: The function `separate` is in the `tidyr` package.
 
 ## Practice: Fall 2021 Enrollment Exploration {-}
 
-The tibble `courses` has the Fall 2021 enrollment information from the Macalester Registrar's website, which we scraped in an earlier activity.
+The tibble `courses` has the Fall 2021 enrollment information from the Macalester Registrar's website, which we could gain with web scraping tools.
 
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=TRUE,cache=TRUE,eval=FALSE}
 fall2021 <- read_html("https://www.macalester.edu/registrar/schedules/2021fall/class-schedule")
 
 # Retrieve and inspect course numbers
@@ -183,9 +171,7 @@ course_avail <-
 course_avail_short <- stringr::str_sub(trimws(course_avail), start = 14)
 
 
-CRNS <- courses %>% pull(crn)
-
-SITES <- paste0("https://webapps.macalester.edu/registrardata/classdata/Fall2021/", CRNS) %>%
+SITES <- paste0("https://webapps.macalester.edu/registrardata/classdata/Fall2021/", crn) %>%
   purrr::map(~ read_html(.x))
 
 course_desc <- SITES %>%
@@ -214,9 +200,12 @@ courses <-
     desc = course_desc,
     gen_ed = gen_ed
   )
+
+save(courses, file = 'Mac2021Courses.RData')
 ```
 
 ```{r, echo=FALSE}
+load('data/Mac2021Courses.RData')
 knitr::kable(
   courses[1:6, 1:8],
   caption = "First six entries in the Fall 2021 Macalester course info data."
@@ -229,43 +218,12 @@ knitr::kable(
 
 ```{exercise,name="Rearrange data table"}
 Make the following changes to the `courses` data table:
-```  
-
 
 a) Split `number` into three separate columns: `dept`, `number`, and `section`.
-
-> ANSWER:
-
-```{r}
-
-```
-
 b) Split the `avail_max` variable into two separate variables: `avail` and `max`. It might be helpful to first remove all appearances of "Closed ". 
-
-> ANSWER:
-
-```{r}
-
-```
-
 c) Use `avail` and `max` to generate a new variable called `enrollment`.
-
-> ANSWER:
-
-```{r}
-
-```
-
 d) Split the `time` variable into two separate columns: `start_time` and `end_time`. Convert all of these times into continuous 24 hour times (e.g., 2:15 pm should become 14.25). *Hint: check out the function `parse_date_time`.*
-
-> ANSWER:
-
-```{r}
-
 ```
-
-
-
 
 
 
@@ -274,11 +232,6 @@ Make a histogram showing the number of Fall 2021 sections satisfying the Writing
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
 
 <br>
 
@@ -293,21 +246,9 @@ c) All lab sections. This is one is a bit tricky. You can search for "Lab" or "L
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
 
 ```{exercise, label="nt",name="Handle cross-listed courses"}
 Some sections are listed under multiple different departments, and you will find the same instructor, time, enrollment data, etc. For this activity, we only want to include each actual section once and it doesn't really matter which department code we associate with this section. Eliminate all duplicates, keeping each actual section just once. Hint: look into the `R` command `distinct`, and think carefully about how to find duplicates.
-
-```
-
-> ANSWER:
-
-```{r}
 
 ```
 
@@ -317,32 +258,14 @@ Make a table with all Fall 2021 co-taught courses (i.e., more than one instructo
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
 
 ```{exercise, name="Faculty enrollments"}
 Make a table where each row contains a faculty, the number of sections they are teaching in Fall 2021, and the total enrollments in those section. Sort the table from highest total enrollments to lowest.^[For the purposes of this exercise, we are just going to leave co-taught courses as is so that you will have an extra row for each pair or triplet of instructors. Alternatives would be to allocate the enrollment number to each of the faculty members or to split it up between the members. The first option would usually be the most appropriate, although it might depend on the course.]
 
 ```
 
-> ANSWER:
-
-```{r}
-
-```
-
 
 ```{exercise, name="Evening courses"}
 Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise \@ref(exr:nt)). Also make a histogram showing the number of these courses by day of the week.
-
-```
-
-> ANSWER:
-
-```{r}
 
 ```
