@@ -26,7 +26,7 @@ library(stringr)
 The tibble `courses` has the Fall 2021 enrollment information from the Macalester Registrar's website, which we scraped in an earlier activity.
 
 ```{r}
-load('https://bcheggeseth.github.io/112_fall_2022/data/Mac2021Courses.RData')
+courses <- read_csv('https://bcheggeseth.github.io/112_fall_2022/data/Mac2021Courses.csv')
 ```
 
 
