@@ -152,7 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#course-topics"><i class="fa fa-check"></i>Course Topics</a>
 <ul>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#foundation"><i class="fa fa-check"></i>Foundation</a></li>
-<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition"><i class="fa fa-check"></i>Data Acquisition</a></li>
+<li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-acquisition-cleaning"><i class="fa fa-check"></i>Data Acquisition &amp; Cleaning</a></li>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-wrangling"><i class="fa fa-check"></i>Data Wrangling</a></li>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-visualization"><i class="fa fa-check"></i>Data Visualization</a></li>
 <li class="chapter" data-level="" data-path="learning-goals.html"><a href="learning-goals.html#data-modeling"><i class="fa fa-check"></i>Data Modeling</a></li>
@@ -395,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#examples"><i class="fa fa-check"></i>Examples</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#practice-flight-data"><i class="fa fa-check"></i>Practice: Flight Data</a></li>
 </ul></li>
-<li class="part"><span><b>V Data Acquisition</b></span></li>
+<li class="part"><span><b>V Data Acquisition &amp; Cleaning</b></span></li>
 <li class="chapter" data-level="13" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>13</b> Data Import</a>
 <ul>
 <li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#learning-goals-13"><i class="fa fa-check"></i>Learning Goals</a></li>
@@ -462,11 +462,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="mini-project.html#cb185-1" aria-hidden="true" tabindex="-1"></a>partners <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners2.csv&quot;</span>)</span></code></pre></div>
 <p>Examine the <a href="data/kiva_partners_vars.xlsx">codebook</a> for the <code>partners</code> table.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-323" class="exercise"><strong>Exercise 11.1  (Regional distribution) </strong></span>Make a summary table with only five columns: region (<code>countries.region</code>), total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted.</p>
+<p><span id="exr:unnamed-chunk-293" class="exercise"><strong>Exercise 11.1  (Regional distribution) </strong></span>Make a summary table with only five columns: region (<code>countries.region</code>), total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted.</p>
 <p>The four columns after region should all be on a per region basis; for example, the row for Central America should include average loan size per loan posted in Central America. Sort your table by total amount raised.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-324" class="exercise"><strong>Exercise 11.2  (Partners in Africa) </strong></span>Draw a map of all of the partners in Africa, with the size of the dot corresponding to the amount raised.</p>
+<p><span id="exr:unnamed-chunk-294" class="exercise"><strong>Exercise 11.2  (Partners in Africa) </strong></span>Draw a map of all of the partners in Africa, with the size of the dot corresponding to the amount raised.</p>
 </div>
 </div>
 <div id="investigate-the-loans-data-table" class="section level3 unnumbered hasAnchor">
@@ -476,7 +476,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb186-2"><a href="mini-project.html#cb186-2" aria-hidden="true" tabindex="-1"></a>loans <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_small.csv&quot;</span>)</span></code></pre></div>
 <p>Examine the <a href="data/kiva_loans_vars.xlsx">codebook</a> for the <code>loans</code> table. View the <code>loans</code> table and browse through some of the data (e.g., different sectors, uses, countries)</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-326" class="exercise"><strong>Exercise 11.3  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
+<p><span id="exr:unnamed-chunk-296" class="exercise"><strong>Exercise 11.3  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Remove all rows where the funded amount is 0.<br />
@@ -489,7 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Create a new table called <code>loans2</code> that only contains the following columns from <code>loans</code>: loan_id,status,funded_amount,paid_amount,sector,location.country,lat,lon,partner_id,post_date,funded_date</li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-327" class="exercise"><strong>Exercise 11.4  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
+<p><span id="exr:unnamed-chunk-297" class="exercise"><strong>Exercise 11.4  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Find the top 5 countries by number of loans.<br />
@@ -497,17 +497,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Find the top 5 countries by total funded loan amount.</li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-328" class="exercise"><strong>Exercise 11.5  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
+<p><span id="exr:unnamed-chunk-298" class="exercise"><strong>Exercise 11.5  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
 </div>
 <p><em>Hint: start by wrangling the data into glyph-ready form, with one row corresponding to one glyph.</em></p>
 </div>
 <div id="putting-them-together" class="section level3 unnumbered hasAnchor">
 <h3>Putting them together<a href="mini-project.html#putting-them-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-329" class="exercise"><strong>Exercise 11.6  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
+<p><span id="exr:unnamed-chunk-299" class="exercise"><strong>Exercise 11.6  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-330" class="exercise"><strong>Exercise 11.7  (Defaults) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-300" class="exercise"><strong>Exercise 11.7  (Defaults) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Starting with <code>loans3</code>, create a new table <code>DefaultData</code> that only includes those loans whose status is either “defaulted” or “paid”.<br />
@@ -519,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Starting with the data in <code>DefaultData</code> from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage. <em>Hint: start by filtering out partners that have not had any defaulted loans.</em></li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-331" class="exercise"><strong>Exercise 11.8  (Funding time) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-301" class="exercise"><strong>Exercise 11.8  (Funding time) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Use the command <code>days_to_fund = difftime(funded_date, post_date, units="days")</code> within <code>mutate()</code> to add a column to the <code>loans3</code> data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as <code>loans4</code>.<br />
@@ -533,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Make a scatterplot with <code>funded_amount</code> on the x-axis and <code>days_to_fund</code> on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends?</li>
 </ol>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-332" class="exercise"><strong>Exercise 11.9  (Your Own Question) </strong></span>Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.</p>
+<p><span id="exr:unnamed-chunk-302" class="exercise"><strong>Exercise 11.9  (Your Own Question) </strong></span>Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.</p>
 </div>
 
 </div>
