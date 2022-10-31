@@ -157,14 +157,14 @@ fig:unnamed-chunk-316
 exm:unnamed-chunk-317
 exm:unnamed-chunk-325
 exr:unnamed-chunk-330
-tab:unnamed-chunk-342
+tab:unnamed-chunk-341
+exr:unnamed-chunk-342
 exr:unnamed-chunk-343
 exr:unnamed-chunk-344
-exr:unnamed-chunk-345
 exr:nt
+exr:unnamed-chunk-345
 exr:unnamed-chunk-346
 exr:unnamed-chunk-347
-exr:unnamed-chunk-348
 intro-to-r-rstudio-and-r-markdown
 intro-to-data-visualization
 effective-visualizations

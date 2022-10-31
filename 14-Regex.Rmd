@@ -39,44 +39,38 @@ example2 <- "Two roads diverged in a yellow wood, / And sorry I could not travel
 example3 <- "This is a test"
 ```
 
-### Search and replace patterns with `gsub` (`base`) or `str_replace` or `str_replace_all` (`stringr`) {-}
+### Search and replace patterns with `str_replace` or `str_replace_all` (`stringr`) {-}
 
-To search for a pattern and replace it, we can use the function `gsub`. Here are some examples:
+To search for a pattern and replace it, we can use the function `str_replace` and `str_replace_all` in the `stringr` package. Note that `str_replace` only replaces the first matched pattern, while `str_replace_all` replaces all. Here are some examples:
 
 ```{r}
-gsub("quick", "really quick", example)
-gsub("fox|dog", "****", example)
-gsub("(fox|dog).$", "****", example) # at end of sentence only, "." for any character
-gsub("(fox|dog)\\.$", "****", example) # at end of sentence only, "\\." only for a period
-gsub("the", "a", example) # case-sensitive only matches one
-gsub("[Tt]he", "a", example) # will match either t or T; could also make "a" conditional on capitalization of t
+str_replace(example, "quick", "really quick")
+str_replace_all(example, "(fox|dog)", "****") 
+str_replace_all(example, "(fox|dog).", "****") # "." for any character
+str_replace_all(example, "(fox|dog)\\.$", "****") # at end of sentence only, "\\." only for a period
+str_replace_all(example, "the", "a") # case-sensitive only matches one
+str_replace_all(example, "[Tt]he", "a") # # will match either t or T; could also make "a" conditional on capitalization of t
+str_replace_all(example, "[Tt]he", "a") # first match only
 ```
 
 
-In the `stringr` package, `str_replace` only replaces the first matched pattern, while `str_replace_all` replaces all. Here is a repetition of a few of the examples from above:
-
-```{r}
-str_replace(example, "[Tt]he", "a")
-str_replace_all(example, "[Tt]he", "a")
-str_replace_all(example, "fox|dog", "****")
-```
-
-### Detect patterns with `grep` and `grepl` (`base`) or `str_detect` (`stringr`) {-}
+### Detect patterns with `str_detect` (`stringr`) {-}
 
 ```{r}
 example2 <- "Two roads diverged in a yellow wood, / And sorry I could not travel both / And be one traveler, long I stood / And looked down one as far as I could"
 example3 <- "This is a test"
 examples <- c(example, example2, example3)
+
 pat <- "[^aeiouAEIOU ]{3}" # Regular expression for three straight consonants. Note that I've excluded spaces as well
-grepl(pat, examples) # Are there three consonants in a row?
-grep(pat, examples) # Which entries contain this pattern?
-str_detect(examples, pat) # same as grepl
+
+str_detect(examples, pat) # TRUE/FALSE if it detects pattern
+
+str_subset(examples, pat) # Pulls out those that detects pattern
 ```
 
-### Locate patterns with `regexpr` or `str_locate` {-}
+### Locate patterns with `str_locate` {-}
 
 ```{r}
-regexpr(pat, example) # starting position and length of first match
 str_locate(example, pat) # starting position and ending position of first match
 ```
 
