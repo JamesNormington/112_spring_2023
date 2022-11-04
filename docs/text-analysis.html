@@ -639,9 +639,9 @@ Go to <a href="http://google.com" class="uri">http://google.com</a> and type <co
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="text-analysis.html#cb365-1" aria-hidden="true" tabindex="-1"></a>us_dec_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">title =</span> <span class="st">&quot;Declaration of Independence&quot;</span>, <span class="at">text =</span> us_dec)</span>
 <span id="cb365-2"><a href="text-analysis.html#cb365-2" aria-hidden="true" tabindex="-1"></a>us_dec_df</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   title                       text                                
-##   &lt;chr&gt;                       &lt;chr&gt;                               
-## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDENC…</code></pre>
+##   title                       text                                                                                                                                                                                      
+##   &lt;chr&gt;                       &lt;chr&gt;                                                                                                                                                                                     
+## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDENCE:\n\n\nIn Congress, July 4, 1776,\nTHE UNANIMOUS DECLARATION OF THE THIRTEEN UNITED STATES OF AMERICA\n\nWhen in the Course of human events, it becom…</code></pre>
 <div id="unnesting-tokens" class="section level4 unnumbered hasAnchor">
 <h4>Unnesting Tokens<a href="text-analysis.html#unnesting-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We need to restructure the text into components that can be easily analyzed.</p>
@@ -766,11 +766,11 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb380-2"><a href="text-analysis.html#cb380-2" aria-hidden="true" tabindex="-1"></a>text_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">article =</span> school_wiki_titles, <span class="at">text =</span> school_wiki_text)</span>
 <span id="cb380-3"><a href="text-analysis.html#cb380-3" aria-hidden="true" tabindex="-1"></a>text_df</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
-##   article                 text                                    
-##   &lt;chr&gt;                   &lt;chr&gt;                                   
-## 1 Macalester College      &quot;Macalester College () is a private lib…
-## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a priv…
-## 3 University of Minnesota &quot;The University of Minnesota, formally …</code></pre>
+##   article                 text                                                                                                                                                                                          
+##   &lt;chr&gt;                   &lt;chr&gt;                                                                                                                                                                                         
+## 1 Macalester College      &quot;Macalester College () is a private liberal arts college in Saint Paul, Minnesota. Founded in 1874, Macalester is exclusively an undergraduate four-year institution and enrolled 2,174 stude…
+## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a private liberal arts college in Northfield, Minnesota. Founded in 1866, it had 2,105 undergraduate students and 269 faculty members in fall 2016. The 200-…
+## 3 University of Minnesota &quot;The University of Minnesota, formally the University of Minnesota, Twin Cities, (UMN, the U of M, or Minnesota) is a public land-grant research university in the Twin Cities of Minneapolis…</code></pre>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="text-analysis.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unnest the data frame so each row corresponds to a single word in a single document.</span></span>
 <span id="cb382-2"><a href="text-analysis.html#cb382-2" aria-hidden="true" tabindex="-1"></a>tidy_df <span class="ot">&lt;-</span> text_df <span class="sc">%&gt;%</span></span>
 <span id="cb382-3"><a href="text-analysis.html#cb382-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
@@ -2047,9 +2047,9 @@ negative
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="text-analysis.html#cb401-1" aria-hidden="true" tabindex="-1"></a>nrc <span class="sc">%&gt;%</span></span>
 <span id="cb401-2"><a href="text-analysis.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   num_words sentiments                                            
-##       &lt;int&gt; &lt;chr&gt;                                                 
-## 1     13872 anger, anticipation, disgust, fear, joy, negative, po…</code></pre>
+##   num_words sentiments                                                                           
+##       &lt;int&gt; &lt;chr&gt;                                                                                
+## 1     13872 anger, anticipation, disgust, fear, joy, negative, positive, sadness, surprise, trust</code></pre>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="text-analysis.html#cb403-1" aria-hidden="true" tabindex="-1"></a>bing <span class="sc">%&gt;%</span></span>
 <span id="cb403-2"><a href="text-analysis.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
