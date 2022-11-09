@@ -561,7 +561,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SQL databases can be conceptually thought of as a collection of data <strong>tables</strong>, where each table resembles a data frame. While there is a core subset of SQL supported by all databases, different databases (Hive, Postgres, MySQL, Oracle, RedShift, etc.) use slightly different variants of SQL. Even though SQL is a complex language, the basic data wrangling techniques we learned earlier (filtering, joining and summarizing) follow easily replicable patterns and cover the majority of needs.</p>
 <div id="stack-exchange-data-explorer" class="section level3 unnumbered hasAnchor">
 <h3>Stack Exchange Data Explorer<a href="sql.html#stack-exchange-data-explorer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-384"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-455"></span>
 <img src="images/stack_exchange_explorer.jpeg" alt="Stack Exchange Explorer for [up vs down votes for questions and answers by weekday](https://data.stackexchange.com/travel/query/1718/up-vs-down-votes-by-day-of-week-of-question-or-answer)" width="1600" />
 <p class="caption">
 Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com/travel/query/1718/up-vs-down-votes-by-day-of-week-of-question-or-answer">up vs down votes for questions and answers by weekday</a>
@@ -576,8 +576,8 @@ Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com
 <h3>Basic Select Queries<a href="sql.html#basic-select-queries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s experiment with our own queries. Click on “Compose Query” in the upper right, and notice the tables are shown in the right. As a reminder, a table is similar to a data frame. Each table lists the columns stored within the table and the data types for the columns. Look through the tables for Posts, Users, and Comments. Do the columns generally make sense, and correspond to the StackOverflow website? There’s a <a href="https://meta.stackexchange.com/a/2678">description of the tables and columns</a> (called a schema) available on StackExchange’s Meta Q&amp;A Site.</p>
 <p>Now enter your first query in the text box and click the “Run Query” button:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb347-1"><a href="sql.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>) <span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
-<span id="cb347-2"><a href="sql.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb348-1"><a href="sql.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>) <span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb348-2"><a href="sql.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span></code></pre></div>
 <p>In this query we already see several important features of SQL:</p>
 <ul>
 <li><code>SELECT</code> tells SQL that a query is coming.</li>
@@ -586,43 +586,43 @@ Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com
 <li><code>FROM Posts</code> determines the source dataset.</li>
 </ul>
 <p>From glancing at the results, it appears that this table contains both questions and answers. Let’s try to focus on answers. Looking again at the <a href="https://meta.stackexchange.com/a/2678">Schema Description</a>, notice that there is a <code>PostTypeId</code> column in <code>Posts</code>, and a value of <code>1</code> corresponds to questions. Let’s update our query to only include questions:</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb348-1"><a href="sql.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
-<span id="cb348-2"><a href="sql.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
-<span id="cb348-3"><a href="sql.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
-<span id="cb348-4"><a href="sql.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
-<p>The SQL command <code>WHERE</code> is like the <code>filter</code> command we have been using in <code>dplyr</code>.<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a></p>
-<div class="exercise">
-<p><span id="exr:unnamed-chunk-387" class="exercise"><strong>Exercise 14.18  </strong></span>Find the title and score of Posts that have a score of at least 110. <em>Hint: TOP is not necessary here because you want all result rows.</em></p>
-</div>
-<div class="exercise">
-<p><span id="exr:unnamed-chunk-388" class="exercise"><strong>Exercise 14.19  </strong></span>Find posts whose title contains some place you are interested in (you pick!). <em>Hint: use SQL’s <a href="http://www.sqltutorial.org/sql-like/">LIKE operator</a>.</em></p>
-</div>
-<p>Note that you can look up the actual webpage for any question using its Id. For example, if the Id is 19591, the webpage <a href="https://en.wikipedia.org/wiki/URL">URL</a> would be <a href="https://travel.stackexchange.com/questions/19591/" class="uri">https://travel.stackexchange.com/questions/19591/</a>. Look up a few of the questions by their Id.</p>
-<p>It’s unclear how the 100 questions we saw were selected from among the over 43,000 total questions.<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> Let’s try to arrange the Posts by score. The following query surfaces the top scoring question: <a href="https://travel.stackexchange.com/questions/3080/ok-were-all-adults-here-so-really-how-on-earth-should-i-use-a-squat-toilet">OK we’re all adults here, so really, how on earth should I use a squat toilet?</a></p>
 <div class="sourceCode" id="cb349"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb349-1"><a href="sql.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
 <span id="cb349-2"><a href="sql.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
 <span id="cb349-3"><a href="sql.html#cb349-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
-<span id="cb349-4"><a href="sql.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb349-5"><a href="sql.html#cb349-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">DESC</span></span></code></pre></div>
-<p>The <code>ORDER BY ??? DESC</code> syntax is similar to R’s <code>arrange()</code>. You can leave off the <code>DESC</code> if you want the results ordered smallest to largest.</p>
-<p>We could also find the <a href="https://travel.stackexchange.com/questions/tagged/italy">highest rated questions tagged “italy”</a> (the top question is <a href="https://travel.stackexchange.com/questions/tagged/italy">Does Venice Smell?</a>):</p>
+<span id="cb349-4"><a href="sql.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+<p>The SQL command <code>WHERE</code> is like the <code>filter</code> command we have been using in <code>dplyr</code>.<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a></p>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-458" class="exercise"><strong>Exercise 14.18  </strong></span>Find the title and score of Posts that have a score of at least 110. <em>Hint: TOP is not necessary here because you want all result rows.</em></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-459" class="exercise"><strong>Exercise 14.19  </strong></span>Find posts whose title contains some place you are interested in (you pick!). <em>Hint: use SQL’s <a href="http://www.sqltutorial.org/sql-like/">LIKE operator</a>.</em></p>
+</div>
+<p>Note that you can look up the actual webpage for any question using its Id. For example, if the Id is 19591, the webpage <a href="https://en.wikipedia.org/wiki/URL">URL</a> would be <a href="https://travel.stackexchange.com/questions/19591/" class="uri">https://travel.stackexchange.com/questions/19591/</a>. Look up a few of the questions by their Id.</p>
+<p>It’s unclear how the 100 questions we saw were selected from among the over 43,000 total questions.<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> Let’s try to arrange the Posts by score. The following query surfaces the top scoring question: <a href="https://travel.stackexchange.com/questions/3080/ok-were-all-adults-here-so-really-how-on-earth-should-i-use-a-squat-toilet">OK we’re all adults here, so really, how on earth should I use a squat toilet?</a></p>
 <div class="sourceCode" id="cb350"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb350-1"><a href="sql.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
 <span id="cb350-2"><a href="sql.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
 <span id="cb350-3"><a href="sql.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
-<span id="cb350-4"><a href="sql.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> Tags <span class="kw">LIKE</span> <span class="st">&#39;%italy%&#39;</span></span>
+<span id="cb350-4"><a href="sql.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb350-5"><a href="sql.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">DESC</span></span></code></pre></div>
+<p>The <code>ORDER BY ??? DESC</code> syntax is similar to R’s <code>arrange()</code>. You can leave off the <code>DESC</code> if you want the results ordered smallest to largest.</p>
+<p>We could also find the <a href="https://travel.stackexchange.com/questions/tagged/italy">highest rated questions tagged “italy”</a> (the top question is <a href="https://travel.stackexchange.com/questions/tagged/italy">Does Venice Smell?</a>):</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb351-1"><a href="sql.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb351-2"><a href="sql.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="kw">Id</span>, Title, Score, <span class="kw">Body</span>, Tags</span>
+<span id="cb351-3"><a href="sql.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Posts</span>
+<span id="cb351-4"><a href="sql.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> Tags <span class="kw">LIKE</span> <span class="st">&#39;%italy%&#39;</span></span>
+<span id="cb351-5"><a href="sql.html#cb351-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">DESC</span></span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-391" class="exercise"><strong>Exercise 14.20  </strong></span>Pick two tags that interest you and you think will occur together and find the top voted posts that contain both.</p>
+<p><span id="exr:unnamed-chunk-462" class="exercise"><strong>Exercise 14.20  </strong></span>Pick two tags that interest you and you think will occur together and find the top voted posts that contain both.</p>
 </div>
 </div>
 <div id="sql-summarization" class="section level3 unnumbered hasAnchor">
 <h3>SQL Summarization<a href="sql.html#sql-summarization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So far, we have covered the equivalent of R’s selecting, filtering, and arranging. Let’s take a look at grouping and summarizing now, which has similar structures in both <code>R</code> and SQL. Imagine we want to see how many posts of each type there are. This query shows us that there are 44K questions and 71K answers.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb351-1"><a href="sql.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb351-2"><a href="sql.html#cb351-2" aria-hidden="true" tabindex="-1"></a>PostTypeId, <span class="fu">COUNT</span>(<span class="kw">Id</span>) numPosts</span>
-<span id="cb351-3"><a href="sql.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts</span>
-<span id="cb351-4"><a href="sql.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> PostTypeId </span>
-<span id="cb351-5"><a href="sql.html#cb351-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> PostTypeId</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb352-1"><a href="sql.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb352-2"><a href="sql.html#cb352-2" aria-hidden="true" tabindex="-1"></a>PostTypeId, <span class="fu">COUNT</span>(<span class="kw">Id</span>) numPosts</span>
+<span id="cb352-3"><a href="sql.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts</span>
+<span id="cb352-4"><a href="sql.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> PostTypeId </span>
+<span id="cb352-5"><a href="sql.html#cb352-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> PostTypeId</span></code></pre></div>
 <p>Note two characteristics of SQL summarization here:</p>
 <ul>
 <li>The <code>GROUP BY</code>clause indicates the table column for grouping, much like R’s <code>group_by</code>.</li>
@@ -630,23 +630,23 @@ Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com
 <li>The aggregate column (in this case <code>COUNT(Id)</code>) must immediately be followed by a name that will be used for it in the results (in this case <code>numPosts</code>). This can be particularly useful if you want to order by the aggregated value.</li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-393" class="exercise"><strong>Exercise 14.21  </strong></span>Change the previous query so it orders the result rows by the number of posts of that type. <em>Hint: Reuse the name you assigned to the aggregate function.</em></p>
+<p><span id="exr:unnamed-chunk-464" class="exercise"><strong>Exercise 14.21  </strong></span>Change the previous query so it orders the result rows by the number of posts of that type. <em>Hint: Reuse the name you assigned to the aggregate function.</em></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-394" class="exercise"><strong>Exercise 14.22  </strong></span>Find the most commonly used tagsets applied to posts. Note that I am not asking you to count the most common individual tags — this would be more complex because multiple tags are squashed into the Tags field.</p>
+<p><span id="exr:unnamed-chunk-465" class="exercise"><strong>Exercise 14.22  </strong></span>Find the most commonly used tagsets applied to posts. Note that I am not asking you to count the most common individual tags — this would be more complex because multiple tags are squashed into the Tags field.</p>
 </div>
 </div>
 <div id="sql-joins" class="section level3 unnumbered hasAnchor">
 <h3>SQL Joins<a href="sql.html#sql-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, as with <code>R</code>, we often want to join data from two or more tables. The types of joins in SQL are the same as we saw with R (inner, outer, left, right). Most commonly we want to perform an INNER join, which is the default if you just say <code>JOIN</code>.</p>
 <p>Let’s say we wanted to enhance the earlier query to find the highest scoring answers with some information about each user.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb352-1"><a href="sql.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
-<span id="cb352-2"><a href="sql.html#cb352-2" aria-hidden="true" tabindex="-1"></a>Title, Score, DisplayName, Reputation</span>
-<span id="cb352-3"><a href="sql.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts p</span>
-<span id="cb352-4"><a href="sql.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> users u</span>
-<span id="cb352-5"><a href="sql.html#cb352-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> p.OwnerUserId <span class="op">=</span> u.<span class="kw">Id</span></span>
-<span id="cb352-6"><a href="sql.html#cb352-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span><span class="dv">1</span></span>
-<span id="cb352-7"><a href="sql.html#cb352-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">Desc</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb353-1"><a href="sql.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> TOP(<span class="dv">100</span>)</span>
+<span id="cb353-2"><a href="sql.html#cb353-2" aria-hidden="true" tabindex="-1"></a>Title, Score, DisplayName, Reputation</span>
+<span id="cb353-3"><a href="sql.html#cb353-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts p</span>
+<span id="cb353-4"><a href="sql.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> users u</span>
+<span id="cb353-5"><a href="sql.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> p.OwnerUserId <span class="op">=</span> u.<span class="kw">Id</span></span>
+<span id="cb353-6"><a href="sql.html#cb353-6" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> PostTypeId <span class="op">=</span><span class="dv">1</span></span>
+<span id="cb353-7"><a href="sql.html#cb353-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Score <span class="kw">Desc</span></span></code></pre></div>
 <p>We see a few notable items here:</p>
 <ul>
 <li>The <code>JOIN</code> keyword must go in between the two tables we want to join.</li>
@@ -654,7 +654,7 @@ Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com
 <li>We need to specify the relationship that joins the two tables. In this case, a posts <code>OwnerUserId</code> column refers to the <code>Id</code> column in the users table.</li>
 </ul>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-396" class="exercise"><strong>Exercise 14.23  </strong></span>Create a query similar to the one above that identifies the authors of the top rated comments instead of posts.</p>
+<p><span id="exr:unnamed-chunk-467" class="exercise"><strong>Exercise 14.23  </strong></span>Create a query similar to the one above that identifies the authors of the top rated comments instead of posts.</p>
 </div>
 </div>
 </div>
@@ -662,29 +662,29 @@ Figure 14.5: Stack Exchange Explorer for <a href="https://data.stackexchange.com
 <h2>Additional Exercises<a href="sql.html#additional-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The first few exercises will ask you to analyze <a href="https://stackoverflow.com/help/badges">Stack Exchange badges</a>. Start at <a href="https://data.stackexchange.com/stackoverflow/query/new" class="uri">https://data.stackexchange.com/stackoverflow/query/new</a>. For each exercise, <strong>record the query you used</strong>.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-397" class="exercise"><strong>Exercise 14.24  </strong></span>Count the number of total badges that have been given out. Hint: count the number of rows in the relevant table.</p>
+<p><span id="exr:unnamed-chunk-468" class="exercise"><strong>Exercise 14.24  </strong></span>Count the number of total badges that have been given out. Hint: count the number of rows in the relevant table.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-398" class="exercise"><strong>Exercise 14.25  </strong></span>Find how many times each badge has been awarded, sorted from most awarded to least awarded.</p>
+<p><span id="exr:unnamed-chunk-469" class="exercise"><strong>Exercise 14.25  </strong></span>Find how many times each badge has been awarded, sorted from most awarded to least awarded.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-399" class="exercise"><strong>Exercise 14.26  </strong></span>Find a badge that looks interesting to you. Find all the user <strong>DisplayNames</strong> that have received the badge, along with the date at which they received it.</p>
+<p><span id="exr:unnamed-chunk-470" class="exercise"><strong>Exercise 14.26  </strong></span>Find a badge that looks interesting to you. Find all the user <strong>DisplayNames</strong> that have received the badge, along with the date at which they received it.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-400" class="exercise"><strong>Exercise 14.27  </strong></span>Show the users who have received the most badges, along with how many they have received.</p>
+<p><span id="exr:unnamed-chunk-471" class="exercise"><strong>Exercise 14.27  </strong></span>Show the users who have received the most badges, along with how many they have received.</p>
 </div>
 <p>The next few activities analyze user activity. These activities mimic the common workflow of creating datasets in SQL that you analyze in <code>R</code>.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-401" class="exercise"><strong>Exercise 14.28  </strong></span>Export a CSV file containing information about each user: <code>DisplayName, Id, Reputation, and CreationDate</code>. Name your file <code>users.csv</code></p>
+<p><span id="exr:unnamed-chunk-472" class="exercise"><strong>Exercise 14.28  </strong></span>Export a CSV file containing information about each user: <code>DisplayName, Id, Reputation, and CreationDate</code>. Name your file <code>users.csv</code></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-402" class="exercise"><strong>Exercise 14.29  </strong></span>Make a table that has each user’s total number of posts and total number of upvotes, and export this file as a CSV named <code>posts.csv</code>. <em>Hint: Start with the posts table, join information from users, and perform some grouped summaries.</em></p>
+<p><span id="exr:unnamed-chunk-473" class="exercise"><strong>Exercise 14.29  </strong></span>Make a table that has each user’s total number of posts and total number of upvotes, and export this file as a CSV named <code>posts.csv</code>. <em>Hint: Start with the posts table, join information from users, and perform some grouped summaries.</em></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-403" class="exercise"><strong>Exercise 14.30  </strong></span>Calculate the number of comments per user, and the total number of upvotes across all comments per user (this is the sum of the <code>Score</code> variable under the Comments table) and export this as a CSV file named <code>comments.csv</code>.</p>
+<p><span id="exr:unnamed-chunk-474" class="exercise"><strong>Exercise 14.30  </strong></span>Calculate the number of comments per user, and the total number of upvotes across all comments per user (this is the sum of the <code>Score</code> variable under the Comments table) and export this as a CSV file named <code>comments.csv</code>.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-404" class="exercise"><strong>Exercise 14.31  </strong></span>Import these three datasets into <code>R</code>. Visualize the relationship between the three datasets. Include at least one visualization comparing each of:</p>
+<p><span id="exr:unnamed-chunk-475" class="exercise"><strong>Exercise 14.31  </strong></span>Import these three datasets into <code>R</code>. Visualize the relationship between the three datasets. Include at least one visualization comparing each of:</p>
 <ol style="list-style-type: lower-alpha">
 <li>information from the user CSV and the post CSV, and</li>
 <li>information from the user CSV and comment CSV</li>
