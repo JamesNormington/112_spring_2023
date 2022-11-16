@@ -639,9 +639,9 @@ Go to <a href="http://google.com" class="uri">http://google.com</a> and type <co
 <div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="text-analysis.html#cb366-1" aria-hidden="true" tabindex="-1"></a>us_dec_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">title =</span> <span class="st">&quot;Declaration of Independence&quot;</span>, <span class="at">text =</span> us_dec)</span>
 <span id="cb366-2"><a href="text-analysis.html#cb366-2" aria-hidden="true" tabindex="-1"></a>us_dec_df</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   title                       text                                                 
-##   &lt;chr&gt;                       &lt;chr&gt;                                                
-## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDENCE:\n\n\nIn Congre…</code></pre>
+##   title                       text                                                                                                          
+##   &lt;chr&gt;                       &lt;chr&gt;                                                                                                         
+## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDENCE:\n\n\nIn Congress, July 4, 1776,\nTHE UNANIMOUS DECLARATION OF THE THIRT…</code></pre>
 <div id="unnesting-tokens" class="section level4 unnumbered hasAnchor">
 <h4>Unnesting Tokens<a href="text-analysis.html#unnesting-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We need to restructure the text into components that can be easily analyzed.</p>
@@ -756,7 +756,7 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb380-10"><a href="text-analysis.html#cb380-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">random.order =</span> <span class="cn">FALSE</span>, <span class="co"># position the most popular words first</span></span>
 <span id="cb380-11"><a href="text-analysis.html#cb380-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>) <span class="co"># color palette</span></span>
 <span id="cb380-12"><a href="text-analysis.html#cb380-12" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-414-1.png" width="576" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-417-1.png" width="576" /></p>
 </div>
 </div>
 <div id="comparing-the-text-in-two-or-more-documents" class="section level3 unnumbered hasAnchor">
@@ -766,16 +766,16 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb381-2"><a href="text-analysis.html#cb381-2" aria-hidden="true" tabindex="-1"></a>text_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">article =</span> school_wiki_titles, <span class="at">text =</span> school_wiki_text)</span>
 <span id="cb381-3"><a href="text-analysis.html#cb381-3" aria-hidden="true" tabindex="-1"></a>text_df</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
-##   article                 text                                                     
-##   &lt;chr&gt;                   &lt;chr&gt;                                                    
-## 1 Macalester College      &quot;Macalester College () is a private liberal arts college…
-## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a private liberal arts …
-## 3 University of Minnesota &quot;The University of Minnesota, formally the University of…</code></pre>
+##   article                 text                                                                                                              
+##   &lt;chr&gt;                   &lt;chr&gt;                                                                                                             
+## 1 Macalester College      &quot;Macalester College () is a private liberal arts college in Saint Paul, Minnesota. Founded in 1874, Macalester is…
+## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a private liberal arts college in Northfield, Minnesota. Founded in 1866, it had…
+## 3 University of Minnesota &quot;The University of Minnesota, formally the University of Minnesota, Twin Cities, (UMN, the U of M, or Minnesota) …</code></pre>
 <div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="text-analysis.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unnest the data frame so each row corresponds to a single word in a single document.</span></span>
 <span id="cb383-2"><a href="text-analysis.html#cb383-2" aria-hidden="true" tabindex="-1"></a>tidy_df <span class="ot">&lt;-</span> text_df <span class="sc">%&gt;%</span></span>
 <span id="cb383-3"><a href="text-analysis.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
 <span id="cb383-4"><a href="text-analysis.html#cb383-4" aria-hidden="true" tabindex="-1"></a>tidy_df</span></code></pre></div>
-<pre><code>## # A tibble: 15,492 × 2
+<pre><code>## # A tibble: 15,490 × 2
 ##    article            word      
 ##    &lt;chr&gt;              &lt;chr&gt;     
 ##  1 Macalester College macalester
@@ -788,7 +788,7 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 ##  8 Macalester College college   
 ##  9 Macalester College in        
 ## 10 Macalester College saint     
-## # … with 15,482 more rows</code></pre>
+## # … with 15,480 more rows</code></pre>
 <div id="side-by-side-word-clouds" class="section level4 unnumbered hasAnchor">
 <h4>Side-by-Side Word Clouds<a href="text-analysis.html#side-by-side-word-clouds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="text-analysis.html#cb385-1" aria-hidden="true" tabindex="-1"></a>macalester_counts <span class="ot">&lt;-</span> tidy_df <span class="sc">%&gt;%</span></span>
@@ -857,11 +857,11 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb391-7"><a href="text-analysis.html#cb391-7" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(carleton_counts<span class="sc">$</span>word, carleton_counts<span class="sc">$</span>n,</span>
 <span id="cb391-8"><a href="text-analysis.html#cb391-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">max.words =</span> <span class="dv">200</span>, <span class="at">random.order =</span> <span class="cn">FALSE</span>, <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>)</span>
 <span id="cb391-9"><a href="text-analysis.html#cb391-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-418-1.png" width="384" /><img src="stat112_manual_files/figure-html/unnamed-chunk-418-2.png" width="384" /><img src="stat112_manual_files/figure-html/unnamed-chunk-418-3.png" width="384" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-421-1.png" width="384" /><img src="stat112_manual_files/figure-html/unnamed-chunk-421-2.png" width="384" /><img src="stat112_manual_files/figure-html/unnamed-chunk-421-3.png" width="384" /></p>
 <p><strong>Brainstorm</strong></p>
 <p>How do we compare multiple documents quantitatively?</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-419" class="exercise"><strong>Exercise 14.32  </strong></span>Brainstorm a metric for comparing the relative frequency/importance of different words in two or more documents. What factors might you account for?</p>
+<p><span id="exr:unnamed-chunk-422" class="exercise"><strong>Exercise 14.32  </strong></span>Brainstorm a metric for comparing the relative frequency/importance of different words in two or more documents. What factors might you account for?</p>
 </div>
 </div>
 <div id="term-frequency---inverse-document-frequency" class="section level4 unnumbered hasAnchor">
@@ -881,7 +881,7 @@ where <span class="math inline">\(N\)</span> is the number of documents, and the
 <span id="cb392-4"><a href="text-analysis.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-421">Table 14.2: </span>The thirty-five document-word pairs with the highest tf-idf scores.
+<span id="tab:unnamed-chunk-424">Table 14.2: </span>The thirty-five document-word pairs with the highest tf-idf scores.
 </caption>
 <thead>
 <tr>
@@ -917,13 +917,13 @@ macalester
 82
 </td>
 <td style="text-align:right;">
-0.0226895
+0.0227021
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0249270
+0.0249408
 </td>
 </tr>
 <tr>
@@ -957,13 +957,13 @@ mac
 14
 </td>
 <td style="text-align:right;">
-0.0038738
+0.0038760
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0042558
+0.0042582
 </td>
 </tr>
 <tr>
@@ -1097,13 +1097,13 @@ engagement
 7
 </td>
 <td style="text-align:right;">
-0.0019369
+0.0019380
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0021279
+0.0021291
 </td>
 </tr>
 <tr>
@@ -1177,13 +1177,13 @@ civic
 6
 </td>
 <td style="text-align:right;">
-0.0016602
+0.0016611
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0018239
+0.0018249
 </td>
 </tr>
 <tr>
@@ -1197,13 +1197,13 @@ fossil
 6
 </td>
 <td style="text-align:right;">
-0.0016602
+0.0016611
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0018239
+0.0018249
 </td>
 </tr>
 <tr>
@@ -1217,13 +1217,13 @@ scots
 6
 </td>
 <td style="text-align:right;">
-0.0016602
+0.0016611
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0018239
+0.0018249
 </td>
 </tr>
 <tr>
@@ -1237,13 +1237,13 @@ house
 16
 </td>
 <td style="text-align:right;">
-0.0044272
+0.0044297
 </td>
 <td style="text-align:right;">
 0.4054651
 </td>
 <td style="text-align:right;">
-0.0017951
+0.0017961
 </td>
 </tr>
 <tr>
@@ -1317,13 +1317,13 @@ commitment
 5
 </td>
 <td style="text-align:right;">
-0.0013835
+0.0013843
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015199
+0.0015208
 </td>
 </tr>
 <tr>
@@ -1337,13 +1337,13 @@ friendly
 5
 </td>
 <td style="text-align:right;">
-0.0013835
+0.0013843
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015199
+0.0015208
 </td>
 </tr>
 <tr>
@@ -1357,13 +1357,13 @@ macalester’s
 5
 </td>
 <td style="text-align:right;">
-0.0013835
+0.0013843
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015199
+0.0015208
 </td>
 </tr>
 <tr>
@@ -1377,13 +1377,13 @@ summit
 5
 </td>
 <td style="text-align:right;">
-0.0013835
+0.0013843
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015199
+0.0015208
 </td>
 </tr>
 <tr>
@@ -1397,13 +1397,13 @@ wallace
 5
 </td>
 <td style="text-align:right;">
-0.0013835
+0.0013843
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015199
+0.0015208
 </td>
 </tr>
 <tr>
@@ -1437,13 +1437,13 @@ sustainability
 13
 </td>
 <td style="text-align:right;">
-0.0035971
+0.0035991
 </td>
 <td style="text-align:right;">
 0.4054651
 </td>
 <td style="text-align:right;">
-0.0014585
+0.0014593
 </td>
 </tr>
 <tr>
@@ -1537,13 +1537,13 @@ environmental
 4
 </td>
 <td style="text-align:right;">
-0.0011068
+0.0011074
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0012160
+0.0012166
 </td>
 </tr>
 <tr>
@@ -1557,13 +1557,13 @@ lgbtq
 4
 </td>
 <td style="text-align:right;">
-0.0011068
+0.0011074
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0012160
+0.0012166
 </td>
 </tr>
 <tr>
@@ -1577,13 +1577,13 @@ presbyterian
 4
 </td>
 <td style="text-align:right;">
-0.0011068
+0.0011074
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0012160
+0.0012166
 </td>
 </tr>
 <tr>
@@ -1597,13 +1597,13 @@ sophomores
 4
 </td>
 <td style="text-align:right;">
-0.0011068
+0.0011074
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0012160
+0.0012166
 </td>
 </tr>
 </tbody>
@@ -1616,7 +1616,7 @@ sophomores
 <span id="cb393-5"><a href="text-analysis.html#cb393-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb393-6"><a href="text-analysis.html#cb393-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="sc">+</span></span>
 <span id="cb393-7"><a href="text-analysis.html#cb393-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-422-1.png" width="672" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-425-1.png" width="672" /></p>
 <p>Next, let’s say we want to determine which school is the most relevant to the query “internationalism, multiculturalism, and service to society.”</p>
 <div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="text-analysis.html#cb394-1" aria-hidden="true" tabindex="-1"></a>target_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;internationalism&quot;</span>, <span class="st">&quot;multiculturalism&quot;</span>, <span class="st">&quot;service&quot;</span>, <span class="st">&quot;society&quot;</span>)</span>
 <span id="cb394-2"><a href="text-analysis.html#cb394-2" aria-hidden="true" tabindex="-1"></a>mission <span class="ot">&lt;-</span> tfidf_analysis <span class="sc">%&gt;%</span></span>
@@ -1656,13 +1656,13 @@ society
 3
 </td>
 <td style="text-align:right;">
-0.0008301
+0.0008306
 </td>
 <td style="text-align:right;">
 0.4054651
 </td>
 <td style="text-align:right;">
-0.0003366
+0.0003368
 </td>
 </tr>
 <tr>
@@ -1676,13 +1676,13 @@ internationalism
 1
 </td>
 <td style="text-align:right;">
-0.0002767
+0.0002769
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0003040
+0.0003042
 </td>
 </tr>
 <tr>
@@ -1696,13 +1696,13 @@ multiculturalism
 1
 </td>
 <td style="text-align:right;">
-0.0002767
+0.0002769
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0003040
+0.0003042
 </td>
 </tr>
 <tr>
@@ -1756,7 +1756,7 @@ service
 1
 </td>
 <td style="text-align:right;">
-0.0002767
+0.0002769
 </td>
 <td style="text-align:right;">
 0.0000000
@@ -1808,26 +1808,26 @@ where <span class="math inline">\(n\)</span> is the number of times the word app
 <pre><code>## # A tibble: 20 × 5
 ##    word            n.mac n.carleton n.total logodds.mac
 ##    &lt;chr&gt;           &lt;int&gt;      &lt;int&gt;   &lt;int&gt;       &lt;dbl&gt;
-##  1 programs            6          8      14    -0.00926
-##  2 colleges            7          9      16     0.0189 
-##  3 championship        3          4       7     0.0189 
-##  4 president           5          7      12    -0.0456 
-##  5 won                 5          7      12    -0.0456 
-##  6 2019                2          3       5    -0.0456 
-##  7 department          2          3       5    -0.0456 
-##  8 intercollegiate     2          3       5    -0.0456 
-##  9 life                2          3       5    -0.0456 
-## 10 local               2          3       5    -0.0456 
-## 11 main                2          3       5    -0.0456 
-## 12 official            2          3       5    -0.0456 
-## 13 paul                2          3       5    -0.0456 
-## 14 popular             2          3       5    -0.0456 
-## 15 summer              2          3       5    -0.0456 
-## 16 times               2          3       5    -0.0456 
-## 17 universities        2          3       5    -0.0456 
-## 18 2011                4          5       9     0.0597 
-## 19 fall                4          5       9     0.0597 
-## 20 iii                 4          5       9     0.0597</code></pre>
+##  1 programs            6          8      14    -0.00871
+##  2 colleges            7          9      16     0.0195 
+##  3 championship        3          4       7     0.0195 
+##  4 president           5          7      12    -0.0451 
+##  5 won                 5          7      12    -0.0451 
+##  6 2019                2          3       5    -0.0451 
+##  7 department          2          3       5    -0.0451 
+##  8 intercollegiate     2          3       5    -0.0451 
+##  9 life                2          3       5    -0.0451 
+## 10 local               2          3       5    -0.0451 
+## 11 main                2          3       5    -0.0451 
+## 12 official            2          3       5    -0.0451 
+## 13 paul                2          3       5    -0.0451 
+## 14 popular             2          3       5    -0.0451 
+## 15 summer              2          3       5    -0.0451 
+## 16 times               2          3       5    -0.0451 
+## 17 universities        2          3       5    -0.0451 
+## 18 2011                4          5       9     0.0603 
+## 19 fall                4          5       9     0.0603 
+## 20 iii                 4          5       9     0.0603</code></pre>
 <p>What are the most distinctive words?</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="text-analysis.html#cb398-1" aria-hidden="true" tabindex="-1"></a>logratios <span class="sc">%&gt;%</span></span>
 <span id="cb398-2"><a href="text-analysis.html#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(logodds.mac <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
@@ -1839,7 +1839,7 @@ where <span class="math inline">\(n\)</span> is the number of times the word app
 <span id="cb398-8"><a href="text-analysis.html#cb398-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb398-9"><a href="text-analysis.html#cb398-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;log odds ratio (Mac/Carleton)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb398-10"><a href="text-analysis.html#cb398-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Macalester&quot;</span>, <span class="st">&quot;Carleton&quot;</span>))</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-427-1.png" width="960" /></p>
+<p><img src="stat112_manual_files/figure-html/unnamed-chunk-430-1.png" width="960" /></p>
 </div>
 </div>
 <div id="sentiment-analysis" class="section level3 unnumbered hasAnchor">
@@ -2047,9 +2047,9 @@ negative
 <div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="text-analysis.html#cb402-1" aria-hidden="true" tabindex="-1"></a>nrc <span class="sc">%&gt;%</span></span>
 <span id="cb402-2"><a href="text-analysis.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   num_words sentiments                                                             
-##       &lt;int&gt; &lt;chr&gt;                                                                  
-## 1     13872 anger, anticipation, disgust, fear, joy, negative, positive, sadness, …</code></pre>
+##   num_words sentiments                                                                           
+##       &lt;int&gt; &lt;chr&gt;                                                                                
+## 1     13872 anger, anticipation, disgust, fear, joy, negative, positive, sadness, surprise, trust</code></pre>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="text-analysis.html#cb404-1" aria-hidden="true" tabindex="-1"></a>bing <span class="sc">%&gt;%</span></span>
 <span id="cb404-2"><a href="text-analysis.html#cb404-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2

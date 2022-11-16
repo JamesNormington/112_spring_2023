@@ -563,7 +563,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When importing and cleaning a dataset, take careful notes in your R Markdown. Explain where you found the dataset (the source). Record the steps you took to clean and import the data in case somebody else needs to replicate your analysis. You should also make sure to cite and credit the creator of the dataset.</p>
 <div id="finding-existing-data-sets" class="section level3 unnumbered hasAnchor">
 <h3>Finding Existing Data Sets<a href="data-import.html#finding-existing-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-316"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-319"></span>
 <img src="images/csv_search.jpeg" alt="An example Google search." width="486" />
 <p class="caption">
 Figure 13.1: An example Google search.
@@ -636,7 +636,7 @@ Figure 13.1: An example Google search.
 <p>First we want to make sure the factors are “clean”, meaning consistent values in the correct format. For example, <code>true</code> and <code>TRUE</code> and <code>T</code> will be three different factors. The easiest way to manage this is to look at the levels for the factor and replace values with a messy factor to a clean one. For example, the following code cleans up values in true/false values in column <code>X</code> in a data set called <code>df</code>:</p>
 <pre><code>df &lt;- df %&gt;% mutate(X = fct_recode(X, &quot;TRUE&quot; = &quot;T&quot;, &quot;TRUE&quot; = &quot;true&quot;, &quot;FALSE&quot; = &quot;f&quot;, &quot;FALSE&quot; = &quot;N&quot;, &quot;FALSE&quot; = &quot;No&quot;))</code></pre>
 <div class="example">
-<p><span id="exm:unnamed-chunk-317" class="example"><strong>Example 13.1  (Clean up the levels on the Messy IMDB 5000 dataset) </strong></span>We will use a slightly “messied” <a href="data/imdb_5000_messy.csv">version</a> of the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">IMDB 5000 Dataset</a>, collected by chuansun76 on Kaggle.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
+<p><span id="exm:unnamed-chunk-320" class="example"><strong>Example 13.1  (Clean up the levels on the Messy IMDB 5000 dataset) </strong></span>We will use a slightly “messied” <a href="data/imdb_5000_messy.csv">version</a> of the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">IMDB 5000 Dataset</a>, collected by chuansun76 on Kaggle.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Use <code>read_csv</code> to load the IMDB 5000 dataset from “<a href="https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv" class="uri">https://bcheggeseth.github.io/112_fall_2022/data/imdb_5000_messy.csv</a>”, and save it as <code>imdbMessy</code>.</li>
@@ -654,36 +654,22 @@ b. Print out the variable names.</p>
 Solution
 </summary>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-import.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imdbMessy) <span class="co">#order = order in dataset</span></span></code></pre></div>
-<pre><code>##  [1] &quot;...1&quot;                      &quot;color&quot;                    
-##  [3] &quot;director_name&quot;             &quot;num_critic_for_reviews&quot;   
-##  [5] &quot;duration&quot;                  &quot;director_facebook_likes&quot;  
-##  [7] &quot;actor_3_facebook_likes&quot;    &quot;actor_2_name&quot;             
-##  [9] &quot;actor_1_facebook_likes&quot;    &quot;gross&quot;                    
-## [11] &quot;genres&quot;                    &quot;actor_1_name&quot;             
-## [13] &quot;movie_title&quot;               &quot;num_voted_users&quot;          
-## [15] &quot;cast_total_facebook_likes&quot; &quot;actor_3_name&quot;             
-## [17] &quot;facenumber_in_poster&quot;      &quot;plot_keywords&quot;            
-## [19] &quot;movie_imdb_link&quot;           &quot;num_user_for_reviews&quot;     
-## [21] &quot;language&quot;                  &quot;country&quot;                  
-## [23] &quot;content_rating&quot;            &quot;budget&quot;                   
-## [25] &quot;title_year&quot;                &quot;actor_2_facebook_likes&quot;   
-## [27] &quot;imdb_score&quot;                &quot;aspect_ratio&quot;             
+<pre><code>##  [1] &quot;...1&quot;                      &quot;color&quot;                     &quot;director_name&quot;             &quot;num_critic_for_reviews&quot;   
+##  [5] &quot;duration&quot;                  &quot;director_facebook_likes&quot;   &quot;actor_3_facebook_likes&quot;    &quot;actor_2_name&quot;             
+##  [9] &quot;actor_1_facebook_likes&quot;    &quot;gross&quot;                     &quot;genres&quot;                    &quot;actor_1_name&quot;             
+## [13] &quot;movie_title&quot;               &quot;num_voted_users&quot;           &quot;cast_total_facebook_likes&quot; &quot;actor_3_name&quot;             
+## [17] &quot;facenumber_in_poster&quot;      &quot;plot_keywords&quot;             &quot;movie_imdb_link&quot;           &quot;num_user_for_reviews&quot;     
+## [21] &quot;language&quot;                  &quot;country&quot;                   &quot;content_rating&quot;            &quot;budget&quot;                   
+## [25] &quot;title_year&quot;                &quot;actor_2_facebook_likes&quot;    &quot;imdb_score&quot;                &quot;aspect_ratio&quot;             
 ## [29] &quot;movie_facebook_likes&quot;</code></pre>
 <div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-import.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(imdbMessy) <span class="co">#order = alphabetical order</span></span></code></pre></div>
-<pre><code>##  [1] &quot;actor_1_facebook_likes&quot;    &quot;actor_1_name&quot;             
-##  [3] &quot;actor_2_facebook_likes&quot;    &quot;actor_2_name&quot;             
-##  [5] &quot;actor_3_facebook_likes&quot;    &quot;actor_3_name&quot;             
-##  [7] &quot;aspect_ratio&quot;              &quot;budget&quot;                   
-##  [9] &quot;cast_total_facebook_likes&quot; &quot;color&quot;                    
-## [11] &quot;content_rating&quot;            &quot;country&quot;                  
-## [13] &quot;director_facebook_likes&quot;   &quot;director_name&quot;            
-## [15] &quot;duration&quot;                  &quot;facenumber_in_poster&quot;     
-## [17] &quot;genres&quot;                    &quot;gross&quot;                    
-## [19] &quot;imdb_score&quot;                &quot;language&quot;                 
-## [21] &quot;movie_facebook_likes&quot;      &quot;movie_imdb_link&quot;          
-## [23] &quot;movie_title&quot;               &quot;num_critic_for_reviews&quot;   
-## [25] &quot;num_user_for_reviews&quot;      &quot;num_voted_users&quot;          
-## [27] &quot;plot_keywords&quot;             &quot;title_year&quot;</code></pre>
+<pre><code>##  [1] &quot;actor_1_facebook_likes&quot;    &quot;actor_1_name&quot;              &quot;actor_2_facebook_likes&quot;    &quot;actor_2_name&quot;             
+##  [5] &quot;actor_3_facebook_likes&quot;    &quot;actor_3_name&quot;              &quot;aspect_ratio&quot;              &quot;budget&quot;                   
+##  [9] &quot;cast_total_facebook_likes&quot; &quot;color&quot;                     &quot;content_rating&quot;            &quot;country&quot;                  
+## [13] &quot;director_facebook_likes&quot;   &quot;director_name&quot;             &quot;duration&quot;                  &quot;facenumber_in_poster&quot;     
+## [17] &quot;genres&quot;                    &quot;gross&quot;                     &quot;imdb_score&quot;                &quot;language&quot;                 
+## [21] &quot;movie_facebook_likes&quot;      &quot;movie_imdb_link&quot;           &quot;movie_title&quot;               &quot;num_critic_for_reviews&quot;   
+## [25] &quot;num_user_for_reviews&quot;      &quot;num_voted_users&quot;           &quot;plot_keywords&quot;             &quot;title_year&quot;</code></pre>
 </details>
 <p> 
 c. Examine the color variable. What are the existing values?</p>
@@ -702,11 +688,9 @@ Solution
 ## 5 &lt;NA&gt; 
 ## 6 Color</code></pre>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-import.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(imdbMessy<span class="sc">$</span>color))</span></code></pre></div>
-<pre><code>## [1] &quot;B&amp;W&quot;             &quot;Black and White&quot; &quot;color&quot;           &quot;Color&quot;          
-## [5] &quot;COLOR&quot;</code></pre>
+<pre><code>## [1] &quot;B&amp;W&quot;             &quot;Black and White&quot; &quot;color&quot;           &quot;Color&quot;           &quot;COLOR&quot;</code></pre>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-import.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(imdbMessy<span class="sc">$</span>color)</span></code></pre></div>
-<pre><code>## [1] &quot;Color&quot;           NA                &quot;Black and White&quot; &quot;COLOR&quot;          
-## [5] &quot;color&quot;           &quot;B&amp;W&quot;</code></pre>
+<pre><code>## [1] &quot;Color&quot;           NA                &quot;Black and White&quot; &quot;COLOR&quot;           &quot;color&quot;           &quot;B&amp;W&quot;</code></pre>
 </details>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>How often does each color occur? <em>Hint:</em> <code>table</code> or <code>count</code></li>
@@ -768,7 +752,7 @@ Solution
 </ul>
 <p>There is no perfect approach to dealing with NAs, and you must <em>think carefully</em> about how removing or replacing missing data may affect your work.</p>
 <div class="example">
-<p><span id="exm:unnamed-chunk-325" class="example"><strong>Example 13.2  (Address NA values in the Messy IMDB 5000 dataset) </strong></span>Consider <code>imdbMessy</code>.</p>
+<p><span id="exm:unnamed-chunk-328" class="example"><strong>Example 13.2  (Address NA values in the Messy IMDB 5000 dataset) </strong></span>Consider <code>imdbMessy</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Print out the number of NAs in each of the columns.</li>
@@ -778,26 +762,18 @@ Solution
 Solution
 </summary>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-import.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(imdbMessy))</span></code></pre></div>
-<pre><code>##                      ...1                     color             director_name 
-##                         0                        19                       104 
-##    num_critic_for_reviews                  duration   director_facebook_likes 
-##                        50                        15                       104 
-##    actor_3_facebook_likes              actor_2_name    actor_1_facebook_likes 
-##                        23                        13                         7 
-##                     gross                    genres              actor_1_name 
-##                       884                         0                         7 
-##               movie_title           num_voted_users cast_total_facebook_likes 
-##                         0                         0                         0 
-##              actor_3_name      facenumber_in_poster             plot_keywords 
-##                        23                        13                       153 
-##           movie_imdb_link      num_user_for_reviews                  language 
-##                         0                        21                        12 
-##                   country            content_rating                    budget 
-##                         5                       303                       492 
-##                title_year    actor_2_facebook_likes                imdb_score 
-##                       108                        13                         0 
-##              aspect_ratio      movie_facebook_likes 
-##                       329                         0</code></pre>
+<pre><code>##                      ...1                     color             director_name    num_critic_for_reviews                  duration 
+##                         0                        19                       104                        50                        15 
+##   director_facebook_likes    actor_3_facebook_likes              actor_2_name    actor_1_facebook_likes                     gross 
+##                       104                        23                        13                         7                       884 
+##                    genres              actor_1_name               movie_title           num_voted_users cast_total_facebook_likes 
+##                         0                         7                         0                         0                         0 
+##              actor_3_name      facenumber_in_poster             plot_keywords           movie_imdb_link      num_user_for_reviews 
+##                        23                        13                       153                         0                        21 
+##                  language                   country            content_rating                    budget                title_year 
+##                        12                         5                       303                       492                       108 
+##    actor_2_facebook_likes                imdb_score              aspect_ratio      movie_facebook_likes 
+##                        13                         0                       329                         0</code></pre>
 </details>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Consider the <code>actor_1_facebook_likes</code> column. Take a look at a few of the records that have NA values. Why do you think there are NAs?</li>
@@ -809,21 +785,19 @@ Solution
 <p>This variable is missing if <code>actor_1_name</code> is missing, which suggests that this movie doesn’t have an actor 1 listed.</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-import.html#cb220-1" aria-hidden="true" tabindex="-1"></a>imdbMessy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(actor_1_facebook_likes)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 29
-##    ...1 color direc…¹ num_c…² durat…³ direc…⁴ actor…⁵ actor…⁶ actor…⁷  gross genres
-##   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-## 1  4503 Color Léa Po…      23      97       4      NA &lt;NA&gt;         NA  24784 Docum…
-## 2  4520 Color Harry …      12     105       0      NA &lt;NA&gt;         NA 247740 Docum…
-## 3  4721 Color U. Rob…       3      80       6      NA &lt;NA&gt;         NA   2245 Docum…
-## 4  4838 Color Pan Na…      15     102      95      NA &lt;NA&gt;         NA  16892 Docum…
-## 5  4946 Color Amal A…      NA      62      58      NA &lt;NA&gt;         NA     NA Docum…
-## 6  4947 Color Andrew…      12      90       0      NA &lt;NA&gt;         NA     NA Docum…
-## # … with 18 more variables: actor_1_name &lt;chr&gt;, movie_title &lt;chr&gt;,
-## #   num_voted_users &lt;dbl&gt;, cast_total_facebook_likes &lt;dbl&gt;, actor_3_name &lt;chr&gt;,
-## #   facenumber_in_poster &lt;dbl&gt;, plot_keywords &lt;chr&gt;, movie_imdb_link &lt;chr&gt;,
-## #   num_user_for_reviews &lt;dbl&gt;, language &lt;chr&gt;, country &lt;chr&gt;,
-## #   content_rating &lt;chr&gt;, budget &lt;dbl&gt;, title_year &lt;dbl&gt;,
-## #   actor_2_facebook_likes &lt;dbl&gt;, imdb_score &lt;dbl&gt;, aspect_ratio &lt;dbl&gt;,
-## #   movie_facebook_likes &lt;dbl&gt;, and abbreviated variable names ¹​director_name, …</code></pre>
+##    ...1 color direct…¹ num_c…² durat…³ direc…⁴ actor…⁵ actor…⁶ actor…⁷  gross genres actor…⁸ movie…⁹ num_v…˟ cast_…˟ actor…˟ facen…˟ plot_…˟
+##   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+## 1  4503 Color Léa Pool      23      97       4      NA &lt;NA&gt;         NA  24784 Docum… &lt;NA&gt;    Pink R…     591       0 &lt;NA&gt;          0 breast…
+## 2  4520 Color Harry G…      12     105       0      NA &lt;NA&gt;         NA 247740 Docum… &lt;NA&gt;    Sex wi…     285       0 &lt;NA&gt;          0 bisexu…
+## 3  4721 Color U. Robe…       3      80       6      NA &lt;NA&gt;         NA   2245 Docum… &lt;NA&gt;    The Ha…      57       0 &lt;NA&gt;          0 child …
+## 4  4838 Color Pan Nal…      15     102      95      NA &lt;NA&gt;         NA  16892 Docum… &lt;NA&gt;    Ayurve…     341       0 &lt;NA&gt;          0 easter…
+## 5  4946 Color Amal Al…      NA      62      58      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;    The Br…      18       0 &lt;NA&gt;          1 autism…
+## 6  4947 Color Andrew …      12      90       0      NA &lt;NA&gt;         NA     NA Docum… &lt;NA&gt;    The Bl…     102       0 &lt;NA&gt;          1 americ…
+## # … with 11 more variables: movie_imdb_link &lt;chr&gt;, num_user_for_reviews &lt;dbl&gt;, language &lt;chr&gt;, country &lt;chr&gt;, content_rating &lt;chr&gt;,
+## #   budget &lt;dbl&gt;, title_year &lt;dbl&gt;, actor_2_facebook_likes &lt;dbl&gt;, imdb_score &lt;dbl&gt;, aspect_ratio &lt;dbl&gt;, movie_facebook_likes &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​director_name, ²​num_critic_for_reviews, ³​duration, ⁴​director_facebook_likes, ⁵​actor_3_facebook_likes,
+## #   ⁶​actor_2_name, ⁷​actor_1_facebook_likes, ⁸​actor_1_name, ⁹​movie_title, ˟​num_voted_users, ˟​cast_total_facebook_likes, ˟​actor_3_name,
+## #   ˟​facenumber_in_poster, ˟​plot_keywords</code></pre>
 </details>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Create a new dataframe that removes observations that have NAs for <code>actor_1_facebook_likes</code>.</li>
@@ -848,7 +822,7 @@ Solution
 <div id="additional-practice" class="section level2 unnumbered hasAnchor">
 <h2>Additional Practice<a href="data-import.html#additional-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-330" class="exercise"><strong>Exercise 13.1  </strong></span>Find a dataset that is not built into <code>R</code> and is related to one of the following topics:</p>
+<p><span id="exr:unnamed-chunk-333" class="exercise"><strong>Exercise 13.1  </strong></span>Find a dataset that is not built into <code>R</code> and is related to one of the following topics:</p>
 </div>
 <ul>
 <li>Macalester College (On Moodle Assignment 12, there is a dataset available from Macalester College IR you could use)</li>

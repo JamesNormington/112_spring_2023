@@ -727,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb263-80"><a href="regular-expressions.html#cb263-80" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(courses, <span class="at">file =</span> <span class="st">&#39;Mac2021Courses.csv&#39;</span>)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-341">Table 14.1: </span>First six entries in the Fall 2021 Macalester course info data.
+<span id="tab:unnamed-chunk-344">Table 14.1: </span>First six entries in the Fall 2021 Macalester course info data.
 </caption>
 <thead>
 <tr>
@@ -917,7 +917,7 @@ Closed 0 / 25
 </tbody>
 </table>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-342" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table:</p>
+<p><span id="exr:unnamed-chunk-345" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Split <code>number</code> into three separate columns: <code>dept</code>, <code>number</code>, and <code>section</code>.</li>
 <li>Split the <code>avail_max</code> variable into two separate variables: <code>avail</code> and <code>max</code>. It might be helpful to first remove all appearances of “Closed”.</li>
@@ -926,12 +926,12 @@ Closed 0 / 25
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-343" class="exercise"><strong>Exercise 14.2  (WA courses) </strong></span>Make a bar plot showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<p><span id="exr:unnamed-chunk-346" class="exercise"><strong>Exercise 14.2  (WA courses) </strong></span>Make a bar plot showing the number of Fall 2021 sections satisfying the Writing WA requirement, sorted by department code.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
 </div>
 <p><br></p>
 <p>In the next series of exercises, we are going to build up an analysis to examine the number of student enrollments for each faculty member.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-344" class="exercise"><strong>Exercise 14.3  (Filter cases) </strong></span>For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table:</p>
+<p><span id="exr:unnamed-chunk-347" class="exercise"><strong>Exercise 14.3  (Filter cases) </strong></span>For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table:</p>
 <ol style="list-style-type: lower-alpha">
 <li>All sections in <code>PE</code> or <code>INTD</code>.</li>
 <li>All music ensembles and dance practicum sections (these are all of the MUSI and THDA classes with numbers less than 100).</li>
@@ -942,13 +942,13 @@ Closed 0 / 25
 <p><span id="exr:nt" class="exercise"><strong>Exercise 14.4  (Handle cross-listed courses) </strong></span>Some sections are listed under multiple different departments, and you will find the same instructor, time, enrollment data, etc. For this activity, we only want to include each actual section once and it doesn’t really matter which department code we associate with this section. Eliminate all duplicates, keeping each actual section just once. Hint: look into the <code>R</code> command <code>distinct</code>, and think carefully about how to find duplicates.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-345" class="exercise"><strong>Exercise 14.5  (Co-taught courses) </strong></span>Make a table with all Fall 2021 co-taught courses (i.e., more than one instructor).</p>
+<p><span id="exr:unnamed-chunk-348" class="exercise"><strong>Exercise 14.5  (Co-taught courses) </strong></span>Make a table with all Fall 2021 co-taught courses (i.e., more than one instructor).</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-346" class="exercise"><strong>Exercise 14.6  (Faculty enrollments) </strong></span>Make a table where each row contains a faculty, the number of sections they are teaching in Fall 2021, and the total enrollments in those section. Sort the table from highest total enrollments to lowest.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+<p><span id="exr:unnamed-chunk-349" class="exercise"><strong>Exercise 14.6  (Faculty enrollments) </strong></span>Make a table where each row contains a faculty, the number of sections they are teaching in Fall 2021, and the total enrollments in those section. Sort the table from highest total enrollments to lowest.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-347" class="exercise"><strong>Exercise 14.7  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise <a href="regular-expressions.html#exr:nt">14.4</a>). Also make a bar plot showing the number of these courses by day of the week.</p>
+<p><span id="exr:unnamed-chunk-350" class="exercise"><strong>Exercise 14.7  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of the table you wrangled by the end of Exercise <a href="regular-expressions.html#exr:nt">14.4</a>). Also make a bar plot showing the number of these courses by day of the week.</p>
 </div>
 
 </div>

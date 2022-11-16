@@ -574,7 +574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 devtools::install_github(&quot;mkearney/nytimes&quot;)</code></pre>
 <p>Next, take a look at the Article Search API example on the <a href="https://github.com/mkearney/nytimes">package website</a> to get a sense of the syntax.</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-362" class="exercise"><strong>Exercise 14.13  </strong></span>What do you think the nytimes function below does? How does it communicate with the NY Times? Where is the data about articles stored?</p>
+<p><span id="exr:unnamed-chunk-365" class="exercise"><strong>Exercise 14.13  </strong></span>What do you think the nytimes function below does? How does it communicate with the NY Times? Where is the data about articles stored?</p>
 </div>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="public-web-apis.html#cb280-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">nyt_search</span>(<span class="at">q =</span> <span class="st">&quot;gamergate&quot;</span>, <span class="at">n =</span> <span class="dv">20</span>, <span class="at">end_date =</span> <span class="st">&quot;20150101&quot;</span>)</span></code></pre></div>
 <p>To get started with the NY Times API, you must <a href="https://developer.nytimes.com/accounts/create">register and get an <strong>authentication key</strong></a>. Signup only takes a few seconds, and it lets the New York Times make sure nobody abuses their API for commercial purposes. It also <strong>rate limits</strong> their API and ensures programs don’t make too many requests per day. For the NY Times API, this limit is 1000 calls per day. Be aware that most APIs do have rate limits — especially for their free tiers.</p>
@@ -631,7 +631,7 @@ devtools::install_github(&quot;mkearney/nytimes&quot;)</code></pre>
 <span id="cb295-6"><a href="public-web-apis.html#cb295-6" aria-hidden="true" tabindex="-1"></a>url</span></code></pre></div>
 <p>Copy and paste the resulting URL into your browser to see what the NY Times response looks like!</p>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-368" class="exercise"><strong>Exercise 14.14  </strong></span>You may be wondering why we need to use <code>param_set</code> and <code>url_encode</code> instead of writing the full url by hand. This exercise will illustrate why we need to be careful.</p>
+<p><span id="exr:unnamed-chunk-371" class="exercise"><strong>Exercise 14.14  </strong></span>You may be wondering why we need to use <code>param_set</code> and <code>url_encode</code> instead of writing the full url by hand. This exercise will illustrate why we need to be careful.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Repeat the above steps, but create a URL that finds articles related to <code>Ferris Bueller's Day Off</code> (note the apostrophe). What is interesting about how the title appears in the URL?</li>
 <li>Repeat the steps above for the phrase <code>Nico &amp; Vinz</code> (make sure you use the punctuation mark <code>&amp;</code>). What do you notice?</li>
@@ -721,7 +721,7 @@ time
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="public-web-apis.html#cb304-1" aria-hidden="true" tabindex="-1"></a>response_js<span class="sc">$</span>response<span class="sc">$</span>meta<span class="sc">$</span>hits</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;response_js&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-373" class="exercise"><strong>Exercise 14.15  </strong></span>Retrieve the data associated with</p>
+<p><span id="exr:unnamed-chunk-376" class="exercise"><strong>Exercise 14.15  </strong></span>Retrieve the data associated with</p>
 <ol style="list-style-type: decimal">
 <li>the <code>copyright</code> key of the <code>response_js</code> object, and</li>
 <li>the <code>time</code> attribute nested within the <code>meta</code> object.</li>
@@ -765,7 +765,7 @@ time
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="public-web-apis.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(docs_df)</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;docs_df&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-375" class="exercise"><strong>Exercise 14.16  (Your own article search) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-378" class="exercise"><strong>Exercise 14.16  (Your own article search) </strong></span>Consider the following:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Select your own article search query (any topic of interest to you). You may want to play with NY Times online search or the <a href="https://developer.nytimes.com/docs/articlesearch-product/1/routes/articlesearch.json/get">API web search console</a> to find a query that is interesting, but not overly popular. You can change any part of the query you would like. Your query should have at least 30 matches.</li>
 <li>Retrieve data for the first three pages of search results from the article search API, and create a data frame that joins together the <code>docs</code> data frames for the three pages of results. Hint: The example in the section below shows how to get different pages of results and use `bind_rows to combine them.<br />
@@ -838,7 +838,7 @@ time
 <div id="additional-practice-1" class="section level2 unnumbered hasAnchor">
 <h2>Additional Practice<a href="public-web-apis.html#additional-practice-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-383" class="exercise"><strong>Exercise 14.17  (Choose-your-own public API visualization) </strong></span>Browse <a href="https://github.com/toddmotto/public-apis#science">toddomotos’ list of Public APIS</a> and <a href="https://github.com/abhishekbanthia/Public-APIs">abhishekbanthia’s list of Public APIs</a>. Select one of the APIs from the list. Here are a few criteria you should consider:</p>
+<p><span id="exr:unnamed-chunk-386" class="exercise"><strong>Exercise 14.17  (Choose-your-own public API visualization) </strong></span>Browse <a href="https://github.com/toddmotto/public-apis#science">toddomotos’ list of Public APIS</a> and <a href="https://github.com/abhishekbanthia/Public-APIs">abhishekbanthia’s list of Public APIs</a>. Select one of the APIs from the list. Here are a few criteria you should consider:</p>
 <ul>
 <li>You must use the JSON approach we illustrated above; not all APIs support JSON.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a></li>
 <li>Stay away from APIs that require OAuth for Authorization unless you are prepared for extra work before you get data! Most of the large social APIs (Facebook, LinkedIn, Twitter, etc.) require OAuth. toddomoto’s page lists this explicitly, but you’ll need to dig a bit if the API is only on abhishekbanthia’s list.</li>
