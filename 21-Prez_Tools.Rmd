@@ -48,7 +48,7 @@ You have all used the standard `output:html_document` to knit your Rmd file into
 -   You can change the appearance and style of the output of the html_document by changing the `theme` and `highlight` options. I've changed these in one knitting option above with the `lumen` theme and `espresso` highlight. You can find the full list of options [here](http://rmarkdown.rstudio.com/html_document_format.html#appearance_and_style).
 -   You can load the `prettydoc` package, and use one of its themes. You can find the full list in the [documentation](https://github.com/yixuan/prettydoc/) or this [tutorial](https://yixuan.cos.name/prettydoc/tactile.html).
 -   Some [alternative Markdown templates](https://github.com/hrbrmstr/markdowntemplates)
--   The `bookdown` package was designed to write books in R Markdown, but you can also use it write single html files or pdf handouts. I've been using it all semester in conjunction with the `tufte_html2` option, which leaves a wide margin for notes and side figures. Here is the [documentation](https://bookdown.org/yihui/bookdown/), [a tutorial video](https://www.rstudio.com/resources/webinars/introducing-bookdown/), and a bunch of [books that were written with the package](https://bookdown.org/). Check out the [list of contributors](https://cran.rstudio.com/web/packages/bookdown/index.html).
+-   The `bookdown` package was designed to write books in R Markdown, but you can also use it write single html files or pdf handouts. I've been using it all semester. Here is the [documentation](https://bookdown.org/yihui/bookdown/), [a tutorial video](https://www.rstudio.com/resources/webinars/introducing-bookdown/), and a bunch of [books that were written with the package](https://bookdown.org/). Check out the [list of contributors](https://cran.rstudio.com/web/packages/bookdown/index.html).
 
 Here a couple others you probably will not need for this project:
 
@@ -58,7 +58,7 @@ Here a couple others you probably will not need for this project:
 
 #### Test {-}
 
-Below is some sample content to test out some of these output options. I've set everything up in the header of this Rmd file. All you have to do is knit it with different options and check out the output html file.
+Below is some sample content to test out some of these output options. I've set everything up in the header of [this Rmd](template_rmd/21-Prez_Tools.Rmd) file. All you have to do is knit it with different options and check out the output html file.
 
 ##### A sample footnote[^1] {-}
 
