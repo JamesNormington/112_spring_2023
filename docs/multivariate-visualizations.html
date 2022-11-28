@@ -563,214 +563,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state’s education system. The <code>education</code> data stored at <a href="https://www.macalester.edu/~ajohns24/data/sat.csv">https://www.macalester.edu/~ajohns24/data/sat.csv</a> contain various education variables for each state:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="multivariate-visualizations.html#cb77-1" aria-hidden="true" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/sat.csv&quot;</span>)</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:unnamed-chunk-138">Table 5.1: </span>The first few rows of the SAT data.
-</caption>
+<caption><span id="tab:unnamed-chunk-138">Table 5.1: </span>The first few rows of the SAT data.</caption>
 <thead>
-<tr>
-<th style="text-align:left;">
-State
-</th>
-<th style="text-align:right;">
-expend
-</th>
-<th style="text-align:right;">
-ratio
-</th>
-<th style="text-align:right;">
-salary
-</th>
-<th style="text-align:right;">
-frac
-</th>
-<th style="text-align:right;">
-verbal
-</th>
-<th style="text-align:right;">
-math
-</th>
-<th style="text-align:right;">
-sat
-</th>
-<th style="text-align:left;">
-fracCat
-</th>
+<tr class="header">
+<th align="left">State</th>
+<th align="right">expend</th>
+<th align="right">ratio</th>
+<th align="right">salary</th>
+<th align="right">frac</th>
+<th align="right">verbal</th>
+<th align="right">math</th>
+<th align="right">sat</th>
+<th align="left">fracCat</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-4.405
-</td>
-<td style="text-align:right;">
-17.2
-</td>
-<td style="text-align:right;">
-31.144
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-491
-</td>
-<td style="text-align:right;">
-538
-</td>
-<td style="text-align:right;">
-1029
-</td>
-<td style="text-align:left;">
-(0,15]
-</td>
+<tr class="odd">
+<td align="left">Alabama</td>
+<td align="right">4.405</td>
+<td align="right">17.2</td>
+<td align="right">31.144</td>
+<td align="right">8</td>
+<td align="right">491</td>
+<td align="right">538</td>
+<td align="right">1029</td>
+<td align="left">(0,15]</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Alaska
-</td>
-<td style="text-align:right;">
-8.963
-</td>
-<td style="text-align:right;">
-17.6
-</td>
-<td style="text-align:right;">
-47.951
-</td>
-<td style="text-align:right;">
-47
-</td>
-<td style="text-align:right;">
-445
-</td>
-<td style="text-align:right;">
-489
-</td>
-<td style="text-align:right;">
-934
-</td>
-<td style="text-align:left;">
-(45,100]
-</td>
+<tr class="even">
+<td align="left">Alaska</td>
+<td align="right">8.963</td>
+<td align="right">17.6</td>
+<td align="right">47.951</td>
+<td align="right">47</td>
+<td align="right">445</td>
+<td align="right">489</td>
+<td align="right">934</td>
+<td align="left">(45,100]</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Arizona
-</td>
-<td style="text-align:right;">
-4.778
-</td>
-<td style="text-align:right;">
-19.3
-</td>
-<td style="text-align:right;">
-32.175
-</td>
-<td style="text-align:right;">
-27
-</td>
-<td style="text-align:right;">
-448
-</td>
-<td style="text-align:right;">
-496
-</td>
-<td style="text-align:right;">
-944
-</td>
-<td style="text-align:left;">
-(15,45]
-</td>
+<tr class="odd">
+<td align="left">Arizona</td>
+<td align="right">4.778</td>
+<td align="right">19.3</td>
+<td align="right">32.175</td>
+<td align="right">27</td>
+<td align="right">448</td>
+<td align="right">496</td>
+<td align="right">944</td>
+<td align="left">(15,45]</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Arkansas
-</td>
-<td style="text-align:right;">
-4.459
-</td>
-<td style="text-align:right;">
-17.1
-</td>
-<td style="text-align:right;">
-28.934
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-482
-</td>
-<td style="text-align:right;">
-523
-</td>
-<td style="text-align:right;">
-1005
-</td>
-<td style="text-align:left;">
-(0,15]
-</td>
+<tr class="even">
+<td align="left">Arkansas</td>
+<td align="right">4.459</td>
+<td align="right">17.1</td>
+<td align="right">28.934</td>
+<td align="right">6</td>
+<td align="right">482</td>
+<td align="right">523</td>
+<td align="right">1005</td>
+<td align="left">(0,15]</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-California
-</td>
-<td style="text-align:right;">
-4.992
-</td>
-<td style="text-align:right;">
-24.0
-</td>
-<td style="text-align:right;">
-41.078
-</td>
-<td style="text-align:right;">
-45
-</td>
-<td style="text-align:right;">
-417
-</td>
-<td style="text-align:right;">
-485
-</td>
-<td style="text-align:right;">
-902
-</td>
-<td style="text-align:left;">
-(15,45]
-</td>
+<tr class="odd">
+<td align="left">California</td>
+<td align="right">4.992</td>
+<td align="right">24.0</td>
+<td align="right">41.078</td>
+<td align="right">45</td>
+<td align="right">417</td>
+<td align="right">485</td>
+<td align="right">902</td>
+<td align="left">(15,45]</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Colorado
-</td>
-<td style="text-align:right;">
-5.443
-</td>
-<td style="text-align:right;">
-18.4
-</td>
-<td style="text-align:right;">
-34.571
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:right;">
-462
-</td>
-<td style="text-align:right;">
-518
-</td>
-<td style="text-align:right;">
-980
-</td>
-<td style="text-align:left;">
-(15,45]
-</td>
+<tr class="even">
+<td align="left">Colorado</td>
+<td align="right">5.443</td>
+<td align="right">18.4</td>
+<td align="right">34.571</td>
+<td align="right">29</td>
+<td align="right">462</td>
+<td align="right">518</td>
+<td align="right">980</td>
+<td align="left">(15,45]</td>
 </tr>
 </tbody>
 </table>

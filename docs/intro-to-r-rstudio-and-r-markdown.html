@@ -685,195 +685,92 @@ Figure 1.2: A datum.
 <h3>Tidy Data<a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Example:</strong> After a scandal among FIFA officials, fivethirtyeight.com posted an analysis of FIFA viewership, <a href="https://fivethirtyeight.com/features/how-to-break-fifa/">“How to Break FIFA”</a>. Here’s a snapshot of the data used in this article:</p>
 <table>
+<colgroup>
+<col width="18%" />
+<col width="16%" />
+<col width="20%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-country
-</th>
-<th style="text-align:left;">
-confederation
-</th>
-<th style="text-align:right;">
-population_share
-</th>
-<th style="text-align:right;">
-tv_audience_share
-</th>
-<th style="text-align:right;">
-gdp_weighted_share
-</th>
+<tr class="header">
+<th align="left">country</th>
+<th align="left">confederation</th>
+<th align="right">population_share</th>
+<th align="right">tv_audience_share</th>
+<th align="right">gdp_weighted_share</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-United States
-</td>
-<td style="text-align:left;">
-CONCACAF
-</td>
-<td style="text-align:right;">
-4.5
-</td>
-<td style="text-align:right;">
-4.3
-</td>
-<td style="text-align:right;">
-11.3
-</td>
+<tr class="odd">
+<td align="left">United States</td>
+<td align="left">CONCACAF</td>
+<td align="right">4.5</td>
+<td align="right">4.3</td>
+<td align="right">11.3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Japan
-</td>
-<td style="text-align:left;">
-AFC
-</td>
-<td style="text-align:right;">
-1.9
-</td>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-9.1
-</td>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="left">AFC</td>
+<td align="right">1.9</td>
+<td align="right">4.9</td>
+<td align="right">9.1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:left;">
-AFC
-</td>
-<td style="text-align:right;">
-19.5
-</td>
-<td style="text-align:right;">
-14.8
-</td>
-<td style="text-align:right;">
-7.3
-</td>
+<tr class="odd">
+<td align="left">China</td>
+<td align="left">AFC</td>
+<td align="right">19.5</td>
+<td align="right">14.8</td>
+<td align="right">7.3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Germany
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-6.3
-</td>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="left">UEFA</td>
+<td align="right">1.2</td>
+<td align="right">2.9</td>
+<td align="right">6.3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Brazil
-</td>
-<td style="text-align:left;">
-CONMEBOL
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-7.1
-</td>
-<td style="text-align:right;">
-5.4
-</td>
+<tr class="odd">
+<td align="left">Brazil</td>
+<td align="left">CONMEBOL</td>
+<td align="right">2.8</td>
+<td align="right">7.1</td>
+<td align="right">5.4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-United Kingdom
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-<td style="text-align:right;">
-2.1
-</td>
-<td style="text-align:right;">
-4.2
-</td>
+<tr class="even">
+<td align="left">United Kingdom</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.1</td>
+<td align="right">4.2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Italy
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-<td style="text-align:right;">
-2.1
-</td>
-<td style="text-align:right;">
-4.0
-</td>
+<tr class="odd">
+<td align="left">Italy</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.1</td>
+<td align="right">4.0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-France
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-<td style="text-align:right;">
-4.0
-</td>
+<tr class="even">
+<td align="left">France</td>
+<td align="left">UEFA</td>
+<td align="right">0.9</td>
+<td align="right">2.0</td>
+<td align="right">4.0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Russia
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-2.1
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-3.5
-</td>
+<tr class="odd">
+<td align="left">Russia</td>
+<td align="left">UEFA</td>
+<td align="right">2.1</td>
+<td align="right">3.1</td>
+<td align="right">3.5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Spain
-</td>
-<td style="text-align:left;">
-UEFA
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-<td style="text-align:right;">
-3.1
-</td>
+<tr class="even">
+<td align="left">Spain</td>
+<td align="left">UEFA</td>
+<td align="right">0.7</td>
+<td align="right">1.8</td>
+<td align="right">3.1</td>
 </tr>
 </tbody>
 </table>
