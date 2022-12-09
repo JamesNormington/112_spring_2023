@@ -647,9 +647,9 @@ Go to <a href="http://google.com" class="uri">http://google.com</a> and type <co
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="text-analysis.html#cb365-1" aria-hidden="true" tabindex="-1"></a>us_dec_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">title =</span> <span class="st">&quot;Declaration of Independence&quot;</span>, <span class="at">text =</span> us_dec)</span>
 <span id="cb365-2"><a href="text-analysis.html#cb365-2" aria-hidden="true" tabindex="-1"></a>us_dec_df</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   title                       text                              
-##   &lt;chr&gt;                       &lt;chr&gt;                             
-## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDE…</code></pre>
+##   title                       text                                                           
+##   &lt;chr&gt;                       &lt;chr&gt;                                                          
+## 1 Declaration of Independence &quot;\n\nTHE DECLARATION OF INDEPENDENCE:\n\n\nIn Congress, July 4…</code></pre>
 <div id="unnesting-tokens" class="section level4 unnumbered hasAnchor">
 <h4>Unnesting Tokens<a href="text-analysis.html#unnesting-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We need to restructure the text into components that can be easily analyzed.</p>
@@ -774,16 +774,16 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb380-2"><a href="text-analysis.html#cb380-2" aria-hidden="true" tabindex="-1"></a>text_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">article =</span> school_wiki_titles, <span class="at">text =</span> school_wiki_text)</span>
 <span id="cb380-3"><a href="text-analysis.html#cb380-3" aria-hidden="true" tabindex="-1"></a>text_df</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
-##   article                 text                                  
-##   &lt;chr&gt;                   &lt;chr&gt;                                 
-## 1 Macalester College      &quot;Macalester College () is a private l…
-## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a pr…
-## 3 University of Minnesota &quot;The University of Minnesota, formall…</code></pre>
+##   article                 text                                                               
+##   &lt;chr&gt;                   &lt;chr&gt;                                                              
+## 1 Macalester College      &quot;Macalester College () is a private liberal arts college in Saint …
+## 2 Carleton College        &quot;Carleton College ( KARL-tin) is a private liberal arts college in…
+## 3 University of Minnesota &quot;The University of Minnesota, formally the University of Minnesota…</code></pre>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="text-analysis.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unnest the data frame so each row corresponds to a single word in a single document.</span></span>
 <span id="cb382-2"><a href="text-analysis.html#cb382-2" aria-hidden="true" tabindex="-1"></a>tidy_df <span class="ot">&lt;-</span> text_df <span class="sc">%&gt;%</span></span>
 <span id="cb382-3"><a href="text-analysis.html#cb382-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
 <span id="cb382-4"><a href="text-analysis.html#cb382-4" aria-hidden="true" tabindex="-1"></a>tidy_df</span></code></pre></div>
-<pre><code>## # A tibble: 15,503 × 2
+<pre><code>## # A tibble: 15,516 × 2
 ##    article            word      
 ##    &lt;chr&gt;              &lt;chr&gt;     
 ##  1 Macalester College macalester
@@ -796,7 +796,7 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 ##  8 Macalester College college   
 ##  9 Macalester College in        
 ## 10 Macalester College saint     
-## # … with 15,493 more rows</code></pre>
+## # … with 15,506 more rows</code></pre>
 <div id="side-by-side-word-clouds" class="section level4 unnumbered hasAnchor">
 <h4>Side-by-Side Word Clouds<a href="text-analysis.html#side-by-side-word-clouds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="text-analysis.html#cb384-1" aria-hidden="true" tabindex="-1"></a>macalester_counts <span class="ot">&lt;-</span> tidy_df <span class="sc">%&gt;%</span></span>
@@ -823,7 +823,7 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 <span id="cb386-3"><a href="text-analysis.html#cb386-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span></span>
 <span id="cb386-4"><a href="text-analysis.html#cb386-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb386-5"><a href="text-analysis.html#cb386-5" aria-hidden="true" tabindex="-1"></a>umn_counts</span></code></pre></div>
-<pre><code>## # A tibble: 1,910 × 2
+<pre><code>## # A tibble: 1,911 × 2
 ##    word           n
 ##    &lt;chr&gt;      &lt;int&gt;
 ##  1 university    98
@@ -831,12 +831,12 @@ We can load the dataset and use <code>anti_join</code> to remove rows associated
 ##  3 campus        68
 ##  4 hall          36
 ##  5 school        35
-##  6 students      34
+##  6 students      35
 ##  7 student       33
 ##  8 college       23
 ##  9 bank          21
 ## 10 center        21
-## # … with 1,900 more rows</code></pre>
+## # … with 1,901 more rows</code></pre>
 <div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="text-analysis.html#cb388-1" aria-hidden="true" tabindex="-1"></a>carleton_counts <span class="ot">&lt;-</span> tidy_df <span class="sc">%&gt;%</span></span>
 <span id="cb388-2"><a href="text-analysis.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(article <span class="sc">==</span> <span class="st">&quot;Carleton College&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb388-3"><a href="text-analysis.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span></span>
@@ -985,13 +985,13 @@ gophers
 21
 </td>
 <td style="text-align:right;">
-0.0028846
+0.0028795
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0031691
+0.0031634
 </td>
 </tr>
 <tr>
@@ -1025,13 +1025,13 @@ golden
 17
 </td>
 <td style="text-align:right;">
-0.0023352
+0.0023310
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0025654
+0.0025609
 </td>
 </tr>
 <tr>
@@ -1305,13 +1305,13 @@ mall
 11
 </td>
 <td style="text-align:right;">
-0.0015110
+0.0015083
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0016600
+0.0016570
 </td>
 </tr>
 <tr>
@@ -1425,13 +1425,13 @@ gopher
 10
 </td>
 <td style="text-align:right;">
-0.0013736
+0.0013712
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0015091
+0.0015064
 </td>
 </tr>
 <tr>
@@ -1505,13 +1505,13 @@ big
 9
 </td>
 <td style="text-align:right;">
-0.0012363
+0.0012341
 </td>
 <td style="text-align:right;">
 1.0986123
 </td>
 <td style="text-align:right;">
-0.0013582
+0.0013558
 </td>
 </tr>
 <tr>
@@ -1525,13 +1525,13 @@ area
 23
 </td>
 <td style="text-align:right;">
-0.0031593
+0.0031537
 </td>
 <td style="text-align:right;">
 0.4054651
 </td>
 <td style="text-align:right;">
-0.0012810
+0.0012787
 </td>
 </tr>
 <tr>
@@ -1784,7 +1784,7 @@ service
 9
 </td>
 <td style="text-align:right;">
-0.0012363
+0.0012341
 </td>
 <td style="text-align:right;">
 0.0000000
@@ -2055,9 +2055,9 @@ negative
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="text-analysis.html#cb401-1" aria-hidden="true" tabindex="-1"></a>nrc <span class="sc">%&gt;%</span></span>
 <span id="cb401-2"><a href="text-analysis.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
-##   num_words sentiments                                          
-##       &lt;int&gt; &lt;chr&gt;                                               
-## 1     13872 anger, anticipation, disgust, fear, joy, negative, …</code></pre>
+##   num_words sentiments                                                                       
+##       &lt;int&gt; &lt;chr&gt;                                                                            
+## 1     13872 anger, anticipation, disgust, fear, joy, negative, positive, sadness, surprise, …</code></pre>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="text-analysis.html#cb403-1" aria-hidden="true" tabindex="-1"></a>bing <span class="sc">%&gt;%</span></span>
 <span id="cb403-2"><a href="text-analysis.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_words =</span> <span class="fu">n</span>(), <span class="at">sentiments =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(sentiment)), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2

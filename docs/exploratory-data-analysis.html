@@ -632,30 +632,28 @@ Figure 12.1: The process of EDA, as described by Grolemund and Wickham.
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="exploratory-data-analysis.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crime)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
-##   state   murder forci…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵
-##   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 United…    5.6    31.7   141.     291.    727.   2286.    417.
-## 2 Alabama    8.2    34.3   141.     248.    954.   2650     288.
-## 3 Alaska     4.8    81.1    80.9    465.    622.   2599.    391 
-## 4 Arizona    7.5    33.8   144.     327.    948.   2965.    924.
-## 5 Arkans…    6.7    42.9    91.1    387.   1085.   2711.    262.
-## 6 Califo…    6.9    26     176.     317.    693.   1916.    713.
-## # … with 1 more variable: population &lt;dbl&gt;, and abbreviated
-## #   variable names ¹​forcible_rape, ²​aggravated_assault,
-## #   ³​burglary, ⁴​larceny_theft, ⁵​motor_vehicle_theft</code></pre>
+##   state         murder forcible_rape robbery aggravated_ass…¹ burgl…² larce…³ motor…⁴ popul…⁵
+##   &lt;chr&gt;          &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 United States    5.6          31.7   141.              291.    727.   2286.    417.  2.96e8
+## 2 Alabama          8.2          34.3   141.              248.    954.   2650     288.  4.55e6
+## 3 Alaska           4.8          81.1    80.9             465.    622.   2599.    391   6.69e5
+## 4 Arizona          7.5          33.8   144.              327.    948.   2965.    924.  5.97e6
+## 5 Arkansas         6.7          42.9    91.1             387.   1085.   2711.    262.  2.78e6
+## 6 California       6.9          26     176.              317.    693.   1916.    713.  3.58e7
+## # … with abbreviated variable names ¹​aggravated_assault, ²​burglary, ³​larceny_theft,
+## #   ⁴​motor_vehicle_theft, ⁵​population</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-data-analysis.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(crime)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
-##   state   murder forci…¹ robbery aggra…² burgl…³ larce…⁴ motor…⁵
-##   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 Vermont    1.3    23.3    11.7    83.5    492.   1686.    103.
-## 2 Virgin…    6.1    22.7    99.2   155.     392.   2035     211.
-## 3 Washin…    3.3    44.7    92.1   206.     960.   3150.    784.
-## 4 West V…    4.4    17.7    44.6   206.     621.   1794     210 
-## 5 Wiscon…    3.5    20.6    82.2   135.     441.   1993.    227.
-## 6 Wyoming    2.7    24      15.3   188.     476.   2534.    145.
-## # … with 1 more variable: population &lt;dbl&gt;, and abbreviated
-## #   variable names ¹​forcible_rape, ²​aggravated_assault,
-## #   ³​burglary, ⁴​larceny_theft, ⁵​motor_vehicle_theft</code></pre>
+##   state         murder forcible_rape robbery aggravated_ass…¹ burgl…² larce…³ motor…⁴ popul…⁵
+##   &lt;chr&gt;          &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Vermont          1.3          23.3    11.7             83.5    492.   1686.    103.  618814
+## 2 Virginia         6.1          22.7    99.2            155.     392.   2035     211. 7563887
+## 3 Washington       3.3          44.7    92.1            206.     960.   3150.    784. 6261282
+## 4 West Virginia    4.4          17.7    44.6            206.     621.   1794     210  1803920
+## 5 Wisconsin        3.5          20.6    82.2            135.     441.   1993.    227. 5541443
+## 6 Wyoming          2.7          24      15.3            188.     476.   2534.    145.  506242
+## # … with abbreviated variable names ¹​aggravated_assault, ²​burglary, ³​larceny_theft,
+## #   ⁴​motor_vehicle_theft, ⁵​population</code></pre>
 <p>Finally, ask yourself about the relationships between tables:</p>
 <ul>
 <li>What variables are keys and link the tables (i.e., which variables can you use in <code>join</code> commands)?</li>
