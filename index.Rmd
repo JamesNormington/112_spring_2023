@@ -9,9 +9,9 @@ output:
         twitter: false
 documentclass: book
 link-citations: yes
-github-repo: bcheggeseth/112_fall_2022/
+github-repo: JamesNormington/112_spring_2023/
 cover-image: "images/logo.png"
-description: "This is the class website for Introduction to Data Science at Macalester College for Fall 2022."
+description: "This is the class website for Introduction to Data Science at Macalester College for Spring 2023."
 ---
 
 # Welcome! {-}
@@ -27,7 +27,7 @@ description: "This is the class website for Introduction to Data Science at Maca
 
 *Note: This site is still in construction!*
 
-This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor [Brianna Heggeseth](https://bcheggeseth.github.io) at Macalester College for Fall 2022. The activities here were developed by a variety of faculty in the [MSCS Department](https://macalester.edu/mscs) at [Macalester College](https://macalester.edu).
+This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor [James Normington](https://jamesnormington.github.io) at Macalester College for Spring 2023. The activities here were developed by a variety of faculty in the [MSCS Department](https://macalester.edu/mscs) at [Macalester College](https://macalester.edu).
 
 
 
