@@ -27,7 +27,11 @@ description: "This is the class website for Introduction to Data Science (COMP/S
 
 *Note: This site is still in construction!*
 
-This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor [James Normington](https://jamesnormington.github.io) at Macalester College for Spring 2023. The activities here were developed by a variety of faculty in the [MSCS Department](https://macalester.edu/mscs) at [Macalester College](https://macalester.edu).
+This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor [James Normington](https://jamesnormington.github.io) at Macalester College for Spring 2023. 
+
+This website was constructed by Professor [Brianna Heggeseth](https://bcheggeseth.github.io/), and has been modified for Professor Normington's Spring 2023 offering of COMP/STAT 112.
+
+The activities here were developed by a variety of faculty in the [MSCS Department](https://macalester.edu/mscs) at [Macalester College](https://macalester.edu).
 
 
 
