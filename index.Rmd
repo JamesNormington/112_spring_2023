@@ -11,7 +11,7 @@ documentclass: book
 link-citations: yes
 github-repo: JamesNormington/112_spring_2023/
 cover-image: "images/logo.png"
-description: "This is the class website for Introduction to Data Science at Macalester College for Spring 2023."
+description: "This is the class website for Introduction to Data Science (COMP/STAT 112) at Macalester College for Spring 2023."
 ---
 
 # Welcome! {-}
