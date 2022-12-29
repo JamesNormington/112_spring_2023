@@ -28,7 +28,7 @@ As you might guess from the name, "Data Science" requires *data*. Working with m
 -   it's open source (the code is free & anybody can contribute to it)
 -   it has a huge online community (which is helpful for when you get stuck)\
 -   it's one of the industry standards\
--   it can be used to create *reproducible* and lovely documents (In fact, the course materials that you're currently reading were constructed entirely within RStudio!)
+-   it can be used to create *reproducible* and lovely documents (In fact, the course materials that you're currently reading were constructed entirely within RStudio! [thank you Prof. Brianna Heggeseth!])
 
 ### Download R & RStudio {.unnumbered}
 
@@ -39,7 +39,7 @@ To get started, take the following two steps *in the given order*. Even if you a
 
 If you are having issues with downloading, log on to <https://rstudio.macalester.edu/> (use Mac credentials) to use the RStudio server.
 
-What's the difference between R and RStudio? Mainly, RStudio requires R -- thus it does everything R does *and more*. We will be using RStudio exclusively.
+What's the difference between R and RStudio? RStudio requires R to run, but has more options and is easier to use than R. I like to think of RStudio as the car, and R as the engine. 
 
 ### A quick tour of RStudio {.unnumbered}
 
@@ -57,7 +57,7 @@ Use RStudio as a simple calculator to do the following:
   1) Perform a simple calculation: calculate `90/3`.
   2) RStudio has built-in *functions* to which we supply the necessary *arguments*:  `function(arguments)`.  Use the built-in function `sqrt` to calculate the square root of 25.
   3) Use the built-in function `rep` to repeat the number "5" eight times.
-  4) Use the `seq` function to create the vector `(0, 3, 6, 9, 12)`.  (The video doesnt cover this!)
+  4) Use the `seq` function to create the vector `(0, 3, 6, 9, 12)`. Hint: `seq(0, 15, by = 5)` would create the vector `(0, 5, 10, 15)`.
   5) Create a new vector by concatenating three repetitions of the vector from the previous part.
 ```
 
@@ -231,7 +231,7 @@ The first step to working with data in RStudio is getting it in there!  How we d
 #download the data and information in the fivethirtyeight package (we only need to do this once)
 install.packages('fivethirtyeight')
 
-#load the fivethirtyeight package
+#load the fivethirtyeight package (we must do this every session of RStudio in which we want to use this package)
 library(fivethirtyeight)
     
 #load the fifa data
@@ -381,14 +381,16 @@ Complete the following. If you get stuck along the way, refer to the R Markdown 
 ```{exercise name="Your First R Markdown File"}
 Create a new R Markdown about your favorite food.    
 
-a. Create a new file in RStudio (File -> New File -> R Markdown) with a Title of `First_Markdown`. Save it to a new folder on your Desktop called `COMP_STAT_112`; within that new folder, create another new folder called `Day_01`.  
-b. Make sure you can compile/render (Knit) the Markdown into a webpage (html file).  
-c. Add a new line between `title` and `output` that reads: `author: Your Name`.
-d. Create a very brief essay about your favorite food. Make sure to include:    
+a. Create a new folder on your Desktop called `COMP_STAT_112`. 
+b. Within that folder, create a subfolder called `Day_01`.
+c. Create a new file in RStudio (File -> New File -> R Markdown) with a Title of `First_Markdown`. Save it in the `Day 01` subfolder. 
+d. Make sure you can compile/render (Knit) the Markdown into a webpage (html file).  
+e. Add a new line between `title` and `output` that reads: `author: Your Name`.
+f. Create a very brief essay about your favorite food. Make sure to include:    
   * A picture from the web    
   * A bullet list    
   * A numbered list  
-e. Compile (Knit) the document into an html file.
+g. Compile (Knit) the document into an html file.
 ```
 
 ```{exercise name="New Data!"}
