@@ -16,15 +16,6 @@ description: "This is the class website for Introduction to Data Science (COMP/S
 
 # Welcome! {-}
 
-<center>
-<img src="images/logo.png" width="300">
-
-<a href="https://www.flaticon.com/free-icons/data" title="data icons">Data icons created by Kiranshastry - Flaticon</a>
-</center>
-
-<br>
-<br>
-
 *Note: This site is still in construction!*
 
 This is the day-to-day course site for Introduction to Data Science (COMP/STAT 112) taught by Professor [James Normington](https://jamesnormington.github.io) at Macalester College for Spring 2023. 
