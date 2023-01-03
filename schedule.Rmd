@@ -2,6 +2,10 @@
 
 The schedule below is a *tentative* outline of our plans for the semester. This schedule will change throughout the semester, so check this often.
 
+[Here](https://jamesnormington.github.io/files/COMP_STAT%20112%20Spring%202023%20Syllabus.pdf) is a link to the syllabus.
+
+[Here](https://docs.google.com/spreadsheets/d/1g462sR6fCMG61lWvytmDMSWbjnjTKbERVaqADM2dSlc/edit?usp=sharing) is a link to the grading template we will use.
+
 <br>
 
 ```{r echo=FALSE}
