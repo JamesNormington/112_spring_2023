@@ -601,7 +601,7 @@ ggplot(bechdel, aes(x = budget_2013)) +
 The histogram and density plot both allow us to visualize the distribution of a quantitative variable.  What are the pros/cons of each?  Discuss.
 ```
 
-## Additional exercises {.unnumbered}
+## Assignment 2 (due Wednesday, Feb 1 at 11:59pm) {.unnumbered}
 
 ```{exercise}
 In July 2016, fivethirtyeight.com published the article ["Hip-Hop is Turning on Donald Trump""](https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/).  You can find the supporting data table `hiphop_cand_lyrics` in the `fivethirtyeight` package:    

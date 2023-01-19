@@ -387,7 +387,8 @@ c. Create a new file in RStudio (File -> New File -> R Markdown) with a Title of
 d. Make sure you can compile/render (Knit) the Markdown into a webpage (html file).  
 e. Add a new line between `title` and `output` that reads: `author: Your Name`.
 f. Create a very brief essay about your favorite food. Make sure to include:    
-  * A picture from the web    
+  * A picture from the web: (1) Download an image and save it in the same folder as your Markdown (.Rmd) file. 
+Then, add the following code to your Markdown file: `![This is the caption](file_name.png)`. For example, to add a photo of an elephant saved as elephant.png, you would put: `![This is an elephant](elephant.png)`
   * A bullet list    
   * A numbered list  
 g. Compile (Knit) the document into an html file.
