@@ -15,7 +15,7 @@ Birthdays <- Birthdays %>% select(state, date, year, births)
 - Understand and be able to use the following verbs appropriate: `select`, `mutate`, `filter`, `arrange`, `summarize`, `group_by`
 - Develop working knowledge of working with dates and `lubridate` functions
 
-You can download a template .Rmd of this activity [here](template_rmd/07-Six_Main_Verbs_Assign.Rmd). Add it to a folder called `Day_07` in your `COMP_STAT_112` folder.
+You can download a template .Rmd of this activity [here](template_rmd/07-Six_Main_Verbs_Assign.Rmd). Add it to a folder called `Assignment_05` in your `COMP_STAT_112` folder.
 
 
 
@@ -75,7 +75,7 @@ The first two verbs change which variables (columns) are included in the data fr
 
 - **`mutate()`** adds one or more columns to the data frame. Each column is a function of the other columns that is applied on a row by row basis. For example, we can use arithmetic operations like adding two other variables or logical operations like checking if two columns are equal, or equal to a target number.
 
-```{exercise,name="select and mutate"}
+```{example, name="select and mutate"}
 Consider the `Birthdays` data
 ```
 
@@ -116,7 +116,7 @@ The next two verbs change which cases (rows) are included in the data frame, but
 
 - **`arrange()`** reorders the rows according to a specified criteria. To sort in reverse order based on the variable `x`, use `arrange(desc(x))`.
 
-```{exercise, name="filter and arrange", label="ex-ma"}
+```{example, name="filter and arrange", label="ex-ma"}
 Create a table with only births in Massachusetts in 1979, and sort the days from those with the most births to those with the fewest.
 
 ```
@@ -156,17 +156,17 @@ The `c()` here is for concatenate, which is how we form vectors in `R`.
 
 
 
-- **`summarise()`** (or equivalently **`summarize()`**) takes an entire data frame as input and outputs a single row with one or more summary statistics, such as `mean`, `sum`, `sd`, `n_distinct()`, or `n()` (which, like `tally()`, just counts the number of entries). 
+- **`summarize()`** (or equivalently **`summarise()`**) takes an entire data frame as input and outputs a single row with one or more summary statistics, such as `mean()`, `sum()`, `sd()`, `n_distinct()`, or `n()` (which just counts the number of entries/rows). 
 
 ```{r}
-summarise(Birthdays,
+summarize(Birthdays,
   total_births = sum(births),
   average_births = mean(births),
   nstates = n_distinct(state), ncases = n()
 )
 ```
 
-So `summarise` changes both the cases and the variables. Alone, `summarise` is not all that useful, because we can also access individual variables directly with the dollar sign. For example, to find the total and average births, we can write
+So `summarize` changes both the cases and the variables. Alone, `summarize` is not all that useful, because we can also access individual variables directly with the dollar sign. For example, to find the total and average births, we can write
 
 ```{r}
 sum(Birthdays$births)
@@ -175,9 +175,9 @@ mean(Birthdays$births)
 
 Rather, we will mostly use it to create **grouped summaries**, which brings us to the last of the six main data verbs.
 
-- **`group_by()`** groups the cases of a data frame by a specified set of variables. The size of the stored data frame does not actually change (neither the cases nor the variables change), but then other functions can be applied to the specified groups instead of the entire data set. We'll often use `group_by` in conjunction with `summarise` to get a grouped summary.
+- **`group_by()`** groups the cases of a data frame by a specified set of variables. The size of the stored data frame does not actually change (neither the cases nor the variables change), but then other functions can be applied to the specified groups instead of the entire data set. We'll often use `group_by` in conjunction with `summarize` to get a grouped summary.
 
-```{exercise, name="grouped summary"}  
+```{example, name="grouped summary"}  
 Consider the `Birthdays` data again.
 ```
 
@@ -187,13 +187,14 @@ Consider the `Birthdays` data again.
 <details>
 <summary>Solution</summary>
 
-We have to first group by the desired grouping and then perform a summarise.
+We have to first group by the desired grouping and then perform a `summarize`.
 
 ```{r}
 BirthdaysYear <- group_by(Birthdays, year)
-summarise(BirthdaysYear, average = mean(births))
+summarize(BirthdaysYear, average = mean(births))
+
 BirthdaysYearState <- group_by(Birthdays, year, state)
-summarise(BirthdaysYearState, average = mean(births))
+summarize(BirthdaysYearState, average = mean(births))
 ```
 </details>
 \
@@ -252,14 +253,14 @@ knitr::kable(
 ```
 
 
-```{exercise}
+```{example}
 Make a table showing the five states with the most births between September 9, 1979 and September 11, 1979, inclusive. Arrange the table in descending order of births.
 ```
 
 <details>
 <summary>Solution</summary>
 
-The plan of attack is to first filter the dates, then group by state, then use a `summarise` to add up totals for each state, and finally arrange them in descending order to find the top 5.^[The verbs `head(n = 5)`, `tail(n = 3)` are often used just after an `arrange` to keep, e.g., only the first 5 entries or last 3 entries, where `n` specifies the number of entries to keep.]
+The plan of attack is to first filter the dates, then group by state, then use a `summarize` to add up totals for each state, and finally arrange them in descending order to find the top 5.^[The verbs `head(n = 5)`, `tail(n = 3)` are often used just after an `arrange` to keep, e.g., only the first 5 entries or last 3 entries, where `n` specifies the number of entries to keep.]
 
 
 ```{r}
@@ -267,7 +268,7 @@ SepTable <-
   Birthdays %>%
   filter(date >= ymd("1979-09-09"), date <= ymd("1979-09-11")) %>%
   group_by(state) %>%
-  summarise(total = sum(births)) %>%
+  summarize(total = sum(births)) %>%
   arrange(desc(total)) %>%
   head(n = 5)
 ```
@@ -283,7 +284,7 @@ knitr::kable(
 </details>
 \
 
-## Exercises Part 1: Baby Names {-}
+## Practice Part 1: Baby Names {-}
 
 We are going to practice the six data verbs on the `babynames` dataset:
 
@@ -338,7 +339,7 @@ Calculate the most popular name for each year. Print out the answer for the year
 ```
 
 
-## Exercises Part 2: US Births {-}
+## Practice Part 2: US Births {-}
 
 Now we are ready to return to the `Birthdays` data set to investigate some drivers of daily births in the US.
 
@@ -355,7 +356,7 @@ Create a new data table, `DailyBirths`, that adds up all the births for each day
 
 ```{exercise, name="Examine Seasonality", label="seasonality"}
 
-To examine seasonality in birth rates, look at the number of births by
+To examine seasonality in birth rates, look at the daily number of births by
 
 a. week of the year (1-53)
 b. month of the year (January to December)
@@ -369,7 +370,7 @@ When are the most babies born? The fewest?
 ### Day of the Week {-}
 
 ```{exercise, name="Examine Patterns within the Week", label="weekday"}
-To examine patterns within the week, make a box plot showing the number of births by day of the week. Interpret your results.
+To examine patterns within the week, make a box plot showing the daily number of births by day of the week. Interpret your results.
 
 ```
 
@@ -408,9 +409,11 @@ c. Finally, some holidays seem to have more of an effect than others. It would b
 
 ### Geography {-}
 
-```{exercise, name="Examine the Effect of Geography", label="geography"}
-In any way you choose, explore the effect of geography on birth patterns. For example, do parents in Minnesota have fewer winter babies than in other states? Which states have the largest increases or decreases in their portion of US births over time? Is the weekend effect less strong for states with a higher percentage of their populations living in rural areas? Pick any issue (not all of these) that interests you, explore it, and create a graphic to illustrate your findings.
-```
+
+In any way you choose, explore the effect of geography on birth patterns using the original `Birthdays` data. For example, do parents in Minnesota have fewer winter babies than in other states? Which states have the largest increases or decreases in their portion of US births over time? Is the weekend effect less strong for states with a higher percentage of their populations living in rural areas? 
+  
+If you have extra time or want some extra practice, pick any issue (not all of these) that interests you, explore it, and create a graphic to illustrate your findings.
+
 
 ### Superstition {-}
 
@@ -427,8 +430,8 @@ This [article](https://fivethirtyeight.com/features/some-people-are-too-supersti
 | `mutate()`        |  Creates a new variable |   `mutate(Birthdays, year_short = year - 1900)` |
 | `filter()`        |   Provides a subset of rows |   `filter(Birthdays, state %in% c("AK","CA","MA")) ` |
 | `arrange()`        |   Sorts the rows of a dataset |   `arrange(Birthdays, desc(births)) ` |
-| `summarize()`        |   Collapses rows into summaries of variables across rows |   `summarise(Birthdays,total_births = sum(births), average_births = mean(births), nstates = n_distinct(state), ncases = n()) ` |
-| `group_by()`        |   Collapses rows into summaries of variables across rows |   `group_by(Birthdays, year, state) %>% summarise(average = mean(births))` |
+| `summarize()`        |   Collapses rows into summaries of variables across rows |   `summarize(Birthdays,total_births = sum(births), average_births = mean(births), nstates = n_distinct(state), ncases = n()) ` |
+| `group_by()`        |   Collapses rows into summaries of variables across rows |   `group_by(Birthdays, year, state) %>% summarize(average = mean(births))` |
 
 
 ### Logical/Boolean Operators {.unnumbered}

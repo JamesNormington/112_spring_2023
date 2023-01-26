@@ -1,0 +1,20 @@
+---
+title: "Tidy Tuesday Week 1"
+output: html_document
+date: "2023-01-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("tidytuesdayR") # only need to run once to install!
+
+library(tidytuesdayR)
+
+tuesdata <- tidytuesdayR::tt_load('2023-01-24')
+
+survivalists <- tuesdata$survivalists
+loadouts <- tuesdata$loadouts
+episodes <- tuesdata$episodes
+seasons <- tuesdata$seasons
+```
+

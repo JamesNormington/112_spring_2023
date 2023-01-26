@@ -19,7 +19,15 @@ knitr::opts_chunk$set(tidy = FALSE, message = FALSE, cache.extra = packageVersio
 - Identify appropriate types of bivariate visualizations, depending on the type of variables (categorical, quantitative)
 - Create basic bivariate visualizations based on real data
 
-You can download a template .Rmd of this activity [here](template_rmd/04-Bivariate_Viz_Assign.Rmd). Put the file in a `Day_04` folder within your `COMP_STAT_112` folder.
+You can download a template .Rmd of this activity [here](template_rmd/04-Bivariate_Viz_Assign.Rmd). Put the file in the existing `Assignment_03` folder within your `COMP_STAT_112` folder.
+
+## Alterative Text for Visualizations {-}
+
+You should write alt text for every visualization to create. 
+
+From the last activity: Alt text should concisely articulate (1) what your visualization is (e.g. a bar chart showing which the harvest rate of cucumbers), (2) a one sentence description of the what you think is the most important takeaway your visualization is showing, and (3) a link to your data source if it's not already in the caption (check out this [great resource on writing alt text for data visualizations](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81)). 
+
+To add the alt text to your the HTML created from knitting the Rmd, you can include it as an option at the top of your R chunk. For example: \{r, fig.alt = "Bar chart showing the daily harvest of cucumbers. The peak cucumber collection day is August 18th"\}. In this activity, there will be prompts in the template Rmd but you should try to continue doing this for future assignments.
 
 ## Bivariate Visualizations {-}
 
@@ -27,13 +35,13 @@ The outcome of the 2016 presidential election surprised many people.  In this ac
 
 ### Getting to know the dataset {-}
 
-```{exercise}
-Begin by loading the data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv" and getting to know the data. Follow the prompts below to guide you.
+```{example}
+Begin by loading the [election data](data/electionDemographics16.csv) from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv" and getting to know the data. Write out R functions to get to know the data using the prompts below to guide you.
 ```
 
 ```{r eval=FALSE}
-# Load data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv"
-elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
+# Load data from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv"
+elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # Check out the first rows of elect.  What are the units of observation?
 
@@ -47,8 +55,8 @@ elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographic
 <details>
   <summary>Solution</summary>
 ```{r,collapse=TRUE}
-# Load data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv"
-elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
+# Load data from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv"
+elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # Check out the first rows of elect.
 # The units of observation are county election results
@@ -65,7 +73,7 @@ names(elect)
 \
 
 
-```{exercise}
+```{example}
 Explore the win column:
     The `winrep_2016` variable indicates whether or not the Republican (Trump) won the county in 2016, thus is *categorical*.  Let's construct both numerical and visual summaries of Trump wins/losses.  (Before you do, what do you anticipate?) 
 ```
@@ -90,7 +98,9 @@ table(elect$winrep_2016)
 
 # Attach a library needed for ggplots
 library(ggplot2)
+```
 
+```{r eval=TRUE, fig.cap = 'Count of U.S. counties that Trump won (and lost) in 2016', fig.alt = 'Barplot of the count of U.S. counties that Trump won (represented by TRUE) or lost (represented by FALSE) in 2016. Trump won the vast majority of U.S. counties in 2016.'}
 # Construct a bar chart (a visual summary) of this variable.
 ggplot(elect, aes(x = winrep_2016)) +
   geom_bar()
@@ -99,7 +109,7 @@ ggplot(elect, aes(x = winrep_2016)) +
 
 \
 
-```{exercise name="Explore Vote Percentages"}
+```{example name="Explore Vote Percentages"}
 The `perrep_2016` variable includes a bit more detail about Trump's support in each county.    
 
 ```
@@ -118,7 +128,7 @@ ggplot(elect, aes(xxx)) +
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE}
+```{r eval=TRUE, fig.cap = c('Histogram of percentage of votes that were Republican within a U.S. county in 2016 presidential election.','Density plot of percentage of votes that were Republican within a U.S. county in 2016 presidential election.'), fig.alt = c('Histogram of percentage of votes that were Republican within a U.S. county in 2016 presidential election. Most counties had between 50 and 75% of the vote go Republican.','Density plot of percentage of votes that were Republican within a U.S. county in 2016 presidential election. Most counties had between 50 and 75% of the vote go Republican.')}
 # histogram
 ggplot(elect, aes(x = perrep_2016)) +
   geom_histogram(color = "white")
@@ -169,7 +179,7 @@ Recall some **basic rules in constructing graphics:**
 
 
 
-```{exercise, name="Mock-Ups"}
+```{example, name="Mock-Ups"}
 Consider a subset  of the variables: 
 
 ```
@@ -191,14 +201,14 @@ a. The relationship between `perrep_2016` (the response) and `perrep_2012` (the 
 b. The relationship between `perrep_2016` (the response) and `StateColor` (the predictor).  Think: how might we modify the below density plot of `perrep_2016` to distinguish between counties in red/purple/blue states?    
 
     
-```{r fig.width=2, fig.height=2}
+```{r fig.width=2, fig.height=2, fig.alt = 'Density plot of percentage of votes that were Republican within a U.S. county in 2016 presidential election. Most counties had between 50 and 75% of the vote go Republican.'}
 ggplot(elect, aes(x = perrep_2016)) +
   geom_density()
 ```    
 
 c. The relationship between Trump's county-levels wins/losses `winrep_2016` (the response) and `StateColor` (the predictor).  Think: how might we modify the below bar plot of `winrep_2016` to distinguish between counties in red/purple/blue states? 
 
-```{r fig.width=3, fig.height=2}
+```{r fig.width=3, fig.height=2, fig.alt = 'Barplot of the count of U.S. counties that Trump won (represented by TRUE) or lost (represented by FALSE) in 2016. Trump won the vast majority of U.S. counties in 2016.'}
 ggplot(elect, aes(x = winrep_2016)) +
   geom_bar()
 ```    
@@ -207,7 +217,7 @@ ggplot(elect, aes(x = winrep_2016)) +
 
 Let's start by exploring the relationship between Trump's 2016 support (`perrep_2016`) and Romney's 2012 support (`perrep_2012`), both quantitative variables.    
 
-```{exercise name="Scatterplots and Glyphs"}
+```{example name="Scatterplots and Glyphs"}
 Both `perrep_2016` and `perrep_2012` are quantitative, thus require their own axes.  Traditionally, the response variable (what we are trying to predict or explain) is placed on the y-axis.  Once the axes are set up, each case is represented by a "glyph" at the coordinates defined by these axes.    
 
 ```
@@ -233,7 +243,7 @@ ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE}
+```{r eval=TRUE, fig.alt = c('Empty plot with axes.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016. There is a strong positive relationship.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 with plus symbols as points. There is a strong positive relationship.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 labeled according to state. There is a strong positive relationship and Utah counties tended to have a lower Republican vote percentage in 2016 than what you'd expect given 2012.')}
 # just a graphics frame
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012))
 
@@ -270,7 +280,7 @@ There is a strong positive relationship between the Republican support from 2012
 \
 
 
-```{exercise name="Capture the Trend with 'smooths'"}
+```{example name="Capture the Trend with 'smooths'"}
 The trend of the relationship between `perrep_2016` and `perrep_2012` is clearly positive and (mostly) linear.  We can highlight this trend by adding a model "smooth" to the plot.    
 
 ```
@@ -285,7 +295,7 @@ ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE}
+```{r eval=TRUE, fig.alt = 'Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 with a trend line. There is a strong positive relationship.'}
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
   geom_point() +
   geom_smooth()
@@ -299,7 +309,7 @@ b. Construct a new plot that contains the model smooth but does not include the 
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE, collapse = TRUE}
+```{r eval=TRUE, collapse = TRUE, fig.alt = 'Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 with a linear trend line. There is a strong positive relationship.'}
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
   geom_smooth()
 ```
@@ -325,14 +335,14 @@ ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE}
+```{r eval=TRUE, fig.alt = 'Postive trend line of Republician vote percent in U.S. counties in 2012 and 2016.'}
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```      
 </details>
 
-```{exercise name="Modify the Scatterplots"}
+```{example name="Modify the Scatterplots"}
 As with univariate plots, we can change the aesthetics of scatterplots.    
 
 ```
@@ -346,7 +356,7 @@ d. Why is transparency useful in this particular graphic?
    
 <details>
   <summary>Solution</summary>
-```{r, eval=TRUE}
+```{r, eval=TRUE, fig.alt= 'Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016. There is a strong positive relationship.'}
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
   geom_point(color = "red", alpha = 0.1) +
   labs(x = "Romney 2012 support (%)", y = "Trump 2016 support (%)") + 
@@ -382,11 +392,12 @@ grid.arrange(g1, g2, ncol = 2)
 
 To visualize the relationship between Trump's 2016 support (`perrep_2016`) and the `StateColor` (categorical) we need to incorporate a grouping mechanism.  Work through the several options below.    
 
-```{exercise name="Side-by-Side Density Plots"}
+```{example name="Side-by-Side Density Plots"}
 We can show density plots for each state color next to each other:
 ```
 
-a. Construct a density plot for each group.     
+a. Construct a density plot for each group. 
+
 ```{r eval=FALSE}
 ggplot(elect, aes(x = perrep_2016, fill = StateColor)) +
   geom_density()
@@ -430,11 +441,12 @@ geom_histogram(color = "white")
 
 b. That's not very helpful!  Separate the histograms into separate facets for each `StateColor` group.    
 
-```{exercise name="More Options!"}
+```{example name="More Options!"}
 Density plots and histograms aren't the only type of viz we might use...    
 ```
 
 a. Construct side-by-side violins and side-by-side boxplots (see description below).    
+
 ```{r eval=FALSE}
 # violins instead
 ggplot(elect, aes(y = perrep_2016, x = StateColor)) +
@@ -447,7 +459,7 @@ ggplot(elect, aes(y = perrep_2016, x = StateColor)) +
 
 Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable: 
     
-```{r, out.width = "400px",echo=FALSE}
+```{r, out.width = "400px",echo=FALSE, fig.alt='Illustration of boxplot. Box represents 25th and 75th percentile of the data; middle line represented the median. The length of the box is the interquartile range (IQR). The points indiciate outliers (at least 1.5 times the IQR away from the box). '}
 knitr::include_graphics("images/Boxplot.png")
 ```
 
@@ -619,7 +631,7 @@ scale_fill_manual(values = c("red", "salmon", "pink", "steelblue1", "steelblue4"
     
 NOTE: that your plot won't look *exactly* like the authors', but should be close to this:    
     
-```{r, out.width = "800px",echo=FALSE}
+```{r, out.width = "800px",echo=FALSE, fig.alt='Proportional barplot of Bechdel test results across 5 year time periods. An increasing number of movies pass the Bechdel test over time but still only make up about 50% of the movies in the most recent time period.'}
 knitr::include_graphics("images/bechdel_hist.jpeg")
 ```
 

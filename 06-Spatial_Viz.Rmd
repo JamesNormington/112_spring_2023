@@ -26,7 +26,7 @@ library(flair) # for highlighting code
 - Add points and other `ggplot2` features to a map created from `geom_map()`   
 - Understand the basics of creating a map using `leaflet`, including adding points and choropleths to a base map 
 
-You can download a template .Rmd of this activity [here](template_rmd/06-Spatial_Viz_Assign.Rmd). Put this in a new folder called `Day_06` in your folder for `COMP_STAT_112`. 
+You can download a template .Rmd of this activity [here](template_rmd/06-Spatial_Viz_Assign.Rmd). Put this in the existing folder called `Assignment_04` in your folder for `COMP_STAT_112`. 
 
 
 
@@ -45,13 +45,18 @@ There are many ways we could visually represent data on a map. The first we'll t
 
 ### Starbucks Example {-}
 
-The `Starbucks` data, compiled by Danny Kaplan, contains information about every Starbucks in the world at the time the data were collected. It includes the `Latitude` and `Longitude` of each location.  Let's start by using familiar ggplot plotting tools.
+The `Starbucks` [data](data/starbucks.csv), compiled by Danny Kaplan, contains information about every Starbucks in the world at the time the data were collected. It includes the `Latitude` and `Longitude` of each location.  Let's start by using familiar ggplot plotting tools.
 
-```{r}
+```{r echo=FALSE,eval=TRUE}
+Starbucks <- read_csv("data/starbucks.csv")
+```
+
+```{r echo=TRUE, eval=FALSE}
 # Starbucks locations
-Starbucks <- read_csv("https://www.macalester.edu/~ajohns24/data/starbucks.csv")
+Starbucks <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/starbucks.csv")
+```
 
-
+```{r fig.alt = 'Scatterplot of Starbucks locations at time of data collection. Starbucks is a global company with locations on most continents.'}
 ggplot(data = Starbucks) +
   geom_point(aes(x = Longitude, y = Latitude),
     alpha = 0.2,
@@ -66,7 +71,7 @@ The code for a point pattern probably looks familiar.  To highlight the geograph
 
 We will use a stamen map as our background. You can also take a look at stamen maps on their [website](http://maps.stamen.com/#watercolor/12/37.7706/-122.3782). First, let's look at an example. 
 
-```{r starbucks-map, cache=TRUE, message=FALSE}
+```{r starbucks-map, cache=TRUE, message=FALSE fig.alt = 'Scatterplot of Starbucks locations at time of data collection with map background. Starbucks is a global company with locations mostly in North America, Europe, and Asia.'}
 # Get the map information
 world <- get_stamenmap(
   bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
@@ -104,7 +109,9 @@ decorate_chunk("get_stamenmap-code", eval = FALSE) %>%
 ```
 
 
-The `bbox` argument tells it the minimum and maximum latitude and longitude points. So, left is the minimum longitude, right is the maximum longitude, bottom is the minimum latitude, and top is the maximum latitude. One helpful trick is to go to [openstreetmap](https://www.openstreetmap.org): zoom in on the area of interest, click export, and you will see all the values you need. You may have to modify them slightly, which you can do after your initial plot.
+The `bbox` argument tells it the minimum and maximum latitude and longitude points. So, left is the minimum longitude, right is the maximum longitude, bottom is the minimum latitude, and top is the maximum latitude. 
+
+**Helpful Resource**: One helpful trick is to go to [openstreetmap](https://www.openstreetmap.org): zoom in on the area of interest, click export (you can customize the area you want to export), and you will see all the values you need (left, bottom, right, top). You may have to modify them slightly, which you can do after your initial plot.
 
 **`maptype`**
 
@@ -139,7 +146,7 @@ decorate_chunk("starbucks-map", eval = FALSE) %>%
 
 The `ggmap()` function will print the "background" map. Think of it as the providing the canvas on which we will plot. This takes the place of our usual `ggplot()`.
 
-```{r}
+```{r fig.alt='Map background of the entire world.'}
 ggmap(world)
 ```
 
@@ -170,9 +177,9 @@ So, the final map as a world map as the background with points plotted on top th
 * [ggmap examples](https://github.com/dkahle/ggmap) from `ggmap` maintainer David Kahle  
 * [`ggmap` cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/ggmapCheatsheet.pdf)
 
-### Exercise: More with Starbucks {-}
+### Examples: More with Starbucks {-}
 
-```{exercise}
+```{example}
 Now it is your turn to work with the Starbucks data. 
 ```
 
@@ -186,7 +193,7 @@ e. Add a point to the map that indicates Macalester College and label it appropr
 
 <summary>Solution</summary>
 
-```{r}
+```{r fig.alt = 'Map of Starbucks locations colored by ownership type. Most locations are company owned or licensed, some European locations are franchises, and joint ventures are only in Asia.' }
 # a)
 ggmap(world) +
   geom_point(
@@ -201,13 +208,14 @@ ggmap(world) +
   ) +
   scale_color_manual(values = c("blue", "red", "black", "purple")) +
   theme_map() +
-  theme(legend.background = element_blank())
+  theme(legend.background = element_blank()) +
+  guides(color = guide_legend(override.aes = list(size = 2,alpha = 1)))
 ```
 
 a. It appears that most of the locations in the western hemisphere are company owned or licensed, while franchising is more common in western Europe and joint ventures are more common in eastern Asia.   
 
 
-```{r}
+```{r fig.alt = 'Map of Starbucks locations in the Twin Cities. Most locations are in the city centers or along major highways.'}
 # b)
 TwinCities <- get_stamenmap(
   bbox = c(left = -94, bottom = 44.5, right = -92.5, top = 45.5),
@@ -219,14 +227,14 @@ ggmap(TwinCities) +
   geom_point(
     data = Starbucks,
     aes(x = Longitude, y = Latitude),
-    alpha = .5, size = .7,
-    color = "green"
+    alpha = .7, size = .7,
+    color = "red"
   )
 ```
 
 c. A higher zoom number leads to more detail.
 
-```{r}
+```{r fig.alt = 'Map of Starbucks locations in the Twin Cities. Most locations are in the city centers or along major highways.'}
 # d)
 
 TwinCities2 <- get_stamenmap(
@@ -244,14 +252,14 @@ ggmap(TwinCities2) +
   )
 ```
 
-```{r}
+```{r fig.alt = 'Map of Starbucks locations in the Twin Cities. Most locations are in the city centers or along major highways.'}
 # e)
 
 ggmap(TwinCities) +
   geom_point(
     data = Starbucks,
     aes(x = Longitude, y = Latitude),
-    alpha = .7, size = 1,
+    alpha = .8, size = 1,
     color = "#00704A"
   ) +
   annotate(
@@ -276,17 +284,24 @@ ggmap(TwinCities) +
 
 ## Contour Maps {-}
 
-The `geom_density_2d` and `stat_density_2d` functions are great for plotting distributions over spatial regions. Here is an example that shows the densities of Starbucks in the North America.
+The `geom_density_2d` and `stat_density_2d` functions are great for plotting distributions over spatial regions. Here are examples that shows the densities of Starbucks in the North America.
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, fig.alt = 'Contour map of Starbucks locations in the continental US. Most locations are in Northeast and California.'}
 US_map2 <- get_stamenmap(
   bbox = c(left = -132, bottom = 20, right = -65, top = 55),
-  maptype = "terrain",
-  zoom = 4
+  maptype = "toner-lite",
+  zoom = 5
 )
 
+# Contour plot
 ggmap(US_map2) +
-  geom_density_2d(data = Starbucks, aes(x = Longitude, y = Latitude), size = 0.3) +
+  geom_density_2d(data = Starbucks, aes(x = Longitude, y = Latitude), size = 0.3) + 
+  theme_map()
+```
+
+```{r, cache=TRUE, fig.alt = 'Density map of Starbucks locations in the continental US. Most locations are in Northeast and California.'}
+# Density plot
+ggmap(US_map2) +
   stat_density_2d(
     data = Starbucks,
     aes(x = Longitude, y = Latitude, fill = stat(level)),
@@ -296,7 +311,8 @@ ggmap(US_map2) +
   scale_fill_gradient(
     low = "darkblue", high = "red",
     guide = 'none'
-  )
+  ) + 
+  theme_map()
 ```
 
 
@@ -446,7 +462,7 @@ There are plenty of other methods available to make choropleths in `R`.
 Let's demonstrate just three additional methods with data on the 2016 U.S. presidential election results by county:
 
 ```{r,warning=FALSE}
-elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
+elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # reformat the FIPS region codes
 elect <- elect %>% mutate(fips = ifelse(region < 10000, paste("0", as.character(region), sep = ""), as.character(region)))
@@ -502,7 +518,7 @@ plot_usmap(data = elect, values = "brk", color = NA, exclude = "AK") +
   scale_fill_manual(values = rev(brewer.pal(10, "RdBu")), name = "Percent Republican") + theme(legend.position = "right")
 ```
 
-### Exercise: Even More with Starbucks {-}
+### Practice: Even More with Starbucks {-}
 
 The example above did not account for population of each state in the map. In the code below, a new variable is created, `starbucks_per_10000`, that gives the number of Starbucks per 10,000 people. It is in the `starbucks_with_2018_pop_est` dataset. Here is a [link](data/us_census_2018_state_pop_est.csv) to the data
 
@@ -533,11 +549,6 @@ starbucks_with_2018_pop_est <-
 ```{exercise}
 Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the contiguous US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.   
 ```
-
-
-
-
-
 
 
 
@@ -585,7 +596,7 @@ favorite_stp <- tibble(
 )
 ```
 
-```{r}
+```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>% # base plot
   addTiles() %>% # base map - default is openstreet map
   addMarkers() # Adds markers - knows lat and long from names in data
@@ -593,7 +604,7 @@ leaflet(data = favorite_stp) %>% # base plot
 
 The graph below is the same as above, but the code explicitly specifies latitude and longitude, which you would need to do if those variables had a name not recognized by the function, and adds labels. **WARNING: DO NOT FORGET THE ~ BEFORE THE VARIABLE NAMES!!!** 
 
-```{r}
+```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>%
   addTiles() %>%
   addMarkers(
@@ -622,7 +633,7 @@ We can change just about everything about our map. The plot below is the same pl
 * Colors need to be in "hex" form. We used the `col2hex()` function from the `gplots` library to do that. The colors also need to be valid R colors.
 
 
-```{r}
+```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>%
   addProviderTiles(providers$Stamen.Watercolor) %>%
   addCircles(
@@ -637,7 +648,7 @@ leaflet(data = favorite_stp) %>%
 
 The map below is also the "same" as the ones above, but with a new base map and a line to trace a route, which was created with the `addPolylines()` layer. It traces the locations in the order they are entered in the dataset.
 
-```{r}
+```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities, connected with a line.'}
 leaflet(data = favorite_stp) %>%
   addProviderTiles(providers$CartoDB.DarkMatter) %>%
   addCircles(
@@ -697,7 +708,7 @@ nc %>%
 To learn more about the data type `nc` into the Help menu or `?nc` into the console. 
 
 This plot puts the map with North Carolina county borders on top of the Open Street Map. This map isn't that interesting by itself. 
-```{r}
+```{r fig.alt='Interactive map of North Carolina.'}
 leaflet(nc) %>%
   addTiles() %>%
   addPolygons()
@@ -705,9 +716,9 @@ leaflet(nc) %>%
 
 Now, let's use some of the data to enhance the graph by creating a choropleth map where we color the counties by `sid_per_1000birth_79`. In `ggplot()`, we can map a variable to color or fill inside the aesthetic, but in the `leaflet` functions we cannot do this. Instead, we need to create a variable of hex color names that tells it how to color or fill. Thankfully, there are functions that help us do that! Let's walk through the detail of how we created the graph below. 
 
-```{r choro}
+```{r choro, fig.alt='Interactive map of North Carolina with counties colored by SID rate in 1979.'}
 # creates a function that can be used to map a variable to
-# the color palette using viridis
+# the color palette using viridis 
 pal <- colorNumeric("viridis",
   domain = nc$sid_per_1000birth_79
 )
@@ -730,9 +741,9 @@ head(pal(nc$sid_per_1000birth_79))
 
 Again, this is different from `ggplot()`, where we could map a variable to color or fill and it would do the translating of variable to color scale for us. In the `leaflet` functions, we have to explicitly provide the colors in a variable. The `colorNumeric()` command helps you do that. `colorBin()`, `colorQuantile()`, and `colorFactor()` are other functions you might need to use depending on the type of variable you are trying to map to colors.
 
-There are many customizeable options in `leaflet`, much like `ggplot()`. Here is a commented set of code  to point out some useful functions and arguments: 
+There are many options in `leaflet` that can be customized, much like `ggplot()`. Here is a commented set of code  to point out some useful functions and arguments: 
 
-```{r}
+```{r fig.alt='Interactive map of North Carolina with counties colored by SID rate in 1979.'}
 # creates a function that can be used to map a variable to
 # the color palette using viridis
 pal <- colorNumeric("viridis",
@@ -776,7 +787,7 @@ leaflet(nc) %>%
     pal = pal,
     values = ~sid_per_1000birth_79,
     opacity = 0.5,
-    title = NULL,
+    title = 'SID Rate (per 1000) in 1979',
     position = "bottomright"
   )
 ```
@@ -792,7 +803,7 @@ leaflet(nc) %>%
 * [Tutorial](https://learn.r-journalism.com/en/mapping/census_maps/census-maps/) by Andrew Ba Tran, investigative data reporter at Washington Post
 * For more advanced work with spatial mapping, GIS in R, etc. see the [sf package](https://r-spatial.github.io/sf/).
 
-### Exercise: Favorite Places {-}
+### Practice: Favorite Places {-}
 
 ```{exercise}
    
@@ -800,8 +811,6 @@ In this exercise, you are going to create a single map of some of your favorite 
 
 a. Create a data set using the `tibble()` function that has 10-15 rows of your favorite places. The columns will be the name of the location, the latitude, the longitude, and a column that indicates if it is in your top 3 favorite locations or not. For an example of how to use `tibble()`, look at the `favorite_stp` that is created manually above.     
 b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean.   
-c. If there are other variables you want to add that could enhance your plot, do that now. You could also connect all your locations together with a line in a meaningful way (you may need to order them differently in the original data).    
-
 ```
 
 ## Appendix: R Functions {.unnumbered}

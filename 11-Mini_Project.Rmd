@@ -13,7 +13,8 @@ library(ggmap)
 - Apply data wrangling and visualization skills to a new data set
 
 
-You can download a template .Rmd of this activity [here](template_rmd/11-Mini_Project_Assign.Rmd).
+Create a new Rmd file (save it as 11-Mini_Project.Rmd). Put this file in a folder `Assignment_07` in your `COMP_STAT_112` folder.
+- Make sure to add alt text using fig.alt!
 
 
 ## Data: Kiva {-}
@@ -26,7 +27,7 @@ Kiva has field partners who generally act as intermediaries between borrowers an
 
 
 ```{r, cache=TRUE,eval=FALSE,echo=TRUE}
-partners <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners2.csv")
+partners <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/kiva_partners2.csv")
 ```
 
 
@@ -53,7 +54,7 @@ The `loans` [table](data/kiva_loans_small.csv) below contains information about 
 
 ```{r, cache=TRUE,eval=FALSE,message=FALSE,warning=FALSE}
 # a random sample of 10,000
-loans <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_small.csv")
+loans <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/kiva_loans_small.csv")
 ```
 
 
@@ -100,8 +101,9 @@ Consider the following:
 ```
 
 a. Starting with `loans3`, create a new table `DefaultData` that only includes those loans whose status is either "defaulted" or "paid".   
-b. Make a density plot of the funded amount, split by laon status ("defaulted" or "paid"). That is, your plot should have two separate density curves on top of each other. Interpret the plot.   
-c. Make a bar chart with 10 bars, such that each bar is a $1000 range of funding amount; that is, the first bar should be for $0-$1000, the second for $1001-$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.     
+b. Make a density plot of the funded amount, split by loan status ("defaulted" or "paid"). That is, your plot should have two separate density curves on top of each other. Interpret the plot.   
+
+c. Make a bar chart with 10 bars, such that each bar is a \$1000 range of funding amount; that is, the first bar should be for \$0-\$1000, the second for \$1001-\$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.     
 d. Starting with the data in `DefaultData` from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage. *Hint: start by filtering out partners that have not had any defaulted loans.*   
 
 

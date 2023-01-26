@@ -12,7 +12,15 @@ library(ggplot2)
 - Be able to convert a `character` variable to a `factor`
 - Develop comfort in manipulating the order and values of a factor with the `forcats` package to improve summaries and visualizations.
 
-You can download a template .Rmd of this activity [here](template_rmd/10-Factors_Assign.Rmd). Put this in a folder `Day_10` in your `COMP_STAT_112` folder.
+Create a new Rmd file (save it as 10-Factors.Rmd). Put this file in a folder `Assignment_06` in your `COMP_STAT_112` folder.
+
+- You are used to using template Rmd files but you are ready to create your own! 
+    - Look at previous Rmd files and notice patterns. You can copy the top YAML section over and adjust.
+    - Note that if you use \{exercise\} instead of \{r\} that it will automatically number your exercises!
+    - Make sure to add `fig.alt` for your visualizations!
+- From now on, you'll be expected to create your own Rmd files and make them look clean and organized so that preceptors and instructors can easily read the knitted file and give feedback.
+
+
 
 ## Example: Grade Distribution {-}
 
@@ -24,7 +32,7 @@ Grades <- Grades %>%
 ```
 
 ```{r,cache=TRUE,echo=TRUE,eval=FALSE}
-Grades <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/grades.csv")
+Grades <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
@@ -90,7 +98,6 @@ levels(Grades$grade)
 Let's first convert the `grade` variable to a factor:
 
 ```{r}
-
 Grades <- Grades %>%
   mutate(grade = factor(grade))
 ```
@@ -128,7 +135,7 @@ Let's reorder the grades so that they are in a more meaningful order for the bar
 
 **Option 1**: From high grade to low grade, with "S" and "AU" at the end:
 
-```{r}
+```{r fig.alt='Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass).'}
 Grades %>%
   mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) %>%
   ggplot(aes(x = grade)) +
@@ -137,7 +144,7 @@ Grades %>%
 
 **Option 2**: In terms of ascending frequency:
 
-```{r}
+```{r fig.alt='Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass).'}
 ggplot(GradeDistribution) +
   geom_col(aes(x = fct_reorder(grade, count), y = count)) +
   labs(x = "grade")
@@ -145,7 +152,7 @@ ggplot(GradeDistribution) +
      
 **Option 3**: In terms of descending frequency:
 
-```{r}
+```{r fig.alt='Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass).'}
 ggplot(GradeDistribution) +
   geom_col(aes(x = fct_reorder(grade, count, .desc = TRUE), y = count)) +
   labs(x = "grade")
@@ -157,7 +164,7 @@ Because it may not be clear what "AU" and "S" stand for, let's rename them to "A
 ```
 
 
-```{r}
+```{r fig.alt='Bar plot of grad distribution. Vast majority of grades as A / A- / B+ / B or Satisfactory (pass).'}
 Grades %>%
   mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) %>%
   mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU")) %>%
@@ -174,7 +181,7 @@ b. create a high quality visualization that addresses your research question,
 c. write a brief description of the visualization and include the insight you gain about the research question.
 
 ```
-Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
+Courses <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/courses.csv")
 ```
 
 ## Appendix: R Functions {.unnumbered}

@@ -12,16 +12,20 @@ library(gplots)
 - Understand how we can use additional aesthetics such as color and size to incorporate a third (or more variables) to a bivariate plot
 - Develop comfort with interpreting heat maps and star plots, which allow you to look for patterns in variation in many variables. 
 
-You can download a template .Rmd of this activity [here](template_rmd/05-Multivariate_Viz_Assign.Rmd). Put this in a new folder called `Day_05` in your folder for `COMP_STAT_112`. 
+You can download a template .Rmd of this activity [here](template_rmd/05-Multivariate_Viz_Assign.Rmd). Put this in a new folder called `Assignment_04` in your folder for `COMP_STAT_112`. 
 
 ## Adding More Aesthetic Attributes {-}
 
 ### Exploring SAT Scores {-}
 
-Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state's education system.  The `education` data stored at [https://www.macalester.edu/~ajohns24/data/sat.csv](https://www.macalester.edu/~ajohns24/data/sat.csv) contain various education variables for each state:
+Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state's education system.  The `education` [data](data/sat.csv) contain various education variables for each state:
 
-```{r}
-education <- read.csv("https://www.macalester.edu/~ajohns24/data/sat.csv")
+```{r eval=TRUE, echo=FALSE}
+education <- read.csv("data/sat.csv")
+```
+
+```{r eval=FALSE, echo=TRUE}
+education <- read.csv("https://bcheggeseth.github.io/112_spring_2023/data/sat.csv")
 ```
 
 ```{r, echo=FALSE}
@@ -33,20 +37,21 @@ knitr::kable(
 
 A codebook is provided by Danny Kaplan who also made these data accessible:
 
-```{r, echo=FALSE,out.width="750px",fig.cap="Codebook for SAT data. Source: https://www.macalester.edu/~kaplan/ISM/datasets/data-documentation.pdf"}
+```{r, echo=FALSE,out.width="750px",fig.cap="Codebook for SAT data. Source: Danny Kaplan"}
 knitr::include_graphics("images/SATcodebook.png")
 ```
 
 To examine the variability in average SAT scores from state to state, let's start with a univariate density plot:
 
-```{r, fig.width=6,fig.height=3}
+```{r, fig.width=6,fig.height=3, fig.alt = 'Density plot of average SAT scores across U.S. states in mid-1990s. There are two groups of states, those with about 900 and those around 1050.'}
 ggplot(education, aes(x = sat)) +
-  geom_density(fill = "blue", alpha = .5)
+  geom_density(fill = "blue", alpha = .5) + 
+  theme_classic()
 ```
 
 The first question we'd like to answer is to what degree do per pupil spending (`expend`) and teacher `salary` *explain* this variability? We can start by plotting each against `sat`, along with a best fit linear regression model:
 
-```{r, fig.width=3,fig.height=3,fig.fullwidth=TRUE,fig.show='hold'}
+```{r, fig.width=3,fig.height=3,fig.fullwidth=TRUE,fig.show='hold', fig.alt = c('Scatter plot of average SAT scores  against teacher salary across U.S. states in mid-1990s. There is a weak negative relationship.','Scatter plot of average SAT scores  against education expenditure across U.S. states in mid-1990s. There is a weak negative relationship.'}
 ggplot(education, aes(y = sat, x = salary)) +
   geom_point() +
   geom_smooth(se = FALSE, method = "lm") + 
@@ -58,7 +63,7 @@ ggplot(education, aes(y = sat, x = expend)) +
   theme_classic()
 ```
 
-```{exercise}
+```{example}
 Is there anything that surprises you in the above plots? What are the relationship trends?
 ```
 
@@ -73,18 +78,19 @@ These seem to suggest that spending more money on students or teacher salaries c
 
 \
 
-```{exercise}
+```{example}
 Make a single scatterplot visualization that demonstrates the relationship between `sat`, `salary`, and `expend`. Summarize the trivariate relationship between `sat`, `salary`, and `expend`. 
 ```
+
 *Hints: 1. Try using the color or size aesthetics to incorporate the expenditure data. 2. Include some model smooths with `geom_smooth()` to help highlight the trends.*
 
 <details>
 
 <summary>Solution</summary>
 
-Below are four different plots. There seems to be a high correlation between `expend` and `salary`, and both seem to be negatively correlated with `sat`.
+Below are four different plots that one could make. There seems to be a high correlation between `expend` and `salary`, and both seem to be negatively correlated with `sat`.
 
-```{r, fig.width=8, fig.fullwidth=TRUE}
+```{r, fig.width=8, fig.fullwidth=TRUE, fig.alt = 'Four scatterplots of average SAT scores against teacher salary by expenditure across U.S. states in mid-1990s. There seems to be a high correlation between expenditure and salary, and both seem to be negatively correlated with SAT scores.'}
 
 #plot 1
 g1 <- ggplot(education, aes(y=sat, x=salary, color=expend)) + 
@@ -136,9 +142,9 @@ Note that each variable (column) is scaled to indicate states (rows) with high v
 ed <- as.data.frame(education) # convert from tibble to data frame
 
 # convert to a matrix with State names as the row names
-row.names(ed) <- ed$State 
-ed <- ed[, 2:8]
-ed_mat <- data.matrix(ed)
+row.names(ed) <- ed$State  #added state names as the row names rather than a variable
+ed <- ed %>% select(2:8) #select the 2nd through 8th columns
+ed_mat <- data.matrix(ed) #convert to a matrix format
 
 heatmap.2(ed_mat,
   Rowv = NA, Colv = NA, scale = "column",
@@ -162,17 +168,20 @@ It can be tough to identify interesting patterns by visually comparing across ro
 
 ```{r, fig.width=10, fig.height=20,cache=TRUE}
 heatmap.2(ed_mat,
+  Rowv = TRUE, #this argument changed
   Colv = NA, scale = "column", keysize = .7,
   density.info = "none", col = hcl.colors(256),
   margins = c(10, 20),
   colsep = c(1:7), rowsep = (1:50), sepwidth = c(0.05, 0.05),
   sepcolor = "white", cexRow = 2, cexCol = 2, trace = "none",
-  dendrogram = "row"
+  dendrogram = "row" #this argument changed
 )
+
+
 ```  
 
 ```{exercise}
-What do you notice? What new insight do you gain about the variation across U.S. states, now that states are grouped and ordered to represent similarity?
+What new insight do you gain about the variation across U.S. states, now that states are grouped and ordered by similarity?
 ```
 
 
@@ -182,17 +191,18 @@ We can also construct a heat map which identifies interesting clusters of column
 
 ```{r, fig.width=10, fig.height=20, cache=TRUE}
 heatmap.2(ed_mat,
+  Colv = TRUE, #this argument changed
   Rowv = NA, scale = "column", keysize = .7,
   density.info = "none", col = hcl.colors(256),
   margins = c(10, 20),
   colsep = c(1:7), rowsep = (1:50), sepwidth = c(0.05, 0.05),
   sepcolor = "white", cexRow = 2, cexCol = 2, trace = "none",
-  dendrogram = "column"
+  dendrogram = "column" #this argument changed
 )
 ```   
 
 ```{exercise}
-What do you notice? What new insight do you gain about the variation across U.S. states, now that variables are grouped and ordered to represent similarity?
+What new insight do you gain about the variation across U.S. states, now that variables are grouped and ordered by similarity?
 ```
 
 
@@ -200,19 +210,22 @@ What do you notice? What new insight do you gain about the variation across U.S.
 
 There's more than one way to visualize multivariate patterns. Like heat maps, these star plot visualizations indicate the relative scale of each variable for each state.  With this in mind, you can use the star maps to identify which state is the most "unusual." You can also do a quick scan of the second image to try to cluster states. How does that clustering compare to the one generated in the heat map with row clusters above?    
 
-```{r, fig.width=15, fig.height=18, cache=TRUE}
+```{r, fig.width=15, fig.height=18, cache=TRUE, fig.alt = 'Star plot of SAT data geographically arranged. Education policy / finances and SAT scores differs by geographical region in the U.S.'}
 stars(ed_mat,
   flip.labels = FALSE,
-  key.loc = c(15, 1.5), cex = 1.5
+  locations = data.matrix(as.data.frame(state.center)), #added external data to arrange by geo location
+  key.loc = c(15, 1.5), cex = 1
 )
 stars(ed_mat,
   flip.labels = FALSE,
-  key.loc = c(15, 1.5), cex = 1.5, draw.segments = TRUE
+  locations = data.matrix(as.data.frame(state.center)), #added external data to arrange by geo location
+  key.loc = c(15, 1.5), cex = 1, 
+  draw.segments = TRUE #changed argument
 )
 ```   
 
 ```{exercise}
-What do you notice? What new insight do you gain about the variation across U.S. states with the star plots?
+What new insight do you gain about the variation across U.S. states with the star plots (arranged geographically) as compared to heat plots?
 ```
     
     
