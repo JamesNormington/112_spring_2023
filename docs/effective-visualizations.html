@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="effective-visualizations.html"><a href="effective-visualizations.html#basic-rules-for-constructing-graphics"><i class="fa fa-check"></i>Basic Rules for Constructing Graphics</a></li>
 <li class="chapter" data-level="" data-path="effective-visualizations.html"><a href="effective-visualizations.html#still-to-come"><i class="fa fa-check"></i>Still to Come</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="effective-visualizations.html"><a href="effective-visualizations.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="effective-visualizations.html"><a href="effective-visualizations.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Understand and apply the guiding principles of effective visualizations</li>
 </ul>
-<p>You can download a template .Rmd of this activity <a href="template_rmd/03-Effective_Viz_Assign.Rmd">here</a>. Put the file in a <code>Day_03</code> folder within your <code>COMP_STAT_112</code> folder.</p>
+<p>You can download a template .Rmd of this activity <a href="template_rmd/03-Effective_Viz_Assign.Rmd">here</a>. Put the file in a <code>Assignment_03</code> folder within your <code>COMP_STAT_112</code> folder.</p>
 </div>
 <div id="effective-visualizations-1" class="section level2 unnumbered hasAnchor">
 <h2>Effective Visualizations<a href="effective-visualizations.html#effective-visualizations-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -250,8 +250,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There is not one right way to visualize a data set.</p>
 <p>However, there are guiding principles that distinguish between “good” and “bad” graphics.</p>
 <p>One of the best ways to learn is by reading graphics and determining which ways of arranging thing are better or worse. So before jumping directly into theoretical principles, let’s try some critical analysis on specific examples.</p>
-<div class="exercise">
-<p><span id="exr:unnamed-chunk-61" class="exercise"><strong>Exercise 3.1  </strong></span>For your assigned graphics or sets of graphics, identify the following:</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-61" class="example"><strong>Example 3.1  </strong></span>For your assigned graphics or sets of graphics, identify the following:</p>
 <ol style="list-style-type: decimal">
 <li>the story the graphic is aiming to communicate to the audience</li>
 <li>effective features of the graphic</li>
@@ -457,6 +457,16 @@ Figure 3.18: Source: N. Yau, <em>Visualize This</em>, 2011, p. 220.
 <p><a href="https://fivethirtyeight.com/features/gun-deaths/">Here</a> is an interactive visualization that tells a story about gun violence.</p>
 <p>Another important contextual question to ask is whether the graphic is for an explanatory (<em>explain why</em>) or exploratory (<em>discovering something new</em>) analysis.</p>
 </div>
+<div id="accessibility" class="section level4 unnumbered hasAnchor">
+<h4>Accessibility<a href="effective-visualizations.html#accessibility" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In addition to considering the story you are telling, you need to consider what audiences can access your story.</p>
+<p><strong>Alternative (Alt) Text</strong>: In order for data visualizations to be accessible to people who are blind and use screen readers, we can provide alt text. Alt text should concisely articulate (1) what your visualization is (e.g. a bar chart showing which the harvest rate of cucumbers), (2) a one sentence description of the what you think is the most important takeaway your visualization is showing, and (3) a link to your data source if it’s not already in the caption (check out this <a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">great resource on writing alt text for data visualizations</a>).</p>
+<p>To add the alt text to your the HTML created from knitting the Rmd, you can include it as an option at the top of your r chunk. For example: {r, fig.alt = “Bar chart showing the daily harvest of cucumbers. The peak cucumber collection day is August 18th”}. To see the alt text in the knitted html file, you can hover over the image.</p>
+<p><strong>Color-blind friendly color palettes</strong>: In order for data visualizations to be accessible to people with <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/color-blindness#:~:text=What%20is%20color%20blindness%3F,and%20contact%20lenses%20can%20help.">color blindness</a>, we need to be thoughtful about the colors we use in our data visualizations. The most common variety of color-blindness makes it hard for individuals to detect differences between red and green. Some types make it hard detect differences between blue and yellow. Other types make it hard to see different shades of a color.</p>
+<p>This <a href="https://asada.website/webCVS/">Chromatic Vision Simulator</a> can give you a sense of how this could impact your perception of colors (see image below). You could also upload a visualization to this simulator to see how well your chosen color palette works.</p>
+<pre><code>## Error in knitr::include_graphics(&quot;images/colorblind.jpg&quot;): Cannot find the file(s): &quot;images/colorblind.jpg&quot;</code></pre>
+<p>Try to use a color-blind friendly / safe palette whenever possible. One easy way to do this is to include <code>+ scale_fill_viridis_d()</code> or <code>+ scale_color_viridis_d()</code> when you are filling or coloring by a discrete or categorical variable and <code>+ scale_fill_viridis_c()</code> or <code>+ scale_color_viridis_c()</code> when you are filling or coloring by a continuous or quantitative variable. There are many other color-blind friendly palettes in R; you can check out other resources <a href="https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html">here</a>.</p>
+</div>
 <div id="ethics" class="section level4 unnumbered hasAnchor">
 <h4>Ethics<a href="effective-visualizations.html#ethics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Michael Correll of Tableau Research writes “Data visualizations have a potentially enormous influence on how
@@ -517,8 +527,8 @@ endeavor.” in his <a href="https://arxiv.org/pdf/1811.07271.pdf">article from 
 <ol style="list-style-type: decimal">
 <li>Visual perception is selective, and our attention is often drawn to constrasts from the norm.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
-<img src="images/contrast.png" alt="Our attention is drawn to contrasts to the norm. What stands out in this example image?, which is originally from C. Ware, *Information Visualization: Perception for Design*, 2004? Source: S. Few, *Now You See It*, 2009, p. 33." width="100%" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<img src="images/contrast.png" alt="Black patterns on white background demonstrating visual perpection is drawn toward contrast. Originally from C. Ware, *Information Visualization: Perception for Design*, 2004? Source: S. Few, *Now You See It*, 2009, p. 33." width="100%" />
 <p class="caption">
 Figure 3.19: Our attention is drawn to contrasts to the norm. What stands out in this example image?, which is originally from C. Ware, <em>Information Visualization: Perception for Design</em>, 2004? Source: S. Few, <em>Now You See It</em>, 2009, p. 33.
 </p>
@@ -529,8 +539,8 @@ Figure 3.19: Our attention is drawn to contrasts to the norm. What stands out in
 <ol start="2" style="list-style-type: decimal">
 <li>Our eyes are drawn to familiar patterns. We see what we know and expect.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
-<img src="images/rose1.png" alt="Do you see anything embedded in this rose image from coolbubble.com? Source: S. Few, *Now You See It*, 2009, p. 34." width="90%" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="images/rose1.png" alt="Rose with an embedded shadow of a dophin demonstraing that visual perpection focuses on familiar patterns. From coolbubble.com. Source: S. Few, *Now You See It*, 2009, p. 34." width="90%" />
 <p class="caption">
 Figure 3.20: Do you see anything embedded in this rose image from coolbubble.com? Source: S. Few, <em>Now You See It</em>, 2009, p. 34.
 </p>
@@ -547,8 +557,8 @@ Figure 3.20: Do you see anything embedded in this rose image from coolbubble.com
 <p><strong>Gestalt principles</strong></p>
 <p>The Gestalt principles (more info <a href="https://en.wikipedia.org/wiki/Principles_of_grouping">here</a> or <a href="https://www.smashingmagazine.com/2014/03/design-principles-visual-perception-and-the-principles-of-gestalt/">here</a>) were developed by psychologists including Max Wertheimer in the early 1900s to explain how humans perceive organized patterns and objects.</p>
 <p>In a design setting, they help us understand how to incorporate <strong>preattentive features</strong> into visualizations. The figure below shows some preattentive features, all of which are processed prior to conscious attention (“at a glance”) and can help the reader focus on relevant information in a visualization.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
-<img src="images/gestalt.png" alt="Preattentive features based on the Gestalt principles. Source: I. Meirelles, *Design for Information*, 2013, p. 23." width="100%" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<img src="images/gestalt.png" alt="Visual examples of preattentive features based on the Gestalt principles. Source: I. Meirelles, *Design for Information*, 2013, p. 23." width="100%" />
 <p class="caption">
 Figure 3.21: Preattentive features based on the Gestalt principles. Source: I. Meirelles, <em>Design for Information</em>, 2013, p. 23.
 </p>
@@ -590,10 +600,10 @@ Figure 3.21: Preattentive features based on the Gestalt principles. Source: I. M
 </ul>
 </div>
 </div>
-<div id="exercises" class="section level2 unnumbered hasAnchor">
-<h2>Exercises<a href="effective-visualizations.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="practice" class="section level2 unnumbered hasAnchor">
+<h2>Practice<a href="effective-visualizations.html#practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-83" class="exercise"><strong>Exercise 3.2  </strong></span>Consider one of the more complicated data graphics listed at (<a href="http://mdsr-book.github.io/exercises.html#exercise_25" class="uri">http://mdsr-book.github.io/exercises.html#exercise_25</a>):</p>
+<p><span id="exr:unnamed-chunk-84" class="exercise"><strong>Exercise 3.1  </strong></span>Consider one of the more complicated data graphics listed at (<a href="http://mdsr-book.github.io/exercises.html#exercise_25" class="uri">http://mdsr-book.github.io/exercises.html#exercise_25</a>):</p>
 <ol style="list-style-type: lower-alpha">
 <li>What story does the data graphic tell? What is the main message that you take away from it?</li>
 <li>Can the data graphic be described in terms of the Grammar of Graphics (frame, glyphs, aesthetics, facet, scale, guide)? If so, please describe.</li>
