@@ -31,17 +31,17 @@ To add the alt text to your the HTML created from knitting the Rmd, you can incl
 
 ## Bivariate Visualizations {-}
 
-The outcome of the 2016 presidential election surprised many people.  In this activity we  will analyze data from the 2016 presidential election. To better understand it ourselves, we'll explore county-level election outcomes and demographics.  The data set, prepared by Alicia Johnson, combines 2008/2012/2016 county-level election returns from [Tony McGovern  on github](https://github.com/tonmcg/County_Level_Election_Results_12-16), county-level demographics from the `df_county_demographics` data set within the `choroplethr` R package, and red/purple/blue state designations from [http://www.270towin.com/](http://www.270towin.com/).
+The outcome of the 2016 presidential election surprised many people.  In this activity we  will analyze data from the 2016 presidential election. To better understand it ourselves, we'll explore county-level election outcomes and demographics.  The data set, prepared by Prof. Alicia Johnson, combines 2008/2012/2016 county-level election returns from [Tony McGovern  on github](https://github.com/tonmcg/County_Level_Election_Results_12-16), county-level demographics from the `df_county_demographics` data set within the `choroplethr` R package, and red/purple/blue state designations from [http://www.270towin.com/](http://www.270towin.com/).
 
 ### Getting to know the dataset {-}
 
 ```{example}
-Begin by loading the [election data](data/electionDemographics16.csv) from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv" and getting to know the data. Write out R functions to get to know the data using the prompts below to guide you.
+Begin by loading the [election data](data/electionDemographics16.csv) from "https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv" and getting to know the data. Write out R functions to get to know the data using the prompts below to guide you.
 ```
 
 ```{r eval=FALSE}
-# Load data from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv"
-elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
+# Load data from "https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv"
+elect <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # Check out the first rows of elect.  What are the units of observation?
 
@@ -55,8 +55,8 @@ elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDe
 <details>
   <summary>Solution</summary>
 ```{r,collapse=TRUE}
-# Load data from "https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv"
-elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
+# Load data from "https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv"
+elect <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # Check out the first rows of elect.
 # The units of observation are county election results
@@ -243,7 +243,7 @@ ggplot(elect, aes(y = perrep_2016, x = perrep_2012)) +
 
 <details>
   <summary>Solution</summary>
-```{r eval=TRUE, fig.alt = c('Empty plot with axes.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016. There is a strong positive relationship.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 with plus symbols as points. There is a strong positive relationship.','Scatter plot of Republician vote percent in U.S. counties in 2012 and 2016 labeled according to state. There is a strong positive relationship and Utah counties tended to have a lower Republican vote percentage in 2016 than what you'd expect given 2012.')}
+```{r eval=TRUE}
 # just a graphics frame
 ggplot(elect, aes(y = perrep_2016, x = perrep_2012))
 
@@ -513,7 +513,7 @@ b. Name one pro and one con of using the "proportional bar plot" instead of one 
 
 c. What's your favorite bar plot from part (a)?  Why?    
    
-### Practice {-}
+### Assignment 3: due Wednesday, Feb. 8th @ 11:59pm {-}
 
 #### Hot Dogs {-}
 
