@@ -512,6 +512,8 @@ ggplot(elect, aes(x = StateColor, fill = winrep_2016)) +
 b. Name one pro and one con of using the "proportional bar plot" instead of one of the other three options.    
 
 c. What's your favorite bar plot from part (a)?  Why?    
+
+   
    
 ## Assignment 3: due Wednesday, Feb. 8th @ 11:59pm {-}
 
