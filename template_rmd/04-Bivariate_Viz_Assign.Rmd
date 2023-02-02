@@ -24,7 +24,7 @@ library(fivethirtyeight)
 ## Getting to know the dataset {-}
 
 ```{exercise}
-Begin by loading the data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv" and getting to know the data. Follow the prompts below to guide you.
+Begin by loading the data from "https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv" and getting to know the data. Follow the prompts below to guide you.
 ```
 
 > ANSWER: See code below.
