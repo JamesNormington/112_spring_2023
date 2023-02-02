@@ -30,8 +30,8 @@ Begin by loading the data from "https://jamesnormington.github.io/112_spring_202
 > ANSWER: See code below.
 
 ```{r eval=TRUE}
-# Load data from "https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv"
-elect <- read_csv("https://www.macalester.edu/~ajohns24/data/electionDemographics16.csv")
+# Load data from "https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv"
+elect <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 
 # Check out the first rows of elect.  What are the units of observation?
