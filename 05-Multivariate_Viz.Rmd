@@ -5,6 +5,12 @@ library(ggplot2)
 library(gplots)
 ```
 
+For today's example, you may have to install the following packages:
+```{r}
+#install.packages(c("gganimate", "nytimes", "kableExtra", "av", "zoo", "xts", "dygraphs", "rngWELL", "randtoolbox", "lcmm", "msm", "lmtest", "sandwich", "mailmerge", "tidycensus", "survey", "srvyr", "rattle"))
+```
+
+
 # Multivariate Visualizations
 
 ## Learning Goals {-}
@@ -51,7 +57,7 @@ ggplot(education, aes(x = sat)) +
 
 The first question we'd like to answer is to what degree do per pupil spending (`expend`) and teacher `salary` *explain* this variability? We can start by plotting each against `sat`, along with a best fit linear regression model:
 
-```{r, fig.width=3,fig.height=3,fig.fullwidth=TRUE,fig.show='hold', fig.alt = c('Scatter plot of average SAT scores  against teacher salary across U.S. states in mid-1990s. There is a weak negative relationship.','Scatter plot of average SAT scores  against education expenditure across U.S. states in mid-1990s. There is a weak negative relationship.'}
+```{r, fig.width=3,fig.height=3,fig.fullwidth=TRUE,fig.show='hold', fig.alt = c('Scatter plot of average SAT scores against teacher salary across U.S. states in mid-1990s. There is a weak negative relationship.','Scatter plot of average SAT scores against education expenditure across U.S. states in mid-1990s. There is a weak negative relationship.')}
 ggplot(education, aes(y = sat, x = salary)) +
   geom_point() +
   geom_smooth(se = FALSE, method = "lm") + 
