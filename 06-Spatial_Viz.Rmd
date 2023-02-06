@@ -53,7 +53,7 @@ Starbucks <- read_csv("data/starbucks.csv")
 
 ```{r echo=TRUE, eval=FALSE}
 # Starbucks locations
-Starbucks <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/starbucks.csv")
+Starbucks <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/starbucks.csv")
 ```
 
 ```{r fig.alt = 'Scatterplot of Starbucks locations at time of data collection. Starbucks is a global company with locations on most continents.'}
@@ -71,7 +71,7 @@ The code for a point pattern probably looks familiar.  To highlight the geograph
 
 We will use a stamen map as our background. You can also take a look at stamen maps on their [website](http://maps.stamen.com/#watercolor/12/37.7706/-122.3782). First, let's look at an example. 
 
-```{r starbucks-map, cache=TRUE, message=FALSE fig.alt = 'Scatterplot of Starbucks locations at time of data collection with map background. Starbucks is a global company with locations mostly in North America, Europe, and Asia.'}
+```{r starbucks-map, cache=TRUE, message=FALSE, fig.alt = 'Scatterplot of Starbucks locations at time of data collection with map background. Starbucks is a global company with locations mostly in North America, Europe, and Asia.'}
 # Get the map information
 world <- get_stamenmap(
   bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
@@ -462,7 +462,7 @@ There are plenty of other methods available to make choropleths in `R`.
 Let's demonstrate just three additional methods with data on the 2016 U.S. presidential election results by county:
 
 ```{r,warning=FALSE}
-elect <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/electionDemographics16.csv")
+elect <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/electionDemographics16.csv")
 
 # reformat the FIPS region codes
 elect <- elect %>% mutate(fips = ifelse(region < 10000, paste("0", as.character(region), sep = ""), as.character(region)))
@@ -530,7 +530,7 @@ census_pop_est_2018 <- read_csv("data/us_census_2018_state_pop_est.csv") %>%
 ```
 
 ```{r eval=FALSE,echo=TRUE}
-census_pop_est_2018 <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/us_census_2018_state_pop_est.csv") %>%
+census_pop_est_2018 <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/us_census_2018_state_pop_est.csv") %>%
   separate(state, into = c("dot", "state"), extra = "merge") %>%
   select(-dot) %>%
   mutate(state = str_to_lower(state))
@@ -596,7 +596,7 @@ favorite_stp <- tibble(
 )
 ```
 
-```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>% # base plot
   addTiles() %>% # base map - default is openstreet map
   addMarkers() # Adds markers - knows lat and long from names in data
@@ -604,7 +604,7 @@ leaflet(data = favorite_stp) %>% # base plot
 
 The graph below is the same as above, but the code explicitly specifies latitude and longitude, which you would need to do if those variables had a name not recognized by the function, and adds labels. **WARNING: DO NOT FORGET THE ~ BEFORE THE VARIABLE NAMES!!!** 
 
-```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>%
   addTiles() %>%
   addMarkers(
@@ -633,7 +633,7 @@ We can change just about everything about our map. The plot below is the same pl
 * Colors need to be in "hex" form. We used the `col2hex()` function from the `gplots` library to do that. The colors also need to be valid R colors.
 
 
-```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities.'}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_stp) %>%
   addProviderTiles(providers$Stamen.Watercolor) %>%
   addCircles(
@@ -648,7 +648,7 @@ leaflet(data = favorite_stp) %>%
 
 The map below is also the "same" as the ones above, but with a new base map and a line to trace a route, which was created with the `addPolylines()` layer. It traces the locations in the order they are entered in the dataset.
 
-```{r fig.alt='Interactive map of Brianna's favorite places in the Twin Cities, connected with a line.'}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities, connected with a line.'}
 leaflet(data = favorite_stp) %>%
   addProviderTiles(providers$CartoDB.DarkMatter) %>%
   addCircles(
