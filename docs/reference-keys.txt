@@ -89,5 +89,3 @@ effective-visualizations
 bivariate-visualizations
 multivariate-visualizations
 spatial-visualization
-exm:unnamed-chunk-12
-exr:unnamed-chunk-34
