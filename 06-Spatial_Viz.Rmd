@@ -621,7 +621,7 @@ favorite_msp <- tibble(
   place = c(
     "Macalester College", "Stone Arch Bridge",
     "Lake Harriet", "Surly Brewing", "Boom Island Park",
-    "Midtown Global Market", "Hard Times Cafe"
+    "Midtown Global Market", "Washington Ave Bridge"
   ),
   long = c(
     -93.1712321, 
