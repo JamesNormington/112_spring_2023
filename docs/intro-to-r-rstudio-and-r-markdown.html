@@ -269,8 +269,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#creating-a-map-with-markerspoints"><i class="fa fa-check"></i>Creating a Map with Markers/Points</a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choropleth-layers-with-addpolygons"><i class="fa fa-check"></i>Choropleth Layers with <code>addPolygons()</code></a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
-<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#practice-favorite-places"><i class="fa fa-check"></i>Practice: Favorite Places</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#assignment-4-due-wednesday-feb.-15th-at-1159pm"><i class="fa fa-check"></i>Assignment 4: due Wednesday, Feb. 15th at 11:59pm</a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#appendix-r-functions-3"><i class="fa fa-check"></i>Appendix: R Functions</a>
 <ul>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#mapping-points-functions"><i class="fa fa-check"></i>Mapping Points Functions</a></li>
@@ -437,6 +437,8 @@ Figure 1.2: A datum.
 <div id="tidy-data" class="section level3 unnumbered hasAnchor">
 <h3>Tidy Data<a href="intro-to-r-rstudio-and-r-markdown.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Example:</strong> After a scandal among FIFA officials, fivethirtyeight.com posted an analysis of FIFA viewership, <a href="https://fivethirtyeight.com/features/how-to-break-fifa/">“How to Break FIFA”</a>. Here’s a snapshot of the data used in this article:</p>
+<pre><code>## Warning: package &#39;fivethirtyeight&#39; was built under R version 4.2.2</code></pre>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.2.2</code></pre>
 <table>
 <colgroup>
 <col width="18%" />
@@ -669,59 +671,59 @@ Solution
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-11" class="exercise"><strong>Exercise 1.5  (Importing Package Data) </strong></span>The first step to working with data in RStudio is getting it in there! How we do this depends on its format (eg: Excel spreadsheet, csv file, txt file) and storage locations (eg: online, within Wiki, desktop). Luckily for us, the <code>fifa_audience</code> data are stored in the <code>fivethirtyeight</code> RStudio package. Copy and paste the following code into the Console and press Enter.</p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#download the data and information in the fivethirtyeight package (we only need to do this once)</span></span>
-<span id="cb6-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;fivethirtyeight&#39;</span>)</span>
-<span id="cb6-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fivethirtyeight package (we must do this every session of RStudio in which we want to use this package)</span></span>
-<span id="cb6-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
-<span id="cb6-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fifa data</span></span>
-<span id="cb6-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fifa_audience&quot;</span>)</span>
-<span id="cb6-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
-<span id="cb6-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb6-11" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#download the data and information in the fivethirtyeight package (we only need to do this once)</span></span>
+<span id="cb8-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;fivethirtyeight&#39;</span>)</span>
+<span id="cb8-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fivethirtyeight package (we must do this every session of RStudio in which we want to use this package)</span></span>
+<span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
+<span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#load the fifa data</span></span>
+<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fifa_audience&quot;</span>)</span>
+<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#store this under a shorter, easier name</span></span>
+<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a>fifa <span class="ot">&lt;-</span> fifa_audience</span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-13" class="exercise"><strong>Exercise 1.6  (Examining Data Structures) </strong></span>Before we can analyze our data, we must understand its structure. Try out the following functions (copy and paste into the Console). For each, make a note that describes its action.</p>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does View do?)</span></span>
-<span id="cb7-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fifa)  </span>
-<span id="cb7-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does head do?)</span></span>
-<span id="cb7-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
-<span id="cb7-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does dim do?)</span></span>
-<span id="cb7-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
-<span id="cb7-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does names do?)</span></span>
-<span id="cb7-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)         </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does View do?)</span></span>
+<span id="cb9-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fifa)  </span>
+<span id="cb9-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does head do?)</span></span>
+<span id="cb9-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
+<span id="cb9-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does dim do?)</span></span>
+<span id="cb9-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
+<span id="cb9-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#(what does names do?)</span></span>
+<span id="cb9-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)         </span></code></pre></div>
 <details>
 <summary>
 Solution
 </summary>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View() opens up a new tab with a spreadsheet preview of the data to visually explore the data. It is commented out in the Rmarkdown file because this is an interactive feature</span></span>
-<span id="cb8-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(fifa)  </span></span>
-<span id="cb8-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
-<span id="cb8-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
-<span id="cb8-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb8-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted…¹</span></span>
-<span id="cb8-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;          &lt;dbl&gt;</span></span>
-<span id="cb8-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3           11.3</span></span>
-<span id="cb8-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9            9.1</span></span>
-<span id="cb8-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8            7.3</span></span>
-<span id="cb8-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9            6.3</span></span>
-<span id="cb8-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1            5.4</span></span>
-<span id="cb8-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1            4.2</span></span>
-<span id="cb8-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable name ¹​gdp_weighted_share</span></span>
-<span id="cb8-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
-<span id="cb8-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
-<span id="cb8-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
-<span id="cb8-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
-<span id="cb8-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
-<span id="cb8-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;      &quot;population_share&quot;  </span></span>
-<span id="cb8-24"><a href="intro-to-r-rstudio-and-r-markdown.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;tv_audience_share&quot;  &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View() opens up a new tab with a spreadsheet preview of the data to visually explore the data. It is commented out in the Rmarkdown file because this is an interactive feature</span></span>
+<span id="cb10-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(fifa)  </span></span>
+<span id="cb10-3"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#head() gives the first 6 (default number) rows of a data set</span></span>
+<span id="cb10-5"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fifa)  </span>
+<span id="cb10-6"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb10-7"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   country        confederation population_share tv_audience_share gdp_weighted…¹</span></span>
+<span id="cb10-8"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;             &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb10-9"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 United States  CONCACAF                   4.5               4.3           11.3</span></span>
+<span id="cb10-10"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Japan          AFC                        1.9               4.9            9.1</span></span>
+<span id="cb10-11"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 China          AFC                       19.5              14.8            7.3</span></span>
+<span id="cb10-12"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Germany        UEFA                       1.2               2.9            6.3</span></span>
+<span id="cb10-13"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Brazil         CONMEBOL                   2.8               7.1            5.4</span></span>
+<span id="cb10-14"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 United Kingdom UEFA                       0.9               2.1            4.2</span></span>
+<span id="cb10-15"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with abbreviated variable name ¹​gdp_weighted_share</span></span>
+<span id="cb10-16"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#dim() gives the number of rows and number of columns</span></span>
+<span id="cb10-18"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fifa)           </span>
+<span id="cb10-19"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 191   5</span></span>
+<span id="cb10-20"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#names() gives the names of the columns/variables</span></span>
+<span id="cb10-22"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fifa)   </span>
+<span id="cb10-23"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;country&quot;            &quot;confederation&quot;      &quot;population_share&quot;  </span></span>
+<span id="cb10-24"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;tv_audience_share&quot;  &quot;gdp_weighted_share&quot;</span></span></code></pre></div>
 </details>
 <p><br />
 </p>
@@ -729,7 +731,7 @@ Solution
 <p><span id="exr:unnamed-chunk-16" class="exercise"><strong>Exercise 1.7  (Codebooks) </strong></span>Data are also only useful if we know what they measure! The <code>fifa</code> data table is <em>tidy</em>; it doesn’t have any helpful notes in the data itself.</p>
 </div>
 <p>Rather, information about the data is stored in a separate <em>codebook</em>. Codebooks can be stored in many ways (eg: Google docs, word docs, etc). Here the authors have made their codebook available in RStudio (under the original <code>fifa_audience</code> name). Check it out (run the following code in the console):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb9-1" aria-hidden="true" tabindex="-1"></a>?fifa_audience</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb11-1" aria-hidden="true" tabindex="-1"></a>?fifa_audience</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>What does <code>population_share</code> measure?</li>
 <li>What are the units of <code>population_share</code>?</li>
@@ -750,16 +752,16 @@ Solution
 <ol style="list-style-type: lower-alpha">
 <li>We might want to access and focus on a single variable. To this end, we can use the <code>$</code> notation (see below). What are the values of <code>tv_audience_share</code>? Of <code>confederation</code>? Is it easy to figure out?</li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-1" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>tv_audience_share</span>
-<span id="cb10-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb10-2" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>confederation</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>tv_audience_share</span>
+<span id="cb12-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-2" aria-hidden="true" tabindex="-1"></a>fifa<span class="sc">$</span>confederation</span></code></pre></div>
 <p>It’s important to understand the format/class of each variable (quantitative, categorical, date, etc) in both its meaning and its structure within RStudio:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>tv_audience_share)</span>
-<span id="cb11-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>confederation)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>tv_audience_share)</span>
+<span id="cb13-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fifa<span class="sc">$</span>confederation)</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>If a variable is categorical (in <code>factor</code> format), we can determine its <code>levels</code> / category labels. What are the value of <code>confederation</code>?</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fifa<span class="sc">$</span>confederation) <span class="co">#it is in character format</span></span>
-<span id="cb12-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(fifa<span class="sc">$</span>confederation)) <span class="co">#we can convert to factor format</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro-to-r-rstudio-and-r-markdown.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fifa<span class="sc">$</span>confederation) <span class="co">#it is in character format</span></span>
+<span id="cb14-2"><a href="intro-to-r-rstudio-and-r-markdown.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(fifa<span class="sc">$</span>confederation)) <span class="co">#we can convert to factor format</span></span></code></pre></div>
 </div>
 </div>
 <div id="r-markdown-and-reproducible-research" class="section level2 unnumbered hasAnchor">
