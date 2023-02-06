@@ -418,20 +418,36 @@ starbucks_us_by_state %>%
 
 The `map` argument tells R at which level to create the map. Really, it tells it how to draw all the borders This is a very special data set. According to the `geom_map()` documentation, it is a "data frame that contains the map coordinates ... It **must** contain columns x or long, y or lat, and region or id." We are using the `map_data()` function to create the map file (see above for more details. You can open the map data, `states_map`, and see that it adheres to the rules.
 
-```{r, echo=FALSE}
-decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
-  flair("map = ") %>%
-  knit_print()
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
 ```
 
 ### Connect Map ID/Region Variable to Data Being Plotted {-}
 
 The `map_id` inside of `aes()` is a required aesthetic for the `geom_map()` geom. It tells R which variable is the region/id variable, in this case the state. It connects the `region` or `id` from the map (`region` variable in `states_map` dataset, in this example) to the dataset being plotted (`state_name` in `starbucks_us_by_state`, in this example). So `state_name` needs to have the same form as `region`, which is why we modified the state names in `starbucks_us_by_state`.
 
-```{r, echo=FALSE}
-decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
-  flair("map_id = ") %>%
-  knit_print()
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
 ```
 
 
@@ -439,30 +455,54 @@ decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
 
 We tell it to fill in the states by the variable `n`, the number of Starbucks in each state. With the `geom_map()` geom, it will fill in the borders of the regions we defined in the `map` argument.
 
-```{r, echo=FALSE}
-decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
-  flair("fill = ") %>%
-  knit_print()
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
 ``` 
 
 ### `expand_limits()` {-}
 
 Use `expand_limits()` to assure that the map covers the entire area it's supposed to. We put the longitude variable from `states_map` for the `x` argument and the latitude variable from `states_map` for the `y` argument to assure the map stretches across the entire range of longitudes and latitudes in the map.  
 
-```{r, echo=FALSE}
-decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
-  flair("expand_limits") %>%
-  knit_print()
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
 ```
 
 ### `theme_map()` {-}
 
 This is a personal preference, but `theme_map()` often makes the map look nicer.
 
-```{r, echo=FALSE}
-decorate_chunk("starbucks-chor-map", eval = FALSE) %>%
-  flair("theme_map()") %>%
-  knit_print()
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
 ```
 
 ### Add `ggplot2` Layers {-}
@@ -595,7 +635,7 @@ Create a choropleth state map that shows the number of Starbucks per 10,000 peop
 
 
 
-## Dynamnic Maps with `leaflet` {-}
+## Dynamic Maps with `leaflet` {-}
 
 [Leaflet](https://leafletjs.com/) is an open-source JavaScript library for creating maps. It can be used outside of R, but we will only discuss using the `leaflet` library in R. 
 
