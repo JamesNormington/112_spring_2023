@@ -339,7 +339,7 @@ Calculate the most popular name for each year. Print out the answer for the year
 ```
 
 
-## Practice Part 2: US Births {-}
+## Assignment 5: due Wednesday, Feb 22 @ 11:59pm {-}
 
 Now we are ready to return to the `Birthdays` data set to investigate some drivers of daily births in the US.
 
@@ -393,16 +393,16 @@ Holidays <- read_csv("data/US-Holidays.csv") %>%
 ```
 
 ```{r,warning=FALSE,message=FALSE,eval=FALSE}
-Holidays <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/US-Holidays.csv") %>%
+Holidays <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/US-Holidays.csv") %>%
   mutate(date = as.POSIXct(lubridate::dmy(date)))
 ```
 
 ```{exercise, name="Holidays", label="holidays"}
-Now let's update the plot from Exercise \@ref(exr:two-year) to include the holidays.   
+Now we will  update the plot from Exercise \@ref(exr:two-year) to include the holidays.   
 
 a. Add a variable to `MyTwoYears` called `is_holiday`. It should be `TRUE` when the day is a holiday, and `FALSE` otherwise. One way to do this is with the transformation verb `%in%`, for instance, `is_holiday = date %in% Holidays$date`.   
 b. Add a `geom_point` layer to your plot that sets the color of the points based on the day of the week and the shape of the points based on whether or not the day is a holiday.   
-c. Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use `geom_text` with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called `MyHolidays` that just contains the holidays in your selected two year window. 2. Start your geometry line with `geom_text(data=MyHolidays)`. 3. You'll have to make up a y-coordinate for each label.  4. You can set the orientation of each label with the `angle` argument; e.g., `geom_text(data=MyHolidays, angle=40, ...)`.
+c. Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use `geom_text` with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called `MyHolidays` that just contains the holidays in your selected two year window. 2. Start your geometry line with `geom_text(data=MyHolidays)`. 3. You will have to make up a y-coordinate for each label.  4. You can set the orientation of each label with the `angle` argument; e.g., `geom_text(data=MyHolidays, angle=40, ...)`.
 
 ```
 
