@@ -14,7 +14,6 @@ library(socviz) # for the US county map
 library(usmap) # for plot_usmap
 # library(choroplethr)   # another option to make choropleths
 library(downloadthis) # for including download buttons for files
-library(flair) # for highlighting code
 ```
 
 # Spatial Visualization
@@ -102,23 +101,65 @@ get_stamenmap(
 
 **`bbox`**
 
+```{r, eval=FALSE}
+get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+```
+
+
 The `bbox` argument tells it the minimum and maximum latitude and longitude points. So, left is the minimum longitude, right is the maximum longitude, bottom is the minimum latitude, and top is the maximum latitude. 
 
-- **Helpful Resource**: One helpful trick is to go to [openstreetmap](https://www.openstreetmap.org): zoom in on the area of interest, click export (you can customize the area you want to export), and you will see all the values you need (left, bottom, right, top). You may have to modify them slightly, which you can do after your initial plot.
+**Helpful Resource**: One helpful trick is to go to [openstreetmap](https://www.openstreetmap.org): zoom in on the area of interest, click export (you can customize the area you want to export), and you will see all the values you need (left, bottom, right, top). You may have to modify them slightly, which you can do after your initial plot.
 
 **`maptype`**
+
+```{r, eval=FALSE}
+get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+```
 
 The `maptype` tells it the style of the map. Check out the different options by looking in the `get_stamenmap` help (type `?get_stamenmap` in the console).
 
 **`zoom`**
 
-When you make a large area, you need to decrease the zoom, otherwise it will take too long to load. So, it's a good idea to start with a small zoom and you can always make it bigger if you want. This might seem counter-intuitive at first. Think of the zoom level as the level of detail. So, smaller numbers show less detail and larger numbers more detail. 
+```{r, eval=FALSE}
+get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+```
 
-- **Helpful Trick** go to the stamanmaps webpage and search for the location you are mapping. Then, in the URL, you can see the zoom number. For example, this link  is a map of St. Paul: [http://maps.stamen.com/#terrain/12/44.9531/-93.0904](http://maps.stamen.com/#terrain/12/44.9531/-93.0904). Notice the number `12` next to  `/#terrain/`. That means it is zoomed in at 12. 
+When you make a large area, you need to decrease the zoom, otherwise it will take too long to load. So, it's a good idea to start with a small zoom and you can always make it bigger if you want. This might seem counter-intuitive at first. Think of the zoom level as the level of detail. So, smaller numbers show less detail and larger numbers more detail. A good trick is to go to the stamanmaps webpage and search for the location you are mapping. Then, in the URL, you can see the zoom number. For example, this link  is a map of St. Paul: [http://maps.stamen.com/#terrain/12/44.9531/-93.0904](http://maps.stamen.com/#terrain/12/44.9531/-93.0904). Notice the number `12` next to  `/#terrain/`. That means it is zoomed in at 12. 
 
 **`ggmap()`**
 
-We save the the map information from `get_stamenmap()` to a named value and then use it in `ggmap()`.
+We save the the map information from `get_stamenmap()` to a named value and then use it in `ggmap()`:
+
+```{r, eval=FALSE}
+# Get the map information
+world <- get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+
+# Plot the points on the map
+ggmap(world) + # creates the map "background"
+  geom_point(
+    data = Starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = .3,
+    size = 0.2
+  ) +
+  theme_map()
+```
 
 The `ggmap()` function will print the "background" map. Think of it as the providing the canvas on which we will plot. This takes the place of our usual `ggplot()`.
 
@@ -128,9 +169,48 @@ ggmap(world)
 
 After that, we can use the `geom_XXX()` functions from `ggplot2` that we are used to in order to put points, lines, etc. on top of the map. But, we need to remember to also provide the data we are using in the `geom_XXX()` function(s) we use since we do not have the `ggplot()` function in which to provide it. 
 
+```{r, eval=FALSE}
+# Get the map information
+world <- get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+
+# Plot the points on the map
+ggmap(world) + # creates the map "background"
+  geom_point(
+    data = Starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = .3,
+    size = 0.2
+  ) +
+  theme_map()
+```
+
+
 **`theme_map()`**
 
-The last line of the code is `theme_map()`. This is optional, but it often makes it look nice. It removes excess axis lines and moves guides/legends. 
+The last line of the code is `theme_map()`. This is optional, but it often makes it look nice.
+
+```{r, echo=FALSE}
+# Get the map information
+world <- get_stamenmap(
+  bbox = c(left = -180, bottom = -57, right = 179, top = 82.1),
+  maptype = "terrain",
+  zoom = 2
+)
+
+# Plot the points on the map
+ggmap(world) + # creates the map "background"
+  geom_point(
+    data = Starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = .3,
+    size = 0.2
+  ) +
+  theme_map()
+```
 
 So, the final map as a world map as the background with points plotted on top that show the Starbucks locations. The points are 20 percent (0.2) of their usual size and have a transparency level of 0.3. 
 
@@ -289,7 +369,7 @@ The `states_map` dataset gives information about creating the borders of the US 
 
 Then, we can use `geom_map()` to create a choropleth map. Let's take a look at the map and we'll go through the details after.
 
-```{r fig.alt='State-level choropleth map showing number of Starbucks per state. California has by far the most Starbucks locations in this dataset.'}
+```{r}
 # Create a new Starbucks dataset that
 # - filters to the US
 # - summarizes the number of Starbucks in each state
@@ -338,31 +418,98 @@ starbucks_us_by_state %>%
 
 The `map` argument tells R at which level to create the map. Really, it tells it how to draw all the borders This is a very special data set. According to the `geom_map()` documentation, it is a "data frame that contains the map coordinates ... It **must** contain columns x or long, y or lat, and region or id." We are using the `map_data()` function to create the map file (see above for more details. You can open the map data, `states_map`, and see that it adheres to the rules.
 
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
+```
+
 ### Connect Map ID/Region Variable to Data Being Plotted {-}
 
 The `map_id` inside of `aes()` is a required aesthetic for the `geom_map()` geom. It tells R which variable is the region/id variable, in this case the state. It connects the `region` or `id` from the map (`region` variable in `states_map` dataset, in this example) to the dataset being plotted (`state_name` in `starbucks_us_by_state`, in this example). So `state_name` needs to have the same form as `region`, which is why we modified the state names in `starbucks_us_by_state`.
+
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
+```
 
 
 ### Use `ggplot2` Features {-}
 
 We tell it to fill in the states by the variable `n`, the number of Starbucks in each state. With the `geom_map()` geom, it will fill in the borders of the regions we defined in the `map` argument.
 
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
+``` 
 
 ### `expand_limits()` {-}
 
 Use `expand_limits()` to assure that the map covers the entire area it's supposed to. We put the longitude variable from `states_map` for the `x` argument and the latitude variable from `states_map` for the `y` argument to assure the map stretches across the entire range of longitudes and latitudes in the map.  
 
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
+```
 
 ### `theme_map()` {-}
 
 This is a personal preference, but `theme_map()` often makes the map look nicer.
 
+```{r, eval=FALSE}
+starbucks_us_by_state %>%
+  ggplot() +
+  geom_map(
+    map = states_map,
+    aes(
+      map_id = state_name,
+      fill = n
+    )
+  ) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()
+```
 
 ### Add `ggplot2` Layers {-}
 
 You can add any of the `ggplot2` layers on top of this map. In this example, we've added MN Starbucks as points, included a title, and changed the legend background (so it doesn't have one).
 
-```{r fig.alt='State-level choropleth map showing number of Starbucks per state and points for locations in MN. California has by far the most Starbucks locations in this dataset and the vast majority of locations in MN are in the Twin Cities Metro area.'}
+```{r}
 starbucks_us_by_state %>%
   ggplot() +
   geom_map(
@@ -483,19 +630,12 @@ starbucks_with_2018_pop_est <-
 
 
 ```{exercise}
-Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. 
-
-- Use a new fill color palette for the states, 
-- add points for all Starbucks in the contiguous US, 
-- add an informative title for the plot, and 
-- include a caption that says who created the plot (you!). 
-
-Make a conclusion about what you observe.   
+Create a choropleth state map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the contiguous US, add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.   
 ```
 
 
 
-## Dynamnic Maps with `leaflet` {-}
+## Dynamic Maps with `leaflet` {-}
 
 [Leaflet](https://leafletjs.com/) is an open-source JavaScript library for creating maps. It can be used outside of R, but we will only discuss using the `leaflet` library in R. 
 
@@ -544,7 +684,7 @@ favorite_msp <- tibble(
 )
 ```
 
-```{r fig.alt="Interactive map of James' favorite places in the Twin Cities."}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_msp) %>% # base plot
   addTiles() %>% # base map - default is openstreet map
   addMarkers() # Adds markers - knows lat and long from names in data
@@ -552,7 +692,7 @@ leaflet(data = favorite_msp) %>% # base plot
 
 The graph below is the same as above, but the code explicitly specifies latitude and longitude, which you would need to do if those variables had a name not recognized by the function, and adds labels. **WARNING: DO NOT FORGET THE ~ BEFORE THE VARIABLE NAMES!!!** 
 
-```{r fig.alt="Interactive map of James' favorite places in the Twin Cities."}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_msp) %>%
   addTiles() %>%
   addMarkers(
@@ -581,7 +721,7 @@ We can change just about everything about our map. The plot below is the same pl
 * Colors need to be in "hex" form. We used the `col2hex()` function from the `gplots` library to do that. The colors also need to be valid R colors.
 
 
-```{r fig.alt="Interactive map of James' favorite places in the Twin Cities."}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities.'}
 leaflet(data = favorite_msp) %>%
   addProviderTiles(providers$Stamen.Watercolor) %>%
   addCircles(
@@ -596,7 +736,7 @@ leaflet(data = favorite_msp) %>%
 
 The map below is also the "same" as the ones above, but with a new base map and a line to trace a route, which was created with the `addPolylines()` layer. It traces the locations in the order they are entered in the dataset.
 
-```{r fig.alt="Interactive map of James' favorite places in the Twin Cities, connected with a line."}
+```{r fig.alt='Interactive map of my favorite places in the Twin Cities, connected with a line.'}
 leaflet(data = favorite_msp) %>%
   addProviderTiles(providers$CartoDB.DarkMatter) %>%
   addCircles(
@@ -751,11 +891,11 @@ leaflet(nc) %>%
 * [Tutorial](https://learn.r-journalism.com/en/mapping/census_maps/census-maps/) by Andrew Ba Tran, investigative data reporter at Washington Post
 * For more advanced work with spatial mapping, GIS in R, etc. see the [sf package](https://r-spatial.github.io/sf/).
 
-### Practice: Favorite Places {-}
+## Assignment 4: due Wednesday, Feb. 15th at 11:59pm {-}
 
 ```{exercise}
    
-In this exercise, you are going to create a single map of some of your favorite places! The end result will be one map.    
+In this assignment, you are going to create a single map of some of your favorite places! The end result will be one map.    
 
 a. Create a data set using the `tibble()` function that has 10-15 rows of your favorite places. The columns will be the name of the location, the latitude, the longitude, and a column that indicates if it is in your top 3 favorite locations or not. For an example of how to use `tibble()`, look at the `favorite_msp` that is created manually above.     
 b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean.   
@@ -802,6 +942,7 @@ b. Create a map that uses circles to indicate your favorite places. Label them w
 | `addCircles(lng,lat,label,weight,opactiy,color)`        |   Add circle glyphs to dynamic map  |   `+ addCircles(lng= ~long, lat= ~lat, label=~place, weight=10,opacity=1,color = col2hex('darkblue'))` |
 | `addPolylines(lng,lat)`        |   Add lines that connect locations to dynamic map  |   `+ addPolylines(lng= ~long, lat= ~lat, color = col2hex('darkred'))` |
 | `addPolygons(fillColor,fillOpacity)`        |   Add polygons to dynamic map (if data is sf class)  |   `+ addPolygons()` |
+
 
 
 
