@@ -273,7 +273,7 @@ c. Finally, some holidays seem to have more of an effect than others. It would b
 
 
 ```{r}
-Holidays <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/US-Holidays.csv") %>%
+Holidays <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/US-Holidays.csv") %>%
   mutate(date = as.POSIXct(lubridate::dmy(date)))
 
 
