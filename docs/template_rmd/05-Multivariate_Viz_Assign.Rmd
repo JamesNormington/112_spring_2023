@@ -24,7 +24,7 @@ library(gplots)
 ### Exploring SAT Scores {-}
 
 ```{r}
-education <- read.csv("https://www.macalester.edu/~ajohns24/data/sat.csv")
+education <- read.csv("https://bcheggeseth.github.io/112_spring_2023/data/sat.csv")
 ```
 
 The first question we'd like to answer is to what degree do per pupil spending (`expend`) and teacher `salary` *explain* this variability? We can start by plotting each against `sat`, along with a best fit linear regression model:

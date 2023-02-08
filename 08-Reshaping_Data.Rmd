@@ -68,7 +68,7 @@ The inputs for this function are:
 - `values_fill = 0` specifies that if there are, e.g., no females named Aadam, we should include a zero in the corresponding entry of the wide format table
 - `names_sort = TRUE` dictates that the variables are listed in alphabetical order; when it is FALSE, they are listed in order of first appearance.
 
-```{r echo=FALSE,fig.cap="Illustration of pivot_wider from tidyr cheatsheet. ,fig.alt="Illustration of pivot_wider in which values in a column get spread out over multiple columns (from tidyr cheatsheet)."}
+```{r echo=FALSE,fig.cap="Illustration of pivot_wider from tidyr cheatsheet." ,fig.alt="Illustration of pivot_wider in which values in a column get spread out over multiple columns (from tidyr cheatsheet)."}
 knitr::include_graphics("images/pivot_wider.png")
 ```
 

@@ -104,6 +104,18 @@ exr:seasonality
 exr:weekday
 exr:two-year
 exr:holidays
+tab:unnamed-chunk-226
+tab:unnamed-chunk-228
+exm:unnamed-chunk-229
+fig:unnamed-chunk-230
+tab:unnamed-chunk-232
+tab:unnamed-chunk-234
+fig:unnamed-chunk-235
+tab:unnamed-chunk-237
+exr:unnamed-chunk-240
+exr:unnamed-chunk-245
+tab:lesotho-table
+exr:unnamed-chunk-248
 intro-to-r-rstudio-and-r-markdown
 intro-to-data-visualization
 effective-visualizations
@@ -111,3 +123,4 @@ bivariate-visualizations
 multivariate-visualizations
 spatial-visualization
 six-main-verbs
+reshaping-data
