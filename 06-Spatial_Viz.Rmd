@@ -751,14 +751,16 @@ leaflet(nc) %>%
 * [Tutorial](https://learn.r-journalism.com/en/mapping/census_maps/census-maps/) by Andrew Ba Tran, investigative data reporter at Washington Post
 * For more advanced work with spatial mapping, GIS in R, etc. see the [sf package](https://r-spatial.github.io/sf/).
 
-### Practice: Favorite Places {-}
+## Assignment 4: due Wednesday, February 15th @ 11:59pm {-}
 
 ```{exercise}
    
 In this exercise, you are going to create a single map of some of your favorite places! The end result will be one map.    
 
 a. Create a data set using the `tibble()` function that has 10-15 rows of your favorite places. The columns will be the name of the location, the latitude, the longitude, and a column that indicates if it is in your top 3 favorite locations or not. For an example of how to use `tibble()`, look at the `favorite_msp` that is created manually above.     
-b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean.   
+b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean.  
+
+c. Tell me about at least one of your favorite places. Why is it one of your favorite places (why is it special/important/fun to you)?
 ```
 
 ## Appendix: R Functions {.unnumbered}

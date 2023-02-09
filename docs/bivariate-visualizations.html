@@ -269,8 +269,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#creating-a-map-with-markerspoints"><i class="fa fa-check"></i>Creating a Map with Markers/Points</a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#choropleth-layers-with-addpolygons"><i class="fa fa-check"></i>Choropleth Layers with <code>addPolygons()</code></a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
-<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#practice-favorite-places"><i class="fa fa-check"></i>Practice: Favorite Places</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#assignment-4-due-wednesday-february-15th-1159pm"><i class="fa fa-check"></i>Assignment 4: due Wednesday, February 15th @ 11:59pm</a></li>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#appendix-r-functions-3"><i class="fa fa-check"></i>Appendix: R Functions</a>
 <ul>
 <li class="chapter" data-level="" data-path="spatial-visualization.html"><a href="spatial-visualization.html#mapping-points-functions"><i class="fa fa-check"></i>Mapping Points Functions</a></li>
@@ -665,7 +665,8 @@ Solution
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="bivariate-visualizations.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a layer with &quot;text&quot; glyphs</span></span>
 <span id="cb55-2"><a href="bivariate-visualizations.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elect, <span class="fu">aes</span>(<span class="at">y =</span> perrep_2016, <span class="at">x =</span> perrep_2012)) <span class="sc">+</span></span>
 <span id="cb55-3"><a href="bivariate-visualizations.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> abb))</span></code></pre></div>
-<pre><code>## Warning: Removed 398 rows containing missing values (`geom_text()`).</code></pre>
+<pre><code>## Warning: Removed 398 rows containing missing values
+## (`geom_text()`).</code></pre>
 <p><img src="stat112_manual_files/figure-html/unnamed-chunk-101-4.png" width="672" /></p>
 </details>
 <p><br />
