@@ -37,7 +37,7 @@ a. Create a data set using the `tibble()` function that has 10-15 rows of your f
 
 ```
 
-b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean. 
+b. Create a map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3. Add a legend that explains what the colors mean.
 
 ```{r}
 #b)
