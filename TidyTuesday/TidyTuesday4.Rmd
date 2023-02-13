@@ -1,0 +1,22 @@
+---
+title: "Tidy Tuesday Week 4"
+output: html_document
+date: "2023-02-14"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("tidytuesdayR") # only need to run once to install!
+
+library(tidytuesdayR); library(ggplot2)
+
+tuesdata <- tidytuesdayR::tt_load('2023-02-14')
+
+age_gaps = tuesdata$age_gaps
+
+# If the above gives an error, you may have loaded it too many times. You can use the code below
+#library(tidyverse)
+#age_gaps <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv")
+
+```
+
