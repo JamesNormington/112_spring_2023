@@ -196,7 +196,7 @@ Calculate the most popular name for each year. Print out the answer for the year
 
 ```
 
-## Exercises Part 2: US Births {-}
+## Assignment 5 (Part 1): due Wednesday, Feb 22 @ 11:59pm {-}
 
 Now we are ready to return to the `Birthdays` data set to investigate some drivers of daily births in the US.
 

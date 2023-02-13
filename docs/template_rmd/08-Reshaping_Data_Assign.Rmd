@@ -116,7 +116,7 @@ Daily <- daily_show_guests
 ```
 
 
-### Popular guests {-}
+### Assignment 5 (Part 2) due Wednesday, Feb 22 @ 11:59pm {-}
 
 ```{exercise}
 Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order).
