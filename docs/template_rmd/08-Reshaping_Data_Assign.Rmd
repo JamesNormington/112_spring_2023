@@ -143,7 +143,7 @@ In order to help you recreate the first figure from [the article](https://fiveth
 
 
 ```{r}
-DailyGroups <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/daily-group-assignment.csv")
+DailyGroups <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/daily-group-assignment.csv")
 Daily <- Daily %>%
   inner_join(DailyGroups, by = c("group" = "group"))
 
@@ -169,7 +169,7 @@ Using the group assignments contained in the `broad_group` variable, recreate th
 A typical situation that requires a `pivot_longer` command is when the columns represent the possible values of a variable. Below is an example data set from [opendataforafrica.org](http://dataportal.opendataforafrica.org/) with different years in different columns. You can find the data [here](data/Lesotho.csv).
 
 ```{r, warning=FALSE,message=FALSE}
-Lesotho <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/Lesotho.csv")
+Lesotho <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/Lesotho.csv")
 head(Lesotho)
 ```
 
