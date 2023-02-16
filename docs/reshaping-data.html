@@ -870,7 +870,16 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 <div id="assignment-5-part-2-due-wednesday-feb-22-1159pm" class="section level2 unnumbered hasAnchor">
 <h2>Assignment 5 (Part 2): due Wednesday, Feb 22 @ 11:59pm<a href="reshaping-data.html#assignment-5-part-2-due-wednesday-feb-22-1159pm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-229" class="exercise"><strong>Exercise 8.1  </strong></span>Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order). Hint: the function <code>rowSums()</code> adds up all of the entries in each row of a table. Try using it in a <code>mutate()</code>.</p>
+<p><span id="exr:unnamed-chunk-229" class="exercise"><strong>Exercise 8.1  </strong></span>Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order).</p>
+<p>Sketch of solution:</p>
+<ol style="list-style-type: decimal">
+<li>Select two columns: the guest name and the year of appearance.</li>
+<li>Create a new column called <code>one</code> with all entries exactly equal to 1.</li>
+<li>Pivot wider so that each year is its own column. Use the following extra arguments to make sure each entry is only counted once, and no appearances in a year is counted as 0: <code>values_fn = list(one = length)</code> and <code>values_fill = 0</code></li>
+<li>Create a new column called <code>totalApps</code>, with the values equal to <code>rowSums(across(where(is.numeric)))</code></li>
+<li>Sort by total appearances, so that the most appearances is at the top.</li>
+<li>Use <code>slice()</code> to get the top 10 rows.</li>
+</ol>
 </div>
 <p>The original data has 18 different entries for the <code>group</code> variable:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="reshaping-data.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Daily<span class="sc">$</span>group)</span></code></pre></div>
