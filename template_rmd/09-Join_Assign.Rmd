@@ -29,14 +29,14 @@ A match between a case in the *left* data table and a case in the *right* data t
 As an example, we'll examine the following two tables on grades and courses. The `Grades` file has one case for each class of each student, and includes variables describing the ID of the student (`sid`), the ID of the session (section/class), and the grade received. The `Courses` table has variables for the ID of the session (section/class), the department (coded), the level, the semester, the enrollment, and the ID of the instructor (`iid`). We show a few random rows of each table below.
 
 ```{r}
-Grades <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/grades.csv")
+Grades <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
 ```
 
 ```{r, cache=TRUE}
-Courses <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/courses.csv")
+Courses <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/courses.csv")
 ```
 
 
@@ -184,9 +184,9 @@ Here is the code to read in the data:^[**Important**: To avoid repeatedly re-rea
 
 ```{r cache=TRUE}
 data_site <-
-  "https://bcheggeseth.github.io/112_fall_2022/data/2014-Q4-Trips-History-Data-Small.rds"
+  "https://jamesnormington.github.io/112_fall_2022/data/2014-Q4-Trips-History-Data-Small.rds"
 Trips <- readRDS(gzcon(url(data_site)))
-Stations <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/DC-Stations.csv")
+Stations <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/DC-Stations.csv")
 ```
 
 The `Trips` data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing `-Small` from the name of the `data_site`. 

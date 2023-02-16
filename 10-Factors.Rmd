@@ -32,7 +32,7 @@ Grades <- Grades %>%
 ```
 
 ```{r,cache=TRUE,echo=TRUE,eval=FALSE}
-Grades <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/grades.csv")
+Grades <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
@@ -172,6 +172,8 @@ Grades %>%
   geom_bar()
 ```
 
+## Assignment 6 Part 2: due Wednesday, March 1st @ 11:59pm {-}
+
 ```{exercise}
 Now that you've developed your data visualization and wrangling skills, 
 ``` 
@@ -181,7 +183,7 @@ b. create a high quality visualization that addresses your research question,
 c. write a brief description of the visualization and include the insight you gain about the research question.
 
 ```
-Courses <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/courses.csv")
+Courses <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/courses.csv")
 ```
 
 ## Appendix: R Functions {.unnumbered}

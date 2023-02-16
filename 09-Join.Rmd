@@ -263,7 +263,7 @@ JGrades %>%
 </details>
 
 
-### Practice {-}
+## Assignment 6 Part 1: due Wednesday, March 1st @ 11:59pm {-}
 
 ```{exercise}
 Use all of your wrangling skills to answer the following questions.
@@ -311,9 +311,9 @@ Stations <- read_csv("data/DC-Stations.csv")
 
 ```{r cache=TRUE,eval=FALSE,echo=TRUE}
 data_site <-
-  "https://bcheggeseth.github.io/112_spring_2023/data/2014-Q4-Trips-History-Data-Small.rds"
+  "https://jamesnormington.github.io/112_spring_2023/data/2014-Q4-Trips-History-Data-Small.rds"
 Trips <- readRDS(gzcon(url(data_site)))
-Stations <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/DC-Stations.csv")
+Stations <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/DC-Stations.csv")
 ```
 
 The `Trips` data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing `-Small` from the name of the `data_site`. The full data is available [here](data/2014-Q4-Trips-History-Data.rds).
