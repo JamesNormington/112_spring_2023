@@ -331,12 +331,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-joins"><i class="fa fa-check"></i>Mutating joins</a></li>
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-joins"><i class="fa fa-check"></i>Filtering joins</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#assignment-6-part-1-due-wednesday-march-1st-1159pm"><i class="fa fa-check"></i>Assignment 6 Part 1: due Wednesday, March 1st @ 11:59pm</a></li>
-<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#bicycle-use-patterns"><i class="fa fa-check"></i>Bicycle-Use Patterns</a>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#assignment-6-part-1-due-wednesday-march-1st-1159pm"><i class="fa fa-check"></i>Assignment 6 Part 1: due Wednesday, March 1st @ 11:59pm</a>
 <ul>
-<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#warm-up-temporal-patterns"><i class="fa fa-check"></i>Warm-up: Temporal patterns</a></li>
-<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns"><i class="fa fa-check"></i>Mutating join practice: Spatial patterns</a></li>
-<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns"><i class="fa fa-check"></i>Filtering join practice: Spatiotemporal patterns</a></li>
+<li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#bicycle-use-patterns"><i class="fa fa-check"></i>Bicycle-Use Patterns</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="joining-two-data-frames.html"><a href="joining-two-data-frames.html#appendix-r-functions-6"><i class="fa fa-check"></i>Appendix: R Functions</a>
 <ul>
@@ -744,10 +741,9 @@ What department should it be?</p>
 ## 11 D       1  
 ## 12 D-      0.7
 ## 13 NC      0</code></pre>
-</div>
-<div id="bicycle-use-patterns" class="section level2 unnumbered hasAnchor">
-<h2>Bicycle-Use Patterns<a href="joining-two-data-frames.html#bicycle-use-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this activity, you’ll examine some factors that may influence the use of bicycles in a bike-renting program. The data come from Washington, DC and cover the last quarter of 2014.</p>
+<div id="bicycle-use-patterns" class="section level3 unnumbered hasAnchor">
+<h3>Bicycle-Use Patterns<a href="joining-two-data-frames.html#bicycle-use-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this exercise, you’ll examine some factors that may influence the use of bicycles in a bike-renting program. The data come from Washington, DC and cover the last quarter of 2014.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-260"></span>
 <img src="images/bike_station.jpeg" alt="A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops." width="400px" />
 <p class="caption">
@@ -771,8 +767,6 @@ Figure 9.2: One of the vans used to redistribute bicycles to different stations.
 <span id="cb173-3"><a href="joining-two-data-frames.html#cb173-3" aria-hidden="true" tabindex="-1"></a>Trips <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(data_site)))</span>
 <span id="cb173-4"><a href="joining-two-data-frames.html#cb173-4" aria-hidden="true" tabindex="-1"></a>Stations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/DC-Stations.csv&quot;</span>)</span></code></pre></div>
 <p>The <code>Trips</code> data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing <code>-Small</code> from the name of the <code>data_site</code>. The full data is available <a href="data/2014-Q4-Trips-History-Data.rds">here</a>.</p>
-<div id="warm-up-temporal-patterns" class="section level3 unnumbered hasAnchor">
-<h3>Warm-up: Temporal patterns<a href="joining-two-data-frames.html#warm-up-temporal-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It’s natural to expect that bikes are rented more at some times of day, some days of the week, some months of the year than others. The variable <code>sdate</code> gives the time (including the date) that the rental started.</p>
 <div class="exercise">
 <p><span id="exr:exr-temp" class="exercise"><strong>Exercise 9.2  (Warm-up: temporal patterns) </strong></span>Make the following plots and interpret them:</p>
@@ -794,9 +788,6 @@ Figure 9.2: One of the vans used to redistribute bicycles to different stations.
 <li>Is it better to facet on <code>wkday</code> and fill with <code>client</code>, or vice versa?</li>
 <li>Of all of the graphics you created so far, which is most effective at telling an interesting story?</li>
 </ol>
-</div>
-<div id="mutating-join-practice-spatial-patterns" class="section level3 unnumbered hasAnchor">
-<h3>Mutating join practice: Spatial patterns<a href="joining-two-data-frames.html#mutating-join-practice-spatial-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-265" class="exercise"><strong>Exercise 9.4  (Visualization of bicycle departures by station) </strong></span>Use the latitude and longitude variables in <code>Stations</code> to make a visualization of the total number of departures from each station in the <code>Trips</code> data. To layer your data on top of a map, start your plotting code as follows:</p>
 </div>
@@ -806,9 +797,6 @@ ggmap(myMap) + ...</code></pre>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-266" class="exercise"><strong>Exercise 9.5  </strong></span>Only 14.4% of the trips in our data are carried out by casual users.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> Create a map that shows which area(s) of the city have stations with a much higher percentage of departures by casual users. Interpret your map.</p>
 </div>
-</div>
-<div id="filtering-join-practice-spatiotemporal-patterns" class="section level3 unnumbered hasAnchor">
-<h3>Filtering join practice: Spatiotemporal patterns<a href="joining-two-data-frames.html#filtering-join-practice-spatiotemporal-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-267" class="exercise"><strong>Exercise 9.6  (High traffic points) </strong></span>Consider the following:</p>
 <ol style="list-style-type: lower-alpha">
