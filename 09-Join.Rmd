@@ -283,9 +283,9 @@ e. We cannot actually compute the correct grade-point average for each departmen
 (GPAConversion <- tibble(grade = c("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC"), gp = c(4.3, 4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1, 0.7, 0)))
 ```
 
-## Bicycle-Use Patterns {-}
+### Bicycle-Use Patterns {-}
 
-In this activity, you'll examine some factors that may influence the use of bicycles in a bike-renting program.  The data come from Washington, DC and cover the last quarter of 2014.
+In this exercise, you'll examine some factors that may influence the use of bicycles in a bike-renting program.  The data come from Washington, DC and cover the last quarter of 2014.
 
 ```{r,echo=FALSE,out.width="400px",fig.cap="A typical Capital Bikeshare station. This one is at Florida and California, next to Pleasant Pops."}
 knitr::include_graphics("images/bike_station.jpeg")
@@ -318,8 +318,6 @@ Stations <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/DC-
 
 The `Trips` data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing `-Small` from the name of the `data_site`. The full data is available [here](data/2014-Q4-Trips-History-Data.rds).
 
-### Warm-up: Temporal patterns {-}
-
 It's natural to expect that bikes are rented more at some times of day, some days of the week, some months of the year than others. The variable `sdate` gives the time (including the date) that the rental started.
 
 ```{exercise exr-temp, name="Warm-up: temporal patterns"}
@@ -346,9 +344,6 @@ Repeat the graphic from Exercise \@ref(exr:exr-temp) (d) with the following chan
 (e) Of all of the graphics you created so far, which is most effective at telling an interesting story?
 
 
-
-### Mutating join practice: Spatial patterns {-}
-
 ```{exercise, name="Visualization of bicycle departures by station"}
 Use the latitude and longitude variables in `Stations` to make a visualization of the total number of departures from each station in the `Trips` data. To layer your data on top of a  map, start your plotting code as follows:
 
@@ -367,9 +362,6 @@ Only 14.4% of the trips in our data are carried out by casual users.^[We can com
 
 ```
 
-
-
-### Filtering join practice: Spatiotemporal patterns {-}
 
 ```{exercise, name="High traffic points"}
 Consider the following:
