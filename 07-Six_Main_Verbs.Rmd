@@ -380,21 +380,17 @@ To examine patterns within the week, make a box plot showing the daily number of
 
 
 ```{exercise, name="Two Year Sample", label="two-year"}
-Pick a two-year span of the `Birthdays` that falls in the 1980s, say, 1980/1981.  Extract out the data just in this interval, calling it `MyTwoYears`.  (Hint: `filter()`, `year()`).  Plot out the births in this two-year span day by day. Color each date according to its day of the week.  Make sure to choose your font size, line widths, and color scheme to make your figure legible. Explain the pattern that you see.
+Pick a two-year span of the `Birthdays` that falls in the 1980s, say, 1980/1981.  Extract out the data just in this interval, calling it `MyTwoYears`.  (Hint: `filter()`, `year()`).  Plot out the births in this two-year span day by day. Color each date according to its day of the week. Explain the pattern that you see.
 
 ```
 
 
 The plot you generate for Exercise \@ref(exr:two-year) should be generally consistent with the weekend effect and seasonal patterns we have already seen; however, a few days each year stand out as exceptions. We are going to examine the hypothesis that these are holidays.  You can find a data set listing US federal holidays [here](data/US-Holidays.csv).  Read it in as follows:^[The point of the `lubridate::dmy()` function is to convert the character-string date stored in the CSV to a POSIX date-number.]
 
-```{r,warning=FALSE,message=FALSE,echo=FALSE}
-Holidays <- read_csv("data/US-Holidays.csv") %>%
-  mutate(date = as.POSIXct(lubridate::dmy(date)))
-```
 
 ```{r,warning=FALSE,message=FALSE,eval=FALSE}
 Holidays <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/US-Holidays.csv") %>%
-  mutate(date = as.POSIXct(lubridate::dmy(date)))
+  mutate(date = lubridate::dmy(date))
 ```
 
 ```{exercise, name="Holidays", label="holidays"}
@@ -402,8 +398,30 @@ Now we will  update the plot from Exercise \@ref(exr:two-year) to include the ho
 
 a. Add a variable to `MyTwoYears` called `is_holiday`. It should be `TRUE` when the day is a holiday, and `FALSE` otherwise. One way to do this is with the transformation verb `%in%`, for instance, `is_holiday = date %in% Holidays$date`.   
 b. Add a `geom_point` layer to your plot that sets the color of the points based on the day of the week and the shape of the points based on whether or not the day is a holiday.   
-c. Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use `geom_text` with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called `MyHolidays` that just contains the holidays in your selected two year window. 2. Start your geometry line with `geom_text(data=MyHolidays)`. 3. You will have to make up a y-coordinate for each label.  4. You can set the orientation of each label with the `angle` argument; e.g., `geom_text(data=MyHolidays, angle=40, ...)`.
+c. Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use `geom_text` with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called `MyHolidays` that just contains the holidays in your selected two year window. 2. Start your geometry line with `geom_text(data=MyHolidays)`. 3. You will have to make up a y-coordinate for each label (see hint 1).  4. You can set the orientation of each label with the `angle` argument; e.g., `geom_text(data=MyHolidays, angle=40, ...)`.
 
+
+
+```
+
+Hints:
+
+1.To add the y-values in the `MyHolidays`, run the following code chunk: 
+  
+
+```{r, eval = FALSE}
+MyTwoYears_holidays = MyTwoYears %>%
+  filter(is_holiday)
+
+MyHolidays = Holidays %>%
+  filter(year %in% c(____, _____)) %>%
+  mutate(total = MyTwoYears_holidays$total)
+```
+
+2. To add labels to the graph:
+
+```{r}
+ +  geom_text(data = MyHolidays, aes(x = date, y = total, label = holiday), size = 2.5, angle = 40)
 ```
 
 

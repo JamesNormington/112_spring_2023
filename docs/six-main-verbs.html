@@ -937,11 +937,11 @@ and September 11, 1979, inclusive.</caption>
 <div id="holidays" class="section level3 unnumbered hasAnchor">
 <h3>Holidays<a href="six-main-verbs.html#holidays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:two-year" class="exercise"><strong>Exercise 7.11  (Two Year Sample) </strong></span>Pick a two-year span of the <code>Birthdays</code> that falls in the 1980s, say, 1980/1981. Extract out the data just in this interval, calling it <code>MyTwoYears</code>. (Hint: <code>filter()</code>, <code>year()</code>). Plot out the births in this two-year span day by day. Color each date according to its day of the week. Make sure to choose your font size, line widths, and color scheme to make your figure legible. Explain the pattern that you see.</p>
+<p><span id="exr:two-year" class="exercise"><strong>Exercise 7.11  (Two Year Sample) </strong></span>Pick a two-year span of the <code>Birthdays</code> that falls in the 1980s, say, 1980/1981. Extract out the data just in this interval, calling it <code>MyTwoYears</code>. (Hint: <code>filter()</code>, <code>year()</code>). Plot out the births in this two-year span day by day. Color each date according to its day of the week. Explain the pattern that you see.</p>
 </div>
 <p>The plot you generate for Exercise <a href="six-main-verbs.html#exr:two-year">7.11</a> should be generally consistent with the weekend effect and seasonal patterns we have already seen; however, a few days each year stand out as exceptions. We are going to examine the hypothesis that these are holidays. You can find a data set listing US federal holidays <a href="data/US-Holidays.csv">here</a>. Read it in as follows:<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="six-main-verbs.html#cb143-1" aria-hidden="true" tabindex="-1"></a>Holidays <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/US-Holidays.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb143-2"><a href="six-main-verbs.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.POSIXct</span>(lubridate<span class="sc">::</span><span class="fu">dmy</span>(date)))</span></code></pre></div>
+<span id="cb143-2"><a href="six-main-verbs.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">dmy</span>(date))</span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:holidays" class="exercise"><strong>Exercise 7.12  (Holidays) </strong></span>Now we will update the plot from Exercise <a href="six-main-verbs.html#exr:two-year">7.11</a> to include the holidays.</p>
 <ol style="list-style-type: lower-alpha">
@@ -949,9 +949,22 @@ and September 11, 1979, inclusive.</caption>
 </li>
 <li>Add a <code>geom_point</code> layer to your plot that sets the color of the points based on the day of the week and the shape of the points based on whether or not the day is a holiday.<br />
 </li>
-<li>Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use <code>geom_text</code> with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called <code>MyHolidays</code> that just contains the holidays in your selected two year window. 2. Start your geometry line with <code>geom_text(data=MyHolidays)</code>. 3. You will have to make up a y-coordinate for each label. 4. You can set the orientation of each label with the <code>angle</code> argument; e.g., <code>geom_text(data=MyHolidays, angle=40, ...)</code>.</li>
+<li>Finally, some holidays seem to have more of an effect than others. It would be helpful to label them. Use <code>geom_text</code> with the holiday data to add labels to each of the holidays. Hints: 1. Start by making a new data table called <code>MyHolidays</code> that just contains the holidays in your selected two year window. 2. Start your geometry line with <code>geom_text(data=MyHolidays)</code>. 3. You will have to make up a y-coordinate for each label (see hint 1). 4. You can set the orientation of each label with the <code>angle</code> argument; e.g., <code>geom_text(data=MyHolidays, angle=40, ...)</code>.</li>
 </ol>
 </div>
+<p>Hints:</p>
+<p>1.To add the y-values in the <code>MyHolidays</code>, run the following code chunk:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="six-main-verbs.html#cb144-1" aria-hidden="true" tabindex="-1"></a>MyTwoYears_holidays <span class="ot">=</span> MyTwoYears <span class="sc">%&gt;%</span></span>
+<span id="cb144-2"><a href="six-main-verbs.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is_holiday)</span>
+<span id="cb144-3"><a href="six-main-verbs.html#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="six-main-verbs.html#cb144-4" aria-hidden="true" tabindex="-1"></a>MyHolidays <span class="ot">=</span> Holidays <span class="sc">%&gt;%</span></span>
+<span id="cb144-5"><a href="six-main-verbs.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(____, _____)) <span class="sc">%&gt;%</span></span>
+<span id="cb144-6"><a href="six-main-verbs.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> MyTwoYears_holidays<span class="sc">$</span>total)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>To add labels to the graph:</li>
+</ol>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="six-main-verbs.html#cb145-1" aria-hidden="true" tabindex="-1"></a> <span class="sc">+</span>  <span class="fu">geom_text</span>(<span class="at">data =</span> MyHolidays, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> total, <span class="at">label =</span> holiday), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">angle =</span> <span class="dv">40</span>)</span></code></pre></div>
+<pre><code>## Error in fortify(data): object &#39;MyHolidays&#39; not found</code></pre>
 </div>
 <div id="geography" class="section level3 unnumbered hasAnchor">
 <h3>Geography<a href="six-main-verbs.html#geography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
