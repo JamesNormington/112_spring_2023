@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#manipulating-dates"><i class="fa fa-check"></i>Manipulating Dates</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#practice-part-1-baby-names"><i class="fa fa-check"></i>Practice Part 1: Baby Names</a></li>
-<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#assignment-5-part-1-due-wednesday-feb-22-1159pm"><i class="fa fa-check"></i>Assignment 5 (Part 1): due Wednesday, Feb 22 @ 11:59pm</a>
+<li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#assignment-5-part-1-due-friday-feb-24-1159pm"><i class="fa fa-check"></i>Assignment 5 (Part 1): due Friday, Feb 24 @ 11:59pm</a>
 <ul>
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#seasonality"><i class="fa fa-check"></i>Seasonality</a></li>
 <li class="chapter" data-level="" data-path="six-main-verbs.html"><a href="six-main-verbs.html#day-of-the-week"><i class="fa fa-check"></i>Day of the Week</a></li>
@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#longer"><i class="fa fa-check"></i>Longer</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#example-the-daily-show-guests"><i class="fa fa-check"></i>Example: The Daily Show Guests</a></li>
-<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#assignment-5-part-2-due-wednesday-feb-22-1159pm"><i class="fa fa-check"></i>Assignment 5 (Part 2): due Wednesday, Feb 22 @ 11:59pm</a></li>
+<li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#assignment-5-part-2-due-friday-feb-24-1159pm"><i class="fa fa-check"></i>Assignment 5 (Part 2): due Friday, Feb 24 @ 11:59pm</a></li>
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#appendix-r-functions-5"><i class="fa fa-check"></i>Appendix: R Functions</a>
 <ul>
 <li class="chapter" data-level="" data-path="reshaping-data.html"><a href="reshaping-data.html#reshaping-functions"><i class="fa fa-check"></i>Reshaping Functions</a></li>
@@ -455,9 +455,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>It is often necessary to rearrange your data in order to create visualizations, run statistical analysis, etc. We have already seen some ways to rearrange the data to change the unit of observation (also known as case). For example, what is the case after performing the following command?</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="reshaping-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a>babynamesTotal <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb147-2"><a href="reshaping-data.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb147-3"><a href="reshaping-data.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="reshaping-data.html#cb146-1" aria-hidden="true" tabindex="-1"></a>babynamesTotal <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb146-2"><a href="reshaping-data.html#cb146-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb146-3"><a href="reshaping-data.html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <p>Each case now represents one name-sex combination:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-218">Table 8.2: </span>Long format where each case is one name-sex combination.</caption>
@@ -521,8 +521,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
 </p>
 </div>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="reshaping-data.html#cb148-1" aria-hidden="true" tabindex="-1"></a>BabyWide <span class="ot">&lt;-</span> babynamesTotal <span class="sc">%&gt;%</span></span>
-<span id="cb148-2"><a href="reshaping-data.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> total, <span class="at">values_fill =</span> <span class="dv">0</span>, <span class="at">names_sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="reshaping-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a>BabyWide <span class="ot">&lt;-</span> babynamesTotal <span class="sc">%&gt;%</span></span>
+<span id="cb147-2"><a href="reshaping-data.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> total, <span class="at">values_fill =</span> <span class="dv">0</span>, <span class="at">names_sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-222">Table 8.3: </span>A wide format with one case per name enables us to examine gender balance.</caption>
 <thead>
@@ -566,10 +566,10 @@ Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
 </tbody>
 </table>
 <p>Now we can choose common names with frequency greater than 25,000 for both males and females, and sort by the ratio to identify gender-neutral names.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="reshaping-data.html#cb149-1" aria-hidden="true" tabindex="-1"></a>Neutral <span class="ot">&lt;-</span> BabyWide <span class="sc">%&gt;%</span></span>
-<span id="cb149-2"><a href="reshaping-data.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(M <span class="sc">&gt;</span> <span class="dv">25000</span>, F <span class="sc">&gt;</span> <span class="dv">25000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb149-3"><a href="reshaping-data.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">pmin</span>(M <span class="sc">/</span> F, F <span class="sc">/</span> M)) <span class="sc">%&gt;%</span> <span class="co">#pmin() stands for parallel min, finds the min(M/F, F/M) within each row</span></span>
-<span id="cb149-4"><a href="reshaping-data.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio))</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="reshaping-data.html#cb148-1" aria-hidden="true" tabindex="-1"></a>Neutral <span class="ot">&lt;-</span> BabyWide <span class="sc">%&gt;%</span></span>
+<span id="cb148-2"><a href="reshaping-data.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(M <span class="sc">&gt;</span> <span class="dv">25000</span>, F <span class="sc">&gt;</span> <span class="dv">25000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb148-3"><a href="reshaping-data.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">pmin</span>(M <span class="sc">/</span> F, F <span class="sc">/</span> M)) <span class="sc">%&gt;%</span> <span class="co">#pmin() stands for parallel min, finds the min(M/F, F/M) within each row</span></span>
+<span id="cb148-4"><a href="reshaping-data.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio))</span></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-224">Table 8.4: </span>The most gender-neutral common names, in wide format.</caption>
 <thead>
@@ -665,11 +665,11 @@ Figure 8.1: Illustration of pivot_wider from tidyr cheatsheet.
 Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 </p>
 </div>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="reshaping-data.html#cb150-1" aria-hidden="true" tabindex="-1"></a>NeutralLong <span class="ot">&lt;-</span> Neutral <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="reshaping-data.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;=</span> .<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href="reshaping-data.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">F</span><span class="st">`</span>, <span class="st">`</span><span class="at">M</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">&quot;sex&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;total&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="reshaping-data.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sex, total) <span class="sc">%&gt;%</span></span>
-<span id="cb150-5"><a href="reshaping-data.html#cb150-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="reshaping-data.html#cb149-1" aria-hidden="true" tabindex="-1"></a>NeutralLong <span class="ot">&lt;-</span> Neutral <span class="sc">%&gt;%</span></span>
+<span id="cb149-2"><a href="reshaping-data.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;=</span> .<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb149-3"><a href="reshaping-data.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">F</span><span class="st">`</span>, <span class="st">`</span><span class="at">M</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">&quot;sex&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;total&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb149-4"><a href="reshaping-data.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sex, total) <span class="sc">%&gt;%</span></span>
+<span id="cb149-5"><a href="reshaping-data.html#cb149-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)</span></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-227">Table 8.5: </span>Long format for the most gender-neutral common names.</caption>
 <thead>
@@ -807,7 +807,7 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 <div id="example-the-daily-show-guests" class="section level2 unnumbered hasAnchor">
 <h2>Example: The Daily Show Guests<a href="reshaping-data.html#example-the-daily-show-guests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The data associated with <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">this article</a> is available in the <code>fivethirtyeight</code> package, and is loaded into <code>Daily</code> below. It includes a list of every guest to ever appear on Jon Stewart’s The Daily Show. Note that when multiple people appeared together, each person receives their own line.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="reshaping-data.html#cb151-1" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> daily_show_guests</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="reshaping-data.html#cb150-1" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> daily_show_guests</span></code></pre></div>
 <table>
 <colgroup>
 <col width="5%" />
@@ -906,8 +906,8 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 </tbody>
 </table>
 </div>
-<div id="assignment-5-part-2-due-wednesday-feb-22-1159pm" class="section level2 unnumbered hasAnchor">
-<h2>Assignment 5 (Part 2): due Wednesday, Feb 22 @ 11:59pm<a href="reshaping-data.html#assignment-5-part-2-due-wednesday-feb-22-1159pm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="assignment-5-part-2-due-friday-feb-24-1159pm" class="section level2 unnumbered hasAnchor">
+<h2>Assignment 5 (Part 2): due Friday, Feb 24 @ 11:59pm<a href="reshaping-data.html#assignment-5-part-2-due-friday-feb-24-1159pm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-230" class="exercise"><strong>Exercise 8.1  </strong></span>Create the following table containing 19 columns. The first column should have the ten guests with the highest number of total apperances on the show, listed in descending order of number of appearances. The next 17 columns should show the number of appearances of the corresponding guest in each year from 1999 to 2015 (one per column). The final column should show the total number of appearances for the corresponding guest over the entire duration of the show (these entries should be in decreasing order).</p>
 <p>Sketch of solution:</p>
@@ -921,16 +921,16 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 </ol>
 </div>
 <p>The original data has 18 different entries for the <code>group</code> variable:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="reshaping-data.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Daily<span class="sc">$</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="reshaping-data.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Daily<span class="sc">$</span>group)</span></code></pre></div>
 <pre><code>##  [1] &quot;Acting&quot;         &quot;Comedy&quot;         &quot;Musician&quot;       &quot;Media&quot;         
 ##  [5] NA               &quot;Politician&quot;     &quot;Athletics&quot;      &quot;Business&quot;      
 ##  [9] &quot;Advocacy&quot;       &quot;Political Aide&quot; &quot;Misc&quot;           &quot;Academic&quot;      
 ## [13] &quot;Government&quot;     &quot;media&quot;          &quot;Clergy&quot;         &quot;Science&quot;       
 ## [17] &quot;Consultant&quot;     &quot;Military&quot;</code></pre>
 <p>In order to help you recreate the first figure from <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">the article</a>, I have added a new variable with three broader groups: (i) entertainment; (ii) politics, business, and government, and (iii) commentators. The data is available <a href="data/daily-group-assignment.csv">here</a>. We will learn in the next activity what the <code>inner_join</code> in this code chunk is doing.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="reshaping-data.html#cb154-1" aria-hidden="true" tabindex="-1"></a>DailyGroups <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/daily-group-assignment.csv&quot;</span>)</span>
-<span id="cb154-2"><a href="reshaping-data.html#cb154-2" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> Daily <span class="sc">%&gt;%</span></span>
-<span id="cb154-3"><a href="reshaping-data.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(DailyGroups, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;group&quot;</span> <span class="ot">=</span> <span class="st">&quot;group&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="reshaping-data.html#cb153-1" aria-hidden="true" tabindex="-1"></a>DailyGroups <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/daily-group-assignment.csv&quot;</span>)</span>
+<span id="cb153-2"><a href="reshaping-data.html#cb153-2" aria-hidden="true" tabindex="-1"></a>Daily <span class="ot">&lt;-</span> Daily <span class="sc">%&gt;%</span></span>
+<span id="cb153-3"><a href="reshaping-data.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(DailyGroups, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;group&quot;</span> <span class="ot">=</span> <span class="st">&quot;group&quot;</span>))</span></code></pre></div>
 <table>
 <colgroup>
 <col width="6%" />
@@ -1004,8 +1004,16 @@ Figure 8.2: Illustration of pivot_longer from tidyr cheatsheet.
 <div class="exercise">
 <p><span id="exr:unnamed-chunk-235" class="exercise"><strong>Exercise 8.2  </strong></span>Using the group assignments contained in the <code>broad_group</code> variable, recreate the graphic from the article, with three different lines showing the fraction of guests in each group over time. Hint: first think about what your case should be for the glyph-ready form.</p>
 </div>
+<p>Sketch of solution:</p>
+<ol style="list-style-type: decimal">
+<li>Define groups by year and broad group.</li>
+<li>Collapse the rows by year and broad group, creating a variable <code>n</code> which counts the number of each year + broad group combination.</li>
+<li>Define groups by year.</li>
+<li>Collapse the rows by year. Retain the <code>broad_group</code> variable as is (use <code>broad_group = broad_group</code>). Create a new variable called <code>pct</code> which is the percentage, within a given year, of <code>broad_group</code>s. If this step is done correctly, 1999 should have 92.0% Entertainment, 6.7% Commentators, and 1.2% Politics, Business, and Government</li>
+<li>Use <code>ggplot</code> for the rest!</li>
+</ol>
 <p>A typical situation that requires a <code>pivot_longer</code> command is when the columns represent the possible values of a variable. Table <a href="reshaping-data.html#tab:lesotho-table">8.6</a> shows example data set from <a href="http://dataportal.opendataforafrica.org/">opendataforafrica.org</a> with different years in different columns. You can find the data <a href="data/Lesotho.csv">here</a>.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="reshaping-data.html#cb155-1" aria-hidden="true" tabindex="-1"></a>Lesotho <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/Lesotho.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="reshaping-data.html#cb154-1" aria-hidden="true" tabindex="-1"></a>Lesotho <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/Lesotho.csv&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:lesotho-table">Table 8.6: </span>Financial statistics about Lesotho.</caption>
 <colgroup>
