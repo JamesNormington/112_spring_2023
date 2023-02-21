@@ -112,6 +112,7 @@ MyTwoYears_holidays = MyTwoYears %>%
 
 MyHolidays = Holidays %>%
   filter(year %in% c(____, _____)) %>%
+  arrange(date) %>%
   mutate(total = MyTwoYears_holidays$total)
 ```
 

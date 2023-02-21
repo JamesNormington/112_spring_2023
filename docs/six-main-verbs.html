@@ -956,7 +956,8 @@ and September 11, 1979, inclusive.</caption>
 <span id="cb144-3"><a href="six-main-verbs.html#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb144-4"><a href="six-main-verbs.html#cb144-4" aria-hidden="true" tabindex="-1"></a>MyHolidays <span class="ot">=</span> Holidays <span class="sc">%&gt;%</span></span>
 <span id="cb144-5"><a href="six-main-verbs.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(____, _____)) <span class="sc">%&gt;%</span></span>
-<span id="cb144-6"><a href="six-main-verbs.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> MyTwoYears_holidays<span class="sc">$</span>total)</span></code></pre></div>
+<span id="cb144-6"><a href="six-main-verbs.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb144-7"><a href="six-main-verbs.html#cb144-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> MyTwoYears_holidays<span class="sc">$</span>total)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>To add labels to the graph:</li>
 </ol>
