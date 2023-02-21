@@ -20,7 +20,7 @@ library(ggplot2)
 # Categorical Variables as Factors
 
 ```{r,cache=TRUE}
-Grades <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/grades.csv")
+Grades <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
@@ -32,7 +32,7 @@ GradeDistribution <- Grades %>% #summarized grade frequencies
   group_by(grade) %>%
   summarize(count = n())
 
-Courses <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/courses.csv")
+Courses <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/courses.csv")
 ```
 
 
