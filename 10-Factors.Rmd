@@ -172,7 +172,7 @@ Grades %>%
   geom_bar()
 ```
 
-## Assignment 6 Part 2: due Wednesday, March 1st @ 11:59pm {-}
+## Assignment 6 Part 2: due Friday, March 3rd @ 11:59pm {-}
 
 ```{exercise}
 Now that you've developed your data visualization and wrangling skills, 

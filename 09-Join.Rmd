@@ -263,7 +263,7 @@ JGrades %>%
 </details>
 
 
-## Assignment 6 Part 1: due Wednesday, March 1st @ 11:59pm {-}
+## Assignment 6 Part 1: due Friday, March 3rd @ 11:59pm {-}
 
 ```{exercise}
 Use all of your wrangling skills to answer the following questions.
