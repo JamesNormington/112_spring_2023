@@ -29,92 +29,18 @@ A match between a case in the *left* data table and a case in the *right* data t
 As an example, we'll examine the following two tables on grades and courses. The `Grades` file has one case for each class of each student, and includes variables describing the ID of the student (`sid`), the ID of the session (section/class), and the grade received. The `Courses` table has variables for the ID of the session (section/class), the department (coded), the level, the semester, the enrollment, and the ID of the instructor (`iid`). We show a few random rows of each table below.
 
 ```{r}
-Grades <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/grades.csv")
+Grades <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/grades.csv")
 Grades <- Grades %>%
   select(sid, sessionID, grade) %>%
   distinct(sid, sessionID, .keep_all = TRUE)
 ```
 
 ```{r, cache=TRUE}
-Courses <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/courses.csv")
+Courses <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/courses.csv")
 ```
 
 
-### Keys {-}
-
-There are two types of keys:
-
-1. A **primary key** uniquely identifies an observation in its own table. 
-
-2. A **foreign key** uniquely identifies an observation in another table.
-
-
-```{example}
-What variables are the primary keys for `Grades`?
-What variables are the primary keys for `Courses`?  
-```
-
-Try yourself and then check online for solution.
-
-> ANSWER: 
-
-
-```{example}
-What variables are the foreign keys in `Grades` for `Courses`?
-What variables are the foreign keys in `Courses` for `Grades`?  
-```
-
-Try yourself and then check online for solution.
-
-> ANSWER: 
-
-
-
-## Mutating joins {-}
-
-```{example name="Average class size: varying viewpoints"}
-Determine the average class size from the viewpoint of a student and the viewpoint of the Provost / Admissions Office.
-
-```
-
-Try yourself and then check online for solution.
-
-> ANSWER: 
-
-```{r}
-
-```
-
-## Filtering joins {-}
-
-```{example, name="semi_join to compare to a filtered summary"}
-Find a subset of the `Grades` data that only contains data on the four largest sections in the `Courses` data set.
-
-```
-
-Try yourself and then check online for solution.
-
-> ANSWER: 
-
-```{r}
-
-```
-
-
-```{example,name="semi_join"}
-Use `semi_join()` to create a table with a subset of the rows of `Grades` corresponding to all classes taken in department `J`.
-
-```
-
-Try yourself and then check online for solution.
-
-> ANSWER: 
-
-```{r}
-
-```
-
-## More join practice {-}
+## Assignment 6 Part 1: due Friday, March 3rd @ 11:59pm {-}
 
 ```{exercise}
 Use your wrangling skills to answer the following questions.
@@ -184,14 +110,14 @@ Here is the code to read in the data:^[**Important**: To avoid repeatedly re-rea
 
 ```{r cache=TRUE}
 data_site <-
-  "https://jamesnormington.github.io/112_fall_2022/data/2014-Q4-Trips-History-Data-Small.rds"
+  "https://jamesnormington.github.io/112_spring_2023/data/2014-Q4-Trips-History-Data-Small.rds"
 Trips <- readRDS(gzcon(url(data_site)))
-Stations <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/DC-Stations.csv")
+Stations <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/DC-Stations.csv")
 ```
 
 The `Trips` data table is a random subset of 10,000 trips from the full quarterly data. Start with this small data table to develop your analysis commands. When you have this working well, you can access the full data set of more than 600,000 events by removing `-Small` from the name of the `data_site`. 
 
-### Warm-up: Temporal patterns {-}
+### Temporal patterns {-}
 
 It's natural to expect that bikes are rented more at some times of day, some days of the week, some months of the year than others. The variable `sdate` gives the time (including the date) that the rental started.
 
