@@ -85,7 +85,7 @@ d. What's the grade-point average for each instructor?
 
 ```
 
-e. We cannot actually compute the correct grade-point average for each department from the information we have. The reason why is due to cross-listed courses. Students for those courses could be enrolled under either department, and we do not know which department to assign the grade to. There are a number of possible workarounds to get an estimate. One would be to assign all grades in a section to the department of the instructor, which we'd have to infer from the data. Instead, start by creating a table with all cross-listed courses. Then use an `anti_join` to eliminate all cross-listed courses. Finally, use an `inner_join` to compute the grade-point average for each department.
+e. We cannot actually compute the correct grade-point average for each department from the information we have. The reason why is due to cross-listed courses. Students for those courses could be enrolled under either department, and we do not know which department to assign the grade to. There are a number of possible workarounds to get an estimate. One would be to assign all grades in a section to the department of the instructor, which we'd have to infer from the data. Instead, start by creating a table with all cross-listed courses (courses with more than 1 `sessionID`. Then use an `anti_join` to eliminate all cross-listed courses. Finally, use an `inner_join` to compute the grade-point average for each department.
 
 > ANSWER: 
 
@@ -141,7 +141,7 @@ Make the following plots and interpret them:
 
 ```
 
-(c) A histogram of the events versus day of the week.
+(c) A bar plot of the events versus day of the week.
 
 > ANSWER: 
 
