@@ -50,7 +50,7 @@ knitr::kable(
 
 Here is a bar chart of the grade distribution:
 
-```{r}
+```{r, fig.alt = 'Testing'}
 ggplot(Grades, aes(x = grade)) +
   geom_bar()
 ```

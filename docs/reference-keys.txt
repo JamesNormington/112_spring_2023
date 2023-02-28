@@ -147,3 +147,8 @@ six-main-verbs
 reshaping-data
 joining-two-data-frames
 categorical-variables-as-factors
+tab:unnamed-chunk-4
+tab:unnamed-chunk-8
+exm:unnamed-chunk-13
+exm:unnamed-chunk-17
+exr:unnamed-chunk-19
