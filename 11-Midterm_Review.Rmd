@@ -17,11 +17,8 @@ Kiva has field partners who generally act as intermediaries between borrowers an
 
 
 ```{r, cache=TRUE,eval=FALSE,echo=TRUE}
-partners <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/kiva_partners2.csv")
+partners <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/kiva_partners2.csv")
 ```
-
-
-Examine the [codebook](data/kiva_partners_vars.xlsx) for the `partners` table.   
 
 
 
@@ -32,9 +29,8 @@ The four columns after region should all be on a per region basis; for example, 
 
 ```
 
-```{exercise, name="Partners in Africa"}
-Draw a map of all of the partners in Africa, with the size of the dot corresponding to the amount raised.   
-
+```{exercise, name="Total amount by region"}
+Create a bar plot of total amount raised by region.
 ```
 
 ### Investigate the `loans` Data Table {-}
@@ -44,11 +40,8 @@ The `loans` [table](data/kiva_loans_small.csv) below contains information about 
 
 ```{r, cache=TRUE,eval=FALSE,message=FALSE,warning=FALSE}
 # a random sample of 10,000
-loans <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/kiva_loans_small.csv")
+loans <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/kiva_loans_small.csv")
 ```
-
-
-Examine the [codebook](data/kiva_loans_vars.xlsx) for the `loans` table. View the `loans` table and browse through some of the data (e.g., different sectors, uses, countries)
 
 
 ```{exercise, name="Preprocessing"}
@@ -94,7 +87,7 @@ a. Starting with `loans3`, create a new table `DefaultData` that only includes t
 b. Make a density plot of the funded amount, split by loan status ("defaulted" or "paid"). That is, your plot should have two separate density curves on top of each other. Interpret the plot.   
 
 c. Make a bar chart with 10 bars, such that each bar is a \$1000 range of funding amount; that is, the first bar should be for \$0-\$1000, the second for \$1001-\$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.     
-d. Starting with the data in `DefaultData` from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage. *Hint: start by filtering out partners that have not had any defaulted loans.*   
+d. Starting with the data in `DefaultData` from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage.  
 
 
 ```{exercise, name="Funding time"}
@@ -103,10 +96,7 @@ Consider the following:
 
 a. Use the command `days_to_fund = difftime(funded_date, post_date, units="days")` within `mutate()` to add a column to the `loans3` data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as `loans4`.      
 b. The `days_to_fund` should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table `loans4`.   
-c. Make a bar chart with days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.   
-d. Make a bar chart with days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.   
+c. Make a bar chart with average days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund. 
+d. Make a bar chart with average days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.  
 e. Make a scatterplot with `funded_amount` on the x-axis and `days_to_fund` on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends? 
 
-```{exercise, name="Your Own Question"}
-Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.
-```

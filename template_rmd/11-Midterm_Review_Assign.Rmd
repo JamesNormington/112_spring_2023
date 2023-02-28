@@ -30,10 +30,8 @@ Kiva has field partners who generally act as intermediaries between borrowers an
 
 
 ```{r, cache=TRUE}
-partners <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners2.csv")
+partners <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/kiva_partners2.csv")
 ```
-
-Examine the [codebook](https://bcheggeseth.github.io/112_fall_2022/data/kiva_partners_vars.xlsx) for the `partners` table.   
 
 
 ```{exercise, name="Regional distribution"}
@@ -49,9 +47,8 @@ The four columns after region should all be on a per region basis; for example, 
 
 ```
 
-```{exercise, name="Partners in Africa"}
-Draw a map of all of the partners in Africa, with the size of the dot corresponding to the amount raised.   
-
+```{exercise, name="Total amount by region"}
+Create a bar plot of total amount raised by region.
 ```
 
 > ANSWER: 
@@ -67,10 +64,8 @@ The `loans` table below contains information about individual loans to borrowers
 
 ```{r, cache=TRUE,message=FALSE,warning=FALSE}
 # a random sample of 10,000
-loans <- read_csv("https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_small.csv")
+loans <- read_csv("https://jamesnormington.github.io/112_fall_2022/data/kiva_loans_small.csv")
 ```
-
-Examine the [codebook](https://bcheggeseth.github.io/112_fall_2022/data/kiva_loans_vars.xlsx) for the `loans` table. View the `loans` table and browse through some of the data (e.g., different sectors, uses, countries)
 
 ```{r}
 # View(loans)
@@ -170,7 +165,7 @@ c. Make a bar chart with 10 bars, such that each bar is a $1000 range of funding
 
 ```
 
-d. Starting with the data in `DefaultData` from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage. *Hint: start by filtering out partners that have not had any defaulted loans.*   
+d. Starting with the data in `DefaultData` from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage.   
 
 > ANSWER: 
 
@@ -200,7 +195,7 @@ b. The `days_to_fund` should always be positive, but there are some negative val
 
 ```
 
-c. Make a bar chart with days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.  
+c. Make a bar chart with average days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund. 
 
 > ANSWER: 
 
@@ -208,7 +203,7 @@ c. Make a bar chart with days to fund by region. Reorder the x-axis so that the 
 
 ```
 
-d. Make a bar chart with days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.  
+d. Make a bar chart with average days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.  
 
 > ANSWER: 
 
@@ -225,12 +220,3 @@ e. Make a scatterplot with `funded_amount` on the x-axis and `days_to_fund` on t
 ```
 
 
-```{exercise, name="Your Own Question"}
-Now that you are more familiar with the data, investigate your own research question and address it with a summary table or a data visualization.
-```
-
-> ANSWER: 
-
-```{r}
-
-```

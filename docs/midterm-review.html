@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 10 Categorical Variables as Factors | COMP/STAT 112: Introduction to Data Science</title>
+  <title>Topic 11 Midterm Review | COMP/STAT 112: Introduction to Data Science</title>
   <meta name="description" content="This is the class website for Introduction to Data Science (COMP/STAT 112) at Macalester College for Spring 2023." />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 10 Categorical Variables as Factors | COMP/STAT 112: Introduction to Data Science" />
+  <meta property="og:title" content="Topic 11 Midterm Review | COMP/STAT 112: Introduction to Data Science" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/logo.png" />
   <meta property="og:description" content="This is the class website for Introduction to Data Science (COMP/STAT 112) at Macalester College for Spring 2023." />
   <meta name="github-repo" content="JamesNormington/112_spring_2023/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 10 Categorical Variables as Factors | COMP/STAT 112: Introduction to Data Science" />
+  <meta name="twitter:title" content="Topic 11 Midterm Review | COMP/STAT 112: Introduction to Data Science" />
   
   <meta name="twitter:description" content="This is the class website for Introduction to Data Science (COMP/STAT 112) at Macalester College for Spring 2023." />
   <meta name="twitter:image" content="/images/logo.png" />
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="joining-two-data-frames.html"/>
-<link rel="next" href="midterm-review.html"/>
+<link rel="prev" href="categorical-variables-as-factors.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -386,307 +386,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categorical-variables-as-factors" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Topic 10</span> Categorical Variables as Factors<a href="categorical-variables-as-factors.html#categorical-variables-as-factors" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="learning-goals-9" class="section level2 unnumbered hasAnchor">
-<h2>Learning Goals<a href="categorical-variables-as-factors.html#learning-goals-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Understand the difference between a variable stored as a <code>character</code> vs. a <code>factor</code></li>
-<li>Be able to convert a <code>character</code> variable to a <code>factor</code></li>
-<li>Develop comfort in manipulating the order and values of a factor with the <code>forcats</code> package to improve summaries and visualizations.</li>
-</ul>
-<p>Create a new Rmd file (save it as 10-Factors.Rmd). Put this file in a folder <code>Assignment_06</code> in your <code>COMP_STAT_112</code> folder.</p>
-<ul>
-<li>You are used to using template Rmd files but you are ready to create your own!
-<ul>
-<li>Look at previous Rmd files and notice patterns. You can copy the top YAML section over and adjust.</li>
-<li>Note that if you use {exercise} instead of {r} that it will automatically number your exercises!</li>
-<li>Make sure to add <code>fig.alt</code> for your visualizations!</li>
-</ul></li>
-<li>From now on, you’ll be expected to create your own Rmd files and make them look clean and organized so that preceptors and instructors can easily read the knitted file and give feedback.</li>
-</ul>
-</div>
-<div id="example-grade-distribution" class="section level2 unnumbered hasAnchor">
-<h2>Example: Grade Distribution<a href="categorical-variables-as-factors.html#example-grade-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="categorical-variables-as-factors.html#cb175-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/grades.csv&quot;</span>)</span>
-<span id="cb175-2"><a href="categorical-variables-as-factors.html#cb175-2" aria-hidden="true" tabindex="-1"></a>Grades <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
-<span id="cb175-3"><a href="categorical-variables-as-factors.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sid, sessionID, grade) <span class="sc">%&gt;%</span></span>
-<span id="cb175-4"><a href="categorical-variables-as-factors.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(sid, sessionID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>We will continue with the grades data from the previous activity. Here is a sample to remember what it looks like:</p>
-<table>
-<caption><span id="tab:unnamed-chunk-270">Table 10.1: </span>Student grades.</caption>
-<thead>
-<tr class="header">
-<th align="center">sid</th>
-<th align="center">sessionID</th>
-<th align="center">grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">S31842</td>
-<td align="center">session2207</td>
-<td align="center">B+</td>
-</tr>
-<tr class="even">
-<td align="center">S32436</td>
-<td align="center">session3172</td>
-<td align="center">S</td>
-</tr>
-<tr class="odd">
-<td align="center">S31671</td>
-<td align="center">session3435</td>
-<td align="center">A-</td>
-</tr>
-<tr class="even">
-<td align="center">S31929</td>
-<td align="center">session3512</td>
-<td align="center">NC</td>
-</tr>
-</tbody>
-</table>
-<p>Here is a bar chart of the grade distribution:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="categorical-variables-as-factors.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Grades, <span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
-<span id="cb176-2"><a href="categorical-variables-as-factors.html#cb176-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-271-1.png" alt="Testing" width="672" /></p>
-<p>We can also wrangle a table that just has each grade and the number of times it appears:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="categorical-variables-as-factors.html#cb177-1" aria-hidden="true" tabindex="-1"></a>GradeDistribution <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
-<span id="cb177-2"><a href="categorical-variables-as-factors.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grade) <span class="sc">%&gt;%</span></span>
-<span id="cb177-3"><a href="categorical-variables-as-factors.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="categorical-variables-as-factors.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, we can use the count() function the creates a variable called n</span></span>
-<span id="cb178-2"><a href="categorical-variables-as-factors.html#cb178-2" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb178-3"><a href="categorical-variables-as-factors.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(grade) </span></code></pre></div>
-<table>
-<caption><span id="tab:unnamed-chunk-274">Table 10.2: </span>Grade distribution.</caption>
-<thead>
-<tr class="header">
-<th align="left">grade</th>
-<th align="right">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="right">1506</td>
-</tr>
-<tr class="even">
-<td align="left">A-</td>
-<td align="right">1381</td>
-</tr>
-<tr class="odd">
-<td align="left">AU</td>
-<td align="right">27</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="right">804</td>
-</tr>
-<tr class="odd">
-<td align="left">B-</td>
-<td align="right">330</td>
-</tr>
-<tr class="even">
-<td align="left">B+</td>
-<td align="right">1003</td>
-</tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="right">137</td>
-</tr>
-<tr class="even">
-<td align="left">C-</td>
-<td align="right">52</td>
-</tr>
-<tr class="odd">
-<td align="left">C+</td>
-<td align="right">167</td>
-</tr>
-<tr class="even">
-<td align="left">D</td>
-<td align="right">18</td>
-</tr>
-<tr class="odd">
-<td align="left">D-</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="left">D+</td>
-<td align="right">8</td>
-</tr>
-<tr class="odd">
-<td align="left">NC</td>
-<td align="right">17</td>
-</tr>
-<tr class="even">
-<td align="left">S</td>
-<td align="right">388</td>
-</tr>
-</tbody>
-</table>
-<p><strong><em>What could be improved about this graphic and table?</em></strong></p>
-<p>The grades are listed alphabetically, which isn’t particularly meaningful. Why are they listed that way? Because the variable <code>grade</code> is a character string type:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="categorical-variables-as-factors.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Grades<span class="sc">$</span>grade)</span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<p>When dealing with categorical variables that take a finite number of values (<code>levels</code>, formally), it is often useful to store the variable as a factor, and specify a meaningful order for the levels.</p>
-<p>For example, when the entries are stored as character strings, we cannot use the <code>levels</code> command to see the full list of values:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="categorical-variables-as-factors.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Grades<span class="sc">$</span>grade)</span></code></pre></div>
-<pre><code>## NULL</code></pre>
-<div id="converting-to-factor" class="section level3 unnumbered hasAnchor">
-<h3>Converting to factor<a href="categorical-variables-as-factors.html#converting-to-factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let’s first convert the <code>grade</code> variable to a factor:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="categorical-variables-as-factors.html#cb183-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="ot">&lt;-</span> Grades <span class="sc">%&gt;%</span></span>
-<span id="cb183-2"><a href="categorical-variables-as-factors.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">factor</span>(grade))</span></code></pre></div>
-<p>Now we can see the levels:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="categorical-variables-as-factors.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Grades<span class="sc">$</span>grade)</span></code></pre></div>
-<pre><code>##  [1] &quot;A&quot;  &quot;A-&quot; &quot;AU&quot; &quot;B&quot;  &quot;B-&quot; &quot;B+&quot; &quot;C&quot;  &quot;C-&quot; &quot;C+&quot; &quot;D&quot;  &quot;D-&quot; &quot;D+&quot; &quot;NC&quot; &quot;S&quot;</code></pre>
-<p>Moreover, the <code>forcats</code> package (part of <code>tidyverse</code>) allows us to manipulate these factors. Its commands include the following.</p>
-</div>
-<div id="changing-the-order-of-levels" class="section level3 unnumbered hasAnchor">
-<h3>Changing the order of levels<a href="categorical-variables-as-factors.html#changing-the-order-of-levels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><code>fct_relevel()</code>: manually reorder levels<br />
-</li>
-<li><code>fct_infreq()</code>: order levels from highest to lowest frequency<br />
-</li>
-<li><code>fct_reorder()</code>: reorder levels by values of another variable<br />
-</li>
-<li><code>fct_rev()</code>: reverse the current order</li>
-</ul>
-</div>
-<div id="changing-the-value-of-levels" class="section level3 unnumbered hasAnchor">
-<h3>Changing the value of levels<a href="categorical-variables-as-factors.html#changing-the-value-of-levels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><code>fct_recode()</code>: manually change levels<br />
-</li>
-<li><code>fct_lump()</code>: group together least common levels</li>
-</ul>
-<p>More details on these and other commands can be found on the <a href="https://github.com/rstudio/cheatsheets/raw/main/factors.pdf">forcats cheat sheet</a> or in Wickham &amp; Grolemund’s <a href="https://r4ds.had.co.nz/factors.html">chapter on factors</a>.</p>
-<p><br />
-</p>
-<div class="example">
-<p><span id="exm:unnamed-chunk-279" class="example"><strong>Example 10.1  (Reorder factors) </strong></span>Let’s reorder the grades so that they are in a more meaningful order for the bar chart above. Here are three options:</p>
-</div>
-<p><br />
-</p>
-<p><strong>Option 1</strong>: From high grade to low grade, with “S” and “AU” at the end:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="categorical-variables-as-factors.html#cb186-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb186-2"><a href="categorical-variables-as-factors.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_relevel</span>(grade, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A-&quot;</span>, <span class="st">&quot;B+&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B-&quot;</span>, <span class="st">&quot;C+&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C-&quot;</span>, <span class="st">&quot;D+&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;D-&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;AU&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb186-3"><a href="categorical-variables-as-factors.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
-<span id="cb186-4"><a href="categorical-variables-as-factors.html#cb186-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-280-1.png" alt="Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass)." width="672" /></p>
-<p><strong>Option 2</strong>: In terms of ascending frequency:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="categorical-variables-as-factors.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(GradeDistribution) <span class="sc">+</span></span>
-<span id="cb187-2"><a href="categorical-variables-as-factors.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(grade, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb187-3"><a href="categorical-variables-as-factors.html#cb187-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;grade&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-281-1.png" alt="Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass)." width="672" /></p>
-<p><strong>Option 3</strong>: In terms of descending frequency:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="categorical-variables-as-factors.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(GradeDistribution) <span class="sc">+</span></span>
-<span id="cb188-2"><a href="categorical-variables-as-factors.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(grade, count, <span class="at">.desc =</span> <span class="cn">TRUE</span>), <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb188-3"><a href="categorical-variables-as-factors.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;grade&quot;</span>)</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-282-1.png" alt="Bar plot of grad distribution. Vast majority of grades as A / A- / B+ /B  or Satisfactory (pass)." width="672" /></p>
-<div class="example">
-<p><span id="exm:unnamed-chunk-283" class="example"><strong>Example 10.2  (Recode factors) </strong></span>Because it may not be clear what “AU” and “S” stand for, let’s rename them to “Audit” and “Satisfactory”.</p>
-</div>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="categorical-variables-as-factors.html#cb189-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb189-2"><a href="categorical-variables-as-factors.html#cb189-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_relevel</span>(grade, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A-&quot;</span>, <span class="st">&quot;B+&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B-&quot;</span>, <span class="st">&quot;C+&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C-&quot;</span>, <span class="st">&quot;D+&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;D-&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;AU&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb189-3"><a href="categorical-variables-as-factors.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade =</span> <span class="fu">fct_recode</span>(grade, <span class="st">&quot;Satisfactory&quot;</span> <span class="ot">=</span> <span class="st">&quot;S&quot;</span>, <span class="st">&quot;Audit&quot;</span> <span class="ot">=</span> <span class="st">&quot;AU&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb189-4"><a href="categorical-variables-as-factors.html#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade)) <span class="sc">+</span></span>
-<span id="cb189-5"><a href="categorical-variables-as-factors.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="stat112_manual_files/figure-html/unnamed-chunk-284-1.png" alt="Bar plot of grad distribution. Vast majority of grades as A / A- / B+ / B or Satisfactory (pass)." width="672" /></p>
-</div>
-</div>
-<div id="assignment-6-part-2-due-friday-march-3rd-1159pm" class="section level2 unnumbered hasAnchor">
-<h2>Assignment 6 Part 2: due Friday, March 3rd @ 11:59pm<a href="categorical-variables-as-factors.html#assignment-6-part-2-due-friday-march-3rd-1159pm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="midterm-review" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Topic 11</span> Midterm Review<a href="midterm-review.html#midterm-review" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-kiva" class="section level2 unnumbered hasAnchor">
+<h2>Data: Kiva<a href="midterm-review.html#data-kiva" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.kiva.org/">Kiva</a> is a non-profit that allows people from around the world to lend small amounts to others to start or grow a business, go to school, access clean energy, etc. Since its founding in 2005, more than $1.2 billion in loans to over 3 million borrowers have been funded. In this activity, we’ll examine some lending data from 2005-2012.</p>
+<div id="investigate-the-partners-data-table" class="section level3 unnumbered hasAnchor">
+<h3>Investigate the <code>partners</code> Data Table<a href="midterm-review.html#investigate-the-partners-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kiva has field partners who generally act as intermediaries between borrowers and Kiva (lenders). They evaluate borrower risk, post loan requests on Kiva, and process payments. The following command loads a table with <a href="data/kiva_partners2.csv">data</a> on Kiva’s field partners.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="midterm-review.html#cb191-1" aria-hidden="true" tabindex="-1"></a>partners <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/kiva_partners2.csv&quot;</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-285" class="exercise"><strong>Exercise 10.1  </strong></span>Now that you’ve developed your data visualization and wrangling skills,</p>
+<p><span id="exr:unnamed-chunk-287" class="exercise"><strong>Exercise 11.1  (Regional distribution) </strong></span>Make a summary table with only five columns: region (<code>countries.region</code>), total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted.</p>
+<p>The four columns after region should all be on a per region basis; for example, the row for Central America should include average loan size per loan posted in Central America. Sort your table by total amount raised.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-288" class="exercise"><strong>Exercise 11.2  (Total amount by region) </strong></span>Create a bar plot of total amount raised by region.</p>
+</div>
+</div>
+<div id="investigate-the-loans-data-table" class="section level3 unnumbered hasAnchor">
+<h3>Investigate the <code>loans</code> Data Table<a href="midterm-review.html#investigate-the-loans-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>loans</code> <a href="data/kiva_loans_small.csv">table</a> below contains information about individual loans to borrowers.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="midterm-review.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a random sample of 10,000</span></span>
+<span id="cb192-2"><a href="midterm-review.html#cb192-2" aria-hidden="true" tabindex="-1"></a>loans <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/kiva_loans_small.csv&quot;</span>)</span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-290" class="exercise"><strong>Exercise 11.3  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li>develop a research question to address with the grades and courses data,</li>
-<li>create a high quality visualization that addresses your research question,</li>
-<li>write a brief description of the visualization and include the insight you gain about the research question.</li>
+<li>Remove all rows where the funded amount is 0.<br />
+</li>
+<li>Note that the date information about when a loan request was posted is separated out into different fields for year, month, day, hour, etc. It would be more helpful to have a single field for the exact time at which each loan was posted. We’ll do this in three steps. First, create (mutate) a new column by pasting together the year, month, and date, separated by hyphens: <code>post_dt=paste(posted_yr, posted_mo, posted_day, sep='-')</code>. Second, create a new column with the time: <code>post_time=paste(posted_hr,posted_min,posted_sec, sep=':')</code>. Third, using the <code>ymd_hms</code> command from <code>lubridate</code>, add a new column with the full date (including time of day):<br />
+<code>post_date=ymd_hms(paste(post_dt,post_time,sep=' '))</code>.<br />
+</li>
+<li>Repeat the previous part to add a column <code>funded_date</code> with the exact time at which each loan was funded.<br />
+</li>
+<li>Create a new table called <code>loans2</code> that only contains the following columns from <code>loans</code>: loan_id,status,funded_amount,paid_amount,sector,location.country,lat,lon,partner_id,post_date,funded_date</li>
 </ol>
-<pre><code>Courses &lt;- read_csv(&quot;https://jamesnormington.github.io/112_spring_2023/data/courses.csv&quot;)</code></pre>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-291" class="exercise"><strong>Exercise 11.4  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
 </div>
-<div id="appendix-r-functions-7" class="section level2 unnumbered hasAnchor">
-<h2>Appendix: R Functions<a href="categorical-variables-as-factors.html#appendix-r-functions-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="changing-the-order-of-levels-1" class="section level3 unnumbered hasAnchor">
-<h3>Changing the order of levels<a href="categorical-variables-as-factors.html#changing-the-order-of-levels-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="34%" />
-<col width="39%" />
-<col width="26%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function/Operator</th>
-<th align="center">Action</th>
-<th align="right">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>fct_relevel()</code></td>
-<td align="center">manually reorder levels of a factor</td>
-<td align="right"><code>Grades %&gt;% mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU")))</code></td>
-</tr>
-<tr class="even">
-<td><code>fct_infreq()</code></td>
-<td align="center">order levels from highest to lowest frequency</td>
-<td align="right"><code>ggplot(Grades) + geom_bar(aes(x = fct_infreq(grade)))</code></td>
-</tr>
-<tr class="odd">
-<td><code>fct_reorder()</code></td>
-<td align="center">reorder levels by values of another variable</td>
-<td align="right"><code>ggplot(GradeDistribution) + geom_col(aes(x = fct_reorder(grade, count), y = count))</code></td>
-</tr>
-<tr class="even">
-<td><code>fct_rev()</code></td>
-<td align="center">reverse the current order</td>
-<td align="right"><code>ggplot(Grades) + geom_bar(aes(x = fct_rev(fct_infreq(grade))))</code></td>
-</tr>
-</tbody>
-</table>
+<ol style="list-style-type: lower-alpha">
+<li>Find the top 5 countries by number of loans.<br />
+</li>
+<li>Find the top 5 countries by total funded loan amount.</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-292" class="exercise"><strong>Exercise 11.5  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
 </div>
-<div id="changing-the-value-of-levels-1" class="section level3 unnumbered hasAnchor">
-<h3>Changing the value of levels<a href="categorical-variables-as-factors.html#changing-the-value-of-levels-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="34%" />
-<col width="39%" />
-<col width="26%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function/Operator</th>
-<th align="center">Action</th>
-<th align="right">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>fct_recode()</code></td>
-<td align="center">manually change levels</td>
-<td align="right"><code>Grades %&gt;%  mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU"))</code></td>
-</tr>
-<tr class="even">
-<td><code>fct_lump()</code></td>
-<td align="center">group together least common levels</td>
-<td align="right"><code>Grades %&gt;% mutate(grade = fct_lump(grade, n = 5))</code></td>
-</tr>
-</tbody>
-</table>
+<p><em>Hint: start by wrangling the data into glyph-ready form, with one row corresponding to one glyph.</em></p>
+</div>
+<div id="putting-them-together" class="section level3 unnumbered hasAnchor">
+<h3>Putting them together<a href="midterm-review.html#putting-them-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-293" class="exercise"><strong>Exercise 11.6  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-294" class="exercise"><strong>Exercise 11.7  (Defaults) </strong></span>Consider the following:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Starting with <code>loans3</code>, create a new table <code>DefaultData</code> that only includes those loans whose status is either “defaulted” or “paid”.<br />
+</p></li>
+<li><p>Make a density plot of the funded amount, split by loan status (“defaulted” or “paid”). That is, your plot should have two separate density curves on top of each other. Interpret the plot.</p></li>
+<li><p>Make a bar chart with 10 bars, such that each bar is a $1000 range of funding amount; that is, the first bar should be for $0-$1000, the second for $1001-$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.<br />
+</p></li>
+<li><p>Starting with the data in <code>DefaultData</code> from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage.</p></li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-295" class="exercise"><strong>Exercise 11.8  (Funding time) </strong></span>Consider the following:</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Use the command <code>days_to_fund = difftime(funded_date, post_date, units="days")</code> within <code>mutate()</code> to add a column to the <code>loans3</code> data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as <code>loans4</code>.<br />
+</li>
+<li>The <code>days_to_fund</code> should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table <code>loans4</code>.<br />
+</li>
+<li>Make a bar chart with average days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.</li>
+<li>Make a bar chart with average days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.<br />
+</li>
+<li>Make a scatterplot with <code>funded_amount</code> on the x-axis and <code>days_to_fund</code> on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends?</li>
+</ol>
 
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="joining-two-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="midterm-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="categorical-variables-as-factors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
