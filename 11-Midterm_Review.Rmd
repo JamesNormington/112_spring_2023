@@ -6,7 +6,12 @@ library(lubridate)
 library(ggmap)
 ```
 
+
 # Midterm Review
+
+## Template Rmd {-}
+Access a template .Rmd for this midterm review [here](template_rmd/11-Midterm_Review_Assign.Rmd). 
+
 ## Data: Kiva {-}
 
 [Kiva](https://www.kiva.org/) is a non-profit that allows people from around the world to lend small amounts to others to start or grow a business, go to school, access clean energy, etc. Since its founding in 2005, more than $1.2 billion in loans to over 3 million borrowers have been funded. In this activity, we'll examine some lending data from 2005-2012. 
