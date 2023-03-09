@@ -17,7 +17,6 @@ library(lubridate)
 
 
 Create a new Rmd file (save it as 12-Data Import.Rmd). Put this file in a folder `Assignment_08` in your `COMP_STAT_112` folder.
-- Make sure to add alt text using fig.alt!
 
 
 ## Finding, Importing, and Cleaning Data {-}
@@ -29,7 +28,6 @@ Additional resources and readings:
 4. [Missing data](http://r4ds.had.co.nz/tidy-data.html#missing-values-3) from Wickham and Grolemund <br/>
 5. [Data intake](https://mdsr-book.github.io/mdsr2e/ch-dataII.html#data-intake) from Baumer, Kaplan, and Horton   
 6. [Using the import wizard](https://www.youtube.com/watch?v=GtCsjtZBNp4) from Prof. Lendway
-
 
 
 
@@ -102,13 +100,13 @@ df <- df %>% mutate(X = fct_recode(X, "TRUE" = "T", "TRUE" = "true", "FALSE" = "
 We will use a slightly "messied" [version](data/imdb_5000_messy.csv) of the [IMDB 5000 Dataset](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset), collected by chuansun76 on Kaggle.^[Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We'll learn this technique soon.]
 ```
 
-a. Use `read_csv` to load the IMDB 5000 dataset from "https://bcheggeseth.github.io/112_spring_2023/data/imdb_5000_messy.csv", and save it as `imdbMessy`.
+a. Use `read_csv` to load the IMDB 5000 dataset from "https://jamesnormington.github.io/112_spring_2023/data/imdb_5000_messy.csv", and save it as `imdbMessy`.
 
 <details>
   <summary>Solution</summary>
 
 ```{r}
-imdbMessy <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/imdb_5000_messy.csv")
+imdbMessy <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/imdb_5000_messy.csv")
 ```
   
 </details>
@@ -244,15 +242,15 @@ imdbMessysub2 <- imdbMessy %>% mutate(actor_1_facebook_likes = replace_na(actor_
   
 </details>
 
-## Additional Practice {-}
+## Assignment 8 Part 1 (due Wednesday, March 29th @ 11:59pm) {-}
 
 ```{exercise}
 Find a dataset that is not built into `R` and is related to one of the following topics:  
   
 ```
 
-* Macalester College (On Moodle Assignment 12, there is a dataset available from Macalester College IR you could use)
 * A personal hobby or passion
 * Your hometown, or a place you have lived
-  
-Load the data into `R`, make sure it is clean, and construct one interesting visualization of the data and include alt text.
+* Something you know nothing about, and are curious to learn about
+
+Load the data into `R`, make sure it is clean, and construct one interesting visualization of the data.

@@ -367,6 +367,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="midterm-review.html"><a href="midterm-review.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>IV Data Acquisition &amp; Cleaning</b></span></li>
+<li class="chapter" data-level="12" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>12</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-importing-and-cleaning-data"><i class="fa fa-check"></i>Finding, Importing, and Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-existing-data-sets"><i class="fa fa-check"></i>Finding Existing Data Sets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#loading-datasets"><i class="fa fa-check"></i>Loading Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#checking-the-imported-datasets"><i class="fa fa-check"></i>Checking the Imported Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#cleaning-datasets"><i class="fa fa-check"></i>Cleaning Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#assignment-8-part-1-due-wednesday-march-29th-1159pm"><i class="fa fa-check"></i>Assignment 8 Part 1 (due Wednesday, March 29th @ 11:59pm)</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -552,19 +565,21 @@ Solution
 <span id="cb82-20"><a href="multivariate-visualizations.html#cb82-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-21"><a href="multivariate-visualizations.html#cb82-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb82-22"><a href="multivariate-visualizations.html#cb82-22" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(g1, g2, g3, g4, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation:
-## colour
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in
-##   the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-##   variable into a factor?</code></pre>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+<pre><code>## Warning: The following aesthetics were dropped during statistical
+## transformation: colour
+## ℹ This can happen when ggplot fails to infer the correct
+##   grouping structure in the data.
+## ℹ Did you forget to specify a `group` aesthetic or to convert
+##   a numerical variable into a factor?</code></pre>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2
+## 3.4.0.
 ## ℹ Please use `linewidth` instead.</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: size
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in
-##   the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-##   variable into a factor?</code></pre>
+<pre><code>## Warning: The following aesthetics were dropped during statistical
+## transformation: size
+## ℹ This can happen when ggplot fails to infer the correct
+##   grouping structure in the data.
+## ℹ Did you forget to specify a `group` aesthetic or to convert
+##   a numerical variable into a factor?</code></pre>
 <p><img src="stat112_manual_files/figure-html/unnamed-chunk-148-1.png" alt="Four scatterplots of average SAT scores against teacher salary by expenditure across U.S. states in mid-1990s. There seems to be a high correlation between expenditure and salary, and both seem to be negatively correlated with SAT scores." width="768" /></p>
 </details>
 <p><br />

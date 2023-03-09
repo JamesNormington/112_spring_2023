@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="categorical-variables-as-factors.html"/>
-
+<link rel="next" href="data-import.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -367,6 +367,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="midterm-review.html"><a href="midterm-review.html#putting-them-together"><i class="fa fa-check"></i>Putting them together</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>IV Data Acquisition &amp; Cleaning</b></span></li>
+<li class="chapter" data-level="12" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>12</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-importing-and-cleaning-data"><i class="fa fa-check"></i>Finding, Importing, and Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#finding-existing-data-sets"><i class="fa fa-check"></i>Finding Existing Data Sets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#loading-datasets"><i class="fa fa-check"></i>Loading Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#checking-the-imported-datasets"><i class="fa fa-check"></i>Checking the Imported Datasets</a></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#cleaning-datasets"><i class="fa fa-check"></i>Cleaning Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-import.html"><a href="data-import.html#assignment-8-part-1-due-wednesday-march-29th-1159pm"><i class="fa fa-check"></i>Assignment 8 Part 1 (due Wednesday, March 29th @ 11:59pm)</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -404,17 +417,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="exr:unnamed-chunk-287" class="exercise"><strong>Exercise 11.1  (Regional distribution) </strong></span>Make a summary table with only five columns: region (<code>countries.region</code>), total number of partners, total number of loans posted, total amount raised, and average loan size per loan posted.</p>
 <p>The four columns after region should all be on a per region basis; for example, the row for Central America should include average loan size per loan posted in Central America. Sort your table by total amount raised.</p>
 </div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="midterm-review.html#cb192-1" aria-hidden="true" tabindex="-1"></a>region_by_amt <span class="ot">=</span> partners <span class="sc">%&gt;%</span></span>
+<span id="cb192-2"><a href="midterm-review.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(countries.region) <span class="sc">%&gt;%</span></span>
+<span id="cb192-3"><a href="midterm-review.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_partners =</span> <span class="fu">n</span>(),</span>
+<span id="cb192-4"><a href="midterm-review.html#cb192-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_loans =</span> <span class="fu">sum</span>(loans_posted),</span>
+<span id="cb192-5"><a href="midterm-review.html#cb192-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_amt_raised =</span> <span class="fu">sum</span>(total_amount_raised),</span>
+<span id="cb192-6"><a href="midterm-review.html#cb192-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_loan_size =</span> total_amt_raised <span class="sc">/</span> total_loans) <span class="sc">%&gt;%</span></span>
+<span id="cb192-7"><a href="midterm-review.html#cb192-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amt_raised))</span></code></pre></div>
+<pre><code>## Error in group_by(., countries.region): object &#39;partners&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-288" class="exercise"><strong>Exercise 11.2  (Total amount by region) </strong></span>Create a bar plot of total amount raised by region.</p>
+<p><span id="exr:unnamed-chunk-289" class="exercise"><strong>Exercise 11.2  (Total amount by region) </strong></span>Create a bar plot of total amount raised by region.</p>
 </div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="midterm-review.html#cb194-1" aria-hidden="true" tabindex="-1"></a>region_by_amt <span class="sc">%&gt;%</span></span>
+<span id="cb194-2"><a href="midterm-review.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> countries.region, <span class="at">y =</span> total_amt_raised)) <span class="sc">+</span></span>
+<span id="cb194-3"><a href="midterm-review.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<pre><code>## Error in ggplot(., aes(x = countries.region, y = total_amt_raised)): object &#39;region_by_amt&#39; not found</code></pre>
 </div>
 <div id="investigate-the-loans-data-table" class="section level3 unnumbered hasAnchor">
 <h3>Investigate the <code>loans</code> Data Table<a href="midterm-review.html#investigate-the-loans-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>loans</code> <a href="data/kiva_loans_small.csv">table</a> below contains information about individual loans to borrowers.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="midterm-review.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a random sample of 10,000</span></span>
-<span id="cb192-2"><a href="midterm-review.html#cb192-2" aria-hidden="true" tabindex="-1"></a>loans <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/kiva_loans_small.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="midterm-review.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a random sample of 10,000</span></span>
+<span id="cb196-2"><a href="midterm-review.html#cb196-2" aria-hidden="true" tabindex="-1"></a>loans <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jamesnormington.github.io/112_spring_2023/data/kiva_loans_small.csv&quot;</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-290" class="exercise"><strong>Exercise 11.3  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
+<p><span id="exr:unnamed-chunk-292" class="exercise"><strong>Exercise 11.3  (Preprocessing) </strong></span>Consider the <code>loans</code> data and perform the following preprocessing steps and save the new data as <code>loans2</code>.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Remove all rows where the funded amount is 0.<br />
@@ -426,66 +451,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Create a new table called <code>loans2</code> that only contains the following columns from <code>loans</code>: loan_id,status,funded_amount,paid_amount,sector,location.country,lat,lon,partner_id,post_date,funded_date</li>
 </ol>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="midterm-review.html#cb197-1" aria-hidden="true" tabindex="-1"></a>loans2 <span class="ot">=</span> loans <span class="sc">%&gt;%</span></span>
+<span id="cb197-2"><a href="midterm-review.html#cb197-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(funded_amount <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb197-3"><a href="midterm-review.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">post_dt=</span><span class="fu">paste</span>(posted_yr, posted_mo, posted_day, <span class="at">sep=</span><span class="st">&#39;-&#39;</span>),</span>
+<span id="cb197-4"><a href="midterm-review.html#cb197-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">post_time=</span><span class="fu">paste</span>(posted_hr,posted_min,posted_sec, <span class="at">sep=</span><span class="st">&#39;:&#39;</span>),</span>
+<span id="cb197-5"><a href="midterm-review.html#cb197-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">post_date=</span><span class="fu">ymd_hms</span>(<span class="fu">paste</span>(post_dt,post_time,<span class="at">sep=</span><span class="st">&#39; &#39;</span>)),</span>
+<span id="cb197-6"><a href="midterm-review.html#cb197-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">funded_dt=</span><span class="fu">paste</span>(funded_yr, funded_mo, funded_day, <span class="at">sep=</span><span class="st">&#39;-&#39;</span>),</span>
+<span id="cb197-7"><a href="midterm-review.html#cb197-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">funded_time=</span><span class="fu">paste</span>(funded_hr,funded_min,funded_sec, <span class="at">sep=</span><span class="st">&#39;:&#39;</span>),</span>
+<span id="cb197-8"><a href="midterm-review.html#cb197-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">funded_date=</span><span class="fu">ymd_hms</span>(<span class="fu">paste</span>(funded_dt,funded_time,<span class="at">sep=</span><span class="st">&#39; &#39;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb197-9"><a href="midterm-review.html#cb197-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(loan_id,status,funded_amount,paid_amount,sector,location.country,lat,lon,partner_id,post_date,funded_date )</span></code></pre></div>
+<pre><code>## Error in filter(., funded_amount != 0): object &#39;loans&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-291" class="exercise"><strong>Exercise 11.4  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
+<p><span id="exr:unnamed-chunk-294" class="exercise"><strong>Exercise 11.4  (Loans by country) </strong></span>Consider the <code>loans2</code> table.</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Find the top 5 countries by number of loans.<br />
 </li>
 <li>Find the top 5 countries by total funded loan amount.</li>
 </ol>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="midterm-review.html#cb199-1" aria-hidden="true" tabindex="-1"></a>loans2 <span class="sc">%&gt;%</span></span>
+<span id="cb199-2"><a href="midterm-review.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location.country) <span class="sc">%&gt;%</span></span>
+<span id="cb199-3"><a href="midterm-review.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb199-4"><a href="midterm-review.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb199-5"><a href="midterm-review.html#cb199-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;loans2&#39; not found</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="midterm-review.html#cb201-1" aria-hidden="true" tabindex="-1"></a>loans2 <span class="sc">%&gt;%</span></span>
+<span id="cb201-2"><a href="midterm-review.html#cb201-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location.country) <span class="sc">%&gt;%</span></span>
+<span id="cb201-3"><a href="midterm-review.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_amt =</span> <span class="fu">sum</span>(funded_amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb201-4"><a href="midterm-review.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amt)) <span class="sc">%&gt;%</span></span>
+<span id="cb201-5"><a href="midterm-review.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;loans2&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-292" class="exercise"><strong>Exercise 11.5  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
+<p><span id="exr:unnamed-chunk-297" class="exercise"><strong>Exercise 11.5  (Sector analysis) </strong></span>Make a scatterplot with the number of loans in each sector on the x-axis and the average loan size in each sector on the y-axis. Instead of using points, use text with each sector’s name as the glyph.</p>
 </div>
 <p><em>Hint: start by wrangling the data into glyph-ready form, with one row corresponding to one glyph.</em></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="midterm-review.html#cb203-1" aria-hidden="true" tabindex="-1"></a>loans2 <span class="sc">%&gt;%</span></span>
+<span id="cb203-2"><a href="midterm-review.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector) <span class="sc">%&gt;%</span></span>
+<span id="cb203-3"><a href="midterm-review.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_loans =</span> <span class="fu">n</span>(),</span>
+<span id="cb203-4"><a href="midterm-review.html#cb203-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_loan_size =</span> <span class="fu">mean</span>(funded_amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb203-5"><a href="midterm-review.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n_loans, <span class="at">y =</span> avg_loan_size, <span class="at">label =</span> sector)) <span class="sc">+</span></span>
+<span id="cb203-6"><a href="midterm-review.html#cb203-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
+<pre><code>## Error in group_by(., sector): object &#39;loans2&#39; not found</code></pre>
 </div>
 <div id="putting-them-together" class="section level3 unnumbered hasAnchor">
 <h3>Putting them together<a href="midterm-review.html#putting-them-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-293" class="exercise"><strong>Exercise 11.6  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
+<p><span id="exr:unnamed-chunk-299" class="exercise"><strong>Exercise 11.6  (Join practice) </strong></span>Join the <code>countries.region</code> variable from the <code>partners</code> table onto the <code>loans2</code> table, in order to have a region associated with each loan. Save the output table as <code>loans3</code>.</p>
 </div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="midterm-review.html#cb205-1" aria-hidden="true" tabindex="-1"></a>loans3 <span class="ot">=</span> loans2 <span class="sc">%&gt;%</span></span>
+<span id="cb205-2"><a href="midterm-review.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(partners, <span class="at">by =</span> <span class="st">&#39;partner_id&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in left_join(., partners, by = &quot;partner_id&quot;): object &#39;loans2&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-294" class="exercise"><strong>Exercise 11.7  (Defaults) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-301" class="exercise"><strong>Exercise 11.7  (Defaults) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li><p>Starting with <code>loans3</code>, create a new table <code>DefaultData</code> that only includes those loans whose status is either “defaulted” or “paid”.<br />
-</p></li>
-<li><p>Make a density plot of the funded amount, split by loan status (“defaulted” or “paid”). That is, your plot should have two separate density curves on top of each other. Interpret the plot.</p></li>
-<li><p>Make a bar chart with 10 bars, such that each bar is a $1000 range of funding amount; that is, the first bar should be for $0-$1000, the second for $1001-$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.<br />
-</p></li>
-<li><p>Starting with the data in <code>DefaultData</code> from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage.</p></li>
+<li>Starting with <code>loans3</code>, create a new table <code>DefaultData</code> that only includes those loans whose status is either “defaulted” or “paid”.</li>
 </ol>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="midterm-review.html#cb207-1" aria-hidden="true" tabindex="-1"></a>DefaultData <span class="ot">=</span> loans3 <span class="sc">%&gt;%</span></span>
+<span id="cb207-2"><a href="midterm-review.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(status.x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;defaulted&quot;</span>, <span class="st">&quot;paid&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in filter(., status.x %in% c(&quot;defaulted&quot;, &quot;paid&quot;)): object &#39;loans3&#39; not found</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Make a density plot of the funded amount, split by loan status (“defaulted” or “paid”). That is, your plot should have two separate density curves on top of each other. Interpret the plot.</li>
+</ol>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="midterm-review.html#cb209-1" aria-hidden="true" tabindex="-1"></a>DefaultData <span class="sc">%&gt;%</span></span>
+<span id="cb209-2"><a href="midterm-review.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> funded_amount, <span class="at">fill =</span> status.x)) <span class="sc">+</span></span>
+<span id="cb209-3"><a href="midterm-review.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<pre><code>## Error in ggplot(., aes(x = funded_amount, fill = status.x)): object &#39;DefaultData&#39; not found</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Make a bar chart with 10 bars, such that each bar is a $1000 range of funding amount; that is, the first bar should be for $0-$1000, the second for $1001-$2000, and so forth. The bars should all have height equal to 1, but be filled with two colors: one for the percentage of loans in that interval bin that defaulted and one for the percentage that were paid back in full. Interpret your graphic.</li>
+</ol>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="midterm-review.html#cb211-1" aria-hidden="true" tabindex="-1"></a>DefaultData <span class="sc">%&gt;%</span></span>
+<span id="cb211-2"><a href="midterm-review.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">funded_amount_cat =</span> <span class="fu">cut</span>(funded_amount, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">6000</span>, <span class="dv">7000</span>, <span class="dv">8000</span>, <span class="dv">9000</span>, <span class="dv">10000</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb211-3"><a href="midterm-review.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> funded_amount_cat, <span class="at">fill =</span> status.x)) <span class="sc">+</span></span>
+<span id="cb211-4"><a href="midterm-review.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in mutate(., funded_amount_cat = cut(funded_amount, breaks = c(0, : object &#39;DefaultData&#39; not found</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Starting with the data in <code>DefaultData</code> from part (a), make a table with four columns: partner_id, number of defaulted loans through that partner, number of loans completely paid back through that partner, and percentage of loans defaulted (the second column divided by the sum of the second and third columns). Sort your table from highest default percentage to lowest, and print out only those with at least a 10% default percentage.</li>
+</ol>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="midterm-review.html#cb213-1" aria-hidden="true" tabindex="-1"></a>DefaultData <span class="sc">%&gt;%</span></span>
+<span id="cb213-2"><a href="midterm-review.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(partner_id, status.x) <span class="sc">%&gt;%</span></span>
+<span id="cb213-3"><a href="midterm-review.html#cb213-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb213-4"><a href="midterm-review.html#cb213-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(partner_id) <span class="sc">%&gt;%</span></span>
+<span id="cb213-5"><a href="midterm-review.html#cb213-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;status.x&quot;</span>,</span>
+<span id="cb213-6"><a href="midterm-review.html#cb213-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb213-7"><a href="midterm-review.html#cb213-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb213-8"><a href="midterm-review.html#cb213-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_defaulted =</span> <span class="dv">100</span><span class="sc">*</span>defaulted <span class="sc">/</span> (defaulted <span class="sc">+</span> paid)) <span class="sc">%&gt;%</span></span>
+<span id="cb213-9"><a href="midterm-review.html#cb213-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct_defaulted)) <span class="sc">%&gt;%</span></span>
+<span id="cb213-10"><a href="midterm-review.html#cb213-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pct_defaulted <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb213-11"><a href="midterm-review.html#cb213-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;print&#39;: object &#39;DefaultData&#39; not found</code></pre>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-295" class="exercise"><strong>Exercise 11.8  (Funding time) </strong></span>Consider the following:</p>
+<p><span id="exr:unnamed-chunk-306" class="exercise"><strong>Exercise 11.8  (Funding time) </strong></span>Consider the following:</p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li>Use the command <code>days_to_fund = difftime(funded_date, post_date, units="days")</code> within <code>mutate()</code> to add a column to the <code>loans3</code> data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as <code>loans4</code>.<br />
-</li>
-<li>The <code>days_to_fund</code> should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table <code>loans4</code>.<br />
-</li>
+<li>Use the command <code>days_to_fund = difftime(funded_date, post_date, units="days")</code> within <code>mutate()</code> to add a column to the <code>loans3</code> data that has the number of days between the time a loan was posted and the time it was funded. Save your new table as <code>loans4</code>.</li>
+</ol>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="midterm-review.html#cb215-1" aria-hidden="true" tabindex="-1"></a>loans4 <span class="ot">=</span> loans3 <span class="sc">%&gt;%</span></span>
+<span id="cb215-2"><a href="midterm-review.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">days_to_fund =</span> <span class="fu">difftime</span>(funded_date, post_date, <span class="at">units=</span><span class="st">&quot;days&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in mutate(., days_to_fund = difftime(funded_date, post_date, units = &quot;days&quot;)): object &#39;loans3&#39; not found</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The <code>days_to_fund</code> should always be positive, but there are some negative values, most likely due to data entry errors. Filter these out of the data table <code>loans4</code>.</li>
+</ol>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="midterm-review.html#cb217-1" aria-hidden="true" tabindex="-1"></a>loans4 <span class="ot">=</span> loans4 <span class="sc">%&gt;%</span></span>
+<span id="cb217-2"><a href="midterm-review.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(days_to_fund <span class="sc">&gt;=</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Error in filter(., days_to_fund &gt;= 0): object &#39;loans4&#39; not found</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
 <li>Make a bar chart with average days to fund by region. Reorder the x-axis so that the regions are in order of ascending days to fund.</li>
-<li>Make a bar chart with average days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.<br />
-</li>
+</ol>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="midterm-review.html#cb219-1" aria-hidden="true" tabindex="-1"></a>loans4 <span class="sc">%&gt;%</span></span>
+<span id="cb219-2"><a href="midterm-review.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(countries.region) <span class="sc">%&gt;%</span></span>
+<span id="cb219-3"><a href="midterm-review.html#cb219-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">days_to_fund =</span> <span class="fu">mean</span>(days_to_fund)) <span class="sc">%&gt;%</span></span>
+<span id="cb219-4"><a href="midterm-review.html#cb219-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">countries.region =</span> <span class="fu">factor</span>(countries.region),</span>
+<span id="cb219-5"><a href="midterm-review.html#cb219-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">countries.region =</span> <span class="fu">fct_reorder</span>(countries.region, days_to_fund)) <span class="sc">%&gt;%</span></span>
+<span id="cb219-6"><a href="midterm-review.html#cb219-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> countries.region, <span class="at">y =</span> days_to_fund)) <span class="sc">+</span></span>
+<span id="cb219-7"><a href="midterm-review.html#cb219-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<pre><code>## Error in group_by(., countries.region): object &#39;loans4&#39; not found</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Make a bar chart with average days to fund by sector. Reorder the x-axis so that the sectors are in order of ascending days to fund.</li>
+</ol>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="midterm-review.html#cb221-1" aria-hidden="true" tabindex="-1"></a>loans4 <span class="sc">%&gt;%</span></span>
+<span id="cb221-2"><a href="midterm-review.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector) <span class="sc">%&gt;%</span></span>
+<span id="cb221-3"><a href="midterm-review.html#cb221-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">days_to_fund =</span> <span class="fu">mean</span>(days_to_fund)) <span class="sc">%&gt;%</span></span>
+<span id="cb221-4"><a href="midterm-review.html#cb221-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sector =</span> <span class="fu">factor</span>(sector),</span>
+<span id="cb221-5"><a href="midterm-review.html#cb221-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">sector =</span> <span class="fu">fct_reorder</span>(sector, days_to_fund)) <span class="sc">%&gt;%</span></span>
+<span id="cb221-6"><a href="midterm-review.html#cb221-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sector, <span class="at">y =</span> days_to_fund)) <span class="sc">+</span></span>
+<span id="cb221-7"><a href="midterm-review.html#cb221-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<pre><code>## Error in group_by(., sector): object &#39;loans4&#39; not found</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
 <li>Make a scatterplot with <code>funded_amount</code> on the x-axis and <code>days_to_fund</code> on the y-axis. Color the points by region and set the transparency to 0.2. Add linear trendlines for each region. What are the trends?</li>
 </ol>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="midterm-review.html#cb223-1" aria-hidden="true" tabindex="-1"></a>loans4 <span class="sc">%&gt;%</span></span>
+<span id="cb223-2"><a href="midterm-review.html#cb223-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> funded_amount, <span class="at">y =</span> days_to_fund, <span class="at">color =</span> countries.region)) <span class="sc">+</span></span>
+<span id="cb223-3"><a href="midterm-review.html#cb223-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb223-4"><a href="midterm-review.html#cb223-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Error in ggplot(., aes(x = funded_amount, y = days_to_fund, color = countries.region)): object &#39;loans4&#39; not found</code></pre>
 
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -494,8 +597,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="categorical-variables-as-factors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="categorical-variables-as-factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
