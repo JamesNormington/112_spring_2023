@@ -498,7 +498,7 @@ Figure 12.1: An example Google search.
 <p>First we want to make sure the factors are “clean”, meaning consistent values in the correct format. For example, <code>true</code> and <code>TRUE</code> and <code>T</code> will be three different factors. The easiest way to manage this is to look at the levels for the factor and replace values with a messy factor to a clean one. For example, the following code cleans up values in true/false values in column <code>X</code> in a data set called <code>df</code>:</p>
 <pre><code>df &lt;- df %&gt;% mutate(X = fct_recode(X, &quot;TRUE&quot; = &quot;T&quot;, &quot;TRUE&quot; = &quot;true&quot;, &quot;FALSE&quot; = &quot;f&quot;, &quot;FALSE&quot; = &quot;N&quot;, &quot;FALSE&quot; = &quot;No&quot;))</code></pre>
 <div class="example">
-<p><span id="exm:unnamed-chunk-313" class="example"><strong>Example 12.1  (Clean up the levels on the Messy IMDB 5000 dataset) </strong></span>We will use a slightly “messied” <a href="data/imdb_5000_messy.csv">version</a> of the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">IMDB 5000 Dataset</a>, collected by chuansun76 on Kaggle.<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></p>
+<p><span id="exm:unnamed-chunk-313" class="example"><strong>Example 12.1  (Clean up the levels on the Messy IMDB 5000 dataset) </strong></span>We will use a slightly “messied” <a href="data/imdb_5000_messy.csv">version</a> of the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">IMDB 5000 Dataset</a>, collected by chuansun76 on Kaggle.]</p>
 </div>
 <ol style="list-style-type: lower-alpha">
 <li>Use <code>read_csv</code> to load the IMDB 5000 dataset from “<a href="https://jamesnormington.github.io/112_spring_2023/data/imdb_5000_messy.csv" class="uri">https://jamesnormington.github.io/112_spring_2023/data/imdb_5000_messy.csv</a>”, and save it as <code>imdbMessy</code>.</li>
@@ -626,7 +626,7 @@ Solution
 <li>You can remove observations with one or more NAs (see <a href="https://tidyr.tidyverse.org/reference/drop_na.html"><code>drop_na</code></a>).</li>
 <li>You can remove columns with many NA values.</li>
 <li>You can replace NAs with a reasonable value (called <em>imputing</em> values). This could be a default value (like zero), or the average for a column. (see <a href="https://tidyr.tidyverse.org/reference/replace_na.html"><code>replace_na</code></a>)</li>
-<li>You can use packages such as <code>missForest</code> that fill in missing values with statistical predictions.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></li>
+<li>You can use packages such as <code>missForest</code> that fill in missing values with statistical predictions.</li>
 </ul>
 <p>There is no perfect approach to dealing with NAs, and you must <em>think carefully</em> about how removing or replacing missing data may affect your work.</p>
 <div class="example">
@@ -738,15 +738,6 @@ Solution
 
 
 
-
-
-<div class="footnotes">
-<hr />
-<ol start="12">
-<li id="fn12"><p>Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We’ll learn this technique soon.<a href="data-import.html#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p>This is dangerous unless you know what you are doing.<a href="data-import.html#fnref13" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
             </section>
 
           </div>
