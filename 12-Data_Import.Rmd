@@ -97,7 +97,7 @@ df <- df %>% mutate(X = fct_recode(X, "TRUE" = "T", "TRUE" = "true", "FALSE" = "
 ```
 
 ```{example, name="Clean up the levels on the Messy IMDB 5000 dataset"}
-We will use a slightly "messied" [version](data/imdb_5000_messy.csv) of the [IMDB 5000 Dataset](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset), collected by chuansun76 on Kaggle.^[Another option for part (e) would be to leave them as strings and then use string processing to define the levels. We'll learn this technique soon.]
+We will use a slightly "messied" [version](data/imdb_5000_messy.csv) of the [IMDB 5000 Dataset](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset), collected by chuansun76 on Kaggle.]
 ```
 
 a. Use `read_csv` to load the IMDB 5000 dataset from "https://jamesnormington.github.io/112_spring_2023/data/imdb_5000_messy.csv", and save it as `imdbMessy`.
@@ -186,7 +186,7 @@ You have several options for dealing with NAs (*and they have different conseque
 * You can remove observations with one or more NAs (see [`drop_na`](https://tidyr.tidyverse.org/reference/drop_na.html)).
 * You can remove columns with many NA values.
 * You can replace NAs with a reasonable value (called *imputing* values). This could be a default value (like zero), or the average for a column. (see [`replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html))
-* You can use packages such as `missForest` that fill in missing values with statistical predictions.^[This is dangerous unless you know what you are doing.]
+* You can use packages such as `missForest` that fill in missing values with statistical predictions.
 
 There is no perfect approach to dealing with NAs, and you must *think carefully* about how removing or replacing missing data may affect your work.
 
