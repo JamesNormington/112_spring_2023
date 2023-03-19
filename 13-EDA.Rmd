@@ -16,10 +16,6 @@ library(GGally)
 - Develop comfort in formulating research questions
 
 
-Create a new Rmd file (save it as 13-EDA.Rmd). Put this file in a folder `Assignment_08` in your `COMP_STAT_112` folder.
-- Make sure to add alt text using fig.alt!
-
-
 ## First Steps of a Data Analysis {-}
 
 What are the first steps to take when you start a project or get a hold of a new data set?
@@ -53,7 +49,7 @@ We view the process similarly:
 
 Start by understanding the data that is available to you. If you have a codebook, you have struck gold! If not (the more common case), you'll need to do some detective work that often involves talking to people. At this stage, ask yourself:
 
-* Where does my data come from? How was it collected?^[Particularly important questions about how it was collected include WHO (whether it is a sample of a larger data set, and, if so, how the sampling was done? Randomly? All cases during a specific time frame? All data for a selected set of users?), WHEN (is this current data or historical? what events may have had an impact?), WHAT (what variables were measured? how was it measured, self-reported through a questionnaire or measured directly?), WHY (who funded the data collection? for what purposes what the data collected? to whose benefit was the data collected?) Answers to such questions strongly impact the conclusions you will be able to draw from the data.]
+* Where does my data come from? How was it collected?
 * Is there a codebook? If not, how can I learn about it?
 * Are there people I can reach out to who have experience with this data?
 
@@ -139,11 +135,11 @@ Here are some exploratory data analysis examples I like:
 
 - [Changes in fine particle air pollution in the US](https://bookdown.org/rdpeng/exdata/data-analysis-case-study-changes-in-fine-particle-air-pollution-in-the-u-s-.html)
 
-- [Married people have more sex](http://flowingdata.com/2017/07/03/married-people-sex/)^[The graphics in this one are a bit more developed than you would really see in an exploratory analysis, but I think the progression of visualizations is interesting and follows an exploratory story.]
+- [Married people have more sex](http://flowingdata.com/2017/07/03/married-people-sex/)
 
 - [Tropical storm analysis](https://www.r-bloggers.com/2017/09/exploratory-data-analysis-of-tropical-storms-in-r/)
 
-## Practice: Flight Data {-}
+## Assignment 8 Part 2 (due Wednesday, March 29th @ 11:59pm)  {-}
 
 Let's practice these steps using data about [flight delays from Kaggle](https://www.kaggle.com/usdot/flight-delays). You have access to the data for [airlines](data/airlines.csv), [airports](data/airports.csv), and [flights](data/flights_jan_jul_sample2.csv).
 
@@ -156,9 +152,9 @@ flights <- read_csv("data/flights_jan_jul_sample2.csv")
 ```
 
 ```{r, cache=TRUE,eval=FALSE}
-airlines <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/airlines.csv")
-airports <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/airports.csv")
-flights <- read_csv("https://bcheggeseth.github.io/112_spring_2023/data/flights_jan_jul_sample2.csv")
+airlines <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/airlines.csv")
+airports <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/airports.csv")
+flights <- read_csv("https://jamesnormington.github.io/112_spring_2023/data/flights_jan_jul_sample2.csv")
 ```
 
 Note that the full set of flight data has more than 5.8 million flights. To start, I have given you a subset that includes all flights in the first 15 days of January 2015 and in the first 15 days of July 2015. If at the end you wish to try your analysis on the whole data set, you can download the original .csv file from the Kaggle page and substitute a link to it in the code chunk above.

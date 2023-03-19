@@ -149,6 +149,13 @@ fig:unnamed-chunk-312
 exm:unnamed-chunk-313
 exm:unnamed-chunk-321
 exr:unnamed-chunk-326
+fig:unnamed-chunk-327
+exr:unnamed-chunk-334
+exr:unnamed-chunk-335
+exr:unnamed-chunk-336
+exr:unnamed-chunk-337
+exr:unnamed-chunk-338
+exr:unnamed-chunk-339
 intro-to-r-rstudio-and-r-markdown
 intro-to-data-visualization
 effective-visualizations
@@ -161,3 +168,4 @@ joining-two-data-frames
 categorical-variables-as-factors
 midterm-review
 data-import
+exploratory-data-analysis
