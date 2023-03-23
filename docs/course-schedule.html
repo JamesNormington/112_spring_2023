@@ -390,6 +390,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#examples"><i class="fa fa-check"></i>Examples</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#assignment-8-part-2-due-wednesday-march-29th-1159pm"><i class="fa fa-check"></i>Assignment 8 Part 2 (due Wednesday, March 29th @ 11:59pm)</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>14</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#learning-goals-12"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#regular-expressions-and-character-strings"><i class="fa fa-check"></i>Regular Expressions and Character Strings</a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#wrangling-with-regular-expressions-in-r"><i class="fa fa-check"></i>Wrangling with Regular Expressions in <code>R</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#search-and-replace-patterns-with-str_replace-or-str_replace_all-stringr"><i class="fa fa-check"></i>Search and replace patterns with <code>str_replace</code> or <code>str_replace_all</code> (<code>stringr</code>)</a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#detect-patterns-with-str_detect-stringr"><i class="fa fa-check"></i>Detect patterns with <code>str_detect</code> (<code>stringr</code>)</a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#locate-patterns-with-str_locate"><i class="fa fa-check"></i>Locate patterns with <code>str_locate</code></a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#extract-patterns-with-str_extract-and-str_extract_all"><i class="fa fa-check"></i>Extract patterns with <code>str_extract</code> and <code>str_extract_all</code></a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#count-the-number-of-characters-with-str_length"><i class="fa fa-check"></i>Count the number of characters with <code>str_length</code></a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#convert-a-string-to-all-lower-case-letters-with-str_to_lower"><i class="fa fa-check"></i>Convert a string to all lower case letters with <code>str_to_lower</code></a></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#split-strings-with-separate"><i class="fa fa-check"></i>Split strings with <code>separate</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regular-expressions.html"><a href="regular-expressions.html#homework-9-due-wednesday-april-5th-1159pm"><i class="fa fa-check"></i>Homework 9: due Wednesday, April 5th @ 11:59pm</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -828,12 +844,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 
-<!-- 
 
 <table class="tg">
 <thead>
   <tr>
-    <th class="tg-0pky" colspan="3"><b>Week 10<b></th>
+    <th class="tg-0pky" colspan="3"><b>Week 11<b></th>
   </tr>
 </thead>
 <tbody>
@@ -843,7 +858,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <td class="tg-0pky"><b>Optional Readings/Videos</b></td>
     </tr>
      <tr>
-   <td class="tg-0pky">10/28</td>
+   <td class="tg-0pky">3/28</td>
    <td class="tg-0pky">
         Deep Dive in Project Ideas!<br><br>
         <a href="https://jamesnormington.github.io/112_spring_2023_slides/ProjectDeepDive.html">Slides for Today</a>
@@ -852,16 +867,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    </td>
  </tr>
   <tr>
-    <td class="hw" colspan="6">
-            <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=21932">Assignment 11</a> (due 10/30) and <a href="https://moodle.macalester.edu/mod/assign/view.php?id=22060">Assignment 12</a> (due 11/1).</b>
-    </td>
   </tr>
     <tr>
-      <td class="tg-0pky">10/31</td>
+      <td class="tg-0pky">3/30</td>
       <td class="tg-0pky">
             <a href="https://jamesnormington.github.io/112_spring_2023/regular-expressions.html" target="_blank">14 Regular Expressions</a><br><br>
             <a href="https://jamesnormington.github.io/112_spring_2023_slides/14_Regex.html">Slides for Today</a><br><br>
-            <a href="https://moodle.macalester.edu/mod/assign/view.php?id=50281">Assignment 13</a> Due Tuesday, November 8 at 11:59pm
+            <a href="https://moodle.macalester.edu/mod/assign/view.php?id=41548&forceview=1">Assignment 9</a> Due Wednesday, April 5 at 11:59pm
         <td class="tg-0pky">
           <b>Reading:</b><br>
           <a href="https://r4ds.had.co.nz/strings.html">Strings</a>, by Wickham and Grolemund<br>
@@ -873,6 +885,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       
         </td>
     </tr> 
+  
+ </tr>
+  <tr>
+    <td class="hw" colspan="6">
+            <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=41548&forceview=1">Assignment 9 </a> (due 4/5 @ 11:59pm).</b>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<!-- 
+
     <tr>
     <td class="tg-0pky">11/2</td>
     <td class="tg-0pky">
@@ -893,16 +917,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </td>
    <td class="tg-0pky">
    </td>
- </tr>
-  <tr>
-    <td class="hw" colspan="6">
-            <b>Finish <a href="https://moodle.macalester.edu/mod/assign/view.php?id=50281">Assignment 13</a> (due 11/8).</b>
-    </td>
-  </tr>
-</tbody>
-</table>
-
-
+   
 
 <table class="tg">
 <thead>

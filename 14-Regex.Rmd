@@ -15,12 +15,11 @@ library(stringr)
 - Use regular expressions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the `stringr` package.
 
 Create a new Rmd file (save it as 14-Regex.Rmd). Put this file in a folder `Assignment_09` in your `COMP_STAT_112` folder.
-- Make sure to add alt text using fig.alt!
 
 
 ## Regular Expressions and Character Strings {-}
 
-Regular expressions allow us to describe character patterns. Regular expressions allow us to:^[Source: [regular expression tutorial](https://ryanstutorials.net/regular-expressions-tutorial/).]
+Regular expressions allow us to describe character patterns. Regular expressions allow us to:
 
 - **Search** for particular items within a large body of text. For example, you may wish to identify and extract all email addresses.
 - **Replace** particular items. For example, you may wish to clean up some poorly formatted HTML by replacing all uppercase tags with lowercase equivalents.
@@ -115,7 +114,7 @@ df$line4
 
 Note: The function `separate` is in the `tidyr` package.
 
-## Practice: Fall 2022 Enrollment Exploration {-}
+## Homework 9: due Wednesday, April 5th @ 11:59pm {-}
 
 The tibble `courses` has the Fall 2022 enrollment information from the Macalester Registrar's website, which we could gain with web scraping tools.
 
@@ -227,7 +226,7 @@ d) Split the `time` variable into two separate columns: `start_time` and `end_ti
 
 
 ```{exercise,name="WA courses"}
-Make a bar plot showing the number of Fall 2022 sections satisfying the Writing WA requirement, sorted by department code.^[For this exercise, you can count cross-listed courses towards both departments' WA counts.]
+Make a bar plot showing the number of Fall 2022 sections satisfying the Writing WA requirement, sorted by department code. For this exercise, you can count cross-listed courses towards both departments WA counts.
 
 ```
 
@@ -259,7 +258,9 @@ Make a table with all Fall 2022 co-taught courses (i.e., more than one instructo
 
 
 ```{exercise, name="Faculty enrollments"}
-Using `courses2` (i.e. after removing non 4-credit courses and cross-listed duplicates), make a table where each row contains a faculty, the number of sections they are teaching in Fall 2022, and the total enrollments in those section. Sort the table from highest total enrollments to lowest. You should find two current Comp/Stat 112 instructors in the top 3.^[For the purposes of this exercise, we are just going to leave co-taught courses as is so that you will have an extra row for each pair or triplet of instructors. Alternatives would be to allocate the enrollment number to each of the faculty members or to split it up between the members. The first option would usually be the most appropriate, although it might depend on the course.]
+Using `courses2` (i.e. after removing non 4-credit courses and cross-listed duplicates), make a table where each row contains a faculty, the number of sections they are teaching in Fall 2022, and the total enrollments in those section. Sort the table from highest total enrollments to lowest. You should find two current Comp/Stat 112 instructors in the top 3.
+
+For the purposes of this exercise, we are just going to leave co-taught courses as is so that you will have an extra row for each pair or triplet of instructors. Alternatives would be to allocate the enrollment number to each of the faculty members or to split it up between the members. The first option would usually be the most appropriate, although it might depend on the course.
 
 ```
 
