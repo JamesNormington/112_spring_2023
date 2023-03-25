@@ -166,9 +166,10 @@ There is a ton of data here, and it can be easy to be overwhelmed. We are going 
 Where does this data come from? Who collected it?   
 ```
 
+A codebook is available [here](https://www.transtats.bts.gov/databases.asp?Z1qr_VQ=E&Z1qr_Qr5p=N8vn6v10&f7owrp6_VQF=D), then go to "Airline On-Time Performance Data".
 
 ```{exercise, name="Explore codebook"}
-This data set comes with a codebook on the Kaggle site. Have a look at the codebook to understand which variables are contained in each of the three tables. For example, what are the levels of `CANCELLATION_REASON` and what do they mean? What is the unit of observation for each table?
+  What are the levels of `CANCELLATION_REASON` and what do they mean? What is the unit of observation for each table?
 
 ```
 
