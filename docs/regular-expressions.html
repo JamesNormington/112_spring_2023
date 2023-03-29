@@ -532,209 +532,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="homework-9-due-wednesday-april-5th-1159pm" class="section level2 unnumbered hasAnchor">
 <h2>Homework 9: due Wednesday, April 5th @ 11:59pm<a href="regular-expressions.html#homework-9-due-wednesday-april-5th-1159pm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The tibble <code>courses</code> has the Fall 2022 enrollment information from the Macalester Registrar’s website, which we could gain with web scraping tools.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regular-expressions.html#cb301-1" aria-hidden="true" tabindex="-1"></a>fall2022 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.macalester.edu/registrar/schedules/2022fall/class-schedule&quot;</span>)</span>
-<span id="cb301-2"><a href="regular-expressions.html#cb301-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-3"><a href="regular-expressions.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and inspect course numbers</span></span>
-<span id="cb301-4"><a href="regular-expressions.html#cb301-4" aria-hidden="true" tabindex="-1"></a>course_nums <span class="ot">&lt;-</span></span>
-<span id="cb301-5"><a href="regular-expressions.html#cb301-5" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-6"><a href="regular-expressions.html#cb301-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-course-number&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-7"><a href="regular-expressions.html#cb301-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-8"><a href="regular-expressions.html#cb301-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-9"><a href="regular-expressions.html#cb301-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and inspect course names</span></span>
-<span id="cb301-10"><a href="regular-expressions.html#cb301-10" aria-hidden="true" tabindex="-1"></a>course_names <span class="ot">&lt;-</span></span>
-<span id="cb301-11"><a href="regular-expressions.html#cb301-11" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-12"><a href="regular-expressions.html#cb301-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-course-title&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-13"><a href="regular-expressions.html#cb301-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-14"><a href="regular-expressions.html#cb301-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-15"><a href="regular-expressions.html#cb301-15" aria-hidden="true" tabindex="-1"></a>course_nums_clean <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(course_nums, <span class="at">end =</span> <span class="fu">nchar</span>(course_nums) <span class="sc">-</span> <span class="dv">6</span>)</span>
-<span id="cb301-16"><a href="regular-expressions.html#cb301-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-17"><a href="regular-expressions.html#cb301-17" aria-hidden="true" tabindex="-1"></a>crn <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(course_nums, <span class="at">start =</span> <span class="fu">nchar</span>(course_nums) <span class="sc">-</span> <span class="dv">4</span>)</span>
+<p>The tibble <code>courses</code> has the Spring 2023 enrollment information from the Macalester Registrar’s website, which we could gain with web scraping tools.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regular-expressions.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb301-2"><a href="regular-expressions.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb301-3"><a href="regular-expressions.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb301-4"><a href="regular-expressions.html#cb301-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-5"><a href="regular-expressions.html#cb301-5" aria-hidden="true" tabindex="-1"></a>spring2023 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.macalester.edu/registrar/schedules/2022fall/class-schedule&quot;</span>)</span>
+<span id="cb301-6"><a href="regular-expressions.html#cb301-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-7"><a href="regular-expressions.html#cb301-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and inspect course numbers</span></span>
+<span id="cb301-8"><a href="regular-expressions.html#cb301-8" aria-hidden="true" tabindex="-1"></a>course_nums <span class="ot">&lt;-</span></span>
+<span id="cb301-9"><a href="regular-expressions.html#cb301-9" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-10"><a href="regular-expressions.html#cb301-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-course-number&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-11"><a href="regular-expressions.html#cb301-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-12"><a href="regular-expressions.html#cb301-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-13"><a href="regular-expressions.html#cb301-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and inspect course names</span></span>
+<span id="cb301-14"><a href="regular-expressions.html#cb301-14" aria-hidden="true" tabindex="-1"></a>course_names <span class="ot">&lt;-</span></span>
+<span id="cb301-15"><a href="regular-expressions.html#cb301-15" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-16"><a href="regular-expressions.html#cb301-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-course-title&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-17"><a href="regular-expressions.html#cb301-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
 <span id="cb301-18"><a href="regular-expressions.html#cb301-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-19"><a href="regular-expressions.html#cb301-19" aria-hidden="true" tabindex="-1"></a>course_instructors <span class="ot">&lt;-</span></span>
-<span id="cb301-20"><a href="regular-expressions.html#cb301-20" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-21"><a href="regular-expressions.html#cb301-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(6)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-22"><a href="regular-expressions.html#cb301-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-23"><a href="regular-expressions.html#cb301-23" aria-hidden="true" tabindex="-1"></a>course_instructors_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_instructors), <span class="at">start =</span> <span class="dv">13</span>)</span>
-<span id="cb301-24"><a href="regular-expressions.html#cb301-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-25"><a href="regular-expressions.html#cb301-25" aria-hidden="true" tabindex="-1"></a>course_days <span class="ot">&lt;-</span></span>
-<span id="cb301-26"><a href="regular-expressions.html#cb301-26" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-27"><a href="regular-expressions.html#cb301-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(3)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-28"><a href="regular-expressions.html#cb301-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-29"><a href="regular-expressions.html#cb301-29" aria-hidden="true" tabindex="-1"></a>course_days_short <span class="ot">&lt;-</span> <span class="fu">trimws</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_days), <span class="at">start =</span> <span class="dv">7</span>))</span>
-<span id="cb301-30"><a href="regular-expressions.html#cb301-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-31"><a href="regular-expressions.html#cb301-31" aria-hidden="true" tabindex="-1"></a>course_times <span class="ot">&lt;-</span></span>
-<span id="cb301-32"><a href="regular-expressions.html#cb301-32" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-33"><a href="regular-expressions.html#cb301-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(4)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-34"><a href="regular-expressions.html#cb301-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-35"><a href="regular-expressions.html#cb301-35" aria-hidden="true" tabindex="-1"></a>course_times_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_times), <span class="at">start =</span> <span class="dv">7</span>)</span>
-<span id="cb301-36"><a href="regular-expressions.html#cb301-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-37"><a href="regular-expressions.html#cb301-37" aria-hidden="true" tabindex="-1"></a>course_rooms <span class="ot">&lt;-</span></span>
-<span id="cb301-38"><a href="regular-expressions.html#cb301-38" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-39"><a href="regular-expressions.html#cb301-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(5)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-40"><a href="regular-expressions.html#cb301-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-41"><a href="regular-expressions.html#cb301-41" aria-hidden="true" tabindex="-1"></a>course_rooms_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_rooms), <span class="at">start =</span> <span class="dv">7</span>)</span>
-<span id="cb301-42"><a href="regular-expressions.html#cb301-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-43"><a href="regular-expressions.html#cb301-43" aria-hidden="true" tabindex="-1"></a>course_avail <span class="ot">&lt;-</span></span>
-<span id="cb301-44"><a href="regular-expressions.html#cb301-44" aria-hidden="true" tabindex="-1"></a>  fall2022 <span class="sc">%&gt;%</span></span>
-<span id="cb301-45"><a href="regular-expressions.html#cb301-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(7)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-46"><a href="regular-expressions.html#cb301-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb301-47"><a href="regular-expressions.html#cb301-47" aria-hidden="true" tabindex="-1"></a>course_avail_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_avail), <span class="at">start =</span> <span class="dv">14</span>)</span>
-<span id="cb301-48"><a href="regular-expressions.html#cb301-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-49"><a href="regular-expressions.html#cb301-49" aria-hidden="true" tabindex="-1"></a>safe_html <span class="ot">&lt;-</span> <span class="fu">possibly</span>(<span class="at">.f =</span> read_html,<span class="at">otherwise =</span> <span class="cn">NA</span>)</span>
-<span id="cb301-50"><a href="regular-expressions.html#cb301-50" aria-hidden="true" tabindex="-1"></a>SITES <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://webapps.macalester.edu/registrardata/classdata/Fall2022/&quot;</span>, crn) <span class="sc">%&gt;%</span></span>
-<span id="cb301-51"><a href="regular-expressions.html#cb301-51" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="sc">~</span> <span class="fu">posshtml</span>(.x))</span>
+<span id="cb301-19"><a href="regular-expressions.html#cb301-19" aria-hidden="true" tabindex="-1"></a>course_nums_clean <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(course_nums, <span class="at">end =</span> <span class="fu">nchar</span>(course_nums) <span class="sc">-</span> <span class="dv">6</span>)</span>
+<span id="cb301-20"><a href="regular-expressions.html#cb301-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-21"><a href="regular-expressions.html#cb301-21" aria-hidden="true" tabindex="-1"></a>crn <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(course_nums, <span class="at">start =</span> <span class="fu">nchar</span>(course_nums) <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb301-22"><a href="regular-expressions.html#cb301-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-23"><a href="regular-expressions.html#cb301-23" aria-hidden="true" tabindex="-1"></a>course_instructors <span class="ot">&lt;-</span></span>
+<span id="cb301-24"><a href="regular-expressions.html#cb301-24" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-25"><a href="regular-expressions.html#cb301-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(6)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-26"><a href="regular-expressions.html#cb301-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-27"><a href="regular-expressions.html#cb301-27" aria-hidden="true" tabindex="-1"></a>course_instructors_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_instructors), <span class="at">start =</span> <span class="dv">13</span>)</span>
+<span id="cb301-28"><a href="regular-expressions.html#cb301-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-29"><a href="regular-expressions.html#cb301-29" aria-hidden="true" tabindex="-1"></a>course_days <span class="ot">&lt;-</span></span>
+<span id="cb301-30"><a href="regular-expressions.html#cb301-30" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-31"><a href="regular-expressions.html#cb301-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(3)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-32"><a href="regular-expressions.html#cb301-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-33"><a href="regular-expressions.html#cb301-33" aria-hidden="true" tabindex="-1"></a>course_days_short <span class="ot">&lt;-</span> <span class="fu">trimws</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_days), <span class="at">start =</span> <span class="dv">7</span>))</span>
+<span id="cb301-34"><a href="regular-expressions.html#cb301-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-35"><a href="regular-expressions.html#cb301-35" aria-hidden="true" tabindex="-1"></a>course_times <span class="ot">&lt;-</span></span>
+<span id="cb301-36"><a href="regular-expressions.html#cb301-36" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-37"><a href="regular-expressions.html#cb301-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(4)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-38"><a href="regular-expressions.html#cb301-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-39"><a href="regular-expressions.html#cb301-39" aria-hidden="true" tabindex="-1"></a>course_times_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_times), <span class="at">start =</span> <span class="dv">7</span>)</span>
+<span id="cb301-40"><a href="regular-expressions.html#cb301-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-41"><a href="regular-expressions.html#cb301-41" aria-hidden="true" tabindex="-1"></a>course_rooms <span class="ot">&lt;-</span></span>
+<span id="cb301-42"><a href="regular-expressions.html#cb301-42" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-43"><a href="regular-expressions.html#cb301-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(5)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-44"><a href="regular-expressions.html#cb301-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-45"><a href="regular-expressions.html#cb301-45" aria-hidden="true" tabindex="-1"></a>course_rooms_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_rooms), <span class="at">start =</span> <span class="dv">7</span>)</span>
+<span id="cb301-46"><a href="regular-expressions.html#cb301-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-47"><a href="regular-expressions.html#cb301-47" aria-hidden="true" tabindex="-1"></a>course_avail <span class="ot">&lt;-</span></span>
+<span id="cb301-48"><a href="regular-expressions.html#cb301-48" aria-hidden="true" tabindex="-1"></a>  spring2023 <span class="sc">%&gt;%</span></span>
+<span id="cb301-49"><a href="regular-expressions.html#cb301-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;.class-schedule-label:nth-child(7)&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb301-50"><a href="regular-expressions.html#cb301-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb301-51"><a href="regular-expressions.html#cb301-51" aria-hidden="true" tabindex="-1"></a>course_avail_short <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="fu">trimws</span>(course_avail), <span class="at">start =</span> <span class="dv">14</span>)</span>
 <span id="cb301-52"><a href="regular-expressions.html#cb301-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-53"><a href="regular-expressions.html#cb301-53" aria-hidden="true" tabindex="-1"></a>safe_read <span class="ot">&lt;-</span> <span class="fu">possibly</span>(<span class="at">.f =</span> <span class="cf">function</span>(x) <span class="fu">html_nodes</span>(x, <span class="st">&quot;p:nth-child(1)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-54"><a href="regular-expressions.html#cb301-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb301-55"><a href="regular-expressions.html#cb301-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trimws</span>(), <span class="at">otherwise =</span> <span class="cn">NA</span>)</span>
-<span id="cb301-56"><a href="regular-expressions.html#cb301-56" aria-hidden="true" tabindex="-1"></a>course_desc <span class="ot">&lt;-</span> SITES <span class="sc">%&gt;%</span></span>
-<span id="cb301-57"><a href="regular-expressions.html#cb301-57" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">safe_read</span>(.x))</span>
-<span id="cb301-58"><a href="regular-expressions.html#cb301-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-59"><a href="regular-expressions.html#cb301-59" aria-hidden="true" tabindex="-1"></a>safe_read2 <span class="ot">&lt;-</span> <span class="fu">possibly</span>(<span class="at">.f =</span> <span class="cf">function</span>(x) <span class="fu">html_nodes</span>(x, <span class="st">&quot;p:nth-child(2)&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-60"><a href="regular-expressions.html#cb301-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb301-61"><a href="regular-expressions.html#cb301-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trimws</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(<span class="at">start =</span> <span class="dv">32</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb301-62"><a href="regular-expressions.html#cb301-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trimws</span>(), <span class="at">otherwise =</span> <span class="cn">NA</span>)</span>
-<span id="cb301-63"><a href="regular-expressions.html#cb301-63" aria-hidden="true" tabindex="-1"></a>gen_ed <span class="ot">&lt;-</span> SITES <span class="sc">%&gt;%</span></span>
-<span id="cb301-64"><a href="regular-expressions.html#cb301-64" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">safe_read2</span>(.x))</span>
+<span id="cb301-53"><a href="regular-expressions.html#cb301-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-54"><a href="regular-expressions.html#cb301-54" aria-hidden="true" tabindex="-1"></a>courses <span class="ot">&lt;-</span></span>
+<span id="cb301-55"><a href="regular-expressions.html#cb301-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb301-56"><a href="regular-expressions.html#cb301-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> course_nums_clean,</span>
+<span id="cb301-57"><a href="regular-expressions.html#cb301-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">crn =</span> crn,</span>
+<span id="cb301-58"><a href="regular-expressions.html#cb301-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> course_names,</span>
+<span id="cb301-59"><a href="regular-expressions.html#cb301-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">days =</span> course_days_short,</span>
+<span id="cb301-60"><a href="regular-expressions.html#cb301-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> course_times_short,</span>
+<span id="cb301-61"><a href="regular-expressions.html#cb301-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">room =</span> course_rooms_short,</span>
+<span id="cb301-62"><a href="regular-expressions.html#cb301-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">instructor =</span> course_instructors_short,</span>
+<span id="cb301-63"><a href="regular-expressions.html#cb301-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">avail_max =</span> course_avail_short</span>
+<span id="cb301-64"><a href="regular-expressions.html#cb301-64" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb301-65"><a href="regular-expressions.html#cb301-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-66"><a href="regular-expressions.html#cb301-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-67"><a href="regular-expressions.html#cb301-67" aria-hidden="true" tabindex="-1"></a>courses <span class="ot">&lt;-</span></span>
-<span id="cb301-68"><a href="regular-expressions.html#cb301-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb301-69"><a href="regular-expressions.html#cb301-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> course_nums_clean,</span>
-<span id="cb301-70"><a href="regular-expressions.html#cb301-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">crn =</span> crn,</span>
-<span id="cb301-71"><a href="regular-expressions.html#cb301-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> course_names,</span>
-<span id="cb301-72"><a href="regular-expressions.html#cb301-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">days =</span> course_days_short,</span>
-<span id="cb301-73"><a href="regular-expressions.html#cb301-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> course_times_short,</span>
-<span id="cb301-74"><a href="regular-expressions.html#cb301-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">room =</span> course_rooms_short,</span>
-<span id="cb301-75"><a href="regular-expressions.html#cb301-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">instructor =</span> course_instructors_short,</span>
-<span id="cb301-76"><a href="regular-expressions.html#cb301-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">avail_max =</span> course_avail_short,</span>
-<span id="cb301-77"><a href="regular-expressions.html#cb301-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">desc =</span> course_desc,</span>
-<span id="cb301-78"><a href="regular-expressions.html#cb301-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">gen_ed =</span> gen_ed</span>
-<span id="cb301-79"><a href="regular-expressions.html#cb301-79" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb301-80"><a href="regular-expressions.html#cb301-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-81"><a href="regular-expressions.html#cb301-81" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(courses, <span class="at">file =</span> <span class="st">&#39;Mac2022Courses.csv&#39;</span>)</span></code></pre></div>
-<table>
-<caption><span id="tab:unnamed-chunk-350">Table 14.1: </span>First six entries in the Fall 2022 Macalester course info data.</caption>
-<colgroup>
-<col width="7%" />
-<col width="3%" />
-<col width="41%" />
-<col width="3%" />
-<col width="11%" />
-<col width="7%" />
-<col width="14%" />
-<col width="9%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">number</th>
-<th align="right">crn</th>
-<th align="left">name</th>
-<th align="left">days</th>
-<th align="left">time</th>
-<th align="left">room</th>
-<th align="left">instructor</th>
-<th align="left">avail_max</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AMST 194-01</td>
-<td align="right">10002</td>
-<td align="left">Introduction to Asian American Studies</td>
-<td align="left">M W F</td>
-<td align="left">01:10 pm-02:10 pm</td>
-<td align="left">HUM 212</td>
-<td align="left">Jake Nagasawa</td>
-<td align="left">-3 / 18</td>
-</tr>
-<tr class="even">
-<td align="left">AMST 194-F1</td>
-<td align="right">10001</td>
-<td align="left">What’s After White Empire (and is it already here)?</td>
-<td align="left">T R</td>
-<td align="left">03:00 pm-04:30 pm</td>
-<td align="left">HUM 212</td>
-<td align="left">Karin Aguilar-San Juan</td>
-<td align="left">0 / 16</td>
-</tr>
-<tr class="odd">
-<td align="left">AMST 203-01</td>
-<td align="right">10545</td>
-<td align="left">Politics and Inequality: The American Welfare State</td>
-<td align="left">M W F</td>
-<td align="left">09:40 am-10:40 am</td>
-<td align="left">CARN 305</td>
-<td align="left">Lesley Lavery</td>
-<td align="left">Closed 0 / 25</td>
-</tr>
-<tr class="even">
-<td align="left">AMST 225-01</td>
-<td align="right">10352</td>
-<td align="left">Native History to 1871</td>
-<td align="left">M W F</td>
-<td align="left">10:50 am-11:50 am</td>
-<td align="left">HUM 111</td>
-<td align="left">Jacob Jurss</td>
-<td align="left">Closed 3 / 20</td>
-</tr>
-<tr class="odd">
-<td align="left">AMST 231-01</td>
-<td align="right">10820</td>
-<td align="left">Sovereignty Matters: Critical Indigeneity, Gender and Governance</td>
-<td align="left">M</td>
-<td align="left">07:00 pm-10:00 pm</td>
-<td align="left">ARTCOM 102</td>
-<td align="left">Kirisitina Sailiata</td>
-<td align="left">Closed 1 / 16</td>
-</tr>
-<tr class="even">
-<td align="left">AMST 237-01</td>
-<td align="right">10003</td>
-<td align="left">Environmental Justice</td>
-<td align="left">T R</td>
-<td align="left">01:20 pm-02:50 pm</td>
-<td align="left">HUM 212</td>
-<td align="left">Kirisitina Sailiata</td>
-<td align="left">-1 / 20</td>
-</tr>
-</tbody>
-</table>
+<span id="cb301-66"><a href="regular-expressions.html#cb301-66" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(courses, <span class="st">&quot;courses.csv&quot;</span>)</span></code></pre></div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-351" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table (save updated table as <code>courses</code>):</p>
+<p><span id="exr:unnamed-chunk-350" class="exercise"><strong>Exercise 14.1  (Rearrange data table) </strong></span>Make the following changes to the <code>courses</code> data table (save updated table as <code>courses</code>):</p>
 <ol style="list-style-type: lower-alpha">
 <li>Split <code>number</code> into three separate columns: <code>dept</code>, <code>number</code>, and <code>section</code>.</li>
 <li>Split the <code>avail_max</code> variable into two separate variables: <code>avail</code> and <code>max</code>. It might be helpful to first remove all appearances of “Closed”.</li>
 <li>Use <code>avail</code> and <code>max</code> to generate a new variable called <code>enrollment</code>.</li>
-<li>Split the <code>time</code> variable into two separate columns: <code>start_time</code> and <code>end_time</code>. Convert all of these times into continuous 24 hour times (e.g., 2:15 pm should become 14.25). <em>Hint: check out the function <code>parse_date_time</code>.</em></li>
+<li>Split the <code>time</code> variable into two separate columns: <code>start_time</code> and <code>end_time</code>. Convert all of these times into continuous 24 hour times (e.g., 2:15 pm should become 14.25). <em>Hint: check out the function <code>lubridate::parse_date_time()</code> to convert to a date-time object. Use some functions in <code>lubridate</code> to extract the hours and minutes. Then, convert the columns using some mathematical functions. </em></li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-352" class="exercise"><strong>Exercise 14.2  (WA courses) </strong></span>Make a bar plot showing the number of Fall 2022 sections satisfying the Writing WA requirement, sorted by department code. For this exercise, you can count cross-listed courses towards both departments WA counts.</p>
-</div>
-<p><br></p>
-<p>In the next series of exercises, we are going to build up an analysis to examine the number of student enrollments for each faculty member.</p>
-<div class="exercise">
-<p><span id="exr:unnamed-chunk-353" class="exercise"><strong>Exercise 14.3  (Filter cases) </strong></span>For this particular analysis, we do not want to consider certain types of sections. Remove all of the following from the data table (save updated table as <code>courses2</code>):</p>
+<p><span id="exr:unnamed-chunk-351" class="exercise"><strong>Exercise 14.2  (Filter cases) </strong></span>Remove all of the following from the data table (save updated table as <code>courses2</code>):</p>
 <ol style="list-style-type: lower-alpha">
 <li>All sections in <code>PE</code> or <code>INTD</code>.</li>
 <li>All music ensembles and dance practicum sections (these are all of the MUSI and THDA classes with numbers less than 100).</li>
-<li>All lab sections. This is one is a bit tricky. You can search for “Lab” or “Laboratory”, but be careful not to eliminate courses with words such as “Labor”. Some of these have section numbers that end in “-L1”“, for example.</li>
+<li>All lab sections. (This is one is a bit tricky. You cant simply eliminate all instances of “Lab” in the name, because that would eliminate courses like “Economic Analysis of Labor”. My suggestion: filter out sections with any instances of “L” <em>and</em> names which contain “Lab”.)</li>
 </ol>
 </div>
 <div class="exercise">
-<p><span id="exr:nt" class="exercise"><strong>Exercise 14.4  (Handle cross-listed courses) </strong></span>Some sections are listed under multiple different departments, and you will find the same instructor, time, enrollment data, etc. For this activity, we only want to include each actual section once and it doesn’t really matter which department code we associate with this section. Eliminate all duplicated cross-listed courses from <code>courses2</code>, keeping each actual section just once (save updated table as <code>courses2</code>). Hint: look into the <code>R</code> command <code>distinct</code>, and think carefully about how to find duplicates.</p>
+<p><span id="exr:nt" class="exercise"><strong>Exercise 14.3  (Handle cross-listed courses) </strong></span>Some sections are listed under multiple different departments, and you will find the same instructor, time, enrollment data, etc. For this activity, we only want to include each actual section once and it doesn’t really matter which department code we associate with this section. Eliminate all duplicated cross-listed courses from <code>courses2</code>, keeping each actual section just once (save updated table as <code>courses2</code>). Hint: look into the <code>R</code> command <code>distinct</code>, and think carefully about how to find duplicates. Be sure to look into the .keep_all argument.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-354" class="exercise"><strong>Exercise 14.5  (Co-taught courses) </strong></span>Make a table with all Fall 2022 co-taught courses (i.e., more than one instructor). You don’t need to save the new table.</p>
-</div>
-<div class="exercise">
-<p><span id="exr:unnamed-chunk-355" class="exercise"><strong>Exercise 14.6  (Faculty enrollments) </strong></span>Using <code>courses2</code> (i.e. after removing non 4-credit courses and cross-listed duplicates), make a table where each row contains a faculty, the number of sections they are teaching in Fall 2022, and the total enrollments in those section. Sort the table from highest total enrollments to lowest. You should find two current Comp/Stat 112 instructors in the top 3.</p>
+<p><span id="exr:unnamed-chunk-352" class="exercise"><strong>Exercise 14.4  (Faculty enrollments) </strong></span>Using <code>courses2</code>, make a table where each row contains a faculty, the number of sections they are teaching in Spring 2023, and the total enrollments in those section. Sort the table from highest total enrollments to lowest, and display the top 6.</p>
 <p>For the purposes of this exercise, we are just going to leave co-taught courses as is so that you will have an extra row for each pair or triplet of instructors. Alternatives would be to allocate the enrollment number to each of the faculty members or to split it up between the members. The first option would usually be the most appropriate, although it might depend on the course.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-356" class="exercise"><strong>Exercise 14.7  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of <code>courses2</code>). Also make a bar plot showing the number of these courses by day of the week.</p>
+<p><span id="exr:unnamed-chunk-353" class="exercise"><strong>Exercise 14.5  (Evening courses) </strong></span>Create and display a new table with all night courses (i.e., a subset of <code>courses2</code>). Also make a bar plot showing the number of these courses by day of the week.</p>
 </div>
 
 </div>
